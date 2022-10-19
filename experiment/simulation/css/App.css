@@ -1,0 +1,85 @@
+html, body {
+    height: 100%;
+  }
+  .App {
+    text-align: center;
+    height: 100%;
+  }
+  
+  .pcb {
+    height: 80%;
+    width: 15%;
+    min-width: 150px;
+    border: 2px dotted black;
+  }
+  
+  p {
+    margin: 0px;
+  }
+  
+  .cpu {
+    height: 50%;
+    width: 15%;
+    min-width: 150px;
+  
+    border: 2px solid black;
+  }
+  
+  .processes {
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+  }
+  
+  .process {
+    cursor: pointer;
+    height: 30%;
+    width: 30%;
+    background-color: aliceblue;
+    margin: 1%;
+    /* text-align: center; */
+  }
+  
+  .selected {
+    background-color: blueviolet;
+  }
+  
+  .active {
+    background-color: chocolate;
+  }
+  
+  .four {
+    height: 80%;
+  }
+  
+  .row-1, .row-2 {
+    height: 50%;
+  }
+  
+  .row-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .row-1 {
+    display: flex;
+    justify-content:space-around ;
+    align-items: center;
+  }
+  
+  .controls {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .controls button {
+    margin-left: 3%;
+    margin-right: 3%;
+    cursor: pointer;
+  }
+  
