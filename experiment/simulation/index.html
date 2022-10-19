@@ -1,13 +1,43 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <script src="./js/main.js"></script>
+  <link rel="stylesheet" href="./css/App.css">
 </head>
-<body>
-		<!-- Your code goes here-->
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<body>
+  <div id="myapp"></div>
+  <script>
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+	}
+	function create_process(id) {
+		return {
+			"id" : id,
+			"state" : 0,
+			"program_counter" : getRandomInt(10**3, 10**4),
+			"r1" : getRandomInt(0, 10),
+			"r2" : getRandomInt(0, 10),
+			"r3" : getRandomInt(0, 10),
+			"r4" : getRandomInt(0, 10),
+			"ticks" : getRandomInt(1, 5)
+		}
+	}
+
+	function initialize_processes(n) {
+		let processes = [];
+		for(let i = 0; i < n; i++){
+			processes.push(create_process(i));
+		}
+		return processes;
+	}
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp'),
+    flags: initialize_processes(4)
+  });
+  </script>
 </body>
 </html>
