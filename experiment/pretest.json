@@ -19,12 +19,12 @@
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What is the PCB identified as:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Real-Number",
+        "b": "Binary Number",
+        "c": "Store block",
+        "d": "Integer Process ID"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -32,7 +32,43 @@
         "c": "Explanation 2",
         "d": "Explanation 2"
       },
-      "correctAnswer": "c",
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "When does preemption take place?",
+      "answers": {
+        "a": "When a quantum expires",
+        "b": "When a process issues an I/O request.",
+        "c": "When a process exits.",
+        "d": "All of the above."
+      },
+      "explanations": {
+        "a": "Preemption means the operating system moves a process from running state to ready state without the process requesting it .Preemption takes place when a process switches from the running state to the ready state due to timer interrupt (time slice or quantum), or when a process switches from the waiting state to the ready state due to the completion of I/O.",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "What does an interupt do?",
+      "answers": {
+        "a": "Allow the CPU to notify devices that it needs attention",
+        "b": "Allow the devices to notify the device controller that they need attention",
+        "c": "Allow the devices to notify the CPU that they need attention",
+        "d": "None of the above"
+      },
+      "explanations": {
+        "a": "An interrupt is a signal to the processor emitted by hardware or software indicating an event that needs immediate attention.",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
