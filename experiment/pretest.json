@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the ready state of a process:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "When a process is ready to run from the ready queue",
+        "b": "when process is unable to run until some task has been completed",
+        "c": "when process is using the CPU",
+        "d": "None of the mentioned"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
