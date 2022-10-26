@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the ready state of a process:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "When a process is ready to run from the ready queue",
+        "b": "when process is unable to run until some task has been completed",
+        "c": "when process is using the CPU",
+        "d": "None of the mentioned"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -19,12 +19,12 @@
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "When the process issues an I/O request :",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "It is placed in the ready queue",
+        "b": "It is left in the CPU",
+        "c": "It is sent to the I/O queue",
+        "d": "None of the above"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -33,6 +33,42 @@
         "d": "Explanation 2"
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "Which of the following state transitions is not possible?",
+      "answers": {
+        "a": "Ready ->CPU",
+        "b": "Ready ->I/O",
+        "c": "I/O->Ready",
+        "d": "CPU->Kill"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "Select the method in which a process leaves the CPU:",
+      "answers": {
+        "a": "I/O calls",
+        "b": "Kill process",
+        "c": "preemption",
+        "d": "all of the above"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
