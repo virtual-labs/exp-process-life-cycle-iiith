@@ -10,3 +10,6 @@
   - Context switching triggers and steps involved
   - What a PCB is 
 
+## To quiz youself more go here:
+* https://examradar.com/process-multiprogramming-context-switching-questions-answers/
+
