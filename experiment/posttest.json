@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the ready state of a process:",
+      "question": "What are the different operations you can perform on a process?",
       "answers": {
-        "a": "When a process is ready to run from the ready queue",
-        "b": "when process is unable to run until some task has been completed",
-        "c": "when process is using the CPU",
-        "d": "None of the mentioned"
+        "a": "Creation",
+        "b": "Termination",
+        "c": "Execution",
+        "d": "All of the above"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -15,7 +15,7 @@
         "c": "Explanation 2",
         "d": "Explanation 2"
       },
-      "correctAnswer": "a",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
     {
