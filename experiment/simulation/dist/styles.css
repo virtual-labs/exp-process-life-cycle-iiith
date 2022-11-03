@@ -23,7 +23,7 @@ html, body, main {
     height: 50%;
     justify-content: space-around;
 }
-.queue , .cpu{
+.queue , #cpu{
     height: 80%;
     width: 25%;
 }
