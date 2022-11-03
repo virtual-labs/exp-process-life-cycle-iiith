@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the ready state of a process:",
+      "question": "When do we say that the process is the ready state?",
       "answers": {
         "a": "When the process is ready to be executed",
         "b": "when process is unable to run until some task has been completed",
@@ -60,7 +60,7 @@
         "a": "Allow the CPU to notify devices that it needs attention",
         "b": "Allow the devices to notify the device controller that they need attention",
         "c": "Allow the devices to notify the CPU that they need attention",
-        "d": "None of the above"
+        "d": "All of the above"
       },
       "explanations": {
         "a": "An interrupt is a signal to the processor emitted by hardware or software indicating an event that needs immediate attention.",
