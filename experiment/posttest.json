@@ -10,10 +10,10 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "None of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -45,10 +45,10 @@
         "d": "CPU->Kill"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -63,10 +63,10 @@
         "d": "all of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
