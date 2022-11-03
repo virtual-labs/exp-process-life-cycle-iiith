@@ -20,7 +20,7 @@ export interface Process {
   }
 
   const create_process = (id: number):Process => {
-    const ticks: number = getRandomInt(2, 5);
+    const ticks: number = getRandomInt(3, 6);
     return {
       "id" : id,
       "ticks" : ticks,
@@ -28,7 +28,7 @@ export interface Process {
       "cur_ticks": 0,
       "io" : {
         "start_time": getRandomInt(1, ticks - 1),
-        "ticks" : getRandomInt(1, 3)
+        "ticks" : getRandomInt(1, 2)
       }
     }
   }
