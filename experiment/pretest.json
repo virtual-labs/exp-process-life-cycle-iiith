@@ -4,13 +4,13 @@
     {
       "question": "What is the ready state of a process:",
       "answers": {
-        "a": "When a process is ready to run from the ready queue",
+        "a": "When the process is ready to be executed",
         "b": "when process is unable to run until some task has been completed",
         "c": "when process is using the CPU",
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1  The process is run-able and residing in the main memory.",
         "b": "Explanation 2",
         "c": "Explanation 2",
         "d": "Explanation 2"
@@ -19,12 +19,12 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What is the PCB identified as:",
+      "question": "What is the full form of PCB?",
       "answers": {
-        "a": "Real-Number",
-        "b": "Binary Number",
-        "c": "Store block",
-        "d": "Integer Process ID"
+        "a": "Process Control Block",
+        "b": "Process Central Block",
+        "c": "Pivot Central Block",
+        "d": "None of the above"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -32,7 +32,7 @@
         "c": "Explanation 2",
         "d": "Explanation 2"
       },
-      "correctAnswer": "d",
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
     ,
