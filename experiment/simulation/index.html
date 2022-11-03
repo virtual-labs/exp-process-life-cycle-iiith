@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context Switching</title>
-    <link rel="stylesheet" href="./dist/styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Switching</title>
+  <link rel="stylesheet" href="./dist/styles.css">
 </head>
+
 <body>
-    <main>
+  <main>
     <p id="instruction"></p>
     <section class="exp">
       <section class="row">
-        <section class="cpu">
+        <section id="cpu">
           <h4 class="queue_head">CPU</h4>
           <section class="queue_body"></section>
         </section>
@@ -22,7 +24,7 @@
         </section>
       </section>
       <section class="row">
-        <section class="queue">
+        <section class="queue" id="ready_queue">
           <h4 class="queue_head">Ready Queue</h4>
           <section class="queue_body"></section>
         </section>
@@ -33,39 +35,15 @@
       </section>
     </section>
     <section class="controls">
-        <button class="button-18" role="button" >Create</button>
-        <button class="button-18" role="button" >Advance Clock</button>
-        <button class="button-18" r;
-        background-color: #0A66C2;
-        border: 0;
-        border-radius: 100px;
-        box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        justify-content: center;
-        line-height: 20px;
-        max-width: 480px;
-        min-height: 40px;
-        min-width: 0px;
-        overflow: hidden;
-        padding: 0px;
-        padding-left: 20px;
-        padding-right: 20px;
-        text-align: center;
-        touch-action: manipulation;
-        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        user-select: none;
-        -webkit-user-select: none;
-        vertical-align: middle;role="button" >Pre-empt</button>
-        <button class="button-18" role="button" >Goto-IO</button>
-        <button class="button-18" role="button">Collect</button>
-        <button class="button-18" role="button">Kill</button>
+      <button class="button-18" role="button" id="create">Create</button>
+      <button class="button-18" role="button" id="advance_clock">Advance Clock</button>
+      <button class="button-18" role="button" id="prempt">Pre-empt</button>
+      <button class="button-18" role="button" id="goto_io">Goto-IO</button>
+      <button class="button-18" role="button" id="collect">Collect</button>
+      <button class="button-18" role="button" id="kill">Kill</button>
     </section>
-    </main>
-    <script src="./dist/main.js"></script>
+  </main>
+  <script src="./dist/main.js"></script>
 </body>
+
 </html>
