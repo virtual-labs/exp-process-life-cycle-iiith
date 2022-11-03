@@ -43,6 +43,5 @@ A context switching helps to share a single CPU across all processes to complete
 * A context switching allows a single CPU to handle multiple process requests simultaneously without the need for any additional processors.
 ### Triggers for context switching:
 We have various triggers for context switching:
-* Interrupts : When the process might request access to I/O or need user input,when this happens we send the process to waiting state.
-
+* Interrupts
 * Multitasking
