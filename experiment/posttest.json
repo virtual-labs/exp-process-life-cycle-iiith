@@ -5,9 +5,9 @@
       "question": "What are the different operations you can perform on a process?",
       "answers": {
         "a": "Creation",
-        "b": "All of the above",
+        "b": "Termination",
         "c": "Execution",
-        "d": "Termination"
+        "d": "All of the above"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -15,7 +15,7 @@
         "c": "Explanation 2",
         "d": "Explanation 2"
       },
-      "correctAnswer": "b",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
     {
