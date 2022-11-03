@@ -10,10 +10,10 @@
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "Explanation 1  The process is run-able and residing in the main memory.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "The process is run-able and residing in the main memory.",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -28,9 +28,9 @@
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -46,9 +46,9 @@
       },
       "explanations": {
         "a": "Preemption means the operating system moves a process from running state to ready state without the process requesting it .Preemption takes place when a process switches from the running state to the ready state due to timer interrupt (time slice or quantum), or when a process switches from the waiting state to the ready state due to the completion of I/O.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -63,10 +63,10 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "An interrupt is a signal to the processor emitted by hardware or software indicating an event that needs immediate attention.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
