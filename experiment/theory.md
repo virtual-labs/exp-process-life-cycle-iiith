@@ -34,6 +34,15 @@ We will also be looking into peemption in this experiment.This is basically when
 
 ## Context Switching
 
+### What is context switching?
+The Context switching is a technique or method used by the operating system to switch a process from one state to another to execute its function using CPUs in the system. 
+### Why context switching?
+A context switching helps to share a single CPU across all processes to complete its execution and store the system's tasks status. When the process reloads in the system, the execution of the process starts at the same point where there is conflicting.
+* If a high priority process falls into the ready queue, the currently running process will be shut down or stopped by a high priority process to complete its tasks in the system.
+* If any running process requires I/O resources in the system, the current process will be switched by another process to use the CPUs. And when the I/O requirement is met, the old process goes into a ready state to wait for its execution in the CPU. Context switching stores the state of the process to resume its tasks in an operating system. Otherwise, the process needs to restart its execution from the initials level.
+* A context switching allows a single CPU to handle multiple process requests simultaneously without the need for any additional processors.
+### Triggers for context switching:
+We have various triggers for context switching:
+* Interrupts : When the process might request access to I/O or need user input,when this happens we send the process to waiting state.
 
-
-
+* Multitasking
