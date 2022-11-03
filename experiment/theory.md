@@ -25,6 +25,15 @@ The process has been chosen from the ready queue and the CPU is executing the in
 The process might request access to I/O or need user input,when this happens we send the process to waiting state.
 
 ### Kill:
- The process has been completed or is terminated and PCB gets deleted.
+The process has been completed or is terminated and PCB gets deleted.
+
 
 We will also be looking into peemption in this experiment.This is basically when the process is forcfully pulled out of the CPU and put in the ready state.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Context Switching
+
+
+
+
