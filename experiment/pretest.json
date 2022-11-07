@@ -2,37 +2,37 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What is the ready state of a process:",
+      "question": "When do we say that the process is the ready state?",
       "answers": {
-        "a": "When a process is ready to run from the ready queue",
+        "a": "When the process is ready to be executed",
         "b": "when process is unable to run until some task has been completed",
         "c": "when process is using the CPU",
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "The process is run-able and residing in the main memory.",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "What is the PCB identified as:",
+      "question": "What is the full form of PCB?",
       "answers": {
-        "a": "Real-Number",
-        "b": "Binary Number",
-        "c": "Store block",
-        "d": "Integer Process ID"
+        "a": "Process Control Block",
+        "b": "Process Central Block",
+        "c": "Pivot Central Block",
+        "d": "None of the above"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
-      "correctAnswer": "d",
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
     ,
@@ -46,9 +46,9 @@
       },
       "explanations": {
         "a": "Preemption means the operating system moves a process from running state to ready state without the process requesting it .Preemption takes place when a process switches from the running state to the ready state due to timer interrupt (time slice or quantum), or when a process switches from the waiting state to the ready state due to the completion of I/O.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "Incorrect"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -60,13 +60,13 @@
         "a": "Allow the CPU to notify devices that it needs attention",
         "b": "Allow the devices to notify the device controller that they need attention",
         "c": "Allow the devices to notify the CPU that they need attention",
-        "d": "None of the above"
+        "d": "All of the above"
       },
       "explanations": {
-        "a": "An interrupt is a signal to the processor emitted by hardware or software indicating an event that needs immediate attention.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
