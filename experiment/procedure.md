@@ -1,5 +1,5 @@
 ### Procedure
-We have 6 components:
+We have 7 components:
 
 * Instruction box
 * Ready pool: Where the live processes will be placed
@@ -7,6 +7,7 @@ We have 6 components:
 * I/O pool: where the process will go if the process has any I/O calls.
 * Completed pool: This is where all the completed processes are placed.
 * Controls: This is where all the buttons that the you can play with are placed.
+* Log: Where all actions on the process get recorded
 
 We have 6 controls:
 * Create Process and put it in Ready Pool
