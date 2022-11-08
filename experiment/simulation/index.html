@@ -6,24 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Context Switching</title>
-  <link rel="stylesheet" href="./dist/styles.css">
+  <link rel="stylesheet" 
+              media="screen and (max-width: 500px)" 
+              href="./dist/small_screen.css">
+  <link rel="stylesheet" 
+              media="screen and (min-width: 501px)" 
+              href="./dist/large_screen.css">
+  <link rel="stylesheet" href="./dist/style.css">
 </head>
 
 <body>
   <main>
     <p id="instruction"></p>
     <section class="exp">
-      <section class="row">
         <section id="cpu">
           <h4 class="queue_head">CPU</h4>
           <section class="queue_body"></section>
+          <section class="clock">
+            <p>Clock </p>
+            <p id="clock_val">0</p>
+          </section>
         </section>
         <section class="queue" id="io_queue">
           <h4 class="queue_head">I/O Pool</h4>
           <section class="queue_body"></section>
         </section>
-      </section>
-      <section class="row">
         <section class="queue" id="ready_queue">
           <h4 class="queue_head">Ready Pool</h4>
           <section class="queue_body"></section>
@@ -32,15 +39,14 @@
           <h4 class="queue_head">Completed Processes</h4>
           <section class="queue_body"></section>
         </section>
-      </section>
     </section>
     <section class="controls">
-      <button class="button-18" role="button" id="create">Create</button>
-      <button class="button-18" role="button" id="advance_clock">Advance Clock</button>
-      <button class="button-18" role="button" id="prempt">Pre-empt</button>
-      <button class="button-18" role="button" id="goto_io">Goto-IO</button>
-      <button class="button-18" role="button" id="collect">Collect</button>
-      <button class="button-18" role="button" id="kill">Kill</button>
+      <button class="button-18" role="button" id="create" title="Create Process and put it in Ready Pool">Create</button>
+      <button class="button-18" role="button" id="advance_clock" title="Advance the Clock">Advance Clock</button>
+      <button class="button-18" role="button" id="goto_io" title="Move the process currently in CPU to IO Pool">CPU to IO Pool</button>
+      <button class="button-18" role="button" id="collect" title="Move the process from IO Pool to Ready Pool">IO to Ready Pool</button>
+      <button class="button-18" role="button" id="prempt" title="Preempt the process currently in CPU and put it in Ready Pool">Preempt</button>
+      <button class="button-18" role="button" id="kill" title="Terminate the Process currently in CPU">Terminate</button>
     </section>
   </main>
   <script src="./dist/main.js"></script>

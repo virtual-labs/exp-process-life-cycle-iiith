@@ -4,8 +4,10 @@
   "description": "",
   "main": ".",
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode=production",
-    "dev": "webpack --config webpack.config.js --watch --mode=development"
+    "build_pr": "webpack --config webpack.config_practice.js --mode=production",
+    "dev_pr": "webpack --config webpack.config_practice.js --watch --mode=development",
+    "build_ex": "webpack --config webpack.config_exercise.js --mode=production",
+    "dev_ex": "webpack --config webpack.config_exercise.js --watch --mode=development"
   },
   "author": "",
   "license": "ISC",
