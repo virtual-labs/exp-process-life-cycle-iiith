@@ -30,6 +30,7 @@ The process has been completed or is terminated and PCB gets deleted.
 
 We will also be looking into peemption in this experiment.This is basically when the process is forcfully pulled out of the CPU and put in the ready state.
 
+![exp1-theory](https://user-images.githubusercontent.com/110168104/200497337-dee35ec1-a220-41b0-ab09-b0961b8b0f43.jpeg)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Context Switching
