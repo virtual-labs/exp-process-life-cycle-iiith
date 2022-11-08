@@ -28,7 +28,7 @@ const create_process = (id: number): Process => {
         "cur_ticks": 0,
         "io": {
             "start_time": getRandomInt(1, ticks - 1),
-            "ticks": getRandomInt(1, 2)
+            "ticks": getRandomInt(1, 3)
         }
     }
 }

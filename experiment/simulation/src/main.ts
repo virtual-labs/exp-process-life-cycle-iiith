@@ -5,7 +5,8 @@ let instruction = document.getElementById("instruction");
 instruction.textContent = "No Instruction for now";
 
 let isWrong: Boolean = false;
-// let wrongMovePos: number = 0;
+let wrongMovePos: number = -1;
+let log: string[] = [];
 
 let current_time: number = 0;
 let processes: Process[] = initialize_processes(6);
@@ -42,6 +43,7 @@ let update_ready_queue = () => {
             // console.log("hello eswar")
             cpu_proc = process;
             ready = ready.filter(proc => proc.id !== process.id);
+            log.push(`Process P${process.id} is moved from ready pool to CPU`);
             update();
         }
     });
@@ -134,6 +136,7 @@ let update = () => {
     update_io_queue();
     update_complete_pool();
     update_clock();
+    console.log(log);
 }
 
 update();
@@ -142,6 +145,7 @@ document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
     // check if the user has done all the required things before advancing the clock
     if (completed.length == 6) {
         alert("You have completed running all processes. Please refresh the page to start again.");
+        wrongMovePos = log.length;
         return;
     }
     else if (processes.length > 0 && processes[0].start_time == current_time) {
@@ -185,6 +189,7 @@ document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
     for (let index = 0; index < io.length; index++) {
         io[index].io.ticks--;
     }
+    log.push(`Advanced clock to ${current_time}`);
     update();
 }
 
@@ -198,6 +203,7 @@ document.getElementById("create").onclick = (event: MouseEvent) => {
     if (processes.length > 0 && processes[0].start_time == current_time) {
         ready.push(processes[0]);
         processes.shift();
+        log.push(`Created process P${ready[ready.length - 1].id}`);
         update();
     }
 }
@@ -217,6 +223,7 @@ document.getElementById("prempt").onclick = (event: MouseEvent) => {
         ready.push(cpu_proc);
         cpu_proc = null;
         prempt = 0;
+        log.push(`Preempted process P${ready[ready.length - 1].id}, and put it in ready queue`);
         update();
     }
 }
@@ -238,6 +245,7 @@ document.getElementById("goto_io").onclick = (event: MouseEvent) => {
         // console.log(cpu_proc);
         cpu_proc = null;
         prempt = 0;
+        log.push(`Sent process P${io[io.length - 1].id} to IO pool`);
         update();
     }
 }
@@ -252,7 +260,7 @@ document.getElementById("collect").onclick = (event: MouseEvent) => {
         }
     }
     if (!flag) {
-        alert("There is no process in IO queue that has completed IO.");
+        alert("There is no process in IO pool that has completed IO.");
         return;
     }
 
@@ -266,6 +274,7 @@ document.getElementById("collect").onclick = (event: MouseEvent) => {
     process.io.start_time = -1;
     ready.push(process);
     io = io.filter(proc => proc.id !== process.id);
+    log.push(`Sent the process P${process.id} from IO pool to ready pool`);
     update();
 }
 
@@ -284,6 +293,7 @@ document.getElementById("kill").onclick = (event: MouseEvent) => {
         completed.push(cpu_proc);
         cpu_proc = null;
         prempt = 0;
+        log.push(`Terminated process P${completed[completed.length - 1].id}`);
         update();
     }
 }
