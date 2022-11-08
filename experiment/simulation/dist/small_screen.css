@@ -1,3 +1,89 @@
+html, body, main {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
 #instruction {
-    color: blue;
+    height: 10%;
+    width: 100%;
+    margin: 0px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 100%;
+}
+
+.controls {
+    height: 20%;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    align-content: center;
+}
+
+#complete_pool {
+    display: none;
+}
+button {
+    margin: 1% !important;
+    font-size: smaller !important;
+}
+.exp {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    align-items: center;
+}
+#cpu {
+    height: 30%;
+    width: 80%;
+    border: solid;
+    border-radius: 10px;
+    /* margin: 10px; */
+}
+.queue {
+    /* margin: 10px; */
+    height: 30%;
+    width: 80%;
+    border: solid;
+    border-radius: 10px;
+}
+#cpu .queue_body {
+    height: 60%;
+}
+#cpu .clock {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+.queue_head {
+    height: 20%;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: gray;
+    /* border-top-right-radius: 4%; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 127%;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+.queue_body {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    align-items: center;
+    flex-wrap: wrap;
 }
