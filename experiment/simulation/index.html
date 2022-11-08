@@ -28,6 +28,10 @@
           <h4 class="queue_head">Ready Pool</h4>
           <section class="queue_body"></section>
         </section>
+        <section class="clock">
+          <h4 class="queue_head">Clock</h4>
+          <p id="clock_val">0</p>
+        </section>
         <section class="queue" id="complete_pool">
           <h4 class="queue_head">Completed Processes</h4>
           <section class="queue_body"></section>
@@ -35,12 +39,12 @@
       </section>
     </section>
     <section class="controls">
-      <button class="button-18" role="button" id="create">Create</button>
+      <button class="button-18" role="button" id="create">Create Process and put it in Ready Pool</button>
       <button class="button-18" role="button" id="advance_clock">Advance Clock</button>
-      <button class="button-18" role="button" id="prempt">Pre-empt</button>
-      <button class="button-18" role="button" id="goto_io">Goto-IO</button>
-      <button class="button-18" role="button" id="collect">Collect</button>
-      <button class="button-18" role="button" id="kill">Kill</button>
+      <button class="button-18" role="button" id="prempt">CPU to Ready Pool</button>
+      <button class="button-18" role="button" id="goto_io">CPU to IO Pool</button>
+      <button class="button-18" role="button" id="collect">IO Pool to Ready Pool</button>
+      <button class="button-18" role="button" id="kill">Terminate the Process in CPU</button>
     </section>
   </main>
   <script src="./dist/main.js"></script>
