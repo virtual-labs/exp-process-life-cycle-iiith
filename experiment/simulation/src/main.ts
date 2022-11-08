@@ -23,9 +23,9 @@ function create_process_ui(process: Process): HTMLDivElement {
     let p = document.createElement('p');
     p.textContent = "P" + String(process.id);
     d.appendChild(p);
-    let p2 = document.createElement('p');
-    p2.textContent = "Remaining Time: " + String(process.ticks - process.cur_ticks);
-    d.appendChild(p2);
+    // let p2 = document.createElement('p');
+    // p2.textContent = "Remaining Time: " + String(process.ticks - process.cur_ticks);
+    // d.appendChild(p2);
     d.classList.add('process');
     return d;
 }

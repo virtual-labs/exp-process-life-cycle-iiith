@@ -59,9 +59,9 @@ html, body, main {
 .process {
     background-color: #519259;
     color: white;
-    /* border-radius: 50%; */
-    /* height: 50px; */
-    /* width: 50px; */
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
