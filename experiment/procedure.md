@@ -26,5 +26,6 @@ Steps of the simulator:
   - Click CPU to IO Pool: If you receive an instruction saying the current process has I/O calls then you will need to push the process from the CPU to the I/O pool by clicking the button.
   - Click Terminate the Process in CPU: Once the process is completed we will receive an instruction saying you need to kill the process as it is completed so now the process can be pushed to the completed process pool where it can no longer be accessed.
 4. Inside the I/O pool you will wait for the instruction saying the process can collect the data ,here you can click the IO Pool to Ready Pool button which will then send the process back to the ready pool.
+![exp 1-procedure](https://user-images.githubusercontent.com/110168104/200494899-46443936-8ce6-48d5-8187-9526cdd4d98f.jpeg)
 
 
