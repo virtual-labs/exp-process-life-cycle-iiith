@@ -2,11 +2,11 @@
 We have 6 components:
 
 * Instruction box
-* Ready e: where the live processes will be placed
-* CPU:where the process in execution is placed
-* I/O queue:where the process will go if the process has any I/O calles where it will wait for data collection.
-* Completed queue:This is where all the completed processes are placed
-* Controls : This is where all the buttons that the you can play with are placed.
+* Ready pool: Where the live processes will be placed
+* CPU: where the process in execution is placed
+* I/O pool: where the process will go if the process has any I/O calls.
+* Completed pool: This is where all the completed processes are placed.
+* Controls: This is where all the buttons that the you can play with are placed.
 
 We have 6 controls:
 * Create Process and put it in Ready Pool
@@ -18,10 +18,10 @@ We have 6 controls:
 
 Steps of the simulator:
 
-1. You will receive a notification from the instruction box saying that there is a process that needs to be created. We will click on the Create Process and put it in Ready Pool and you can see that a process has appeared in the running queue.
+1. You will receive a notification from the instruction box saying that there is a process that needs to be created. You will click on the Create Process and put it in Ready Pool and you can see that a process has appeared in the running queue.
 2. Click on the process to send it to the CPU.
 3. Once you are in the CPU we can use one of 4 different buttons:
-  - Click Advance Clock:  You can advance the clock cycle by clicking this button.
+  - Click Advance Clock: You can advance the clock cycle by clicking this button.
   - Click CPU to Ready Pool: You might receive an instruction saying that the process in the CPU needs to get preempted so you will have to push the process back to the ready pool by clicking this button.
   - Click CPU to IO Pool: If you receive an instruction saying the current process has I/O calls then you will need to push the process from the CPU to the I/O pool by clicking the button.
   - Click Terminate the Process in CPU: Once the process is completed we will receive an instruction saying you need to kill the process as it is completed so now the process can be pushed to the completed process pool where it can no longer be accessed.
