@@ -8,7 +8,7 @@ interface IOTime {
 export interface Process {
     id: number
     start_time: number
-    io: IOTime
+    io: IOTime | null
     ticks: number
     cur_ticks: number
 }
@@ -21,15 +21,19 @@ const getRandomInt = (min: number, max: number): number => {
 
 const create_process = (id: number): Process => {
     const ticks: number = getRandomInt(3, 6);
+    let io = {
+        "start_time": getRandomInt(1, ticks - 1),
+        "ticks": getRandomInt(1, 3)
+    }
+    if (id % 2 == 0) {
+        io = null;
+    }
     return {
         "id": id,
         "ticks": ticks,
         "start_time": getRandomInt(0, 10),
         "cur_ticks": 0,
-        "io": {
-            "start_time": getRandomInt(1, ticks - 1),
-            "ticks": getRandomInt(1, 3)
-        }
+        "io": io
     }
 }
 
