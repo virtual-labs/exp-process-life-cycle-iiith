@@ -4,8 +4,6 @@ let instruction = document.getElementById("instruction");
 
 instruction.textContent = "No Instruction for now";
 
-let isWrong: Boolean = false;
-let wrongMovePos: number = -1;
 let log: string[] = [];
 
 let current_time: number = 0;
@@ -40,6 +38,13 @@ let update_ready_queue = () => {
         const d = create_process_ui(process);
         ready_queue.appendChild(d);
         d.onclick = (event: MouseEvent) => {
+            // check if sending the process to cpu is correct
+            if (cpu_proc !== null) {
+                // alert("CPU is not empty. Please wait for the current process to complete.");
+                instruction.textContent = "Think again! CPU is not empty. There can be only one process running in the CPU.";
+                return;
+            }
+            
             // console.log("hello eswar")
             cpu_proc = process;
             ready = ready.filter(proc => proc.id !== process.id);
@@ -103,7 +108,7 @@ let update_instruction = () => {
         // inst = "The CPU is empty. Please select a process in ready queue for execution";
         inst = "";
     }
-    else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
+    else if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
         inst = `The process P${cpu_proc.id} in CPU needs IO.`;
     }
     else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
@@ -116,7 +121,7 @@ let update_instruction = () => {
         // io queue
         let flag: Boolean = false;
         for (let index = 0; index < io.length; index++) {
-            if (io[index].io.ticks === 0) {
+            if (io[index].io != null && io[index].io.ticks === 0) {
                 inst = `The process P${io[index].id} in IO pool is done with IO.`;
                 break;
             }
@@ -144,36 +149,42 @@ update();
 document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
     // check if the user has done all the required things before advancing the clock
     if (completed.length == 6) {
-        alert("You have completed running all processes. Please refresh the page to start again.");
-        wrongMovePos = log.length;
+        // alert("You have completed running all processes. Please refresh the page to start again.");
+        instruction.textContent = "You have completed running all processes. Please refresh the page to start again.";
         return;
     }
     else if (processes.length > 0 && processes[0].start_time == current_time) {
-        alert("Please create the new process before advancing the clock.");
+        // alert("Please create the new process before advancing the clock.");
+        instruction.textContent = `Think again! There is a create request for the process P${processes[0].id}.`;
         return;
     }
     else if (cpu_proc === null && ready.length > 0) {
-        alert("The CPU is empty. Please select a process in ready queue for execution");
+        // alert("The CPU is empty. Please select a process in ready queue for execution");
+        instruction.textContent = "Think again! The CPU is empty.";
         return;
     }
-    else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
-        alert("The process in CPU needs IO. Please send it to IO queue by clicking IO.");
+    else if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
+        // alert("The process in CPU needs IO. Please send it to IO queue by clicking IO.");
+        instruction.textContent = "Think again! The process in CPU needs IO.";
         return;
     }
     else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
-        alert("The process in CPU completed its work. Please send it to complete pool by clicking Complete.");
+        // alert("The process in CPU completed its work. Please send it to complete pool by clicking Complete.");
+        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU hit the termination instruction.`;
         return;
     }
     else if (cpu_proc !== null && prempt == cpu_time) {
-        alert("The process in CPU completed its current cpu time. Please send it to ready queue by clicking Prempt.");
+        // alert("The process in CPU completed its current cpu time. Please send it to ready queue by clicking Prempt.");
+        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU needs to be preempted.`;
         return;
     }
     else {
         // io queue
         let flag: Boolean = false;
         for (let index = 0; index < io.length; index++) {
-            if (io[index].io.ticks === 0) {
-                alert(`The process P${io[index].id} in IO queue got IO. Please collect data and send it to ready queue by clicking Collect.`);
+            if (io[index].io != null && io[index].io.ticks === 0) {
+                // alert(`The process P${io[index].id} in IO queue got IO. Please collect data and send it to ready queue by clicking Collect.`);
+                instruction.textContent = `Think again! The process P${io[index].id} in IO pool got IO and is waiting to go to ready pool.`;
                 flag = true;
                 break;
             }
@@ -196,7 +207,8 @@ document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
 document.getElementById("create").onclick = (event: MouseEvent) => {
     // check if clicking "create" is valid
     if (processes[0].start_time != current_time) {
-        alert("The process is not ready to be created.");
+        // alert("The process is not ready to be created.");
+        instruction.textContent = `Think again! There is no process ready to be created.`;
         return;
     }
 
@@ -211,11 +223,13 @@ document.getElementById("create").onclick = (event: MouseEvent) => {
 document.getElementById("prempt").onclick = (event: MouseEvent) => {
     // check if clicking "prempt" is valid
     if (cpu_proc === null) {
-        alert("The CPU is empty. There is no process to preempt.");
+        // alert("The CPU is empty. There is no process to preempt.");
+        instruction.textContent = `Think again! The CPU is empty.`;
         return;
     }
     else if (prempt != cpu_time) {
-        alert("The process in CPU has not completed its current cpu time. Please wait for it to complete.");
+        // alert("The process in CPU has not completed its current cpu time. Please wait for it to complete.");
+        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need to be preempted now.`;
         return;
     }
 
@@ -231,15 +245,17 @@ document.getElementById("prempt").onclick = (event: MouseEvent) => {
 document.getElementById("goto_io").onclick = (event: MouseEvent) => {
     // check if clicking "goto_io" is valid
     if (cpu_proc === null) {
-        alert("The CPU is empty. There is no process to send to IO.");
+        // alert("The CPU is empty. There is no process to send to IO.");
+        instruction.textContent = `Think again! The CPU is empty.`;
         return;
     }
-    else if (cpu_proc.cur_ticks != cpu_proc.io.start_time) {
-        alert("The process in CPU doesn't need IO now.");
+    else if (cpu_proc.io != null && cpu_proc.cur_ticks != cpu_proc.io.start_time) {
+        // alert("The process in CPU doesn't need IO now.");
+        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need IO now.`;
         return;
     }
 
-    if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
+    if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
         io.push(cpu_proc);
         // console.log("In Goto IO");
         // console.log(cpu_proc);
@@ -254,19 +270,20 @@ document.getElementById("collect").onclick = (event: MouseEvent) => {
     // check if clicking "collect" is valid
     let flag: Boolean = false;
     for (let index = 0; index < io.length; index++) {
-        if (io[index].io.ticks === 0) {
+        if (io[index].io != null && io[index].io.ticks === 0) {
             flag = true;
             break;
         }
     }
     if (!flag) {
-        alert("There is no process in IO pool that has completed IO.");
+        // alert("There is no process in IO pool that has completed IO.");
+        instruction.textContent = `Think again! There is no process in IO pool that has completed IO.`;
         return;
     }
 
     let process: Process;
     for (let index = 0; index < io.length; index++) {
-        if (io[index].io.ticks === 0) {
+        if (io[index].io != null && io[index].io.ticks === 0) {
             process = io[index];
             break;
         }
@@ -281,11 +298,13 @@ document.getElementById("collect").onclick = (event: MouseEvent) => {
 document.getElementById("kill").onclick = (event: MouseEvent) => {
     // check if clicking "kill" is valid
     if (cpu_proc === null) {
-        alert("There is no process in CPU to terminate.");
+        // alert("There is no process in CPU to terminate.");
+        instruction.textContent = `Think again! The CPU is empty.`;
         return;
     }
     else if (cpu_proc.cur_ticks != cpu_proc.ticks) {
-        alert("The process in CPU has not hit its termination instruction yet.");
+        // alert("The process in CPU has not hit its termination instruction yet.");
+        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU hasn't hit its termination instruction yet.`;
         return;
     }
 
