@@ -37,6 +37,7 @@ let update_ready_queue = () => {
         // p.classList.add('process');
         const d = create_process_ui(process);
         ready_queue.appendChild(d);
+        d.style.backgroundColor = "blue";
         d.onclick = (event: MouseEvent) => {
             // check if sending the process to cpu is correct
             if (cpu_proc !== null) {
@@ -62,6 +63,10 @@ let update_io_queue = () => {
         // p.textContent = "P" + String(process.id);
         // p.classList.add('process');
         const d = create_process_ui(process);
+        d.style.backgroundColor = "gray";
+        if (process.io != null && process.io.ticks === 0) {
+            d.style.backgroundColor = "yellow";
+        }
         io_queue.appendChild(d);
     })
 }
@@ -74,6 +79,7 @@ let update_complete_pool = () => {
         // p.textContent = "P" + String(process.id);
         // p.classList.add('process');
         const d = create_process_ui(process);
+        d.style.backgroundColor = "black";
         complete_pool.appendChild(d);
     })
 }
@@ -88,6 +94,16 @@ let update_cpu = () => {
         // p.textContent = "P" + String(cpu_proc.id);
         // p.classList.add('process');
         const d = create_process_ui(cpu_proc);
+        d.style.backgroundColor = "green";
+        if (cpu_proc.io != null && cpu_proc.io.start_time === cpu_proc.cur_ticks) {
+            d.style.backgroundColor = "gray";
+        }
+        else if (cpu_proc.cur_ticks === cpu_proc.ticks) {
+            d.style.backgroundColor = "black";
+        }
+        else if (prempt === cpu_time) {
+            d.style.backgroundColor = "blue";
+        }
         cpu_ele.appendChild(d);
     }
     else {

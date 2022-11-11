@@ -1,3 +1,18 @@
+.instructions-box {
+  max-height: 70px;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.instructions-box.expand {
+  max-height: 400px;
+}
+
+.v-instruction-container {
+  border:.2rem solid #97d23d;
+  justify-content: flex-start;
+}
+
 button {
     height: fit-content;
     margin: 0;
