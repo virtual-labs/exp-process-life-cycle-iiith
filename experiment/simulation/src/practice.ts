@@ -6,6 +6,8 @@ instruction.textContent = "No Instruction for now";
 
 let log: string[] = [];
 
+const log_ele = document.getElementById("log");
+
 let current_time: number = 0;
 let processes: Process[] = initialize_processes(6);
 // console.log(processes);
@@ -26,6 +28,19 @@ function create_process_ui(process: Process): HTMLDivElement {
     // d.appendChild(p2);
     d.classList.add('process');
     return d;
+}
+
+function update_log() {
+    // log_ele.innerHTML = "";
+    // log.forEach((log: string) => {
+    //     const p = document.createElement('p');
+    //     p.textContent = log;
+    //     log_ele.appendChild(p);
+    // })
+    const p = document.createElement('p');
+    const l = log.length;
+    p.textContent = `${l}. Time: ${current_time} ${log[l - 1]}`;
+    log_ele.appendChild(p);
 }
 
 let update_ready_queue = () => {
@@ -101,7 +116,7 @@ let update_cpu = () => {
         else if (cpu_proc.cur_ticks === cpu_proc.ticks) {
             d.style.backgroundColor = "black";
         }
-        else if (prempt === cpu_time) {
+        else if (ready.length >0 && prempt === cpu_time) {
             d.style.backgroundColor = "blue";
         }
         cpu_ele.appendChild(d);
@@ -130,7 +145,7 @@ let update_instruction = () => {
     else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
         inst = `The process P${cpu_proc.id} in CPU hit the termination instruction.`;
     }
-    else if (cpu_proc !== null && prempt == cpu_time) {
+    else if (cpu_proc !== null && ready.length > 0 && prempt == cpu_time) {
         inst = `The process P${cpu_proc.id} in CPU completed its current cpu time.`;
     }
     else {
@@ -157,7 +172,10 @@ let update = () => {
     update_io_queue();
     update_complete_pool();
     update_clock();
-    console.log(log);
+    if (log.length > 0) {
+        update_log();
+    }
+    // console.log(log);
 }
 
 update();
@@ -189,7 +207,7 @@ document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU hit the termination instruction.`;
         return;
     }
-    else if (cpu_proc !== null && prempt == cpu_time) {
+    else if (cpu_proc !== null && ready.length > 0 && prempt == cpu_time) {
         // alert("The process in CPU completed its current cpu time. Please send it to ready queue by clicking Prempt.");
         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU needs to be preempted.`;
         return;
@@ -243,19 +261,19 @@ document.getElementById("prempt").onclick = (event: MouseEvent) => {
         instruction.textContent = `Think again! The CPU is empty.`;
         return;
     }
-    else if (prempt != cpu_time) {
+    else if (prempt != cpu_time || ready.length == 0) {
         // alert("The process in CPU has not completed its current cpu time. Please wait for it to complete.");
         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need to be preempted now.`;
         return;
     }
 
-    if (cpu_proc !== null && prempt == cpu_time) {
+    // if (cpu_proc !== null && prempt == cpu_time) {
         ready.push(cpu_proc);
         cpu_proc = null;
         prempt = 0;
         log.push(`Preempted process P${ready[ready.length - 1].id}, and put it in ready queue`);
         update();
-    }
+    // }
 }
 
 document.getElementById("goto_io").onclick = (event: MouseEvent) => {
@@ -332,3 +350,4 @@ document.getElementById("kill").onclick = (event: MouseEvent) => {
         update();
     }
 }
+

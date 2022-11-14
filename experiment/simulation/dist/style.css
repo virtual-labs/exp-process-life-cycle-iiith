@@ -64,4 +64,38 @@ button {
     color: rgba(0, 0, 0, .3);
 }
 
-  
+/* styles for log */
+.split {
+    height: 95%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    width: 79%;
+}
+
+.right {
+    right: 0;
+    width: 20%;
+    padding: 10px 10px;
+    margin: 1vw 0;
+    border: 0.25vw solid #97d23d;
+    border-radius: 0.25vw;
+}
+.log-title {
+    background-color:transparent;
+    color:"grey";
+    cursor:pointer;
+    width:100%;
+    border:none;
+    text-align:center;
+    outline:0;
+    font-weight:700;
+    padding-top:5px;
+    padding-bottom:5px;
+}
