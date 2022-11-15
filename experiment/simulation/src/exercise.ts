@@ -9,6 +9,8 @@ let wrongMovePos: number = -1;
 let whatIsWrong: string = "";
 let log: string[] = [];
 
+const log_ele = document.getElementById("log");
+
 let current_time: number = 0;
 let processes: Process[] = initialize_processes(6);
 // console.log(processes);
@@ -31,6 +33,19 @@ function create_process_ui(process: Process): HTMLDivElement {
     return d;
 }
 
+function update_log() {
+    // log_ele.innerHTML = "";
+    // log.forEach((log: string) => {
+    //     const p = document.createElement('p');
+    //     p.textContent = log;
+    //     log_ele.appendChild(p);
+    // })
+    const p = document.createElement('p');
+    const l = log.length;
+    p.textContent = `${l}. Time: ${current_time} ${log[l - 1]}`;
+    log_ele.appendChild(p);
+}
+
 let update_ready_queue = () => {
     const ready_queue = document.querySelector("#ready_queue .queue_body");
     ready_queue.innerHTML = "";
@@ -40,6 +55,7 @@ let update_ready_queue = () => {
         // p.classList.add('process');
         const d = create_process_ui(process);
         ready_queue.appendChild(d);
+        d.style.backgroundColor = "blue";
         d.onclick = (event: MouseEvent) => {
             // check if sending the process to cpu is correct
             if (cpu_proc !== null) {
@@ -66,6 +82,10 @@ let update_io_queue = () => {
         // p.textContent = "P" + String(process.id);
         // p.classList.add('process');
         const d = create_process_ui(process);
+        d.style.backgroundColor = "gray";
+        if (process.io != null && process.io.ticks === 0) {
+            d.style.backgroundColor = "yellow";
+        }
         io_queue.appendChild(d);
     })
 }
@@ -78,6 +98,7 @@ let update_complete_pool = () => {
         // p.textContent = "P" + String(process.id);
         // p.classList.add('process');
         const d = create_process_ui(process);
+        d.style.backgroundColor = "black";
         complete_pool.appendChild(d);
     })
 }
@@ -92,6 +113,16 @@ let update_cpu = () => {
         // p.textContent = "P" + String(cpu_proc.id);
         // p.classList.add('process');
         const d = create_process_ui(cpu_proc);
+        d.style.backgroundColor = "green";
+        if (cpu_proc.io != null && cpu_proc.io.start_time === cpu_proc.cur_ticks) {
+            d.style.backgroundColor = "gray";
+        }
+        else if (cpu_proc.cur_ticks === cpu_proc.ticks) {
+            d.style.backgroundColor = "black";
+        }
+        else if (ready.length > 0 && prempt === cpu_time) {
+            d.style.backgroundColor = "blue";
+        }
         cpu_ele.appendChild(d);
     }
     else {
@@ -154,6 +185,9 @@ let update = () => {
     update_io_queue();
     update_complete_pool();
     update_clock();
+    if(log.length > 0) {
+        update_log();
+    }
     console.log(log);
 }
 
@@ -237,10 +271,15 @@ document.getElementById("advance_clock").onclick = (event: MouseEvent) => {
     update();
 }
 
-document.getElementById("create").onclick = (event: MouseEvent) => {
+document.getElementById("create").onclick = () => {
     // check if clicking "create" is valid
     if (processes[0].start_time != current_time) {
-        alert("There is no process that is ready to be created.");
+        // alert("There is no process that is ready to be created.");
+        // if (!isWrong) {
+        //     whatIsWrong = "You clicked \"Create\" when there was no process ready to be created.";
+        // }
+        // wrong_move();
+        instruction.textContent = "There is no process that is ready to be created.";
         return;
     }
 
@@ -252,10 +291,15 @@ document.getElementById("create").onclick = (event: MouseEvent) => {
     }
 }
 
-document.getElementById("prempt").onclick = (event: MouseEvent) => {
+document.getElementById("prempt").onclick = () => {
     // check if clicking "prempt" is valid
     if (cpu_proc === null) {
-        alert("The CPU is empty. There is no process to preempt.");
+        // alert("The CPU is empty. There is no process to preempt.");
+        // if (!isWrong) {
+        //     whatIsWrong = "You clicked \"Prempt\" when the CPU was empty.";
+        // }
+        // wrong_move();
+        instruction.textContent = "The CPU is empty. There is no process to preempt.";
         return;
     }
     else if (prempt != cpu_time) {
@@ -276,10 +320,11 @@ document.getElementById("prempt").onclick = (event: MouseEvent) => {
     // }
 }
 
-document.getElementById("goto_io").onclick = (event: MouseEvent) => {
+document.getElementById("goto_io").onclick = () => {
     // check if clicking "goto_io" is valid
     if (cpu_proc === null) {
-        alert("The CPU is empty. There is no process to send to IO.");
+        // alert("The CPU is empty. There is no process to send to IO.");
+        instruction.textContent = "The CPU is empty. There is no process to send to IO.";
         return;
     }
     else if (cpu_proc.io != null && cpu_proc.cur_ticks != cpu_proc.io.start_time) {
@@ -302,10 +347,11 @@ document.getElementById("goto_io").onclick = (event: MouseEvent) => {
     // }
 }
 
-document.getElementById("collect").onclick = (event: MouseEvent) => {
+document.getElementById("collect").onclick = () => {
     // check if clicking "collect" is valid
     if (io.length === 0) {
-        alert("The IO pool is empty. There is no process to send to Ready Pool.");
+        // alert("The IO pool is empty. There is no process to send to Ready Pool.");
+        instruction.textContent = "The IO pool is empty. There is no process to send to Ready Pool.";
         return;
     }
 
