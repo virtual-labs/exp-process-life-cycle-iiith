@@ -12,6 +12,8 @@ html, body, main {
     justify-content: center;
     font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 148%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .exp {
     height: 70%;
