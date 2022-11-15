@@ -28,16 +28,16 @@
             "target": "pretest.html"
         },
         {
-            "target": "simulation.html",
-            "source": "experiment/simulation/simulation.html",
-            "label": "Simulation",
+            "target": "practice.html",
+            "source": "simulation/practice.html",
+            "label": "Practice",
             "unit-type": "task",
             "content-type": "simulation"
         },
         {
-            "target": "practice.html",
-            "source": "experiment/simulation/practice.html",
-            "label": "Practice",
+            "target": "exercise.html",
+            "source": "simulation/exercise.html",
+            "label": "Exercise",
             "unit-type": "task",
             "content-type": "simulation"
         },
