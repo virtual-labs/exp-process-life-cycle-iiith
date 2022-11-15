@@ -29,14 +29,14 @@
         },
         {
             "target": "simulation.html",
-            "source": "simulation/simulation.html",
+            "source": "experiment/simulation/simulation.html",
             "label": "Simulation",
             "unit-type": "task",
             "content-type": "simulation"
         },
         {
             "target": "practice.html",
-            "source": "simulation/practice.html",
+            "source": "experiment/simulation/practice.html",
             "label": "Practice",
             "unit-type": "task",
             "content-type": "simulation"
