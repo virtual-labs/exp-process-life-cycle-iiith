@@ -1,2 +1,1 @@
-## Experiment name
-Process and Context switching
+## Process and Context Switching
