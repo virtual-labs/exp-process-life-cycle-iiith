@@ -87,6 +87,43 @@ button {
     border: 0.25vw solid #97d23d;
     border-radius: 0.25vw;
 }
+.col_sec {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.col_cod {
+    border: 0.25vw solid #97d23d;
+    border-radius: 0.25vw;
+    height: 85%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+.clock {
+    height: 10%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    border: 0.25vw solid #97d23d;
+    border-radius: 0.25vw;
+    font-size:xx-large;
+}
+.col_cod div {
+    display: flex;
+    margin: 5px;
+    /* justify-content: space-between; */
+    gap: 5px;
+    align-items: center;
+}
 .log-title {
     background-color:transparent;
     color:"grey";
@@ -98,4 +135,42 @@ button {
     font-weight:700;
     padding-top:5px;
     padding-bottom:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.green {
+    background-color: green;
+    color: white;
+}
+.grey {
+    background-color: gray;
+    color: white;
+}
+.brown {
+    background-color: brown;
+    color: white;
+}
+.red {
+    background-color: red;
+    color: white;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+.purple {
+    background-color: purple;
+    color: white;
+}
+.skyblue {
+    background-color: skyblue;
+    color: black;
+}
+.black {
+    background-color: black;
+    color: white;
 }

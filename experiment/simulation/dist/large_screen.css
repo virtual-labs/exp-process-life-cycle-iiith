@@ -62,13 +62,6 @@ html, body, main {
 #cpu .queue_body {
     height: 60%;
 }
-#cpu .clock {
-    height: 20%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-}
 .process {
     background-color: #519259;
     color: white;
