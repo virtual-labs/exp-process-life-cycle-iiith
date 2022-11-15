@@ -50,6 +50,7 @@ html, body, main {
     font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
+    color: white;
 }
 .queue_body {
     height: 80%;
@@ -67,8 +68,8 @@ html, body, main {
     background-color: #519259;
     color: white;
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
