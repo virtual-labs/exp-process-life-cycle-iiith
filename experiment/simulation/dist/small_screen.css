@@ -80,6 +80,7 @@ button {
     margin: 0;
     text-align: center;
     background-color: gray;
+    color: white;
     /* border-top-right-radius: 4%; */
     overflow: hidden;
     display: flex;
