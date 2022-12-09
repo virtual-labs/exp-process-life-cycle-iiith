@@ -1,16 +1,16 @@
 .instructions-box {
-  max-height: 70px;
-  overflow: hidden;
-  transition: all .5s ease;
+    max-height: 70px;
+    overflow: hidden;
+    transition: all .5s ease;
 }
 
 .instructions-box.expand {
-  max-height: 400px;
+    max-height: 400px;
 }
 
 .v-instruction-container {
-  border:.2rem solid #97d23d;
-  justify-content: flex-start;
+    border:.2rem solid #97d23d;
+    justify-content: flex-start;
 }
 
 button {
@@ -113,4 +113,9 @@ button {
 .black {
     background-color: black;
     color: white;
+}
+
+#instruction {
+    border-radius: 10px;
+    border:.2rem solid black;
 }

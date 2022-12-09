@@ -10,7 +10,6 @@ const log_ele = document.getElementById("log");
 
 let current_time: number = 0;
 let processes: Process[] = initialize_processes(6);
-// console.log(processes);
 let ready: Process[] = [];
 let io: Process[] = [];
 let completed: Process[] = [];
@@ -66,6 +65,44 @@ let update_io_queue = () => {
             d.style.backgroundColor = "skyblue";
         }
         io_queue.appendChild(d);
+        d.onclick = () => {
+            if (process.io.ticks !== 0) {
+                instruction.textContent = "Think again! The process is not done with IO.";
+                return;
+            }
+
+            process.io.start_time = -1;
+            ready.push(process);
+            io = io.filter(proc => proc.id !== process.id);
+            log.push(`Process P${process.id} is moved from IO pool to ready pool`);
+            update();
+
+            // // check if clicking "collect" is valid
+            // let flag: Boolean = false;
+            // for (let index = 0; index < io.length; index++) {
+            //     if (io[index].io != null && io[index].io.ticks === 0) {
+            //         flag = true;
+            //         break;
+            //     }
+            // }
+            // if (!flag) {
+            //     instruction.textContent = `Think again! There is no process in IO pool that has completed IO.`;
+            //     return;
+            // }
+
+            // let process: Process;
+            // for (let index = 0; index < io.length; index++) {
+            //     if (io[index].io != null && io[index].io.ticks === 0) {
+            //         process = io[index];
+            //         break;
+            //     }
+            // }
+            // process.io.start_time = -1;
+            // ready.push(process);
+            // io = io.filter(proc => proc.id !== process.id);
+            // log.push(`Sent the process P${process.id} from IO pool to ready pool`);
+            // update();
+        }
     })
 }
 
@@ -96,6 +133,36 @@ let update_cpu = () => {
             d.style.backgroundColor = "gray";
         }
         cpu_ele.appendChild(d);
+        d.onclick = () => {
+            // if the process needs io
+            if (cpu_proc.io != null && cpu_proc.io.start_time === cpu_proc.cur_ticks) {
+                io.push(cpu_proc);
+                cpu_proc = null;
+                prempt = 0;
+                log.push(`Sent process P${io[io.length - 1].id} to IO pool`);
+                update();
+            }
+            // if the process is done
+            else if (cpu_proc.cur_ticks === cpu_proc.ticks) {
+                completed.push(cpu_proc);
+                cpu_proc = null;
+                prempt = 0;
+                log.push(`Terminated process P${completed[completed.length - 1].id}`);
+                update();
+            }
+            // if the process needs to be preempted
+            else if (ready.length > 0 && prempt === cpu_time) {
+                ready.push(cpu_proc);
+                cpu_proc = null;
+                prempt = 0;
+                log.push(`Preempted process P${ready[ready.length - 1].id}, and put it in ready queue`);
+                update();
+            }
+            // else 
+            else {
+                instruction.textContent = "Think again! The process is still running in the CPU and doesn't need to be moved.";
+            }
+        }
     }
     else {
         const cpu_ele = document.querySelector("#cpu .queue_body");
@@ -109,7 +176,8 @@ let update_instruction = () => {
         inst = "Well Done! You have completed running all processes."
     }
     else if (processes.length > 0 && processes[0].start_time == current_time) {
-        inst = `There is a create request for a new process P${processes[0].id}`;
+        // inst = `There is a create request for a new process P${processes[0].id}`;
+        inst = `New Process: P${processes[0].id}`;
     }
     else if (cpu_proc === null && ready.length > 0) {
         // inst = "The CPU is empty. Please select a process in ready queue for execution";
@@ -139,7 +207,8 @@ let update_instruction = () => {
             }
         }
         if (!flag) {
-            inst = `Advance the Clock`;
+            // inst = `Advance the clock`;
+            inst = `Clock Tick`;
         }
     }
 
@@ -150,6 +219,39 @@ function update_clock() {
     document.getElementById("clock_val").textContent = String(current_time);
 }
 
+function reset_highlighting() {
+    document.getElementById("needs-io").style.backgroundColor = "white";
+    document.getElementById("needs-preemption").style.backgroundColor = "white";
+    document.getElementById("needs-termination").style.backgroundColor = "white";
+    document.getElementById("io-complete").style.backgroundColor = "white";
+}
+
+function highlight_color_code() {
+    const highlight_color = "#FFE4C4";
+    reset_highlighting();
+    // check if the process in cpu needs io
+    if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
+        document.getElementById("needs-io").style.backgroundColor = highlight_color;
+    }
+    // check if the process in cpu hit the termination instruction
+    else if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
+        document.getElementById("needs-termination").style.backgroundColor = highlight_color;
+    }
+    // check if the process in cpu completed its current cpu time
+    // used else if because if the process needs io and preemption at the same time, highlight only the io
+    else if (cpu_proc !== null && prempt === cpu_time && ready.length > 0) {
+        document.getElementById("needs-preemption").style.backgroundColor = highlight_color;
+    }
+    // check if the process in io pool is done with io
+    for (let index = 0; index < io.length; index++) {
+        if (io[index].io != null && io[index].io.ticks === 0) {
+            document.getElementById("io-complete").style.backgroundColor = highlight_color;
+            break;
+        }
+    }
+
+}
+
 let update = () => {
     update_instruction();
     update_ready_queue();
@@ -157,6 +259,7 @@ let update = () => {
     update_io_queue();
     update_complete_pool();
     update_clock();
+    highlight_color_code();
     if (log.length > 0) {
         update_log();
     }
@@ -230,90 +333,90 @@ document.getElementById("create").onclick = () => {
     }
 }
 
-document.getElementById("prempt").onclick = () => {
-    // check if clicking "prempt" is valid
-    if (cpu_proc === null) {
-        instruction.textContent = `Think again! The CPU is empty.`;
-        return;
-    }
-    else if (prempt != cpu_time || ready.length == 0) {
-        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need to be preempted now.`;
-        return;
-    }
+// document.getElementById("prempt").onclick = () => {
+//     // check if clicking "prempt" is valid
+//     if (cpu_proc === null) {
+//         instruction.textContent = `Think again! The CPU is empty.`;
+//         return;
+//     }
+//     else if (prempt != cpu_time || ready.length == 0) {
+//         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need to be preempted now.`;
+//         return;
+//     }
 
-    // if (cpu_proc !== null && prempt == cpu_time) {
-    ready.push(cpu_proc);
-    cpu_proc = null;
-    prempt = 0;
-    log.push(`Preempted process P${ready[ready.length - 1].id}, and put it in ready queue`);
-    update();
-    // }
-}
+//     // if (cpu_proc !== null && prempt == cpu_time) {
+//     ready.push(cpu_proc);
+//     cpu_proc = null;
+//     prempt = 0;
+//     log.push(`Preempted process P${ready[ready.length - 1].id}, and put it in ready queue`);
+//     update();
+//     // }
+// }
 
-document.getElementById("goto_io").onclick = () => {
-    // check if clicking "goto_io" is valid
-    if (cpu_proc === null) {
-        instruction.textContent = `Think again! The CPU is empty.`;
-        return;
-    }
-    else if (cpu_proc.cur_ticks < cpu_proc.io.start_time) {
-        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need IO now.`;
-        return;
-    }
+// document.getElementById("goto_io").onclick = () => {
+//     // check if clicking "goto_io" is valid
+//     if (cpu_proc === null) {
+//         instruction.textContent = `Think again! The CPU is empty.`;
+//         return;
+//     }
+//     else if (cpu_proc.cur_ticks < cpu_proc.io.start_time) {
+//         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU doesn't need IO now.`;
+//         return;
+//     }
 
-    if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
-        io.push(cpu_proc);
-        cpu_proc = null;
-        prempt = 0;
-        log.push(`Sent process P${io[io.length - 1].id} to IO pool`);
-        update();
-    }
-}
+//     if (cpu_proc !== null && cpu_proc.io != null && cpu_proc.cur_ticks === cpu_proc.io.start_time) {
+//         io.push(cpu_proc);
+//         cpu_proc = null;
+//         prempt = 0;
+//         log.push(`Sent process P${io[io.length - 1].id} to IO pool`);
+//         update();
+//     }
+// }
 
-document.getElementById("collect").onclick = () => {
-    // check if clicking "collect" is valid
-    let flag: Boolean = false;
-    for (let index = 0; index < io.length; index++) {
-        if (io[index].io != null && io[index].io.ticks === 0) {
-            flag = true;
-            break;
-        }
-    }
-    if (!flag) {
-        instruction.textContent = `Think again! There is no process in IO pool that has completed IO.`;
-        return;
-    }
+// document.getElementById("collect").onclick = () => {
+//     // check if clicking "collect" is valid
+//     let flag: Boolean = false;
+//     for (let index = 0; index < io.length; index++) {
+//         if (io[index].io != null && io[index].io.ticks === 0) {
+//             flag = true;
+//             break;
+//         }
+//     }
+//     if (!flag) {
+//         instruction.textContent = `Think again! There is no process in IO pool that has completed IO.`;
+//         return;
+//     }
 
-    let process: Process;
-    for (let index = 0; index < io.length; index++) {
-        if (io[index].io != null && io[index].io.ticks === 0) {
-            process = io[index];
-            break;
-        }
-    }
-    process.io.start_time = -1;
-    ready.push(process);
-    io = io.filter(proc => proc.id !== process.id);
-    log.push(`Sent the process P${process.id} from IO pool to ready pool`);
-    update();
-}
+//     let process: Process;
+//     for (let index = 0; index < io.length; index++) {
+//         if (io[index].io != null && io[index].io.ticks === 0) {
+//             process = io[index];
+//             break;
+//         }
+//     }
+//     process.io.start_time = -1;
+//     ready.push(process);
+//     io = io.filter(proc => proc.id !== process.id);
+//     log.push(`Sent the process P${process.id} from IO pool to ready pool`);
+//     update();
+// }
 
-document.getElementById("kill").onclick = () => {
-    // check if clicking "kill" is valid
-    if (cpu_proc === null) {
-        instruction.textContent = `Think again! The CPU is empty.`;
-        return;
-    }
-    else if (cpu_proc.cur_ticks != cpu_proc.ticks) {
-        instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU hasn't hit its termination instruction yet.`;
-        return;
-    }
+// document.getElementById("kill").onclick = () => {
+//     // check if clicking "kill" is valid
+//     if (cpu_proc === null) {
+//         instruction.textContent = `Think again! The CPU is empty.`;
+//         return;
+//     }
+//     else if (cpu_proc.cur_ticks != cpu_proc.ticks) {
+//         instruction.textContent = `Think again! The process P${cpu_proc.id} in CPU hasn't hit its termination instruction yet.`;
+//         return;
+//     }
 
-    if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
-        completed.push(cpu_proc);
-        cpu_proc = null;
-        prempt = 0;
-        log.push(`Terminated process P${completed[completed.length - 1].id}`);
-        update();
-    }
-}
+//     if (cpu_proc !== null && cpu_proc.cur_ticks === cpu_proc.ticks) {
+//         completed.push(cpu_proc);
+//         cpu_proc = null;
+//         prempt = 0;
+//         log.push(`Terminated process P${completed[completed.length - 1].id}`);
+//         update();
+//     }
+// }

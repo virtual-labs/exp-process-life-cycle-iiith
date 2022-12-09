@@ -39,35 +39,35 @@
             <section class="col_cod">
               <div class="log-title is-size-5">Color Codes</div>
               
-              <div>
+              <div id="in-cpu">
                 <p class="process green">Pi</p>
                 <p>CPU Process Running</p>
               </div>
-              <div>
+              <div id="needs-preemption">
                 <p class="process grey">Pi</p>
-                <p>CPU Process needs Premption</p>
+                <p>CPU Process needs Preemption</p>
               </div>
-              <div>
+              <div id="needs-io">
                 <p class="process brown">Pi</p>
                 <p>CPU Process needs IO</p>
               </div>
-              <div>
+              <div id="needs-termination">
                 <p class="process red">Pi</p>
                 <p>CPU Process needs Termination</p>
               </div>
-              <div>
+              <div id="in-ready">
                 <p class="process blue">Pi</p>
                 <p>Process in Ready Pool</p>
               </div>
-              <div>
+              <div id="io-progress">
                 <p class="process purple">Pi</p>
                 <p>Process IO in progress</p>
               </div>
-              <div>
+              <div id="io-complete">
                 <p class="process skyblue">Pi</p>
                 <p>Process IO has completed</p>
               </div>
-              <div>
+              <div id="terminated">
                 <p class="process black">Pi</p>
                 <p>Terminated Process</p>
               </div>
@@ -96,12 +96,12 @@
         </section>
         <p id="instruction"></p>
         <section class="controls">
-          <button class="button-18" role="button" id="create" title="Create Process and put it in Ready Pool">Create</button>
-          <button class="button-18" role="button" id="advance_clock" title="Advance the Clock">Advance Clock</button>
-          <button class="button-18" role="button" id="goto_io" title="Move the process currently in CPU to IO Pool">CPU to IO Pool</button>
-          <button class="button-18" role="button" id="collect" title="Move the process from IO Pool to Ready Pool">IO to Ready Pool</button>
-          <button class="button-18" role="button" id="prempt" title="Preempt the process currently in CPU and put it in Ready Pool">Preempt</button>
-          <button class="button-18" role="button" id="kill" title="Terminate the Process currently in CPU">Terminate</button>
+          <button class="button-18" role="button" id="create" title="Create Process and put it in Ready Pool">Create Process</button>
+          <button class="button-18" role="button" id="advance_clock" title="All changes made for this clock cycle">Done</button>
+          <!-- <button class="button-18" role="button" id="goto_io" title="Move the process currently in CPU to IO Pool">CPU to IO Pool</button> -->
+          <!-- <button class="button-18" role="button" id="collect" title="Move the process from IO Pool to Ready Pool">IO to Ready Pool</button> -->
+          <!-- <button class="button-18" role="button" id="prempt" title="Preempt the process currently in CPU and put it in Ready Pool">Preempt</button> -->
+          <!-- <button class="button-18" role="button" id="kill" title="Terminate the Process currently in CPU">Terminate</button> -->
         </section>
       </section>
       <section class="split right">
