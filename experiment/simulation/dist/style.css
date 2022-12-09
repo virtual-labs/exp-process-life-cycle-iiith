@@ -1,16 +1,16 @@
 .instructions-box {
-  max-height: 70px;
-  overflow: hidden;
-  transition: all .5s ease;
+    max-height: 70px;
+    overflow: hidden;
+    transition: all .5s ease;
 }
 
 .instructions-box.expand {
-  max-height: 400px;
+    max-height: 400px;
 }
 
 .v-instruction-container {
-  border:.2rem solid #97d23d;
-  justify-content: flex-start;
+    border:.2rem solid #97d23d;
+    justify-content: flex-start;
 }
 
 button {
@@ -64,66 +64,6 @@ button {
     color: rgba(0, 0, 0, .3);
 }
 
-/* styles for log */
-.split {
-    height: 95%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.left {
-    left: 0;
-    width: 79%;
-}
-
-.right {
-    right: 0;
-    width: 20%;
-    padding: 10px 10px;
-    margin: 1vw 0;
-    border: 0.25vw solid #97d23d;
-    border-radius: 0.25vw;
-}
-.col_sec {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.col_cod {
-    border: 0.25vw solid #97d23d;
-    border-radius: 0.25vw;
-    height: 85%;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 5px;
-    padding-bottom: 10px;
-}
-.clock {
-    height: 10%;
-    width: 95%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-    border: 0.25vw solid #97d23d;
-    border-radius: 0.25vw;
-    font-size:xx-large;
-}
-.col_cod div {
-    display: flex;
-    margin: 5px;
-    /* justify-content: space-between; */
-    gap: 5px;
-    align-items: center;
-}
 .log-title {
     background-color:transparent;
     color:"grey";
@@ -173,4 +113,9 @@ button {
 .black {
     background-color: black;
     color: white;
+}
+
+#instruction {
+    border-radius: 10px;
+    border:.2rem solid black;
 }
