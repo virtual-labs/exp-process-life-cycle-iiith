@@ -79,5 +79,29 @@
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
+ ,
+    {
+      "question": "What are the possible ways that the process can leave the CPU?
+                  1.When process is terminated
+                  2.When process is preempted
+                  3.When it receives an I/O call
+                  4.When it receives an interrupt
+                  5.When the I/O requirement is completed
+",
+      "answers": {
+        "a": "1,2,3,5",
+        "b": "1,2,3,4",
+        "c": "1,2",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
   ]
 }
