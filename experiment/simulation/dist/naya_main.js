@@ -30,13 +30,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/main.ts":
-/*!*********************!*\
-  !*** ./src/main.ts ***!
-  \*********************/
+/***/ "./src/naya_main.ts":
+/*!**************************!*\
+  !*** ./src/naya_main.ts ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Kernel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Kernel */ \"./src/Kernel.ts\");\n\nvar kernel = new _Kernel__WEBPACK_IMPORTED_MODULE_0__.Kernel();\ndocument.getElementById(\"head\").textContent = \"Good to have you here\";\n\n\n//# sourceURL=webpack://context-switching/./src/main.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Kernel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Kernel */ \"./src/Kernel.ts\");\n\nvar kernel = new _Kernel__WEBPACK_IMPORTED_MODULE_0__.Kernel();\n// document.getElementById(\"head\").textContent = \"Good to have you here\";\nvar procedurePopupButton = document.getElementById(\"procedure\");\nvar procedurepopupWindow = document.getElementById(\"popup-window\");\nvar closeButton = document.getElementById(\"close-button\");\nprocedurePopupButton.addEventListener(\"click\", function () {\n    popupWindow.style.display = \"block\";\n});\ncloseButton.addEventListener(\"click\", function () {\n    popupWindow.style.display = \"none\";\n});\n\n\n//# sourceURL=webpack://context-switching/./src/naya_main.ts?");
 
 /***/ })
 
@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Ker
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/main.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/naya_main.ts");
 /******/ 	
 /******/ })()
 ;

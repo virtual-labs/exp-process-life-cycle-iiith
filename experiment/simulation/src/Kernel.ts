@@ -1,7 +1,7 @@
 import { Process } from "./Process";
 import { Log } from "./Log";
 
-class Kernel {
+export class Kernel {
     processes: Process[];
     currentProcess: number;
     processCreations : number [];
@@ -37,8 +37,8 @@ class Kernel {
         this.processes[this.currentProcess].moveToIO();
     }
 
-    moveToReady() {
-        this.processes[this.currentProcess].ready();
+    moveToReady(id: number) {
+        this.processes[id].ready();
     }
 
     terminate() {
