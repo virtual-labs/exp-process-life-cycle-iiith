@@ -18,12 +18,12 @@ h1, p {
     align-items: center;
 }
 
-.event_queue, .log {
+#event_queue, #log {
     height: 80%;
     width: 15%;
     border: solid;
 }
-.event_queue h1, .log h1 {
+#event_queue h1, #log h1 {
     font-size: xx-large;
     text-align: center;
 }
