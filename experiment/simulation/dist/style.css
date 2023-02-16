@@ -1,121 +1,117 @@
-.instructions-box {
-    max-height: 70px;
-    overflow: hidden;
-    transition: all .5s ease;
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.instructions-box.expand {
-    max-height: 400px;
-}
-
-.v-instruction-container {
-    border:.2rem solid #97d23d;
-    justify-content: flex-start;
-}
-
-button {
-    height: fit-content;
+h1, p {
     margin: 0;
 }
 
-.button-18 {
+.main {
+    height: 90%;
+    width: 100%;
+    /* background-color: rgb(197, 219, 228); */
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    background-color: black;
-    border: 0;
-    border-radius: 100px;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 20px;
-    max-width: 480px;
-    min-height: 40px;
-    min-width: 0px;
-    overflow: hidden;
-    padding: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+}
+
+.event_queue{
+    height: 80%;
+    width: 15%;
+    border: solid;
+}
+.event_queue h1 {
+    font-size: xx-large;
     text-align: center;
-    touch-action: manipulation;
-    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
 }
 
-.button-18:hover,
-.button-18:focus { 
-    background-color: #16437E;
-    color: #ffffff;
+.middle {
+    height: 80%;
+    width: 60%;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.button-18:active {
-    background: #09223b;
-    color: rgb(255, 255, 255, .7);
+.pools {
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.button-18:disabled { 
-    cursor: not-allowed;
-    background: rgba(0, 0, 0, .08);
-    color: rgba(0, 0, 0, .3);
+/* #ready_queue, #complete_pool {
+    align-self: flex-end;
+} */
+
+.clock {
+    height: 10%;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.log-title {
-    background-color:transparent;
-    color:"grey";
-    cursor:pointer;
-    width:100%;
-    border:none;
-    text-align:center;
-    outline:0;
-    font-weight:700;
-    padding-top:5px;
-    padding-bottom:5px;
+.advance_clock {
+    height: 50px;
+}
+
+.queue {
+    height: 40%;
+    width: 40%;
+    border: solid;
+    border-radius: 10px;
+
+}
+.queue_head {
+    height: 20%;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    /* border-top-right-radius: 4%; */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 127%;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    color: white;
+}
+.queue_body {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.green {
-    background-color: green;
-    color: white;
-}
-.grey {
-    background-color: gray;
-    color: white;
-}
-.brown {
-    background-color: brown;
-    color: white;
-}
-.red {
-    background-color: red;
-    color: white;
-}
-
-.blue {
-    background-color: blue;
-    color: white;
-}
-
-.purple {
-    background-color: purple;
-    color: white;
-}
-.skyblue {
-    background-color: skyblue;
-    color: black;
-}
-.black {
-    background-color: black;
-    color: white;
-}
-
-#instruction {
-    border-radius: 10px;
-    border:.2rem solid black;
-}
+.popup-window {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
