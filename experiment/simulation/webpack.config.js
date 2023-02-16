@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/naya_main.ts',
+  entry: './src/main.ts',
   module: {
     rules: [
       {
@@ -15,7 +15,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'naya_main.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   }
 };
