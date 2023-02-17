@@ -13,9 +13,9 @@ export class Process {
     ticks: number
     history: string[]
 
-    constructor(pid: number, name: string) {
+    constructor(pid: number) {
         this.pid = pid;
-        this.name = name;
+        this.name = "P" + String(pid);
         this.state = "READY";
         this.history = ["NEW"];
         this.registers = {"r1" : 1, "r2" : 2, "r3" : 3, "r4" : 4};
