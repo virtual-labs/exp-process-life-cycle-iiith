@@ -84,8 +84,8 @@ The 4 main and most common states the process can exist as are:
         - Execution of invalid instructions
         - Execution of privileged instructions
         - Memory protection violation
-   - Incorrect interaction with other processes:
-     - The kernel may abort a process if it gets involved in a deadlock.
+     - Incorrect interaction with other processes:
+       - The kernel may abort a process if it gets involved in a deadlock.
 
 
 #### Example of a process life cycle
