@@ -2,15 +2,15 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "When do we say that the process is the ready state?
-          1. Ready -> Running
-          2. Running -> I/O
-          3. Running->New
-          4. Terminated -> Running
-          5. Ready -> I/O
-          6. I/O ->Ready
+      "question":{ "When do we say that the process is the ready state?",
+         " 1. Ready -> Running",
+         " 2. Running -> I/O",
+         " 3. Running->New",
+         " 4. Terminated -> Running",
+          "5. Ready -> I/O",
+        "  6. I/O ->Ready"}
 
-",
+,
       "answers": {
         "a": "1,2,6",
         "b": "1,2,3",
@@ -81,13 +81,13 @@
     }
  ,
     {
-      "question": "What are the possible ways that the process can leave the CPU?
-                  1.When process is terminated
-                  2.When process is preempted
-                  3.When it receives an I/O call
-                  4.When it receives an interrupt
-                  5.When the I/O requirement is completed
-",
+      "question": {"What are the possible ways that the process can leave the CPU?",
+                "  1.When process is terminated",
+                "  2.When process is preempted",
+                 " 3.When it receives an I/O call",
+                  "4.When it receives an interrupt",
+                  "5.When the I/O requirement is completed"}
+,
       "answers": {
         "a": "1,2,3,5",
         "b": "1,2,3,4",
