@@ -18,16 +18,16 @@ Overall, the PCB is a critical data structure that allows the operating system t
 PCBS have 3 types of information in it:
 
 * Identification information: 
- - Process ID: Unique id that is assigned to a process at the time of creation.
+  - Process ID: Unique id that is assigned to a process at the time of creation.
 * Process state information:
- - Process State:  will contain the current state of the process.
- - the contents of the PSW(Program Status Word): is used to store the current status of the processor or CPU.
- - the general-purpose registers (GPRs): content of the registers when the process last got blocked or preempted
+  - Process State:  will contain the current state of the process.
+  - the contents of the PSW(Program Status Word): is used to store the current status of the processor or CPU.
+  - the general-purpose registers (GPRs): content of the registers when the process last got blocked or preempted
 * Information to control operation: 
- - priority: numerical value assigned to process at creation(changeable value)
+  - priority: numerical value assigned to process at creation(changeable value)
 and its interaction with other processes: 
- - PCB pointer : The PCB pointer is used by the operating system to quickly access and modify the information stored in the PCB for a given process
- - IPC messages : Interprocess communication messages are a way for processes in an operating system to exchange data and information with each other,and typically involve sending and receiving data between two or more processes. 
+  - PCB pointer : The PCB pointer is used by the operating system to quickly access and modify the information stored in the PCB for a given process
+  - IPC messages : Interprocess communication messages are a way for processes in an operating system to exchange data and information with each other,and typically involve sending and receiving data between two or more processes. 
 
 
 
