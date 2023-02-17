@@ -2,26 +2,25 @@
   "version": 2.0,
   "questions": [
     {
-      "question":{ "When do we say that the process is the ready state?",
+      "question":{ "which of the following state transitions are possible?",
          " 1. Ready -> Running",
-         " 2. Running -> I/O",
-         " 3. Running->New",
-         " 4. Terminated -> Running",
-          "5. Ready -> I/O",
-        "  6. I/O ->Ready"}
+         " 2. Running -> Wait",
+         " 3. Terminated -> Running",
+          "4. Ready -> Wait",
+        "  5. Wait ->Ready"}
 
 ,
       "answers": {
-        "a": "1,2,6",
+        "a": "1,2,5",
         "b": "1,2,3",
         "c": "3,4,5",
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "The process is run-able and residing in the main memory.",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
+        "a": "the process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
+        "b": "a process cannot be executed once terminated ",
+        "c": "A process cannot move to wait stage if it isnt being executed",
+        "d": "options 1,2,5 are possible state transitions"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
