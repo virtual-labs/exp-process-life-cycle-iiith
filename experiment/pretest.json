@@ -2,11 +2,19 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "When do we say that the process is the ready state?",
+      "question": "When do we say that the process is the ready state?
+          1. Ready -> Running
+          2. Running -> I/O
+          3. Running->New
+          4. Terminated -> Running
+          5. Ready -> I/O
+          6. I/O ->Ready
+
+",
       "answers": {
-        "a": "When the process is ready to be executed",
-        "b": "when process is unable to run until some task has been completed",
-        "c": "when process is using the CPU",
+        "a": "1,2,6",
+        "b": "1,2,3",
+        "c": "3,4,5",
         "d": "None of the mentioned"
       },
       "explanations": {
@@ -69,6 +77,30 @@
         "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
       },
       "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+ ,
+    {
+      "question": "What are the possible ways that the process can leave the CPU?
+                  1.When process is terminated
+                  2.When process is preempted
+                  3.When it receives an I/O call
+                  4.When it receives an interrupt
+                  5.When the I/O requirement is completed
+",
+      "answers": {
+        "a": "1,2,3,5",
+        "b": "1,2,3,4",
+        "c": "1,2",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]

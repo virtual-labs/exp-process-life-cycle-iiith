@@ -1,121 +1,73 @@
-.instructions-box {
-    max-height: 70px;
-    overflow: hidden;
-    transition: all .5s ease;
-}
-
-.instructions-box.expand {
-    max-height: 400px;
-}
-
-.v-instruction-container {
-    border:.2rem solid #97d23d;
-    justify-content: flex-start;
-}
-
-button {
-    height: fit-content;
+html, body{
+    height: 100%;
+    width: 100%;
     margin: 0;
 }
-
-.button-18 {
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    background-color: black;
-    border: 0;
-    border-radius: 100px;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 20px;
-    max-width: 480px;
-    min-height: 40px;
-    min-width: 0px;
-    overflow: hidden;
-    padding: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.event_queue {
+    border: 0.2vw solid #97d23d;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: 95%;
+    width: 15%;
+}
+.middle {
+    /* border: 0.2vw solid #97d23d; */
+    height: 95%;
+    width: 50%;
+}
+.cpu {
+    /* border: 0.2vw solid #97d23d; */
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cpu_boxes {
+    border: 0.2vw solid #97d23d;
+    width: 45%;
+    height: 40%;
+}
+.clock {
+    border: 0.2vw solid #97d23d;
+    width: 30%;
+    height: 10%;
+    margin-left: 35%;
+    margin-top: 10%;
+}
+.observation {
+    border: 0.2vw solid #97d23d;
+    height: 95%;
+    width: 25%;
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.heading {
+    font-size: 1.3vw;
+    font-weight: bold;
     text-align: center;
-    touch-action: manipulation;
-    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-}
-
-.button-18:hover,
-.button-18:focus { 
-    background-color: #16437E;
-    color: #ffffff;
-}
-
-.button-18:active {
-    background: #09223b;
-    color: rgb(255, 255, 255, .7);
-}
-
-.button-18:disabled { 
-    cursor: not-allowed;
-    background: rgba(0, 0, 0, .08);
-    color: rgba(0, 0, 0, .3);
-}
-
-.log-title {
-    background-color:transparent;
-    color:"grey";
-    cursor:pointer;
-    width:100%;
-    border:none;
-    text-align:center;
-    outline:0;
-    font-weight:700;
-    padding-top:5px;
-    padding-bottom:5px;
+    margin: 0;
+    padding: 0;
+    background-color: #4a4a4a;
+    color: white;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.green {
-    background-color: green;
-    color: white;
-}
-.grey {
-    background-color: gray;
-    color: white;
-}
-.brown {
-    background-color: brown;
-    color: white;
-}
-.red {
-    background-color: red;
-    color: white;
-}
-
-.blue {
-    background-color: blue;
-    color: white;
-}
-
-.purple {
-    background-color: purple;
-    color: white;
-}
-.skyblue {
-    background-color: skyblue;
-    color: black;
-}
-.black {
-    background-color: black;
-    color: white;
-}
-
-#instruction {
-    border-radius: 10px;
-    border:.2rem solid black;
 }
