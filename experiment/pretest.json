@@ -83,8 +83,7 @@
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
-    }
-    
+    }    
 ,
     {
       "question": "When the process is in the blocked/wait stage it does not require a CPU.",
@@ -98,6 +97,23 @@
 
       },
       "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "What are the possible operations that can be done to a process?",
+      "answers": {
+        "a": "Creation of a process",
+        "b": " Execution of a process",
+        "c": "Termination of a process",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "true",
+        "b": "false",
+
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
