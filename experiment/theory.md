@@ -3,8 +3,11 @@
 #### What is a process?
 
 In computing, a process is an instance of a computer program that is being executed by a computer's operating system (OS). A process consists of the program's code and its current activity, such as the values of its variables, the state of its I/O channels, and its position in memory.
+
 Processes are managed by the operating system, which allocates resources such as CPU time, memory, and I/O devices to each process as needed. The OS also provides mechanisms for inter-process communication, synchronization, and coordination.
+
 Each process is assigned a unique identifier, known as a process ID (PID), which can be used to identify and manage the process. The operating system maintains a process table that stores information about each running process, such as its PID, its priority, and its resource usage.
+
 In a multitasking operating system, multiple processes may be running simultaneously, sharing the system resources. The OS schedules the execution of these processes, switching between them rapidly to give the illusion of parallel execution. This allows multiple programs to be run concurrently, which can improve the overall performance of the system.
 
 #### What is a PCB?
