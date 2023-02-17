@@ -84,5 +84,21 @@
       "correctAnswer": "b",
       "difficulty": "beginner"
     }
+    
+,
+    {
+      "question": "When the process is in the blocked/wait stage it does not require a CPU.",
+      "answers": {
+        "a": "true",
+        "b": "false",
+      },
+      "explanations": {
+        "a": "true",
+        "b": "false",
+
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
   ]
 }
