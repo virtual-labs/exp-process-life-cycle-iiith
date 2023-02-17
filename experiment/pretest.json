@@ -44,24 +44,6 @@
     }
     ,
     {
-      "question": "When does preemption take place?",
-      "answers": {
-        "a": "When a quantum expires",
-        "b": "When a process issues an I/O request.",
-        "c": "When a process exits.",
-        "d": "All of the above."
-      },
-      "explanations": {
-        "a": "Preemption means the operating system moves a process from running state to ready state without the process requesting it .Preemption takes place when a process switches from the running state to the ready state due to timer interrupt (time slice or quantum), or when a process switches from the waiting state to the ready state due to the completion of I/O.",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    }
-    ,
-    {
       "question": "What does an interupt do?",
       "answers": {
         "a": "Allow the CPU to notify devices that it needs attention",
