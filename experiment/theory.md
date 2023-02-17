@@ -71,21 +71,21 @@ The 4 main and most common states the process can exist as are:
 
 * Running → Terminated(terminate):
   - The process is terminated,this could be due to several reasons: 
-  - Execution of program is completed
-  - Self termination: 
-  - the process has completed its execution completely
-  - Process can no longer execute meaningfully
- In these cases the process makes a system call”terminate me”
-- Exceeding resource utilization: 
- - OS can limit the resources that a process may consume
- - If the process exceeds resource limit it will get aborted by the kernel
-- Abnormal conditions during execution:
- - If there are any abnormal conditions coming up during execution of instructions 
- - Execution of invalid instructions
- - Exec of privileged instructions
- - Memory protection violation
-- Incorrect interaction with other processes:
- - The kernel may abort a process if it gets involved in a deadlock.
+    - Execution of program is completed
+    - Self termination: 
+      - the process has completed its execution completely
+      - Process can no longer execute meaningfully
+  In these cases the process makes a system call”terminate me”
+    - Exceeding resource utilization: 
+      - OS can limit the resources that a process may consume
+      - If the process exceeds resource limit it will get aborted by the kernel
+    - Abnormal conditions during execution:
+      - If there are any abnormal conditions coming up during execution of instructions 
+        - Execution of invalid instructions
+        - Execution of privileged instructions
+        - Memory protection violation
+   - Incorrect interaction with other processes:
+     - The kernel may abort a process if it gets involved in a deadlock.
 
 
 #### Example of a process life cycle
