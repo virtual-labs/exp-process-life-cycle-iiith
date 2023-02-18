@@ -80,10 +80,10 @@
         "d": "Starving"
       },
       "explanations": {
-        "a": "Possible but not the only way",
-        "b": "Possible but not the only way",
-        "c": "Possible but not the only way",
-        "d": "All options are possible"
+        "a": "Running state is a process state",
+        "b": "Waiting state is a process state",
+        "c": "Terminated state is a process state",
+        "d": "Process starvation occurs when a process is unable to access the resources it needs to complete its execution, often due to resource allocation issues or poor scheduling."
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
