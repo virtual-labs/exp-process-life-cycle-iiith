@@ -1,7 +1,6 @@
 ### Aim of the experiment
 
-To simulate the lifecycle management of processes in an
-operating system.
+The objective is to simulate the life cycle of a process in the execution of programs.
 
 ### Learning Objectives:
 
