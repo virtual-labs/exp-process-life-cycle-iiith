@@ -7,7 +7,7 @@
          " 2. Running -> Wait",
          " 3. Terminated -> Running",
           "4. Ready -> Wait",
-        "  5. Wait ->Ready"]
+          "5. Wait ->Ready"]
 
 ,
       "answers": {
