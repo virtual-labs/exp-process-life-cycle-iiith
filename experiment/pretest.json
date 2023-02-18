@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question":{ "which of the following state transitions are possible?",
+      "question": ["which of the following state transitions are possible?",
          " 1. Ready -> Running",
          " 2. Running -> Wait",
          " 3. Terminated -> Running",
           "4. Ready -> Wait",
-        "  5. Wait ->Ready"}
+        "  5. Wait ->Ready"]
 
 ,
       "answers": {
@@ -62,12 +62,12 @@
     }
  ,
     {
-      "question": {"What are the possible ways that the process can leave the CPU?",
+      "question": ["What are the possible ways that the process can leave the CPU?",
                 "  1.When process is terminated",
                 "  2.When process is preempted",
                  " 3.When it receives an I/O call",
                   "4.When it receives an interrupt",
-                  "5.When the I/O requirement is completed"}
+                  "5.When the I/O requirement is completed"]
 ,
       "answers": {
         "a": "1,2,3,5",
@@ -89,11 +89,11 @@
       "question": "When the process is in the blocked/wait stage it does not require a CPU.",
       "answers": {
         "a": "true",
-        "b": "false",
+        "b": "false"
       },
       "explanations": {
         "a": "true",
-        "b": "false",
+        "b": "false"
 
       },
       "correctAnswer": "a",
@@ -110,7 +110,7 @@
       },
       "explanations": {
         "a": "true",
-        "b": "false",
+        "b": "false"
 
       },
       "correctAnswer": "d",
