@@ -10,29 +10,6 @@ Each process is assigned a unique identifier, known as a process ID (PID), which
 
 In a multitasking operating system, multiple processes may be running simultaneously, sharing the system resources. The OS schedules the execution of these processes, switching between them rapidly to give the illusion of parallel execution. This allows multiple programs to be run concurrently, which can improve the overall performance of the system.
 
-#### What is a PCB?
-
-In operating systems, PCB stands for "Process Control Block". A Process Control Block is a data structure that the operating system uses to manage information about each process that is currently running on the system.
-The PCB contains important information about a process, such as its current state, its program counter (the address of the next instruction to be executed), the values of its CPU registers, the memory space allocated to the process, the I/O devices that the process is using, and other relevant information.
-The operating system uses the information in the PCB to manage the scheduling of processes, to allocate system resources such as CPU time and memory to each process, and to provide services such as inter-process communication and synchronization.
-The PCB is typically stored in the operating system's memory and is updated by the operating system as a process runs. When a process is suspended or terminated, its PCB is usually removed from the system's memory to free up resources.
-Overall, the PCB is a critical data structure that allows the operating system to manage and control the execution of multiple processes on a computer system.
-
-PCBS have 3 types of information in it:
-
-* Identification information: 
-  - Process ID: Unique id that is assigned to a process at the time of creation.
-* Process state information:
-  - Process State:  will contain the current state of the process.
-  - the contents of the PSW(Program Status Word): is used to store the current status of the processor or CPU.
-  - the general-purpose registers (GPRs): content of the registers when the process last got blocked or preempted
-* Information to control operation: 
-  - priority: numerical value assigned to process at creation(changeable value)
-and its interaction with other processes: 
-  - PCB pointer : The PCB pointer is used by the operating system to quickly access and modify the information stored in the PCB for a given process
-  - IPC messages : Interprocess communication messages are a way for processes in an operating system to exchange data and information with each other,and typically involve sending and receiving data between two or more processes. 
-
-
 
 #### What are process states?
 
