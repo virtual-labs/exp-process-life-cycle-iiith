@@ -126,10 +126,10 @@
         "d": " To manage virtual memory"
       },
       "explanations": {
-        "a": "Incorrect",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+        "a": "is incorrect because timer interrupts are not used for inter-process communication.",
+        "b": "is incorrect because I/O operations are typically initiated by a process or a system call, and are not directly related to timer interrupts.",
+        "c": "When a process runs for a long time without being interrupted, it can prevent other processes from running and degrade the overall system performance. The timer interrupt ensures that the CPU is periodically taken away from the running process and is made available to other processes waiting to run.",
+        "d": "is incorrect because virtual memory management is typically handled by the operating system's memory manager and is not directly related to timer interrupts."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
