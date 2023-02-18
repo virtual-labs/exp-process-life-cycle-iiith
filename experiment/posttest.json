@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "What are the different operations you can perform on a process?",
+      "question": "1. What are the different operations you can perform on a process?",
       "answers": {
         "a": "Creation",
         "b": "Termination",
@@ -19,7 +19,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "When the process issues an I/O request :",
+      "question": "2. When the process issues an I/O request :",
       "answers": {
         "a": "It is placed in the ready queue",
         "b": "It is left in the CPU",
@@ -37,7 +37,7 @@
     }
     ,
     {
-      "question": "Which of the following state transitions is not possible?",
+      "question": "3. Which of the following state transitions is not possible?",
       "answers": {
         "a": "Ready ->CPU",
         "b": "Ready ->I/O",
@@ -55,7 +55,7 @@
     }
     ,
     {
-      "question": "Select the method in which a process leaves the CPU:",
+      "question": "4. Select the method in which a process leaves the CPU:",
       "answers": {
         "a": "I/O calls",
         "b": "Kill process",
@@ -71,8 +71,8 @@
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
-        {
-      "question": "Which of the following is NOT a process state?",
+       , {
+      "question": "5. Which of the following is NOT a process state?",
       "answers": {
         "a": "Running",
         "b": "Waiting",
@@ -86,6 +86,24 @@
         "d": "All options are possible"
       },
       "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "6. Which of the following state descriptions isn't correct?",
+      "answers": {
+        "a": "New: The process is waiting to get created",
+        "b": "Ready: the process is ready for execution and is waiting to get selected",
+        "c": "Wait:The process is running in the CPU",
+        "d": "all of the above"
+      },
+      "explanations": {
+        "a": "Possible but not the only way",
+        "b": "Possible but not the only way",
+        "c": "Possible but not the only way",
+        "d": "All options are possible"
+      },
+      "correctAnswer": "c",
       "difficulty": "beginner"
     }
     
