@@ -59,10 +59,10 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "Incorrect",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+        "a": "while 1,2,3 are correct 5 is an incorrect option as, if the I/O requirment is being completed then the process is in the wait stage and not in the CPU",
+        "b": "1,2,3,4 are correct and these are all valid reasons for process to leave the CPU",
+        "c": "Both 1,2 are correct but they are not the only correct options",
+        "d": "Not all options are correct,the 5th option is incorrect as, if the I/O requirment is being completed then the process is in the wait stage and not in the CPU"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -75,8 +75,8 @@
         "b": "false"
       },
       "explanations": {
-        "a": "true",
-        "b": "false"
+        "a": "true, as if the process is in the wait stage it is not in execution so it wont be there in the CPU",
+        "b": "false,the process while in waiting it temporarily leaves the CPU and the CPU then switches to executing another process, which is ready to run."
 
       },
       "correctAnswer": "a",
@@ -92,8 +92,10 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "true",
-        "b": "false"
+        "a": "Correct but not the only correct answer",
+        "b": "Correct but not the only correct answer",
+        "c": "Correct but not the only correct answer",
+        "d": "Since all of the above options are possible this is the correct option to pick"
 
       },
       "correctAnswer": "d",
@@ -104,14 +106,15 @@
       "question": "6. In a multiprogramming operating system, processes in the Ready state are stored in the:",
       "answers": {
         "a": "Process control block",
-        "b": "  Disk queue",
+        "b": "Disk queue",
         "c": "Job queue",
         "d": "Ready queue"
       },
       "explanations": {
-        "a": "true",
-        "b": "false"
-
+        "a": "Incorrect as a PCB (Process Control Block) is a data structure in an operating system that contains information about a running process, such as its state, priority, resources, and CPU usage.",
+        "b": "Incorrect as a disk queue is a data structure used by an operating system to manage the order in which disk I/O requests are processed by a disk drive."
+        "c": "Incorrect as a job queue is a list of all processes or jobs that are waiting to be executed by the operating system.",
+        "d": "A ready queue is a data structure in an operating system that holds the processes that are ready to be executed on the CPU."
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
