@@ -2,26 +2,25 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "When do we say that the process is the ready state?
-          1. Ready -> Running
-          2. Running -> I/O
-          3. Running->New
-          4. Terminated -> Running
-          5. Ready -> I/O
-          6. I/O ->Ready
+      "question":{ "which of the following state transitions are possible?",
+         " 1. Ready -> Running",
+         " 2. Running -> Wait",
+         " 3. Terminated -> Running",
+          "4. Ready -> Wait",
+        "  5. Wait ->Ready"}
 
-",
+,
       "answers": {
-        "a": "1,2,6",
+        "a": "1,2,5",
         "b": "1,2,3",
         "c": "3,4,5",
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "The process is run-able and residing in the main memory.",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
+        "a": "the process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
+        "b": "a process cannot be executed once terminated ",
+        "c": "A process cannot move to wait stage if it isnt being executed",
+        "d": "options 1,2,5 are possible state transitions"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -36,24 +35,6 @@
       },
       "explanations": {
         "a": "Correct",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    }
-    ,
-    {
-      "question": "When does preemption take place?",
-      "answers": {
-        "a": "When a quantum expires",
-        "b": "When a process issues an I/O request.",
-        "c": "When a process exits.",
-        "d": "All of the above."
-      },
-      "explanations": {
-        "a": "Preemption means the operating system moves a process from running state to ready state without the process requesting it .Preemption takes place when a process switches from the running state to the ready state due to timer interrupt (time slice or quantum), or when a process switches from the waiting state to the ready state due to the completion of I/O.",
         "b": "Incorrect",
         "c": "Incorrect",
         "d": "Incorrect"
@@ -81,13 +62,13 @@
     }
  ,
     {
-      "question": "What are the possible ways that the process can leave the CPU?
-                  1.When process is terminated
-                  2.When process is preempted
-                  3.When it receives an I/O call
-                  4.When it receives an interrupt
-                  5.When the I/O requirement is completed
-",
+      "question": {"What are the possible ways that the process can leave the CPU?",
+                "  1.When process is terminated",
+                "  2.When process is preempted",
+                 " 3.When it receives an I/O call",
+                  "4.When it receives an interrupt",
+                  "5.When the I/O requirement is completed"}
+,
       "answers": {
         "a": "1,2,3,5",
         "b": "1,2,3,4",
@@ -101,6 +82,38 @@
         "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
       },
       "correctAnswer": "b",
+      "difficulty": "beginner"
+    }    
+,
+    {
+      "question": "When the process is in the blocked/wait stage it does not require a CPU.",
+      "answers": {
+        "a": "true",
+        "b": "false",
+      },
+      "explanations": {
+        "a": "true",
+        "b": "false",
+
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "What are the possible operations that can be done to a process?",
+      "answers": {
+        "a": "Creation of a process",
+        "b": " Execution of a process",
+        "c": "Termination of a process",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "true",
+        "b": "false",
+
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
