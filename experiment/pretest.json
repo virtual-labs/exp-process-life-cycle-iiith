@@ -24,23 +24,6 @@
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
-    },
-    {
-      "question": "What is the full form of PCB?",
-      "answers": {
-        "a": "Process Control Block",
-        "b": "Process Central Block",
-        "c": "Pivot Central Block",
-        "d": "None of the above"
-      },
-      "explanations": {
-        "a": "Correct",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
     }
     ,
     {
