@@ -1,4 +1,4 @@
-export { initialize_processes }
+export { initialize_processes, getRandomInt, getRandomElement }
 
 interface IOTime {
     start_time: number
@@ -17,6 +17,10 @@ const getRandomInt = (min: number, max: number): number => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+const getRandomElement = (l: any[]): any => {
+    return l[getRandomInt(0, l.length)];
 }
 
 const create_process = (id: number): Process => {
