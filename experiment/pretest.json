@@ -3,7 +3,7 @@
   "questions": [
     {
       "question": ["which of the following state transitions are possible?",
-         " 1. Ready -> Running""\n",
+         " 1. Ready -> Running",
          " 2. Running -> Wait",
          " 3. Terminated -> Running",
           "4. Ready -> Wait",
