@@ -71,5 +71,23 @@
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
+        {
+      "question": "Which of the following is NOT a process state?",
+      "answers": {
+        "a": "Running",
+        "b": "Waiting",
+        "c": "Terminated",
+        "d": "Starving"
+      },
+      "explanations": {
+        "a": "Possible but not the only way",
+        "b": "Possible but not the only way",
+        "c": "Possible but not the only way",
+        "d": "All options are possible"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+    
   ]
 }
