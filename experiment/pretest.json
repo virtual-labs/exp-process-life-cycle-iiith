@@ -27,12 +27,12 @@
     }
     ,
     {
-      "question": "2. What does an interrupt do?",
+      "question": "2. What is an interrupt in an operating system?",
       "answers": {
-        "a": "Allow the CPU to notify devices that it needs attention",
-        "b": "Allow the devices to notify the device controller that they need attention",
-        "c": "Allow the devices to notify the CPU that they need attention",
-        "d": "All of the above"
+        "a": "A process that is waiting for a resource to become available",
+        "b": "A request for the operating system to perform a specific task on behalf of a process",
+        "c": " A mechanism for processes to communicate with each other",
+        "d": "An error that occurs when a program attempts to perform an illegal operation"
       },
       "explanations": {
         "a": "Correct but not the only correct option",
@@ -40,7 +40,7 @@
         "c": "Correct but not the only correct option",
         "d": "All of the options are correct"
       },
-      "correctAnswer": "d",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
  ,
