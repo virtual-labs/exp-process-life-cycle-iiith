@@ -17,8 +17,11 @@ As a process is executed, it undergoes a series of state changes that reflect th
 
 The 4 main and most common states the process can exist as are:
 * Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.
+
 * Running: When a process is executing instructions on the CPU, it is in the running state.At any given time, there may be only one process in the running state on a single CPU.
+
 * Waiting :if the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event  to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.
+
 * Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.
 
 ####  What are the possible process state transitions?
