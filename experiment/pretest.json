@@ -99,5 +99,24 @@
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
+     ,
+    {
+      "question": "6. In a multiprogramming operating system, processes in the Ready state are stored in the:",
+      "answers": {
+        "a": "Process control block",
+        "b": "  Disk queue",
+        "c": "Job queue",
+        "d": "Ready queue"
+      },
+      "explanations": {
+        "a": "true",
+        "b": "false"
+
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+    
+   
   ]
 }
