@@ -17,8 +17,8 @@
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "the process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
-        "b": "a process cannot be executed once terminated ",
+        "a": "The process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
+        "b": "A process cannot be executed once terminated ",
         "c": "A process cannot move to wait stage if it isnt being executed",
         "d": "options 1,2,5 are possible state transitions"
       },
@@ -27,7 +27,7 @@
     }
     ,
     {
-      "question": "2. What does an interupt do?",
+      "question": "2. What does an interrupt do?",
       "answers": {
         "a": "Allow the CPU to notify devices that it needs attention",
         "b": "Allow the devices to notify the device controller that they need attention",
@@ -35,10 +35,10 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "Incorrect",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+        "a": "Correct but not the only correct option",
+        "b": "Correct but not the only correct option",
+        "c": "Correct but not the only correct option",
+        "d": "All of the options are correct"
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
@@ -116,7 +116,24 @@
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
-    
+     ,
+    {
+      "question": "7. What is the purpose of a timer interrupt?",
+      "answers": {
+        "a": "To allow processes to communicate with each other",
+        "b": "To perform I/O operations",
+        "c": "To prevent a process from monopolizing the CPU",
+        "d": " To manage virtual memory"
+      },
+      "explanations": {
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Incorrect",
+        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }    
    
   ]
 }
