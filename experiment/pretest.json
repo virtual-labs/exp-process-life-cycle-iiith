@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": ["which of the following state transitions are possible?",
+      "question": ["1. which of the following state transitions are possible?",
          " 1. Ready -> Running",
          " 2. Running -> Wait",
          " 3. Terminated -> Running",
@@ -27,7 +27,7 @@
     }
     ,
     {
-      "question": "What does an interupt do?",
+      "question": "2. What does an interupt do?",
       "answers": {
         "a": "Allow the CPU to notify devices that it needs attention",
         "b": "Allow the devices to notify the device controller that they need attention",
@@ -45,7 +45,7 @@
     }
  ,
     {
-      "question": ["What are the possible ways that the process can leave the CPU?",
+      "question": ["3. What are the possible ways that the process can leave the CPU?",
                 "  1.When process is terminated",
                 "  2.When process is preempted",
                  " 3.When it receives an I/O call",
@@ -69,7 +69,7 @@
     }    
 ,
     {
-      "question": "When the process is in the blocked/wait stage it does not require a CPU.",
+      "question": "4. When the process is in the blocked/wait stage it does not require a CPU.",
       "answers": {
         "a": "true",
         "b": "false"
@@ -84,7 +84,7 @@
     }
     ,
     {
-      "question": "What are the possible operations that can be done to a process?",
+      "question": "5. What are the possible operations that can be done to a process?",
       "answers": {
         "a": "Creation of a process",
         "b": " Execution of a process",
