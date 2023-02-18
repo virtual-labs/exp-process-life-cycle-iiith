@@ -20,7 +20,7 @@
         "a": "The process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
         "b": "A process cannot be executed once terminated ",
         "c": "A process cannot move to wait stage if it isnt being executed",
-        "d": "options 1,2,5 are possible state transitions"
+        "d": "Options 1,2,5 are possible state transitions"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -35,10 +35,10 @@
         "d": "An error that occurs when a program attempts to perform an illegal operation"
       },
       "explanations": {
-        "a": "Correct but not the only correct option",
-        "b": "Correct but not the only correct option",
-        "c": "Correct but not the only correct option",
-        "d": "All of the options are correct"
+        "a": "Is not a correct definition of an interrupt because it describes a blocked process that is waiting for a resource to become available, rather than an interrupt.",
+        "b": "an interrupt is essentially a signal that requests the operating system to perform a specific task on behalf of a process. When a process needs to access a resource or perform an operation that requires the operating system's intervention, it issues an interrupt. ",
+        "c": "is not a correct definition of an interrupt because interrupts are not used for inter-process communication.",
+        "d": "is not a correct definition of an interrupt because an illegal operation is an exception, not an interrupt. "
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
