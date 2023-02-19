@@ -9,8 +9,9 @@
   - Has information on why context switching is needed
   - Context switching triggers and steps involved
   - What a PCB is 
-* https://drive.uqu.edu.sa/_/mskhayat/files/MySubjects/2017SS%20Operating%20Systems/Abraham%20SilberschatzOperating%20System%20Concepts%20(9th,2012_12).pdf
-
+* A. Silberschatz, P. B. Galvin, and G. Gagne, Operating System Concepts,9th ed.
+*  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach.
+*  A. S. Tanenbaum and H. Bos, Modern Operating Systems, 4th ed.
 ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/
 
