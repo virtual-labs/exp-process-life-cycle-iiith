@@ -1,10 +1,9 @@
-import { Kernel } from "./Kernel";
-import { Process } from "./Process";
-
+"use strict";
+exports.__esModule = true;
+var Kernel_1 = require("./Kernel");
 // const g = 0;
-const kernel = new Kernel();
+var kernel = new Kernel_1.Kernel();
 // console.log(`hello ${g}`)
-
 // kernel.createProcess();
 // kernel.createProcess();
 // kernel.createProcess();

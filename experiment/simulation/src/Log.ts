@@ -1,5 +1,5 @@
 export class Log {
-  records: string[];
+  records: String[];
 
   constructor() {
     this.records = [];
