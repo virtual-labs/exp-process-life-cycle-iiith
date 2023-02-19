@@ -8,23 +8,19 @@ class UI {
     constructor() {
         this.kernel = new Kernel();
     }
-    // update_events() {
-    //     let event_queue = document.getElementById("event_queue");
-    //     event_queue.innerHTML = "";
-    //     for (let index = 0; index < this.kernel.events.length; index++) {
-    //         const element = this.kernel.events[index];
-    //         let event_element = document.createElement("section");
-    //         event_element.classList.add("event");
 
-    //         let event_name = document.createElement("p");
-    //     }
-    // }
-
-    update_clock() {
-        this.kernel.advanceClock();
+    display_clock() {
         let clock = document.getElementById("clock");
-        let clock_span = clock.getElementsByTagName("span")[0];
+        let clock_span = document.getElementsByTagName("span")[0];
         clock_span.innerHTML = this.kernel.clock.toString();
+    }
+    update_clock(){
+        this.kernel.advanceClock();
+        this.display_clock();
+    }
+    createProcess() {
+        this.kernel.createProcess();
+        this.display_processes();
     }
 
     add_to_pool(p: Process, pool: HTMLElement) {
@@ -37,6 +33,12 @@ class UI {
     }
 
     display_processes() {
+        // clear all pools
+        let processes = document.getElementsByClassName("process");
+        while(processes.length > 0){
+            processes[0].remove();
+        }
+        // add processes to pools
         let ready_pool = document.getElementById("ready_pool");
         let io_pool = document.getElementById("io_pool");
         let cpu = document.getElementById("cpu");
