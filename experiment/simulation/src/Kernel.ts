@@ -86,9 +86,9 @@ export class Kernel  {
         const process = new Process(pid);
         this.processes.push(process);
 
-        this.advanceClock(false);
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
+        console.log(this.advanceClock(false));
         const message = `Created Process ${pid} at ${this.clock}`;
         this.log.addRecord(message);
         return {
@@ -104,7 +104,9 @@ export class Kernel  {
                 message: "You have already selected an event. Process the Selected Event First."
             }
         }
-        this.clock++;
+        // this.clock++;
+        console.log("Hello World");
+        this.clock = this.clock + 1;
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
         if(isUser === true) {

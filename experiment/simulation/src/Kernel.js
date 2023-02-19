@@ -59,9 +59,9 @@ var Kernel = /** @class */ (function () {
         var pid = this.processes.length;
         var process = new Process_1.Process(pid);
         this.processes.push(process);
-        this.advanceClock(false);
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
+        console.log(this.advanceClock(false));
         var message = "Created Process ".concat(pid, " at ").concat(this.clock);
         this.log.addRecord(message);
         return {
@@ -77,7 +77,9 @@ var Kernel = /** @class */ (function () {
                 message: "You have already selected an event. Process the Selected Event First."
             };
         }
-        this.clock++;
+        // this.clock++;
+        console.log("Hello World");
+        this.clock = this.clock + 1;
         this.generate_event();
         var message = "Advanced clock at ".concat(this.clock);
         if (isUser === true) {
