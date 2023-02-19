@@ -1,1 +1,1 @@
-## Process and Context Switching
+## Process Life Cycle

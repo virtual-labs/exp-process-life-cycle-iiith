@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question": ["which of the following state transitions are possible?",
+      "question": ["1. which of the following state transitions are possible?",
          " 1. Ready -> Running",
          " 2. Running -> Wait",
          " 3. Terminated -> Running",
           "4. Ready -> Wait",
-        "  5. Wait ->Ready"]
+          "5. Wait ->Ready"]
 
 ,
       "answers": {
@@ -17,52 +17,35 @@
         "d": "None of the mentioned"
       },
       "explanations": {
-        "a": "the process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
-        "b": "a process cannot be executed once terminated ",
+        "a": "The process can move from ready to running,a running process can move from running to stage,and finally move from the wait stage to ready state again",
+        "b": "A process cannot be executed once terminated ",
         "c": "A process cannot move to wait stage if it isnt being executed",
-        "d": "options 1,2,5 are possible state transitions"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "What is the full form of PCB?",
-      "answers": {
-        "a": "Process Control Block",
-        "b": "Process Central Block",
-        "c": "Pivot Central Block",
-        "d": "None of the above"
-      },
-      "explanations": {
-        "a": "Correct",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "Incorrect"
+        "d": "Options 1,2,5 are possible state transitions"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     }
     ,
     {
-      "question": "What does an interupt do?",
+      "question": "2. What is an interrupt in an operating system?",
       "answers": {
-        "a": "Allow the CPU to notify devices that it needs attention",
-        "b": "Allow the devices to notify the device controller that they need attention",
-        "c": "Allow the devices to notify the CPU that they need attention",
-        "d": "All of the above"
+        "a": "A process that is waiting for a resource to become available",
+        "b": "A request for the operating system to perform a specific task on behalf of a process",
+        "c": " A mechanism for processes to communicate with each other",
+        "d": "An error that occurs when a program attempts to perform an illegal operation"
       },
       "explanations": {
-        "a": "Incorrect",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+        "a": "Is not a correct definition of an interrupt because it describes a blocked process that is waiting for a resource to become available, rather than an interrupt.",
+        "b": "an interrupt is essentially a signal that requests the operating system to perform a specific task on behalf of a process. When a process needs to access a resource or perform an operation that requires the operating system's intervention, it issues an interrupt. ",
+        "c": "is not a correct definition of an interrupt because interrupts are not used for inter-process communication.",
+        "d": "is not a correct definition of an interrupt because an illegal operation is an exception, not an interrupt. "
       },
-      "correctAnswer": "d",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
  ,
     {
-      "question": ["What are the possible ways that the process can leave the CPU?",
+      "question": ["3. What are the possible ways that the process can leave the CPU?",
                 "  1.When process is terminated",
                 "  2.When process is preempted",
                  " 3.When it receives an I/O call",
@@ -76,24 +59,24 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "Incorrect",
-        "b": "Incorrect",
-        "c": "Incorrect",
-        "d": "The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention"
+        "a": "while 1,2,3 are correct 5 is an incorrect option as, if the I/O requirment is being completed then the process is in the wait stage and not in the CPU",
+        "b": "1,2,3,4 are correct and these are all valid reasons for process to leave the CPU",
+        "c": "Both 1,2 are correct but they are not the only correct options",
+        "d": "Not all options are correct,the 5th option is incorrect as, if the I/O requirment is being completed then the process is in the wait stage and not in the CPU"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     }    
 ,
     {
-      "question": "When the process is in the blocked/wait stage it does not require a CPU.",
+      "question": "4. When the process is in the blocked/wait stage it does not require a CPU.",
       "answers": {
         "a": "true",
         "b": "false"
       },
       "explanations": {
-        "a": "true",
-        "b": "false"
+        "a": "true, as if the process is in the wait stage it is not in execution so it wont be there in the CPU",
+        "b": "false,the process while in waiting it temporarily leaves the CPU and the CPU then switches to executing another process, which is ready to run."
 
       },
       "correctAnswer": "a",
@@ -101,7 +84,7 @@
     }
     ,
     {
-      "question": "What are the possible operations that can be done to a process?",
+      "question": "5. What are the possible operations that can be done to a process?",
       "answers": {
         "a": "Creation of a process",
         "b": " Execution of a process",
@@ -109,12 +92,51 @@
         "d": "All of the above"
       },
       "explanations": {
-        "a": "true",
-        "b": "false"
+        "a": "Correct but not the only correct answer",
+        "b": "Correct but not the only correct answer",
+        "c": "Correct but not the only correct answer",
+        "d": "Since all of the above options are possible this is the correct option to pick"
 
       },
       "correctAnswer": "d",
       "difficulty": "beginner"
     }
+     ,
+    {
+      "question": "6. In a multiprogramming operating system, processes in the Ready state are stored in the:",
+      "answers": {
+        "a": "Process control block",
+        "b": "Disk queue",
+        "c": "Job queue",
+        "d": "Ready queue"
+      },
+      "explanations": {
+        "a": "Incorrect as a PCB (Process Control Block) is a data structure in an operating system that contains information about a running process, such as its state, priority, resources, and CPU usage.",
+        "b": "Incorrect as a disk queue is a data structure used by an operating system to manage the order in which disk I/O requests are processed by a disk drive."
+        "c": "Incorrect as a job queue is a list of all processes or jobs that are waiting to be executed by the operating system.",
+        "d": "A ready queue is a data structure in an operating system that holds the processes that are ready to be executed on the CPU."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+     ,
+    {
+      "question": "7. What is the purpose of a timer interrupt?",
+      "answers": {
+        "a": "To allow processes to communicate with each other",
+        "b": "To perform I/O operations",
+        "c": "To prevent a process from monopolizing the CPU",
+        "d": " To manage virtual memory"
+      },
+      "explanations": {
+        "a": "is incorrect because timer interrupts are not used for inter-process communication.",
+        "b": "is incorrect because I/O operations are typically initiated by a process or a system call, and are not directly related to timer interrupts.",
+        "c": "When a process runs for a long time without being interrupted, it can prevent other processes from running and degrade the overall system performance. The timer interrupt ensures that the CPU is periodically taken away from the running process and is made available to other processes waiting to run.",
+        "d": "is incorrect because virtual memory management is typically handled by the operating system's memory manager and is not directly related to timer interrupts."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }    
+   
   ]
 }
