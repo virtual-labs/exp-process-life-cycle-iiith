@@ -21,6 +21,7 @@ main {
     margin-bottom: 1%;
     height: 95%;
     width: 15%;
+    position: relative;
 }
 .middle {
     /* border: 0.2vw solid #97d23d; */
@@ -41,8 +42,9 @@ main {
     border: 0.2vw solid #97d23d;
     width: 45%;
     height: 40%;
+    position: relative;
 }
-.clock {
+#clock {
     border: 0.2vw solid #97d23d;
     width: 30%;
     height: 10%;
@@ -56,6 +58,7 @@ main {
     margin-right: 2%;
     margin-top: 1%;
     margin-bottom: 1%;
+    position: relative;
 }
 
 .heading {
@@ -70,4 +73,39 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+}
+
+.box_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding:10%;
+    overflow: auto;
+}
+
+.process {
+    /* make circles for processes */
+    font-size: 1.3vw;
+    border: 0.2vw solid #2200ff;
+    border-radius: 50%;
+    height: 7vh;
+    width: 5vw;
+    margin: 0;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8vw;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #2200ff;
+    /* overflow-x: scroll;
+    overflow-y: scroll; */
 }
