@@ -4,7 +4,8 @@ var Kernel_1 = require("./Kernel");
 // const g = 0;
 var kernel = new Kernel_1.Kernel();
 // console.log(`hello ${g}`)
-// kernel.createProcess();
+kernel.selectEvent(0);
+console.log(kernel.createProcess());
 // kernel.createProcess();
 // kernel.createProcess();
 console.log(kernel.getData());

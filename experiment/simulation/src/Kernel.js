@@ -12,6 +12,13 @@ var REQUESTPROC = "REQUESTPROC";
 var EXTERNAL = "EXTERNAL";
 var PROCESS = "PROCESS";
 var TERMINATE = "TERMINATE";
+var READY = "READY";
+var ERROR = "ERROR";
+var OK = "OK";
+var TERMINATED = "TERMINATED";
+var IONEEDED = "IONEEDED";
+var IODONE = "IODONE";
+var BLOCKED = "BLOCKED";
 var Kernel = /** @class */ (function () {
     function Kernel() {
         this.processes = [];
@@ -20,11 +27,14 @@ var Kernel = /** @class */ (function () {
         this.events = [];
         this.log = new Log_1.Log();
         this.clock = 0;
-        this.generate_event();
         this.selectedEvent = -1;
+        this.generate_event();
     }
     Kernel.prototype.selectEvent = function (id) {
         this.selectedEvent = id;
+    };
+    Kernel.prototype.deselectEvent = function () {
+        this.selectedEvent = -1;
     };
     Kernel.prototype.generate_event = function () {
         if (this.clock % 3 === 0) {
@@ -33,10 +43,10 @@ var Kernel = /** @class */ (function () {
         }
     };
     Kernel.prototype.createProcess = function () {
-        if (this.selectedEvent !== -1) {
+        if (this.selectedEvent === -1) {
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
+                message: "You have not selected any event."
             };
         }
         if (this.events[this.selectedEvent].name !== REQUESTPROC) {
@@ -45,11 +55,12 @@ var Kernel = /** @class */ (function () {
                 message: "You have not selected process creation event."
             };
         }
+        // creating new process
         var pid = this.processes.length;
         var process = new Process_1.Process(pid);
         this.processes.push(process);
-        this.advanceClock();
-        this.events[this.selectedEvent].state = DONE;
+        this.advanceClock(false);
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
         var message = "Created Process ".concat(pid, " at ").concat(this.clock);
         this.log.addRecord(message);
@@ -58,30 +69,176 @@ var Kernel = /** @class */ (function () {
             message: message
         };
     };
-    Kernel.prototype.advanceClock = function () {
+    Kernel.prototype.advanceClock = function (isUser) {
+        if (isUser === void 0) { isUser = true; }
+        if (this.selectedEvent !== -1) {
+            return {
+                status: "ERROR",
+                message: "You have already selected an event. Process the Selected Event First."
+            };
+        }
         this.clock++;
-        this.generate_external_event();
+        this.generate_event();
+        var message = "Advanced clock at ".concat(this.clock);
+        if (isUser === true) {
+            this.log.addRecord(message);
+        }
+        return {
+            status: "OK",
+            message: message
+        };
     };
     Kernel.prototype.runProcess = function (id) {
+        if (this.selectedEvent !== -1) {
+            return {
+                status: "ERROR",
+                message: "You have already selected a event. Process the Selected Event Fisrt."
+            };
+        }
+        if (this.processes[id].state !== READY) {
+            return {
+                status: "ERROR",
+                message: "The Process ".concat(id, " is not in ready pool. So it can't be moved to CPU.")
+            };
+        }
+        if (this.currentProcess !== -1) {
+            return {
+                status: "ERROR",
+                message: "The CPU is not empty."
+            };
+        }
         this.processes[id].run();
-        this.advanceClock();
+        this.currentProcess = id;
+        this.advanceClock(false);
+        var message = "Process ".concat(id, " is moved from ready queue to CPU");
+        this.log.addRecord(message);
+        return {
+            status: OK,
+            message: message
+        };
     };
     Kernel.prototype.prempt = function () {
+        if (this.selectedEvent === -1) {
+            return {
+                status: "ERROR",
+                message: "You have not selected any event"
+            };
+        }
+        if (this.events[this.selectedEvent].name !== IONEEDED) {
+            return {
+                status: "ERROR",
+                message: "You have not selected IO needed event."
+            };
+        }
         this.processes[this.currentProcess].ready();
         this.currentProcess = -1;
         this.advanceClock();
     };
+    Kernel.prototype.terminate = function (pid) {
+        if (this.selectedEvent === -1) {
+            return {
+                status: "ERROR",
+                message: "You have not selected any event"
+            };
+        }
+        if (this.events[this.selectedEvent].name !== TERMINATE) {
+            return {
+                status: "ERROR",
+                message: "You have not selected process termination event."
+            };
+        }
+        if (this.events[this.selectedEvent].pid !== pid) {
+            return {
+                status: "ERROR",
+                message: "The event process and selected process are not equal."
+            };
+        }
+        if (this.processes[pid].state === TERMINATED) {
+            return {
+                status: "ERROR",
+                message: "The Process ".concat(pid, " is already terminated.")
+            };
+        }
+        this.processes[pid].terminate();
+        this.advanceClock(false);
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
+        this.selectedEvent = -1;
+        if (pid === this.currentProcess) {
+            this.currentProcess = -1;
+        }
+        var message = "Terminated Process ".concat(pid, " at ").concat(this.clock);
+        this.log.addRecord(message);
+        return {
+            status: "OK",
+            message: message
+        };
+    };
     Kernel.prototype.moveToIO = function () {
+        if (this.selectedEvent === -1) {
+            return {
+                status: "ERROR",
+                message: "You have not selected any event"
+            };
+        }
+        if (this.events[this.selectedEvent].name !== IONEEDED) {
+            return {
+                status: "ERROR",
+                message: "You have not selected IO needed event."
+            };
+        }
+        if (this.events[this.selectedEvent].pid !== this.currentProcess) {
+            return {
+                status: "ERROR",
+                message: "The event process and process in cpu are not equal."
+            };
+        }
         this.processes[this.currentProcess].moveToIO();
-        this.advanceClock();
+        this.advanceClock(false);
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
+        this.selectedEvent = -1;
+        this.currentProcess = -1;
+        var message = "Moved Process ".concat(this.currentProcess, " to IO Pool at ").concat(this.clock);
+        this.log.addRecord(message);
+        return {
+            status: "OK",
+            message: message
+        };
     };
-    Kernel.prototype.moveToReady = function (id) {
-        this.processes[id].ready();
-        this.advanceClock();
-    };
-    Kernel.prototype.terminate = function (id) {
-        this.processes[id].terminate();
-        this.advanceClock();
+    Kernel.prototype.moveToReady = function (pid) {
+        if (this.selectedEvent === -1) {
+            return {
+                status: "ERROR",
+                message: "You have not selected any event"
+            };
+        }
+        if (this.events[this.selectedEvent].name !== IODONE) {
+            return {
+                status: "ERROR",
+                message: "You have not selected IO Done event."
+            };
+        }
+        if (this.events[this.selectedEvent].pid !== pid) {
+            return {
+                status: "ERROR",
+                message: "The event process and selected process are not equal."
+            };
+        }
+        if (this.processes[pid].state !== BLOCKED) {
+            return {
+                status: "ERROR",
+                message: "The Process ".concat(pid, " is not in IOPOOL.")
+            };
+        }
+        this.processes[pid].ready();
+        this.advanceClock(false);
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
+        this.selectedEvent = -1;
+        var message = "Moved Process ".concat(pid, " from IO Pool to Ready Pool ").concat(this.clock);
+        this.log.addRecord(message);
+        return {
+            status: "OK",
+            message: message
+        };
     };
     Kernel.prototype.get_processes = function () {
         return this.processes;
@@ -159,7 +316,7 @@ var Kernel = /** @class */ (function () {
         if (active_procs.length > 0) {
             var process_to_kill = (0, helper_functions_1.getRandomElement)(active_procs);
             id = this.events.length;
-            var terminate_event = new Event_1.Event(id, TERMINATE, this.clock, process_to_kill);
+            var terminate_event = new Event_1.Event(id, TERMINATE, this.clock, process_to_kill, EXTERNAL);
             possible_events.push(terminate_event);
         }
         var next_event = (0, helper_functions_1.getRandomElement)(possible_events);

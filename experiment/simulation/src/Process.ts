@@ -23,7 +23,7 @@ export class Process implements IProcess {
         this.history = ["NEW"];
     }
 
-    getData() {
+    getData(): IProcess {
         return {
             "pid": this.pid,
             "name": this.name,

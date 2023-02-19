@@ -49,8 +49,8 @@ export class Kernel  {
       this.events = [];
       this.log = new Log();
       this.clock = 0;
-      this.generate_event();
       this.selectedEvent = -1;
+      this.generate_event();
     }
     
     selectEvent(id: number) {
@@ -67,11 +67,12 @@ export class Kernel  {
             this.generate_internal_event();
         }
     }
+
     createProcess(): IResponce {
-        if(this.selectedEvent !== -1){
+        if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
+                message: "You have not selected any event."
             }
         }
         if(this.events[this.selectedEvent].name !== REQUESTPROC){
@@ -80,6 +81,7 @@ export class Kernel  {
                 message: "You have not selected process creation event."
             }
         }
+        // creating new process
         const pid = this.processes.length;
         const process = new Process(pid);
         this.processes.push(process);
@@ -95,22 +97,22 @@ export class Kernel  {
         }
     }
 
-    advanceClock(update: Boolean = true): IResponce {
+    advanceClock(isUser: Boolean = true): IResponce {
         if(this.selectedEvent !== -1){
             return {
                 status: "ERROR",
-                message: "You have already selected a event. Process the Selected Event Fisrt."
+                message: "You have already selected an event. Process the Selected Event First."
             }
         }
         this.clock++;
         this.generate_event();
-        if(update === true) {
-            const message = `Advanced clock at ${this.clock}`;
+        const message = `Advanced clock at ${this.clock}`;
+        if(isUser === true) {
             this.log.addRecord(message);
-            return {
-                status: "OK",
-                message
-            }
+        }
+        return {
+            status: "OK",
+            message
         }
     }
 

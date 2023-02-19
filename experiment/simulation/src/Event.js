@@ -17,6 +17,7 @@ var Event = /** @class */ (function () {
     }
     Event.prototype.setResponceId = function (rid) {
         this.responceId = rid;
+        this.state = "DONE";
     };
     Event.prototype.getData = function () {
         return {

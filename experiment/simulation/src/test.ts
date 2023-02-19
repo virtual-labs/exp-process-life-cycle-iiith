@@ -4,8 +4,8 @@ import { Process } from "./Process";
 // const g = 0;
 const kernel = new Kernel();
 // console.log(`hello ${g}`)
-
-// kernel.createProcess();
+kernel.selectEvent(0)
+console.log(kernel.createProcess());
 // kernel.createProcess();
 // kernel.createProcess();
 console.log(kernel.getData());
