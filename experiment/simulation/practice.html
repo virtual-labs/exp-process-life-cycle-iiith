@@ -14,6 +14,7 @@
     <main>
       <div class="event_queue"> <!-- for event queue -->
         <h1 class="heading">Event Queue</h1>
+        <div class="box_container" id="all_events"></div>
       </div>
       <div class="middle">
         <div class = "cpu">
@@ -43,6 +44,20 @@
         <h1 class="heading">Observations</h1>
         <div id="log"></div>
       </div>
+
+      <!-- The Modal popup in cicking a process-->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div>
+            <button>Move to Ready Pool</button>
+            <button>Move to IO Pool</button>
+            <button>Move to CPU</button>
+            <button>Move to Completed Pool</button>
+          </div>
+        </div>
+      </div>
+
     </main>
     <!-- <script>var exports = {};</script> -->
     <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>

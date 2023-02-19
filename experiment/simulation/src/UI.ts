@@ -19,8 +19,10 @@ class UI {
         this.display_clock();
     }
     createProcess() {
+        this.kernel.selectEvent(0);
         this.kernel.createProcess();
         this.display_processes();
+        this.display_clock();
     }
 
     add_to_pool(p: Process, pool: HTMLElement) {
@@ -29,6 +31,20 @@ class UI {
         process_div.classList.add("process");
         process_div.id = p.name;
         process_div.innerHTML = p.name;
+        // add event listeners
+        process_div.addEventListener("click", () => {
+            var modal = document.getElementById("myModal");
+            let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
         pool.appendChild(process_div);
     }
 
@@ -54,6 +70,41 @@ class UI {
             else if(p.state === "TERMINATED")
                 this.add_to_pool(p, terminated_pool);
         }
+    }
+    display_events() {
+        // remove all events
+        let events_list = document.getElementsByClassName("event");
+        while(events_list.length > 0){
+            events_list[0].remove();
+        }
+        // add events
+        let events = document.getElementById("all_events");
+        for(let i=0; i<this.kernel.events.length; i++){
+            let e = this.kernel.events[i];
+            let event_div = document.createElement("div");
+            event_div.classList.add("event");
+            event_div.innerHTML = e.name;
+            event_div.addEventListener("click", () => {
+                let modal = document.getElementById("myModal");
+                let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
+                modal.style.display = "block";
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            });
+            events.appendChild(event_div);
+        }
+    }
+
+    display_all(){
+        this.display_clock();
+        this.display_processes();
+        this.display_events();
     }
 }
 
