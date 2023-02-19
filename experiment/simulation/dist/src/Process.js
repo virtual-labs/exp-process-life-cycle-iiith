@@ -1,6 +1,3 @@
-"use strict";
-exports.__esModule = true;
-exports.Process = void 0;
 var Process = /** @class */ (function () {
     function Process(pid) {
         this.pid = pid;
@@ -30,4 +27,4 @@ var Process = /** @class */ (function () {
     };
     return Process;
 }());
-exports.Process = Process;
+export { Process };

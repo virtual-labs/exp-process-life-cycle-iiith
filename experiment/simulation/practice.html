@@ -17,16 +17,16 @@
       </div>
       <div class="middle">
         <div class = "cpu">
-          <div class="cpu_boxes"> <!-- for ready pool -->
+          <div class="cpu_boxes" id="ready_pool"> <!-- for ready pool -->
             <h1 class="heading">Ready Pool</h1>
           </div>
-          <div class="cpu_boxes"> <!-- for io pool -->
+          <div class="cpu_boxes" id="io_pool"> <!-- for io pool -->
             <h1 class="heading">I/O Pool</h1>
           </div>
-          <div class="cpu_boxes"> <!-- for cpu -->
+          <div class="cpu_boxes" id="cpu"> <!-- for cpu -->
             <h1 class="heading">CPU</h1>
           </div>
-          <div class="cpu_boxes"> <!-- for completed pool -->
+          <div class="cpu_boxes" id="comp_pool"> <!-- for completed pool -->
             <h1 class="heading">Completed Pool</h1>
           </div>
         </div>
@@ -40,7 +40,8 @@
         <div id="log"></div>
       </div>
     </main>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-    <script src="./dist/practice.js"></script> -->
+    <!-- <script>var exports = {};</script> -->
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+    <script src="./dist/main.js"></script>
   </body>
 </html>

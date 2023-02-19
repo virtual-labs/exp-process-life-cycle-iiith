@@ -1,16 +1,12 @@
-"use strict";
-exports.__esModule = true;
-exports.getRandomElement = exports.getRandomInt = exports.initialize_processes = void 0;
+export { initialize_processes, getRandomInt, getRandomElement };
 var getRandomInt = function (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 };
-exports.getRandomInt = getRandomInt;
 var getRandomElement = function (l) {
     return l[getRandomInt(0, l.length)];
 };
-exports.getRandomElement = getRandomElement;
 var create_process = function (id) {
     var ticks = getRandomInt(3, 6);
     var io = {
@@ -36,4 +32,3 @@ var initialize_processes = function (n) {
     processes.sort(function (p1, p2) { return p1.start_time - p2.start_time; });
     return processes;
 };
-exports.initialize_processes = initialize_processes;

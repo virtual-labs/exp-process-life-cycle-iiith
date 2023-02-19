@@ -1,7 +1,5 @@
-"use strict";
-exports.__esModule = true;
-var Kernel_1 = require("./Kernel");
-var kernel = new Kernel_1.Kernel();
+import { Kernel } from "./Kernel";
+var kernel = new Kernel();
 kernel.createProcess();
 kernel.createProcess();
 kernel.createProcess();

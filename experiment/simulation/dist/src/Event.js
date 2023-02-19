@@ -1,6 +1,3 @@
-"use strict";
-exports.__esModule = true;
-exports.Event = void 0;
 var Event = /** @class */ (function () {
     function Event(name, time, p) {
         if (p === void 0) { p = -1; }
@@ -13,4 +10,4 @@ var Event = /** @class */ (function () {
     };
     return Event;
 }());
-exports.Event = Event;
+export { Event };
