@@ -1,29 +1,14 @@
-"use strict";
-exports.__esModule = true;
-exports.Process = void 0;
 var Process = /** @class */ (function () {
     function Process(pid) {
-        if (pid === void 0) { pid = 0; }
         this.pid = pid;
         this.name = "P" + String(pid);
         this.state = "READY";
         this.history = ["NEW"];
+        this.registers = { "r1": 1, "r2": 2, "r3": 3, "r4": 4 };
+        this.ioRequests = { start_time: 3, ticks: 2 };
+        this.ticks = 6;
+        this.programCounter = 0;
     }
-    Process.prototype.getData = function () {
-        return {
-            "pid": this.pid,
-            "name": this.name,
-            "state": this.state,
-            "history": this.history
-        };
-    };
-    Process.prototype.setData = function (data) {
-        var pid = data.pid, name = data.name, state = data.state, history = data.history;
-        this.pid = pid;
-        this.name = name;
-        this.state = state;
-        this.history = history;
-    };
     Process.prototype.run = function () {
         this.state = "RUNNING";
         this.history.push(this.state);
@@ -42,4 +27,4 @@ var Process = /** @class */ (function () {
     };
     return Process;
 }());
-exports.Process = Process;
+export { Process };

@@ -14,23 +14,28 @@
     <main>
       <div class="event_queue"> <!-- for event queue -->
         <h1 class="heading">Event Queue</h1>
+        <div class="box_container" id="all_events"></div>
       </div>
       <div class="middle">
         <div class = "cpu">
           <div class="cpu_boxes"> <!-- for ready pool -->
             <h1 class="heading">Ready Pool</h1>
+            <div class="box_container" id="ready_pool"></div>
           </div>
           <div class="cpu_boxes"> <!-- for io pool -->
             <h1 class="heading">I/O Pool</h1>
+            <div class="box_container" id="io_pool"></div>
           </div>
           <div class="cpu_boxes"> <!-- for cpu -->
             <h1 class="heading">CPU</h1>
+            <div class="box_container" id="cpu"></div>
           </div>
           <div class="cpu_boxes"> <!-- for completed pool -->
             <h1 class="heading">Completed Pool</h1>
+            <div class="box_container" id="comp_pool"></div>
           </div>
         </div>
-        <button class = "clock"> <!-- for clock -->
+        <button id = "clock"> <!-- for clock -->
           Clock <span>0</span>
         </button>
 
@@ -39,8 +44,23 @@
         <h1 class="heading">Observations</h1>
         <div id="log"></div>
       </div>
+
+      <!-- The Modal popup in cicking a process-->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div>
+            <button>Move to Ready Pool</button>
+            <button>Move to IO Pool</button>
+            <button>Move to CPU</button>
+            <button>Move to Completed Pool</button>
+          </div>
+        </div>
+      </div>
+
     </main>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-    <script src="./dist/practice.js"></script> -->
+    <!-- <script>var exports = {};</script> -->
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+    <script src="./dist/main.js"></script>
   </body>
 </html>

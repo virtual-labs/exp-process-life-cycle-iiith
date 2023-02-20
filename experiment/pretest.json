@@ -112,7 +112,7 @@
       },
       "explanations": {
         "a": "Incorrect as a PCB (Process Control Block) is a data structure in an operating system that contains information about a running process, such as its state, priority, resources, and CPU usage.",
-        "b": "Incorrect as a disk queue is a data structure used by an operating system to manage the order in which disk I/O requests are processed by a disk drive."
+        "b": "Incorrect as a disk queue is a data structure used by an operating system to manage the order in which disk I/O requests are processed by a disk drive.",
         "c": "Incorrect as a job queue is a list of all processes or jobs that are waiting to be executed by the operating system.",
         "d": "A ready queue is a data structure in an operating system that holds the processes that are ready to be executed on the CPU."
       },
