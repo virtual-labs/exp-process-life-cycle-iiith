@@ -17,6 +17,9 @@ const TERMINATED = "TERMINATED";
 const IONEEDED = "IONEEDED";
 const IODONE = "IODONE";
 const BLOCKED = "BLOCKED";
+const COMPLETED = "COMPLETED";
+const IO = "IO";
+const CPU = "CPU";
 
 export interface IKernel {
     processes: IProcess[];
@@ -43,22 +46,45 @@ export class Kernel  {
     selectedEvent: number;
 
     constructor() {
-      this.processes = [];
-      this.currentProcess = -1;
-      this.processCreations = 0;
-      this.events = [];
-      this.log = new Log();
-      this.clock = 0;
-      this.selectedEvent = -1;
-      this.generate_event();
+        this.reset();
     }
-    
+
+    reset() {
+        this.processes = [];
+        this.currentProcess = -1;
+        this.processCreations = 0;
+        this.events = [];
+        this.log = new Log();
+        this.clock = 0;
+        this.selectedEvent = -1;
+        this.generate_event();
+    }
+
     selectEvent(id: number) {
         this.selectedEvent = id;
     }
 
     deselectEvent() {
         this.selectedEvent = -1;
+    }
+
+    moveProcess(pid: number, bin: string): IResponce {
+        if(bin === COMPLETED){
+            return this.terminate(pid); // checked
+        }
+        else if(bin === IO){
+            return this.moveToIO(pid);  // checked
+        }
+        else if(bin === READY){
+            return this.moveToReady(pid); // checked
+        }
+        else if(bin === CPU){
+            return this.runProcess(pid);  
+        }
+        return {
+            status: ERROR,
+            message: "The bin you have sent is invalid"
+        }
     }
 
     generate_event() {
@@ -105,7 +131,7 @@ export class Kernel  {
             }
         }
         // this.clock++;
-        console.log("Hello World");
+        // console.log("Hello World");
         this.clock = this.clock + 1;
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
@@ -134,11 +160,13 @@ export class Kernel  {
         if(this.currentProcess !== -1){
             return {
                 status: "ERROR",
-                message: `The CPU is not empty.`
+                message: `The CPU is not idle.`
             }
         }
+
         this.processes[id].run();
         this.currentProcess = id;
+        
         this.advanceClock(false);
         const message = `Process ${id} is moved from ready queue to CPU`;
         this.log.addRecord(message);
@@ -170,20 +198,20 @@ export class Kernel  {
         if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
-            }
+                message: "You have not selected any event."
+            };
         }
         if(this.events[this.selectedEvent].name !== TERMINATE){
             return {
                 status: "ERROR",
                 message: "You have not selected process termination event."
-            }
+            };
         }
         if(this.events[this.selectedEvent].pid !== pid){
             return {
                 status: "ERROR",
                 message: "The event process and selected process are not equal."
-            }
+            };
         }
         if(this.processes[pid].state === TERMINATED){
             return {
@@ -192,9 +220,11 @@ export class Kernel  {
             }
         }
         this.processes[pid].terminate();
-        this.advanceClock(false);
+
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
+        this.advanceClock(false);
+
         if(pid === this.currentProcess) {
             this.currentProcess = -1;
         }
@@ -206,7 +236,7 @@ export class Kernel  {
         }
     }
 
-    moveToIO() {
+    moveToIO(pid: number) {
         if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
@@ -219,6 +249,12 @@ export class Kernel  {
                 message: "You have not selected IO needed event."
             }
         }
+        if(pid !== this.currentProcess){
+            return {
+                status: "ERROR",
+                message: "The process you selected is not in the CPU."
+            }
+        }
         if(this.events[this.selectedEvent].pid !== this.currentProcess){
             return {
                 status: "ERROR",
@@ -227,9 +263,11 @@ export class Kernel  {
         }
 
         this.processes[this.currentProcess].moveToIO();
-        this.advanceClock(false);
+
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
+        this.advanceClock(false);
+
         this.currentProcess = -1;
         const message = `Moved Process ${this.currentProcess} to IO Pool at ${this.clock}`;
         this.log.addRecord(message);
@@ -264,10 +302,13 @@ export class Kernel  {
                 message: `The Process ${pid} is not in IOPOOL.`
             }
         }
+
         this.processes[pid].ready();
-        this.advanceClock(false);
+
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
+        this.advanceClock(false);
+
         const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}`;
         this.log.addRecord(message);
         return {
