@@ -21,6 +21,7 @@ const BLOCKED = "BLOCKED";
 const COMPLETED = "COMPLETED";
 const IO = "IO";
 const CPU = "CPU";
+const PREMPT = "PREMPT";
 
 export interface IKernel {
     processes: IProcess[];
@@ -77,7 +78,12 @@ export class Kernel  {
             return this.moveToIO(pid);  // checked
         }
         else if(bin === READY){
-            return this.moveToReady(pid); // checked
+            if(pid === this.currentProcess){
+                this.prempt();
+            }
+            else {
+                return this.moveToReady(pid); // checked
+            }
         }
         else if(bin === CPU){
             return this.runProcess(pid);  
@@ -184,15 +190,25 @@ export class Kernel  {
                 message: "You have not selected any event."
             }
         }
-        if(this.events[this.selectedEvent].name !== IONEEDED){
+        if(this.events[this.selectedEvent].name !== PREMPT){
             return {
                 status: "ERROR",
-                message: "You have not selected IO needed event."
+                message: "You have not selected Prempt event."
             }
         }
         this.processes[this.currentProcess].ready();
+
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
+        this.selectedEvent = -1;
+        this.advanceClock(false);
+
+        const message = `Moved Process ${this.currentProcess} from CPU to Ready Pool ${this.clock}.`;
+        this.log.addRecord(message);
         this.currentProcess = -1;
-        this.advanceClock();
+        return {
+            status : "OK",
+            message
+        }
     }
 
     terminate(pid: number): IResponce {
@@ -402,6 +418,30 @@ export class Kernel  {
             const terminate_event = new Event(id, TERMINATE, this.clock, process_to_kill, EXTERNAL);
             possible_events.push(terminate_event);
         }
+
+        // Genearating Premption Event
+        if(this.currentProcess !== -1){
+            let flag = true;
+            for (let index = 0; index < this.events.length; index++) {
+                const element = this.events[index];
+                if(element.pid !== this.currentProcess){
+                    continue;
+                }
+                if(element.state !== ACTIVE){
+                    continue;
+                }
+                if(element.name === IONEEDED){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                id = this.events.length;
+                const prempt_event = new Event(id, PREMPT, this.clock, this.currentProcess, EXTERNAL);
+                possible_events.push(prempt_event);
+            }
+        }
+
         if(possible_events.length > 0){
             const next_event = getRandomElement(possible_events);
             if(next_event.name == REQUESTPROC) {
@@ -409,6 +449,9 @@ export class Kernel  {
             }
             this.events.push(next_event);
         }
+
+
+
     }
 
     generate_internal_event() {
@@ -418,9 +461,26 @@ export class Kernel  {
 
         // IO Need
         if(this.currentProcess !== -1){
-            id = this.events.length;
-            const ioneed_event = new Event(id, IONEEDED, this.clock, this.currentProcess, INTERNAL);
-            possible_events.push(ioneed_event);
+            let flag = true;
+            for (let index = 0; index < this.events.length; index++) {
+                const element = this.events[index];
+                if(element.pid !== this.currentProcess){
+                    continue;
+                }
+                if(element.state !== ACTIVE){
+                    continue;
+                }
+                if(element.name === PREMPT){
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(flag === true){
+                id = this.events.length;
+                const ioneed_event = new Event(id, IONEEDED, this.clock, this.currentProcess, INTERNAL);
+                possible_events.push(ioneed_event);
+            }
         }
 
         // IO Done Event
