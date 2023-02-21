@@ -8,6 +8,7 @@ const ACTIVE = "ACTIVE";
 const DONE = "DONE";
 const REQUESTPROC = "REQUESTPROC";
 const EXTERNAL = "EXTERNAL";
+const INTERNAL = "INTERNAL";
 const PROCESS = "PROCESS";
 const TERMINATE = "TERMINATE";
 const READY = "READY";
@@ -269,7 +270,7 @@ export class Kernel  {
         this.advanceClock(false);
 
         this.currentProcess = -1;
-        const message = `Moved Process ${this.currentProcess} to IO Pool at ${this.clock}.`;
+        const message = `Moved Process ${pid} to IO Pool at ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : "OK",
@@ -401,14 +402,45 @@ export class Kernel  {
             const terminate_event = new Event(id, TERMINATE, this.clock, process_to_kill, EXTERNAL);
             possible_events.push(terminate_event);
         }
-        const next_event = getRandomElement(possible_events);
-        if(next_event.name == REQUESTPROC) {
-            this.processCreations += 1;
+        if(possible_events.length > 0){
+            const next_event = getRandomElement(possible_events);
+            if(next_event.name == REQUESTPROC) {
+                this.processCreations += 1;
+            }
+            this.events.push(next_event);
         }
-        this.events.push(next_event);
     }
 
     generate_internal_event() {
+        let possible_events: Event[] = [];
 
+        let id;
+
+        // IO Need
+        if(this.currentProcess !== -1){
+            id = this.events.length;
+            const ioneed_event = new Event(id, IONEEDED, this.clock, this.currentProcess, INTERNAL);
+            possible_events.push(ioneed_event);
+        }
+
+        // IO Done Event
+        let io_processes: number[] = [];
+        for (let index = 0; index < this.processes.length; index++) {
+            const element = this.processes[index];
+            if(element.state === BLOCKED){
+                io_processes.push(index);
+            }
+        }
+        if(io_processes.length > 0){
+            const process_to_ready = getRandomElement(io_processes);
+            id = this.events.length;
+            const idodone_event = new Event(id, IODONE, this.clock, process_to_ready, INTERNAL);
+            possible_events.push(idodone_event);
+        }
+
+        if(possible_events.length > 0 ){
+            const next_event = getRandomElement(possible_events);
+            this.events.push(next_event);
+        }
     }
 }
