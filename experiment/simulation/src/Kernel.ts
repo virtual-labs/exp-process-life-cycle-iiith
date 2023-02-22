@@ -46,6 +46,7 @@ export class Kernel  {
     log : Log;
     clock: number;
     selectedEvent: number;
+    selectedProcess: number;
 
     constructor() {
         this.reset();
@@ -59,6 +60,7 @@ export class Kernel  {
         this.log = new Log();
         this.clock = 0;
         this.selectedEvent = -1;
+        this.selectedProcess = -1;
         this.generate_event();
     }
 

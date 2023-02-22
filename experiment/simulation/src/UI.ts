@@ -8,32 +8,26 @@ class UI {
     constructor() {
         this.kernel = new Kernel();
     }
-
-    display_clock() {
-        let clock = document.getElementById("clock");
-        let clock_span = document.getElementsByTagName("span")[0];
-        clock_span.innerHTML = this.kernel.clock.toString();
+    // private functions
+    console_display() {
+        for(let i = 0; i < this.kernel.processes.length; i++) {
+            console.log(this.kernel.processes[i]);
+        }
+        for(let i = 0; i < this.kernel.events.length; i++) {
+            console.log(this.kernel.events[i]);
+        }
+        console.log(this.kernel)
     }
-    update_clock(){
-        this.kernel.advanceClock();
-        this.display_clock();
-    }
-    createProcess() {
-        this.kernel.selectEvent(0);
-        this.kernel.createProcess();
-        this.display_processes();
-        this.display_clock();
-    }
-
     add_to_pool(p: Process, pool: HTMLElement) {
         // create a div for process inside pool
         let process_div = document.createElement("div");
         process_div.classList.add("process");
-        process_div.id = p.name;
+        process_div.id = "Process"+p.pid.toString();
         process_div.innerHTML = p.name;
         // add event listeners
         process_div.addEventListener("click", () => {
-            var modal = document.getElementById("myModal");
+            this.kernel.selectedProcess = p.pid;
+            var modal = document.getElementById("process_popup");
             let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
             modal.style.display = "block";
             span.onclick = function() {
@@ -47,7 +41,53 @@ class UI {
         });
         pool.appendChild(process_div);
     }
+    add_to_events_queue(e: Event) {
+        if(e.state === "DONE")
+            return;
+        let events = document.getElementById("all_events");
+        let event_div = document.createElement("div");
+        event_div.classList.add("event");
+        event_div.id = "Event"+e.id.toString();
+        event_div.innerHTML = e.name;
+        event_div.addEventListener("click", () => {
+            if(this.kernel.selectedEvent === e.id)
+                this.kernel.selectEvent(-1);
+            else
+                this.kernel.selectEvent(e.id);
+            if(e.name == "REQUESTPROC"){
+                var modal = document.getElementById("create_process_popup");
+                let span: HTMLElement = document.getElementsByClassName("close")[1] as HTMLElement;
+                modal.style.display = "block";
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+                this.kernel.selectEvent(-1);
+            }
+            this.display_all();
+        });
+        events.appendChild(event_div);
+    }
 
+    ///////////////////////////////
+
+    update_clock(){
+        return(this.kernel.advanceClock());
+    }
+    createProcess() {
+        this.kernel.selectEvent(0);
+        this.kernel.createProcess();
+        this.display_all();
+    }
+    display_clock() {
+        let clock = document.getElementById("clock");
+        let clock_span = document.getElementsByTagName("span")[0];
+        clock_span.innerHTML = this.kernel.clock.toString();
+    }
     display_processes() {
         // clear all pools
         let processes = document.getElementsByClassName("process");
@@ -78,26 +118,14 @@ class UI {
             events_list[0].remove();
         }
         // add events
-        let events = document.getElementById("all_events");
         for(let i=0; i<this.kernel.events.length; i++){
             let e = this.kernel.events[i];
-            let event_div = document.createElement("div");
-            event_div.classList.add("event");
-            event_div.innerHTML = e.name;
-            event_div.addEventListener("click", () => {
-                let modal = document.getElementById("myModal");
-                let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
-                modal.style.display = "block";
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-            });
-            events.appendChild(event_div);
+            this.add_to_events_queue(e);
+        }
+        if(this.kernel.selectedEvent!== -1){
+            let e = document.getElementById("Event"+this.kernel.selectedEvent.toString());
+            e.classList.add("selected");
+            // e.remove();
         }
     }
 

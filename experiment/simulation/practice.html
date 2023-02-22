@@ -45,15 +45,24 @@
         <div id="log"></div>
       </div>
 
-      <!-- The Modal popup in cicking a process-->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
+      <!-- The popup that appears on cicking a process-->
+      <div id="process_popup" class="popup">
+        <div class="popup-content">
           <span class="close">&times;</span>
           <div>
-            <button>Move to Ready Pool</button>
-            <button>Move to IO Pool</button>
-            <button>Move to CPU</button>
-            <button>Move to Completed Pool</button>
+            <button id="move_to_ready">Move to Ready Pool</button>
+            <button id="move_to_io">Move to IO Pool</button>
+            <button id="move_to_cpu">Move to CPU</button>
+            <button id="move_to_completed">Move to Completed Pool</button>
+          </div>
+        </div>
+      </div>
+      <!-- The popup that appears on cicking a create process popup-->
+      <div id="create_process_popup" class="popup">
+        <div class="popup-content">
+          <span class="close">&times;</span>
+          <div>
+            <button id="create_button">Create Process</button>
           </div>
         </div>
       </div>
