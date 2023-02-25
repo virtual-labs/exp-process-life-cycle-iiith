@@ -165,7 +165,8 @@ button {
     font-size: 1.3vw;
     border-radius: 50%;
     height: 7vh;
-    width: 5vw;
+    /* width: 5vw; */
+    width: 80%;
     margin: 0;
     padding: 5%;
     display: flex;

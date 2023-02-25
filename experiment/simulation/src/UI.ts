@@ -4,19 +4,35 @@ import { Process } from "./Process";
 export { UI };
 class UI {
     kernel : Kernel;
-
+    timerId: NodeJS.Timer
     constructor() {
         this.kernel = new Kernel();
+        this.start_timer();
     }
+    start_timer() {
+        this.timerId = setInterval(() => {
+            this.kernel.advanceClock(false);
+            this.display_all();
+        }, 2000);
+    }
+
+    end_timer() {
+        clearInterval(this.timerId);
+    }
+
     // private functions
     console_display() {
-        for(let i = 0; i < this.kernel.processes.length; i++) {
-            console.log(this.kernel.processes[i]);
-        }
-        for(let i = 0; i < this.kernel.events.length; i++) {
-            console.log(this.kernel.events[i]);
-        }
-        console.log(this.kernel)
+        console.log(this.kernel.getData());
+        return ;
+        // console.log("Proceeses");
+        // for(let i = 0; i < this.kernel.processes.length; i++) {
+        //     console.log(this.kernel.processes[i]);
+        // }
+        // // console.log("")
+        // for(let i = 0; i < this.kernel.events.length; i++) {
+        //     console.log(this.kernel.events[i]);
+        // }
+        // console.log(this.kernel)
     }
     add_to_pool(p: Process, pool: HTMLElement) {
         // create a div for process inside pool
@@ -26,48 +42,47 @@ class UI {
         process_div.innerHTML = p.name;
         // add event listeners
         process_div.addEventListener("click", () => {
+            this.end_timer();
             this.kernel.selectedProcess = p.pid;
             var modal = document.getElementById("process_popup");
             let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
             modal.style.display = "block";
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
         });
         pool.appendChild(process_div);
     }
     add_to_events_queue(e: Event) {
-        if(e.state === "DONE")
+        if(e.state === "DONE" || e.state === "KILLED")
             return;
         let events = document.getElementById("all_events");
         let event_div = document.createElement("div");
         event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
-        event_div.innerHTML = e.name;
+        event_div.innerHTML = e.name + " " + e.pid.toString();
         event_div.addEventListener("click", () => {
-            if(this.kernel.selectedEvent === e.id)
+            if(this.kernel.selectedEvent === e.id){
                 this.kernel.selectEvent(-1);
-            else
-                this.kernel.selectEvent(e.id);
-            if(e.name == "REQUESTPROC"){
-                var modal = document.getElementById("create_process_popup");
-                let span: HTMLElement = document.getElementsByClassName("close")[1] as HTMLElement;
-                modal.style.display = "block";
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-                this.kernel.selectEvent(-1);
+                this.start_timer();
             }
+            else {
+                this.end_timer();
+                this.kernel.selectEvent(e.id);
+            }
+                
+            // if(e.name == "REQUESTPROC"){
+            //     this.end_timer();
+            //     var modal = document.getElementById("create_process_popup");
+            //     let span: HTMLElement = document.getElementsByClassName("close")[1] as HTMLElement;
+            //     modal.style.display = "block";
+            //     span.onclick = function() {
+            //         modal.style.display = "none";
+            //     }
+            //     window.onclick = function(event) {
+            //         if (event.target == modal) {
+            //             modal.style.display = "none";
+            //         }
+            //     }
+            //     this.kernel.selectEvent(-1);
+            // }
             this.display_all();
         });
         events.appendChild(event_div);
@@ -79,7 +94,7 @@ class UI {
         return(this.kernel.advanceClock());
     }
     createProcess() {
-        this.kernel.selectEvent(0);
+        // this.kernel.selectEvent(0);
         this.kernel.createProcess();
         this.display_all();
     }
@@ -122,7 +137,7 @@ class UI {
             let e = this.kernel.events[i];
             this.add_to_events_queue(e);
         }
-        if(this.kernel.selectedEvent!== -1){
+        if(this.kernel.selectedEvent !== -1){
             let e = document.getElementById("Event"+this.kernel.selectedEvent.toString());
             e.classList.add("selected");
             // e.remove();
@@ -133,6 +148,7 @@ class UI {
         this.display_clock();
         this.display_processes();
         this.display_events();
+        this.console_display();
     }
 }
 
