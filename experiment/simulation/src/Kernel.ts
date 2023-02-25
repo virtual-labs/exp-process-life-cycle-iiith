@@ -28,7 +28,7 @@ export interface IKernel {
     currentProcess: number;
     processCreations : number;
     events: IEvent [];
-    log : String [];
+    log : string [];
     clock: number;
     selectedEvent: number;
 }

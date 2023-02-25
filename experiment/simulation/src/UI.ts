@@ -144,10 +144,23 @@ class UI {
         }
     }
 
+    display_log() {
+        let log = document.getElementById("log");
+        for (let index = log.childElementCount; index < this.kernel.log.records.length; index++) {
+            const element = this.kernel.log.records[index];
+            let p = document.createElement("p");
+            p.innerText = index.toString() + ". " + element;
+            log.appendChild(p);
+            console.log("Adding log ",element );
+        }
+        console.log(log.childElementCount);
+    }
+
     display_all(){
         this.display_clock();
         this.display_processes();
         this.display_events();
+        this.display_log();
         this.console_display();
     }
 }
