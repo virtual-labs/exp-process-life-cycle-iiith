@@ -6,6 +6,7 @@ const kernel = new Kernel();
 // console.log(`hello ${g}`)
 kernel.selectEvent(0)
 console.log(kernel.createProcess());
+kernel.advanceClock();
 // kernel.createProcess();
 // kernel.createProcess();
 console.log(kernel.getData());
