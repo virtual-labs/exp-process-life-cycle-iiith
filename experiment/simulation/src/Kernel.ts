@@ -8,6 +8,7 @@ const ACTIVE = "ACTIVE";
 const DONE = "DONE";
 const REQUESTPROC = "REQUESTPROC";
 const EXTERNAL = "EXTERNAL";
+const INTERNAL = "INTERNAL";
 const PROCESS = "PROCESS";
 const TERMINATE = "TERMINATE";
 const READY = "READY";
@@ -20,13 +21,14 @@ const BLOCKED = "BLOCKED";
 const COMPLETED = "COMPLETED";
 const IO = "IO";
 const CPU = "CPU";
+const PREMPT = "PREMPT";
 
 export interface IKernel {
     processes: IProcess[];
     currentProcess: number;
     processCreations : number;
     events: IEvent [];
-    log : String [];
+    log : string [];
     clock: number;
     selectedEvent: number;
 }
@@ -44,6 +46,7 @@ export class Kernel  {
     log : Log;
     clock: number;
     selectedEvent: number;
+    selectedProcess: number;
 
     constructor() {
         this.reset();
@@ -57,6 +60,7 @@ export class Kernel  {
         this.log = new Log();
         this.clock = 0;
         this.selectedEvent = -1;
+        this.selectedProcess = -1;
         this.generate_event();
     }
 
@@ -76,22 +80,25 @@ export class Kernel  {
             return this.moveToIO(pid);  // checked
         }
         else if(bin === READY){
-            return this.moveToReady(pid); // checked
+            if(pid === this.currentProcess){
+                this.prempt();
+            }
+            else {
+                return this.moveToReady(pid); // checked
+            }
         }
         else if(bin === CPU){
             return this.runProcess(pid);  
         }
         return {
             status: ERROR,
-            message: "The bin you have sent is invalid"
+            message: "The bin you have chosen is invalid."
         }
     }
 
     generate_event() {
-        if(this.clock % 3 === 0){
-            this.generate_external_event();
-            this.generate_internal_event();
-        }
+        this.generate_external_event();
+        this.generate_internal_event();
     }
 
     createProcess(): IResponce {
@@ -114,7 +121,6 @@ export class Kernel  {
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
-        console.log(this.advanceClock(false));
         const message = `Created Process ${pid} at ${this.clock}`;
         this.log.addRecord(message);
         return {
@@ -124,12 +130,12 @@ export class Kernel  {
     }
 
     advanceClock(isUser: Boolean = true): IResponce {
-        if(this.selectedEvent !== -1){
-            return {
-                status: "ERROR",
-                message: "You have already selected an event. Process the Selected Event First."
-            }
-        }
+        // if(this.selectedEvent !== -1){
+        //     return {
+        //         status: "ERROR",
+        //         message: "You have already selected an event. Process the selected event First."
+        //     }
+        // }
         // this.clock++;
         // console.log("Hello World");
         this.clock = this.clock + 1;
@@ -148,13 +154,13 @@ export class Kernel  {
         if(this.selectedEvent !== -1){
             return {
                 status: "ERROR",
-                message: "You have already selected a event. Process the Selected Event Fisrt."
+                message: "You have already selected a event. Process the selected event first."
             }
         }
         if(this.processes[id].state !== READY){
             return {
                 status: "ERROR",
-                message: `The Process ${id} is not in ready pool. So it can't be moved to CPU.`
+                message: `The Process ${id} is not in the ready pool. So it can't be moved to CPU.`
             }
         }
         if(this.currentProcess !== -1){
@@ -167,8 +173,7 @@ export class Kernel  {
         this.processes[id].run();
         this.currentProcess = id;
         
-        this.advanceClock(false);
-        const message = `Process ${id} is moved from ready queue to CPU`;
+        const message = `Process ${id} is moved from ready queue to the CPU.`;
         this.log.addRecord(message);
         return {
             status: OK,
@@ -180,18 +185,27 @@ export class Kernel  {
         if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
+                message: "You have not selected any event."
             }
         }
-        if(this.events[this.selectedEvent].name !== IONEEDED){
+        if(this.events[this.selectedEvent].name !== PREMPT){
             return {
                 status: "ERROR",
-                message: "You have not selected IO needed event."
+                message: "You have not selected Prempt event."
             }
         }
         this.processes[this.currentProcess].ready();
+
+        this.events[this.selectedEvent].setResponceId(this.log.records.length);
+        this.selectedEvent = -1;
+
+        const message = `Moved Process ${this.currentProcess} from CPU to Ready Pool ${this.clock}.`;
+        this.log.addRecord(message);
         this.currentProcess = -1;
-        this.advanceClock();
+        return {
+            status : "OK",
+            message
+        }
     }
 
     terminate(pid: number): IResponce {
@@ -219,16 +233,23 @@ export class Kernel  {
                 message: `The Process ${pid} is already terminated.`
             }
         }
+
         this.processes[pid].terminate();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
+
+        for (let index = 0; index < this.events.length; index++) {
+            if(this.events[index].pid === pid && this.events[index].state === ACTIVE) {
+                this.events[index].killed(this.log.records.length);
+            }
+        }
+
         this.selectedEvent = -1;
-        this.advanceClock(false);
 
         if(pid === this.currentProcess) {
             this.currentProcess = -1;
         }
-        const message = `Terminated Process ${pid} at ${this.clock}`;
+        const message = `Terminated Process ${pid} at ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : "OK",
@@ -240,13 +261,13 @@ export class Kernel  {
         if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
+                message: "You have not selected any event."
             }
         }
         if(this.events[this.selectedEvent].name !== IONEEDED){
             return {
                 status: "ERROR",
-                message: "You have not selected IO needed event."
+                message: "You have not selected ioNeeded event."
             }
         }
         if(pid !== this.currentProcess){
@@ -266,10 +287,9 @@ export class Kernel  {
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
-        this.advanceClock(false);
 
         this.currentProcess = -1;
-        const message = `Moved Process ${this.currentProcess} to IO Pool at ${this.clock}`;
+        const message = `Moved Process ${pid} to IO Pool at ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : "OK",
@@ -281,13 +301,13 @@ export class Kernel  {
         if(this.selectedEvent === -1){
             return {
                 status: "ERROR",
-                message: "You have not selected any event"
+                message: "You have not selected any event."
             }
         }
         if(this.events[this.selectedEvent].name !== IODONE){
             return {
                 status: "ERROR",
-                message: "You have not selected IO Done event."
+                message: "You have not selected the ioDone event."
             }
         }
         if(this.events[this.selectedEvent].pid !== pid){
@@ -299,7 +319,7 @@ export class Kernel  {
         if(this.processes[pid].state !== BLOCKED){
             return {
                 status: "ERROR",
-                message: `The Process ${pid} is not in IOPOOL.`
+                message: `The Process ${pid} is not in IO POOL.`
             }
         }
 
@@ -307,9 +327,8 @@ export class Kernel  {
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
-        this.advanceClock(false);
 
-        const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}`;
+        const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : "OK",
@@ -387,28 +406,126 @@ export class Kernel  {
         let possible_events: Event[] = [];
         let id;
         // Process Creation Event
-        if (this.processes.length + this.processCreations < MAXPROCESSES) {
+        if (this.processCreations < MAXPROCESSES) {
+            console.log("Hello Eswar");
+            console.log(this.processes.length, this.processCreations);
             id = this.events.length;
             const new_process_event = new Event(id, REQUESTPROC, this.clock, -1, EXTERNAL);
             possible_events.push(new_process_event);
         }
 
         // Kill by User (Terminate)
-        let active_procs = this.get_terminatable_procs();
-        if(active_procs.length > 0){
-            const process_to_kill = getRandomElement(active_procs);
-            id = this.events.length;
-            const terminate_event = new Event(id, TERMINATE, this.clock, process_to_kill, EXTERNAL);
-            possible_events.push(terminate_event);
+        if(this.clock > 50){
+            let active_procs = this.get_terminatable_procs();
+            if(active_procs.length > 0){
+                // console.log(active_procs);
+                const process_to_kill = getRandomElement(active_procs);
+                id = this.events.length;
+                const terminate_event = new Event(id, TERMINATE, this.clock, process_to_kill, EXTERNAL);
+                possible_events.push(terminate_event);
+            }
         }
-        const next_event = getRandomElement(possible_events);
-        if(next_event.name == REQUESTPROC) {
-            this.processCreations += 1;
+
+        // Genearating Premption Event
+        if(this.currentProcess !== -1 && false){
+            let flag = true;
+            for (let index = 0; index < this.events.length; index++) {
+                const element = this.events[index];
+                if(element.pid !== this.currentProcess){
+                    continue;
+                }
+                if(element.state !== ACTIVE){
+                    continue;
+                }
+                if(element.name === IONEEDED){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                id = this.events.length;
+                const prempt_event = new Event(id, PREMPT, this.clock, this.currentProcess, EXTERNAL);
+                possible_events.push(prempt_event);
+            }
         }
-        this.events.push(next_event);
+
+        if(possible_events.length > 0){
+            const next_event = getRandomElement(possible_events);
+            if(next_event.name == REQUESTPROC) {
+                this.processCreations += 1;
+            }
+            this.events.push(next_event);
+        }
+
+
+
     }
 
     generate_internal_event() {
+        let possible_events: Event[] = [];
 
+        let id;
+
+        // IO Need
+        if(this.currentProcess !== -1){
+            let flag = true;
+            for (let index = 0; index < this.events.length; index++) {
+                const element = this.events[index];
+                if(element.pid !== this.currentProcess){
+                    continue;
+                }
+                if(element.state !== ACTIVE){
+                    continue;
+                }
+                if(element.name === PREMPT || element.name === IONEEDED){
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(flag === true){
+                id = this.events.length;
+                const ioneed_event = new Event(id, IONEEDED, this.clock, this.currentProcess, INTERNAL);
+                possible_events.push(ioneed_event);
+            }
+        }
+
+        // IO Done Event
+        let io_processes: number[] = [];
+        for (let index = 0; index < this.processes.length; index++) {
+            const element = this.processes[index];
+            if(element.state !== BLOCKED){
+                continue;
+            }
+            let flag = true;
+            for(let j = 0; j < this.events.length; j++){
+                const evt = this.events[j];
+                if(evt.pid !== index){
+                    continue;
+                }
+                if(evt.state !== ACTIVE){
+                    continue;
+                }
+                if(evt.name === IODONE){
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(flag === true){
+                io_processes.push(index);
+            }
+        }
+        if(io_processes.length > 0){
+            const process_to_ready = getRandomElement(io_processes);
+            id = this.events.length;
+            const idodone_event = new Event(id, IODONE, this.clock, process_to_ready, INTERNAL);
+            possible_events.push(idodone_event);
+        }
+
+        if(possible_events.length > 0 ){
+            const next_event = getRandomElement(possible_events);
+            this.events.push(next_event);
+        }
     }
 }

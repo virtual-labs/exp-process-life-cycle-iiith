@@ -30,6 +30,10 @@ export class Event implements IEvent{
         this.responceId = rid;
         this.state = "DONE";
     }
+    killed(rid: number) {
+        this.responceId = rid;
+        this.state = "KILLED";
+    }
     getData(): IEvent {
         return {
             name: this.name,
