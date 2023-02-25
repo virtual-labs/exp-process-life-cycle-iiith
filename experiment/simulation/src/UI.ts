@@ -57,7 +57,12 @@ class UI {
         let event_div = document.createElement("div");
         event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
-        event_div.innerHTML = e.name + " " + e.pid.toString();
+        if(e.name === "IONEEDED" || e.name === "IODONE" || e.name === "TERMINATE"){
+            event_div.innerHTML = e.name + " " + e.pid.toString();
+        }
+        else {
+            event_div.innerHTML = e.name;
+        }
         event_div.addEventListener("click", () => {
             if(this.kernel.selectedEvent === e.id){
                 this.kernel.selectEvent(-1);
@@ -148,8 +153,8 @@ class UI {
         let log = document.getElementById("log");
         for (let index = log.childElementCount; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
-            let p = document.createElement("p");
-            p.innerText = index.toString() + ". " + element;
+            let p = document.createElement("li");
+            p.innerText = element;
             log.appendChild(p);
             console.log("Adding log ",element );
         }
