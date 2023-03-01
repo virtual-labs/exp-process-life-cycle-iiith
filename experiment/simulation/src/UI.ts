@@ -214,13 +214,15 @@ class UI {
             console.log("Adding log ",element );
         }
         console.log(log.childElementCount);
+
     }
 
     display_all(){
         this.display_clock();
         this.display_processes();
         this.display_events();
-        // this.display_log();
+        this.display_log();
+        this.initialize_accordion();
         // this.console_display();
     }
 
@@ -269,6 +271,13 @@ class UI {
     }
 
     initialize_accordion() {
+
+        let observations = <HTMLElement> document.getElementById("observations_button").nextElementSibling;
+        observations.style.display = "flex";
+        observations.style.flexDirection = "column";
+        observations.style.overflow = "scroll";
+        observations.style.maxHeight = observations.scrollHeight + "px";
+
         let accordion = document.getElementsByClassName("accordion");
 
         for(let i = 0; i < accordion.length; i++) {
@@ -281,6 +290,8 @@ class UI {
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.display = "flex";
+                    panel.style.flexDirection = "column";
+                    panel.style.overflow = "scroll";
                     panel.style.maxHeight = panel.scrollHeight + "px";
                 }
             });

@@ -405,6 +405,7 @@ html, body, main {
   /* transition-duration: 0.4s; */
   max-height: 0;
   overflow: hidden;
+  overflow-wrap: break-word;
   transition: max-height 0.3s ease-in-out;
 }
 
