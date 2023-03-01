@@ -388,7 +388,7 @@ class UI {
                         });
 
         imperatives.set("handling_events_req_process_3",
-                        {element: "#events_queue",
+                        {element: "#event_queue",
                          popover: {
                              title: "The reqProcess Event.",
                              description: "Once the current event has been handled, the clock starts again, and you can begin handling other events.."
