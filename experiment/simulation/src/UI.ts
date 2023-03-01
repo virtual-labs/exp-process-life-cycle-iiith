@@ -345,7 +345,9 @@ class UI {
                          {element: "#event_queue",
                           popover: {
                               title: "Events Queue",
-                              description: "The events queue collects the events coming in from external sources (the user, interrupts etc.), or the various requests from the processes that need to be handled (such as requests for resource allocation)." }});
+                              description: "The events queue collects the events coming in from external sources (the user, interrupts etc.), or the various requests from the processes that need to be handled (such as requests for resource allocation).",
+                              position: "right"
+                          }});
 
         descriptions.set("clock",
                          {element: "#clock",
