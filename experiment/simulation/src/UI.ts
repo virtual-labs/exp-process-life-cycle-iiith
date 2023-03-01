@@ -262,11 +262,6 @@ class UI {
         this.cpu.addEventListener("drop", process_drop_handler);
         this.terminated_pool.addEventListener("drop", process_drop_handler);
 
-        document.getElementById("reset")
-            .addEventListener("click", (e) => {
-                this.kernel.reset();
-            });
-
 
         document.getElementById("init_tour")
             .addEventListener("click", (e) => {
@@ -274,6 +269,12 @@ class UI {
                     this.main_tour();
                 });
         });
+
+        document.getElementById("reset")
+            .addEventListener("click", (e) => {
+                this.kernel.reset();
+            });
+
 
 
     }
