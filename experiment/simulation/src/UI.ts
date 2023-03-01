@@ -262,12 +262,20 @@ class UI {
         this.cpu.addEventListener("drop", process_drop_handler);
         this.terminated_pool.addEventListener("drop", process_drop_handler);
 
+        document.getElementById("reset")
+            .addEventListener("click", (e) => {
+                this.kernel.reset();
+            });
+
+
         document.getElementById("init_tour")
             .addEventListener("click", (e) => {
                 setTimeout(() => {
                     this.main_tour();
                 });
         });
+
+
     }
 
     initialize_accordion() {
