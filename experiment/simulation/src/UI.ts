@@ -81,7 +81,7 @@ class UI {
         process_div.innerHTML = p.name;
         // add event listeners
 
-        let process_dragstart_handler = (event: DragEvent) => {
+        let process_dragstart_handler = (event) => {
             // console.log(event.target.id);
 
             if (this.kernel.selectedEvent === -1)
@@ -226,7 +226,7 @@ class UI {
 
     initialize_events() {
 
-        let process_drop_handler = (event: DragEvent) => {
+        let process_drop_handler = (event) => {
             event.preventDefault();
             const data = event.dataTransfer.getData("text/plain");
             console.log(data);
@@ -239,11 +239,6 @@ class UI {
             if (response.status === "ERROR")
                 alert("Error: " + response.message);
             this.display_all();
-
-            // console.log(response);
-            // console.log(bin);
-            // console.log(dropped_pid);
-            // console.log(dropped_process.state);
         }
 
         let process_dragover_handler = (event: DragEvent) => {
@@ -275,12 +270,11 @@ class UI {
 
     initialize_accordion() {
         let accordion = document.getElementsByClassName("accordion");
-        // let panels = document.getElementById("panel");
 
         for(let i = 0; i < accordion.length; i++) {
             accordion[i].addEventListener("click", () => {
                 accordion[i].classList.toggle("active");
-                let panel: HTMLElement = accordion[i].nextElementSibling;
+                let panel = <HTMLElement> accordion[i].nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.transition = "0.2s";
                     panel.style.display = "none";
@@ -301,7 +295,6 @@ class UI {
             padding: 5,
             showButtons: true,
             overlayClickNext: true,
-
         });
 
         let main_tour_steps: Driver.Step [] =
