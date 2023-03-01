@@ -21,6 +21,7 @@ const BLOCKED = "BLOCKED";
 const COMPLETED = "COMPLETED";
 const IO = "IO";
 const CPU = "CPU";
+const RUNNING = "RUNNING";
 const PREMPT = "PREMPT";
 
 export interface IKernel {
@@ -90,10 +91,11 @@ export class Kernel  {
         else if(bin === CPU){
             return this.runProcess(pid);  
         }
-        return {
-            status: ERROR,
-            message: "The bin you have chosen is invalid."
-        }
+        else
+            return {
+                status: ERROR,
+                message: "The bin you have chosen is invalid."
+            }
     }
 
     generate_event() {
@@ -151,6 +153,12 @@ export class Kernel  {
     }
 
     runProcess(id: number): IResponce {
+        if (this.processes[id].state === RUNNING) {
+            return {
+                status: "OK",
+                message: `The process ${id} is already running.`
+            }
+        }
         if(this.selectedEvent !== -1){
             return {
                 status: "ERROR",
@@ -229,7 +237,7 @@ export class Kernel  {
         }
         if(this.processes[pid].state === TERMINATED){
             return {
-                status: "ERROR",
+                status: "OK",
                 message: `The Process ${pid} is already terminated.`
             }
         }
