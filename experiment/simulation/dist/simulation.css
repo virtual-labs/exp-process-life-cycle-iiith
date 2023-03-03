@@ -447,3 +447,7 @@ html, body, main {
 #driver-page-overlay {
     background: none !important;
 }
+
+.custom-issues {
+    display: none;
+}
