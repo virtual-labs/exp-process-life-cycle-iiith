@@ -65,9 +65,15 @@
         </section>
         <!-- <p id="instruction"></p> -->
         <section class="controls">
-          <button class="button-18" role="button" id="reset">Reset</button>
-          <button class="button-18" role="button" id="init_tour">Take tour</button>
+          <section class="meta_controls">
+            <button class="button-18" role="button" id="reset">Reset</button>
+            <button class="button-18" role="button" id="start">Start</button>
+            <!-- <button class="button-18" role="button" id="finish">Finish</button> -->
+          </section>
           <button class="button-18" role="button" id="create_process" title="Create Process and put it in Ready Pool"> + Create Process</button>
+          <section class="exp_controls">
+            <button class="button-18" role="button" id="init_tour">Take Tour</button>
+          </section>
           <!-- <button class="button-18" role="button" id="advance_clock" title="All changes made for this clock cycle">Done</button> -->
           <!-- <button class="button-18" role="button" id="goto_io" title="Move the process currently in CPU to IO Pool">CPU to IO Pool</button> -->
           <!-- <button class="button-18" role="button" id="collect" title="Move the process from IO Pool to Ready Pool">IO to Ready Pool</button> -->
@@ -77,48 +83,54 @@
       </section>
 
         <section class="instructions_panel split right">
-          <button class="accordion" id="instructions_button">Instructions</button>
-          <div class="panel">
-            <p></p>
-          </div>
+          <!-- <button class="accordion" id="instructions_button">Instructions</button>
+               <div class="panel">
+               <li>Click <b>Create Process</b> button to create a process.</li>
+               <li>Click <b>Advance clock</b> to advance the time.</li>
+               <li>To move a process from Ready Pool to the CPU, <b>click on the process</b> that you want to move.</li>
+               <li>Click <b>CPU to IO Pool</b> to move the process currently running in the CPU to the IO pool.</li>
+               <li>Click <b>IO to Ready Pool</b> to move the process with completed IO from IO pool to Ready pool.</li>
+               <li>Click <b>Preempt</b> to preempt the process currently running in the CPU and move it to Ready pool.</li>
+               <li>Click <b>Terminate</b> to terminate the process currently running in the CPU.</li>
+               </div>
+          -->
+          <!-- <button class="accordion" id="color_code_button">Colour Codes</button>
+               <div class="panel">
+               <div id="in-cpu">
+               <p class="process green">Pi</p>
+               <p>CPU Process Running</p>
+               </div>
+               <div id="needs-preemption">
+               <p class="process grey">Pi</p>
+               <p>CPU Process needs Preemption</p>
+               </div>
+               <div id="needs-io">
+               <p class="process brown">Pi</p>
+               <p>CPU Process needs IO</p>
+               </div>
+               <div id="needs-termination">
+               <p class="process red">Pi</p>
+               <p>CPU Process needs Termination</p>
+               </div>
+               <div id="in-ready">
+               <p class="process blue">Pi</p>
+               <p>Process in Ready Pool</p>
+               </div>
+               <div id="io-progress">
+               <p class="process purple">Pi</p>
+               <p>Process IO in progress</p>
+               </div>
+               <div id="io-complete">
+               <p class="process skyblue">Pi</p>
+               <p>Process IO has completed</p>
+               </div>
+               <div id="terminated">
+               <p class="process black">Pi</p>
+               <p>Terminated Process</p>
+               </div>
 
-          <button class="accordion" id="color_code_button">Colour Codes</button>
-          <div class="panel">
-            <div id="in-cpu">
-              <p class="process green">Pi</p>
-              <p>CPU Process Running</p>
-            </div>
-            <div id="needs-preemption">
-              <p class="process grey">Pi</p>
-              <p>CPU Process needs Preemption</p>
-            </div>
-            <div id="needs-io">
-              <p class="process brown">Pi</p>
-              <p>CPU Process needs IO</p>
-            </div>
-            <div id="needs-termination">
-              <p class="process red">Pi</p>
-              <p>CPU Process needs Termination</p>
-            </div>
-            <div id="in-ready">
-              <p class="process blue">Pi</p>
-              <p>Process in Ready Pool</p>
-            </div>
-            <div id="io-progress">
-              <p class="process purple">Pi</p>
-              <p>Process IO in progress</p>
-            </div>
-            <div id="io-complete">
-              <p class="process skyblue">Pi</p>
-              <p>Process IO has completed</p>
-            </div>
-            <div id="terminated">
-              <p class="process black">Pi</p>
-              <p>Terminated Process</p>
-            </div>
-
-          </div>
-
+               </div>
+          -->
           <button class="accordion" id="observations_button">Observations</button>
           <div class="panel">
             <div id="log"></div>
