@@ -62,7 +62,7 @@ export class Kernel  {
         this.clock = 0;
         this.selectedEvent = -1;
         this.selectedProcess = -1;
-        this.generate_event();
+        // this.generate_event();
     }
 
     selectEvent(id: number) {
