@@ -19,8 +19,8 @@ class UI {
 
     constructor() {
         this.kernel = new Kernel();
-        this.start_timer();
-        this.timer_paused = false;
+        // this.start_timer();
+        this.timer_paused = true;
 
         this.ready_pool = document.querySelector('#READY .queue_body');
         this.io_pool = document.querySelector('#IO .queue_body');
@@ -34,6 +34,7 @@ class UI {
         this.imperatives = this.imperatives_map();
         // this.main_tour();
     }
+
     start_timer() {
         this.timerId = setInterval(() => {
             this.kernel.advanceClock(false);
@@ -115,7 +116,7 @@ class UI {
         let event_div = document.createElement("div");
         event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
-        if(e.name === "IONEEDED" || e.name === "IODONE" || e.name === "TERMINATE"){
+        if(e.name === "IONEEDED" || e.name === "IODONE" || e.name === "Terminate"){ //XXX: Invariant: "Terminate" === TERMINATE in Kernel.ts
             event_div.innerHTML = e.name + " " + e.pid.toString();
         }
         else {
@@ -222,7 +223,7 @@ class UI {
         this.display_processes();
         this.display_events();
         this.display_log();
-        this.initialize_accordion();
+        this.update_accordion();
         // this.console_display();
     }
 
@@ -268,15 +269,54 @@ class UI {
                 setTimeout(() => {
                     this.main_tour();
                 });
+            });
+
+        let start_button_handler = () => {
+            this.toggle_timer();
+
+            // let button_text = document.getElementById("start").childNodes[0].nodeValue;
+            if (!this.timer_paused) {
+                document.getElementById("start")
+                    .childNodes[0].nodeValue = "Pause";
+
+            }
+            else {
+                document.getElementById("start")
+                    .childNodes[0].nodeValue = "Start";
+            }
+
+        };
+
+        let reset_button_handler = () => {
+            start_button_handler(); // XXX: Pass instance of the appropriate Event Type
+            // The start_button_handler starts the timer, so keep the stop_timer logic after it.
+
+            this.kernel.reset();
+            this.timer_paused = false;
+            this.toggle_timer();
+            this.display_all();
+        };
+
+        // let finish_button_handler = () => {
+        //     // this.kernel.reset();
+        // };
+
+
+        document.getElementById("create_process").addEventListener("click", () => {
+            // ui.kernel.events[ui.kernel.selectedEvent].do
+            this.createProcess();
+            this.timer_paused = true;
+            this.toggle_timer();
         });
 
         document.getElementById("reset")
-            .addEventListener("click", (e) => {
-                this.kernel.reset();
-            });
+            .addEventListener("click", reset_button_handler);
 
+        document.getElementById("start")
+            .addEventListener("click", start_button_handler);
 
-
+        // document.getElementById("finish")
+        //     .addEventListener("click", finish_button_handler);
     }
 
     initialize_accordion() {
@@ -308,6 +348,19 @@ class UI {
 
     }
 
+    update_accordion () {
+        let log = <HTMLElement> document.getElementById("observations_button");
+        let observations = <HTMLElement> log.nextElementSibling;
+
+        if (log.classList.contains("active"))
+            return;
+
+        observations.style.display = "flex";
+        observations.style.flexDirection = "column";
+        observations.style.overflow = "scroll";
+        observations.style.maxHeight = observations.scrollHeight + "px";
+    }
+
     main_tour () {
         const driver: Driver = new Driver({
             animate: true,
@@ -335,7 +388,6 @@ class UI {
 
         driver.defineSteps(main_tour_steps);
         driver.start();
-
     }
 
     descriptions_map () {

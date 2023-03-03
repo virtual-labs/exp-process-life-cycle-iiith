@@ -6,11 +6,11 @@ import { getRandomInt, getRandomElement } from "./helper_functions";
 const MAXPROCESSES = 5;
 const ACTIVE = "ACTIVE";
 const DONE = "DONE";
-const REQUESTPROC = "REQUESTPROC";
+const REQUESTPROC = "Process Request";
 const EXTERNAL = "EXTERNAL";
 const INTERNAL = "INTERNAL";
 const PROCESS = "PROCESS";
-const TERMINATE = "TERMINATE";
+const TERMINATE = "Terminate";
 const READY = "READY";
 const ERROR = "ERROR";
 const OK = "OK";
@@ -62,7 +62,7 @@ export class Kernel  {
         this.clock = 0;
         this.selectedEvent = -1;
         this.selectedProcess = -1;
-        this.generate_event();
+        // this.generate_event();
     }
 
     selectEvent(id: number) {
@@ -415,8 +415,8 @@ export class Kernel  {
         let id;
         // Process Creation Event
         if (this.processCreations < MAXPROCESSES) {
-            console.log("Hello Eswar");
-            console.log(this.processes.length, this.processCreations);
+            // console.log("Hello Eswar");
+            // console.log(this.processes.length, this.processCreations);
             id = this.events.length;
             const new_process_event = new Event(id, REQUESTPROC, this.clock, -1, EXTERNAL);
             possible_events.push(new_process_event);
