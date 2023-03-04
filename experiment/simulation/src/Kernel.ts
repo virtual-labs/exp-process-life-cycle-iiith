@@ -81,12 +81,12 @@ export class Kernel  {
             return this.moveToIO(pid);  // checked
         }
         else if(bin === READY){
-            if(pid === this.currentProcess){
-                this.prempt();
-            }
-            else {
+            // if(pid === this.currentProcess){
+            //     this.prempt();
+            // }
+            // else {
                 return this.moveToReady(pid); // checked
-            }
+            // }
         }
         else if(bin === CPU){
             return this.runProcess(pid);  

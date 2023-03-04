@@ -234,6 +234,8 @@ class UI {
             const data = event.dataTransfer.getData("text/plain");
             console.log(data);
 
+            console.log("Process Drop Handler");
+
             let bin = event.target.parentNode.id;
             let dropped_pid = +data.split("s")[2]; // Split data = ["proce", "", "<id>"]
             let dropped_process = this.kernel.processes[dropped_pid];
@@ -244,14 +246,32 @@ class UI {
             this.display_all();
         }
 
+        let process_dragstart_handler = (event) => {
+            this.end_timer();
+            this.display_all();
+        }
+
+        let process_dragend_handler = (event) => {
+            this.start_timer();
+            this.display_all();
+        }
+
         let process_dragover_handler = (event: DragEvent) => {
             event.preventDefault();
-            event.dataTransfer.dropEffect = "move";
+            // event.dataTransfer.dropEffect = "move";
 
-            if (this.kernel.selectedEvent === -1)
-                this.end_timer();
+            console.log("Drag Over");
+
+            // if (this.kernel.selectedEvent === -1)
+            //     this.end_timer();
 
         }
+
+        document.querySelectorAll('.process').forEach((element) => {
+            element.addEventListener("dragstart", process_dragstart_handler);
+            element.addEventListener("dragend", process_dragend_handler);
+        })
+
 
         this.ready_pool.addEventListener("dragover", process_dragover_handler);
         this.io_pool.addEventListener("dragover", process_dragover_handler);
