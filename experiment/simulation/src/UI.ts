@@ -190,6 +190,8 @@ class UI {
         let clock = document.getElementById("clock");
         let clock_span = document.getElementById("clock_val");
         clock_span.innerHTML = this.kernel.clock.toString();
+        if(this.is_ex_paused())
+            clock_span.innerHTML += " (Paused)";
     }
     display_processes() {
         // clear all pools
@@ -351,14 +353,15 @@ class UI {
         let start_button_handler = (event) => {
             const val = event.target.childNodes[0].nodeValue;
             if(val === "Start"){
-                this.start_timer();
                 event.target.childNodes[0].nodeValue = "Pause";
+                this.display_all();
+                this.start_timer();
                 // pause_driver.reset();
             }
             else {
-
-                this.end_timer();
                 event.target.childNodes[0].nodeValue = "Start";
+                this.display_all();
+                this.end_timer();
                 //pause_driver.highlight("#start");
             }
         }
