@@ -1,6 +1,7 @@
 import { Event } from "./Event";
 import { IResponce, Kernel } from "./Kernel";
 import { Process } from "./Process";
+import * as config from "./config"
 import Driver from "driver.js"
 
 export { UI };
@@ -129,13 +130,13 @@ class UI {
         pool.appendChild(process_div);
     }
     add_to_events_queue(e: Event) {
-        if(e.state === "DONE" || e.state === "KILLED")
+        if(e.state === config.DONE || e.state === config.KILLED)
             return;
         let events = document.getElementById("all_events");
         let event_div = document.createElement("div");
         event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
-        if(e.name === "IONEEDED" || e.name === "IODONE" || e.name === "Terminate"){ //XXX: Invariant: "Terminate" === TERMINATE in Kernel.ts
+        if(e.name === config.IONEEDED || e.name === config.IODONE || e.name === config.TERMINATE){
             event_div.innerHTML = e.name + " " + e.pid.toString();
         }
         else {
@@ -202,13 +203,13 @@ class UI {
 
         for(let i=0; i<this.kernel.processes.length; i++){
             let p = this.kernel.processes[i];
-            if(p.state === "READY")
+            if(p.state === config.READY)
                 this.add_to_pool(p, this.ready_pool);
-            else if(p.state === "RUNNING")
+            else if(p.state === config.CPU)
                 this.add_to_pool(p, this.cpu);
-            else if(p.state === "BLOCKED")
+            else if(p.state === config.BLOCKED)
                 this.add_to_pool(p, this.io_pool);
-            else if(p.state === "TERMINATED")
+            else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
     }
@@ -276,7 +277,7 @@ class UI {
             let dropped_process = this.kernel.processes[dropped_pid];
 
             let response = this.kernel.moveProcess(dropped_pid, bin);
-            if (response.status === "ERROR")
+            if (response.status === config.ERROR)
                 alert("Error: " + response.message);
             this.display_all();
         }
