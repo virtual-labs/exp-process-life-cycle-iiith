@@ -237,9 +237,9 @@ class UI {
             let p = document.createElement("li");
             p.innerText = element;
             log.appendChild(p);
-            console.log("Adding log ",element );
+            // console.log("Adding log ",element );
         }
-        console.log(log.childElementCount);
+        // console.log(log.childElementCount);
 
     }
 
@@ -250,6 +250,11 @@ class UI {
         this.display_events();
         this.display_log();
         this.update_accordion();
+        if(this.kernel.selectedEvent !== -1 && 
+            this.kernel.events[this.kernel.selectedEvent].name === "Process Request")
+            document.getElementById("create_process").style.visibility = "visible";
+        else
+            document.getElementById("create_process").style.visibility = "hidden";
         // this.console_display();
     }
 
