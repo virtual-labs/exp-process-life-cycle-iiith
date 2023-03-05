@@ -97,13 +97,13 @@ export class Kernel  {
             }
         }
         // creating new process
-       const pid = this.processes.length;
-       const process = new Process(pid);
+        const pid = this.processes.length;
+        const process = new Process(pid);
         this.processes.push(process);
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
-       const message = `Created Process ${pid} at ${this.clock}`;
+        const message = `Created Process ${pid} at ${this.clock}`;
         this.log.addRecord(message);
         return {
             status : config.OK,
@@ -161,7 +161,7 @@ export class Kernel  {
         this.processes[id].run();
         this.currentProcess = id;
         
-       const message = `Process ${id} is moved from ready queue to the CPU.`;
+        const message = `Process ${id} is moved from ready queue to the CPU.`;
         this.log.addRecord(message);
         return {
             status: config.OK,
@@ -187,7 +187,7 @@ export class Kernel  {
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
 
-       const message = `Moved Process ${this.currentProcess} from CPU to Ready Pool ${this.clock}.`;
+        const message = `Moved Process ${this.currentProcess} from CPU to Ready Pool ${this.clock}.`;
         this.log.addRecord(message);
         this.currentProcess = -1;
         return {
@@ -237,7 +237,7 @@ export class Kernel  {
         if(pid === this.currentProcess) {
             this.currentProcess = -1;
         }
-       const message = `Terminated Process ${pid} at ${this.clock}.`;
+        const message = `Terminated Process ${pid} at ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : config.OK,
@@ -277,7 +277,7 @@ export class Kernel  {
         this.selectedEvent = -1;
 
         this.currentProcess = -1;
-       const message = `Moved Process ${pid} to IO Pool at ${this.clock}.`;
+        const message = `Moved Process ${pid} to IO Pool at ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : config.OK,
@@ -316,7 +316,7 @@ export class Kernel  {
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
 
-       const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}.`;
+        const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}.`;
         this.log.addRecord(message);
         return {
             status : config.OK,
