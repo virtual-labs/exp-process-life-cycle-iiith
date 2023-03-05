@@ -18,7 +18,10 @@ class UI {
     drivers: Map<string, Driver>
 
     constructor() {
+        const data = localStorage.getItem('data');
         this.kernel = new Kernel();
+        if(data !== null)
+            this.kernel.setData(JSON.parse(data));
         // this.start_timer();
         this.timer_paused = true;
 
@@ -226,8 +229,10 @@ class UI {
     }
 
     display_log() {
+
         let log = document.getElementById("log");
-        for (let index = log.childElementCount; index < this.kernel.log.records.length; index++) {
+        log.innerHTML = "";
+        for (let index = 0; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
             let p = document.createElement("li");
             p.innerText = element;
@@ -239,6 +244,7 @@ class UI {
     }
 
     display_all(){
+        localStorage.setItem('data', JSON.stringify(this.kernel.getData()));
         this.display_clock();
         this.display_processes();
         this.display_events();
@@ -358,6 +364,7 @@ class UI {
 
             this.kernel.reset();
             this.timer_paused = false;
+            document.getElementById("start").childNodes[0].nodeValue = "Start";
             // this.toggle_timer();
             this.end_timer();
             this.display_all();
