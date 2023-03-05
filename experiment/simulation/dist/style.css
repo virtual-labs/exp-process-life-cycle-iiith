@@ -21,7 +21,7 @@ button {
 .button-18 {
     align-items: center;
     /* background-color: #0E1288; */
-    background-color: #0E4F88;
+    /* background-color: #0E4F88; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 0;
     border-radius: 20px;
@@ -49,23 +49,23 @@ button {
     vertical-align: middle;
 }
 
-.button-18:hover,
+/* .button-18:hover,
 .button-18:focus { 
     background-color: #16437E;
     color: #ffffff;
     border: solid #16437E;
-}
+} */
 
-.button-18:active {
+/* .button-18:active {
     background: #09223b;
     color: rgb(255, 255, 255, .7);
-}
+} */
 
-.button-18:disabled { 
+/* .button-18:disabled { 
     cursor: not-allowed;
     background: rgba(0, 0, 0, .08);
     color: rgba(0, 0, 0, .3);
-}
+} */
 
 .log-title {
     background-color:transparent;
@@ -121,4 +121,37 @@ button {
 #instruction {
     border-radius: 10px;
     border:.2rem solid black;
+}
+
+.primary_button {
+    background-color: #6200EE;
+}
+
+.primary_button:hover,
+.primary_button:focus { 
+    background-color: #3700b3;
+    color: #ffffff;
+    border: solid #3700b3;
+}
+
+/* .button-18:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+} */
+
+/* .button-18:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+} */
+
+.secondary_button {
+    background-color: #57a2a2;
+}
+
+.secondary_button:hover,
+.secondary_button:focus { 
+    background-color: #018786;
+    color: #ffffff;
+    border: solid #018786;
 }
