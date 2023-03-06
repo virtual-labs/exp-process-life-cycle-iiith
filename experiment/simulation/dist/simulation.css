@@ -462,3 +462,7 @@ html, body, main {
 .custom-issues {
     display: none;
 }
+
+.driver-fix-stacking {
+    position: unset !important;
+}
