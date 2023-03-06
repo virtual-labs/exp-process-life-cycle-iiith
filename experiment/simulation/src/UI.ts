@@ -1,5 +1,5 @@
 import { Event } from "./Event";
-import { Kernel } from "./Kernel";
+import { IResponce, Kernel } from "./Kernel";
 import { Process } from "./Process";
 import Driver from "driver.js"
 
@@ -18,7 +18,10 @@ class UI {
     drivers: Map<string, Driver>
 
     constructor() {
+        const data = localStorage.getItem('data');
         this.kernel = new Kernel();
+        if(data !== null)
+            this.kernel.setData(JSON.parse(data));
         // this.start_timer();
         this.timer_paused = true;
 
@@ -26,6 +29,8 @@ class UI {
         this.io_pool = document.querySelector('#IO .queue_body');
         this.cpu = document.querySelector('#CPU .queue_body');
         this.terminated_pool = document.querySelector('#COMPLETED .queue_body');
+
+        this.timerId = null;
 
         this.initialize_events();
         this.initialize_accordion();
@@ -35,15 +40,24 @@ class UI {
         // this.main_tour();
     }
 
+    is_ex_paused(){
+        return document.getElementById("start").childNodes[0].nodeValue === "Start";
+    }
+
     start_timer() {
-        this.timerId = setInterval(() => {
-            this.kernel.advanceClock(false);
-            this.display_all();
-        }, 2000);
+        if(this.timerId === null && this.kernel.selectedEvent === -1){
+            this.timerId = setInterval(() => {
+                this.kernel.advanceClock(false);
+                this.display_all();
+            }, 2000);
+        }
     }
 
     end_timer() {
-        clearInterval(this.timerId);
+        if(this.timerId !== null){
+            clearInterval(this.timerId);
+            this.timerId = null;
+        }
     }
 
     toggle_timer () {
@@ -83,18 +97,23 @@ class UI {
         // add event listeners
 
         let process_dragstart_handler = (event) => {
+            if(this.is_ex_paused())
+                return ;
             // console.log(event.target.id);
 
             if (this.kernel.selectedEvent === -1)
-                this.toggle_timer();
+            //     this.toggle_timer();
+            this.end_timer();
             console.log("hello" + this.kernel.selectedEvent);
             event.dataTransfer.dropEffect = "move";
             event.dataTransfer.setData("text/plain", event.target.id);
         }
 
         let process_dragend_handler = (event: DragEvent) => {
-            // this.start_timer();
-            this.toggle_timer();
+            if(this.is_ex_paused())
+                return ;
+            this.start_timer();
+            // this.toggle_timer();
         }
 
         process_div.addEventListener("dragstart", process_dragstart_handler);
@@ -123,10 +142,13 @@ class UI {
             event_div.innerHTML = e.name;
         }
         event_div.addEventListener("click", () => {
+            if(this.is_ex_paused())
+                return ;
             if(this.kernel.selectedEvent === e.id){
                 this.kernel.selectEvent(-1);
                 // this.start_timer();
-                this.toggle_timer();
+                // this.toggle_timer();
+                this.start_timer();
             }
             else {
                 this.end_timer();
@@ -160,13 +182,16 @@ class UI {
     }
     createProcess() {
         // this.kernel.selectEvent(0);
-        this.kernel.createProcess();
+        const res = this.kernel.createProcess();
         this.display_all();
+        return res;
     }
     display_clock() {
         let clock = document.getElementById("clock");
         let clock_span = document.getElementById("clock_val");
         clock_span.innerHTML = this.kernel.clock.toString();
+        if(this.is_ex_paused())
+            clock_span.innerHTML += " (Paused)";
     }
     display_processes() {
         // clear all pools
@@ -206,33 +231,45 @@ class UI {
     }
 
     display_log() {
+
         let log = document.getElementById("log");
-        for (let index = log.childElementCount; index < this.kernel.log.records.length; index++) {
+        log.innerHTML = "";
+        for (let index = 0; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
             let p = document.createElement("li");
             p.innerText = element;
             log.appendChild(p);
-            console.log("Adding log ",element );
+            // console.log("Adding log ",element );
         }
-        console.log(log.childElementCount);
+        // console.log(log.childElementCount);
 
     }
 
     display_all(){
+        localStorage.setItem('data', JSON.stringify(this.kernel.getData()));
         this.display_clock();
         this.display_processes();
         this.display_events();
         this.display_log();
         this.update_accordion();
+        if(this.kernel.selectedEvent !== -1 && 
+            this.kernel.events[this.kernel.selectedEvent].name === "Process Request")
+            document.getElementById("create_process").style.visibility = "visible";
+        else
+            document.getElementById("create_process").style.visibility = "hidden";
         // this.console_display();
     }
 
     initialize_events() {
 
         let process_drop_handler = (event) => {
+            if(this.is_ex_paused())
+                return ;
             event.preventDefault();
             const data = event.dataTransfer.getData("text/plain");
             console.log(data);
+
+            console.log("Process Drop Handler");
 
             let bin = event.target.parentNode.id;
             let dropped_pid = +data.split("s")[2]; // Split data = ["proce", "", "<id>"]
@@ -244,14 +281,34 @@ class UI {
             this.display_all();
         }
 
-        let process_dragover_handler = (event: DragEvent) => {
-            event.preventDefault();
-            event.dataTransfer.dropEffect = "move";
+        // let process_dragstart_handler = (event) => {
+        //     this.end_timer();
+        //     this.display_all();
+        // }
 
-            if (this.kernel.selectedEvent === -1)
-                this.end_timer();
+        // let process_dragend_handler = (event) => {
+        //     this.start_timer();
+        //     this.display_all();
+        // }
+
+        let process_dragover_handler = (event: DragEvent) => {
+            if(this.is_ex_paused())
+                return ;
+            event.preventDefault();
+            // event.dataTransfer.dropEffect = "move";
+
+            console.log("Drag Over");
+
+            // if (this.kernel.selectedEvent === -1)
+            //     this.end_timer();
 
         }
+
+        // document.querySelectorAll('.process').forEach((element) => {
+        //     element.addEventListener("dragstart", process_dragstart_handler);
+        //     element.addEventListener("dragend", process_dragend_handler);
+        // })
+
 
         this.ready_pool.addEventListener("dragover", process_dragover_handler);
         this.io_pool.addEventListener("dragover", process_dragover_handler);
@@ -271,29 +328,53 @@ class UI {
                 });
             });
 
-        let start_button_handler = () => {
-            this.toggle_timer();
+        // let start_button_handler = () => {
+        //     this.toggle_timer();
 
-            // let button_text = document.getElementById("start").childNodes[0].nodeValue;
-            if (!this.timer_paused) {
-                document.getElementById("start")
-                    .childNodes[0].nodeValue = "Pause";
+        //     // let button_text = document.getElementById("start").childNodes[0].nodeValue;
+        //     if (!this.timer_paused) {
+        //         document.getElementById("start")
+        //             .childNodes[0].nodeValue = "Pause";
 
+        //     }
+        //     else {
+        //         document.getElementById("start")
+        //             .childNodes[0].nodeValue = "Start";
+        //     }
+
+        // };
+        let pause_driver = new Driver({
+            animate: true,
+            allowClose: false,
+            overlayClickNext: false,
+            padding: 0,
+        });
+
+        let start_button_handler = (event) => {
+            const val = event.target.childNodes[0].nodeValue;
+            if(val === "Start"){
+                event.target.childNodes[0].nodeValue = "Pause";
+                this.display_all();
+                this.start_timer();
+                // pause_driver.reset();
             }
             else {
-                document.getElementById("start")
-                    .childNodes[0].nodeValue = "Start";
+                event.target.childNodes[0].nodeValue = "Start";
+                this.display_all();
+                this.end_timer();
+                //pause_driver.highlight("#start");
             }
-
-        };
+        }
 
         let reset_button_handler = () => {
-            start_button_handler(); // XXX: Pass instance of the appropriate Event Type
+            // start_button_handler(); // XXX: Pass instance of the appropriate Event Type
             // The start_button_handler starts the timer, so keep the stop_timer logic after it.
 
             this.kernel.reset();
             this.timer_paused = false;
-            this.toggle_timer();
+            document.getElementById("start").childNodes[0].nodeValue = "Start";
+            // this.toggle_timer();
+            this.end_timer();
             this.display_all();
         };
 
@@ -303,10 +384,16 @@ class UI {
 
 
         document.getElementById("create_process").addEventListener("click", () => {
+            if(this.is_ex_paused())
+                return ;
             // ui.kernel.events[ui.kernel.selectedEvent].do
-            this.createProcess();
-            this.timer_paused = true;
-            this.toggle_timer();
+            const res: IResponce = this.createProcess();
+            if(res.status === "OK"){
+                this.timer_paused = true;
+                // this.toggle_timer();
+                this.display_all();
+                this.start_timer();
+            }
         });
 
         document.getElementById("reset")

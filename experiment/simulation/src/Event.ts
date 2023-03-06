@@ -55,4 +55,5 @@ export class Event implements IEvent{
         this.type = type;
         this.state = state;
     }
+    
 }

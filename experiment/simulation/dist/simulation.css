@@ -148,7 +148,6 @@ html, body, main {
     padding-left: 5px;
     padding-bottom: 10px;
 
-
     gap: 3%;
     /* flex-flow: column wrap; */
 
@@ -162,6 +161,17 @@ html, body, main {
     /* padding-left: 5px; */
     /* padding-bottom: 10px; */
 
+}
+
+#all_events {
+    overflow-y: scroll;
+    height: 85%;
+    width: 95%;
+    display: flex;
+    /* flex-grow: false; */
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .event_queue_head {
@@ -192,7 +202,8 @@ html, body, main {
     height: auto;
     width: fit-content;
     min-width: 50%;
-
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     /* padding-left:10px; */
     /* padding-right:10px; */
     /* padding-top:10px; */
@@ -357,12 +368,12 @@ html, body, main {
     height: 5%;
     width: 95%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 10%;
     /* border: 0.25vw solid #97d23d; */
     /* border-radius: 0.25vw; */
-    font-size:xx-large;
+    font-size:x-large;
     margin-bottom: 5%;
     /* margin-right: auto; */
 }
