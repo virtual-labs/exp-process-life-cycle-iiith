@@ -63,19 +63,21 @@ export class Kernel  {
         else if(bin === config.READY){
             if(pid === this.currentProcess){
                 this.prempt();
-            }
-            else {
+            } else {
                 return this.moveToReady(pid); // checked
-            // }
+                // }
+            }
         }
         else if(bin === config.CPU){
-            return this.runProcess(pid);  
+            return this.runProcess(pid);
         }
+
         else
             return {
                 status: config.ERROR,
                 message: "The bin you have chosen is invalid."
             }
+
     }
 
     generate_event() {
