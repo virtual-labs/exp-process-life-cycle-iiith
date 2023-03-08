@@ -262,7 +262,7 @@ class UI {
                     action = `moveProcess(${e.pid}, ${config.READY})`;
                 else if(e.name === config.TERMINATE)
                     action = `moveProcess(${e.pid}, ${config.COMPLETED})`
-                html += `<tr><td>${e.time}</td><td>${e.name}</td>
+                html += `<tr><td>${e.time}</td><td>${e.name}(${e.pid})</td>
                 <td>${element.responce_time}</td><td>${action}</td></tr>`;
             }
         }
