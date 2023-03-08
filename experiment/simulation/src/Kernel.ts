@@ -99,7 +99,8 @@ export class Kernel  {
             }
         }
         // creating new process
-        const pid = this.processes.length;
+        // const pid = this.processes.length;
+        const pid = this.events[this.selectedEvent].pid;
         const process = new Process(pid);
         this.processes.push(process);
 
@@ -400,7 +401,7 @@ export class Kernel  {
             // console.log("Hello Eswar");
             // console.log(this.processes.length, this.processCreations);
             id = this.events.length;
-            const new_process_event = new Event(id, config.REQUESTPROC, this.clock, -1, config.EXTERNAL);
+            const new_process_event = new Event(id, config.REQUESTPROC, this.clock, this.processCreations, config.EXTERNAL);
             possible_events.push(new_process_event);
         }
 

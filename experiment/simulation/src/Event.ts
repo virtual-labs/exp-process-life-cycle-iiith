@@ -77,7 +77,7 @@ export class Event implements IEvent{
         name.classList.add('center');
 
         let pid = document.createElement('p');
-        pid.innerText = `pid: ${this.pid}`;
+        pid.innerHTML = `P<sub>id</sub>: ${this.pid}`;
         pid.classList.add("event_pid");
         pid.classList.add("center");
 
