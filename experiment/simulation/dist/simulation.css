@@ -207,14 +207,14 @@ html, body, main {
 
 .event {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 3fr 3fr;
     grid-template-rows: 1fr 1fr;
     background-color: #81d3f9;
     color: white;
     cursor: pointer;
     font-weight: bold;
-    width: 80%;
-    border-radius: 5%;
+    width: 90%;
+    border-radius: 15px;
     transition-duration: 0.1s;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -232,20 +232,33 @@ html, body, main {
 
 .event_name {
     grid-area: event_name;
+    font-size: 1.2em;
 }
 
 .event_type {
     grid-area: event_type;
-    font-size: 2em;
-    border-right: solid black;
+    font-size: 1.5em;
+    border-right: solid white;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.event_type:hover {
+    background-color: #8197F9;
+    color: white;
+    border-left: solid #8197F9;
+    border-top: solid #8197F9;
+    border-bottom: solid #8197F9;
 }
 
 .event_time {
     grid-area: event_time;
+    font-size: 1em;
 }
 
 .event_pid {
     grid-area: event_pid;
+    font-size: 1em;
 }
 
 /* .event {
@@ -268,13 +281,11 @@ html, body, main {
     border-radius: 15px;
     transition-duration: 0.1s;
 
-}
+}*/
 .event:hover {
     background-color: #8197F9;
     color: white;
-    /* border: solid #ab47bc; */
-    /* border: solid #F981D3; */
-    border: solid #8197F9;
+    /* border: solid #8197F9; */
 
     /* box-shadow: */
     /*     0 2.8px 2.2px rgba(0, 0, 0, 0.034), */
@@ -286,11 +297,11 @@ html, body, main {
     /* ; */
 
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-} */
+}
 
 .selected {
-    background-color: #F981D3;
-    /* background-color: #8197F9; */
+    /* background-color: #F981D3; */
+    background-color: #c108a2;
 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* box-shadow: */
@@ -307,8 +318,10 @@ html, body, main {
 }
 
 .selected:hover {
-    background-color: #F981D3;
-    border: solid #F981D3;
+    /* background-color: #F981D3; */
+    background-color: #c108a2;
+
+    /* border: solid #F981D3; */
     color: white;
 
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
@@ -321,7 +334,6 @@ html, body, main {
         0 41.8px 33.4px rgba(0, 0, 0, 0.086),
         0 100px 80px rgba(0, 0, 0, 0.12)
     ;
-
 
 }
 

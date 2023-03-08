@@ -58,12 +58,15 @@ export class Event implements IEvent{
         this.state = state;
     }
     createElement(){
+        console.log(`event: name ${this.name}`);
         let e_type = document.createElement('p');
         if(this.type === config.EXTERNAL){
             e_type.innerText = 'E';
+            e_type.style.backgroundColor = "#0ec8b4";
         }
         else {
             e_type.innerText = 'P';
+            e_type.style.backgroundColor = "#1128ee";
         }
         e_type.classList.add("event_type");
         e_type.classList.add("center");
