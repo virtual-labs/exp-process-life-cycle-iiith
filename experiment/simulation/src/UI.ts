@@ -133,15 +133,16 @@ class UI {
         if(e.state === config.DONE || e.state === config.KILLED)
             return;
         let events = document.getElementById("all_events");
-        let event_div = document.createElement("div");
-        event_div.classList.add("event");
-        event_div.id = "Event"+e.id.toString();
-        if(e.name === config.IONEEDED || e.name === config.IODONE || e.name === config.TERMINATE){
-            event_div.innerHTML = e.name + " " + e.pid.toString();
-        }
-        else {
-            event_div.innerHTML = e.name;
-        }
+        // let event_div = document.createElement("div");
+        // event_div.classList.add("event");
+        // event_div.id = "Event"+e.id.toString();
+        let event_div = e.createElement();
+        // if(e.name === config.IONEEDED || e.name === config.IODONE || e.name === config.TERMINATE){
+        //     event_div.innerHTML = e.name + " " + e.pid.toString();
+        // }
+        // else {
+        //     event_div.innerHTML = e.name;
+        // }
         event_div.addEventListener("click", () => {
             if(this.is_ex_paused())
                 return ;

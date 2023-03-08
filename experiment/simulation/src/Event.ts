@@ -57,5 +57,39 @@ export class Event implements IEvent{
         this.type = type;
         this.state = state;
     }
-    
+    createElement(){
+        let e_type = document.createElement('p');
+        if(this.type === config.EXTERNAL){
+            e_type.innerText = 'E';
+        }
+        else {
+            e_type.innerText = 'P';
+        }
+        e_type.classList.add("event_type");
+        e_type.classList.add("center");
+
+        let name = document.createElement('p');
+        name.innerText = this.name;
+        name.classList.add('event_name');
+        name.classList.add('center');
+
+        let pid = document.createElement('p');
+        pid.innerText = `pid: ${this.pid}`;
+        pid.classList.add("event_pid");
+        pid.classList.add("center");
+
+        let time = document.createElement('p');
+        time.innerText = `time: ${this.time}`;
+        time.classList.add("event_time");
+        time.classList.add("center");
+
+        let e_main = document.createElement('div');
+        e_main.classList.add("event");
+        e_main.appendChild(e_type);
+        e_main.appendChild(name);
+        e_main.appendChild(pid);
+        e_main.appendChild(time)
+
+        return e_main;
+    }
 }
