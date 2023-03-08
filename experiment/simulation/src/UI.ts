@@ -258,7 +258,7 @@ class UI {
         this.display_log();
         this.update_accordion();
         if(this.kernel.selectedEvent !== -1 && 
-            this.kernel.events[this.kernel.selectedEvent].name === "Process Request")
+            this.kernel.events[this.kernel.selectedEvent].name === config.REQUESTPROC)
             document.getElementById("create_process").style.visibility = "visible";
         else
             document.getElementById("create_process").style.visibility = "hidden";
