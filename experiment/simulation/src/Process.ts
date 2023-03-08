@@ -21,8 +21,8 @@ export class Process implements IProcess {
     constructor(pid: number = 0) {
         this.pid = pid;
         this.name = "P" + String(pid);
-        this.state = "READY";
-        this.history = ["NEW"];
+        this.state = config.INFANT;
+        this.history = [];
     }
 
     getData(): IProcess {
@@ -40,6 +40,10 @@ export class Process implements IProcess {
         this.name = name;
         this.state = state;
         this.history = history;
+    }
+
+    create() {
+        this.state = config.READY;
     }
 
     run() {

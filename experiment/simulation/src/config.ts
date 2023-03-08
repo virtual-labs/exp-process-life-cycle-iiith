@@ -18,6 +18,7 @@ export const TERMINATED = "TERMINATED";
 export const BLOCKED = "BLOCKED";
 export const RUNNING = "RUNNING";
 export const READY = "READY";
+export const INFANT = "INFANT";
 
 //Events
 export const REQUESTPROC = "New Process Request";

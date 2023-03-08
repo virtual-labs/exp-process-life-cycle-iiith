@@ -35,6 +35,10 @@ export class Kernel  {
 
     reset() {
         this.processes = [];
+        for (let index = 0; index < config.MAXPROCESSES; index++) {
+            const element = new Process(index);
+            this.processes.push(element);
+        }
         this.currentProcess = -1;
         this.processCreations = 0;
         this.events = [];
@@ -101,8 +105,10 @@ export class Kernel  {
         // creating new process
         // const pid = this.processes.length;
         const pid = this.events[this.selectedEvent].pid;
-        const process = new Process(pid);
-        this.processes.push(process);
+        // const process = new Process(pid);
+        // this.processes.push(process);
+
+        this.processes[pid].create();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         this.selectedEvent = -1;
