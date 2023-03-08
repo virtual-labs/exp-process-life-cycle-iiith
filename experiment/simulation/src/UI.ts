@@ -103,8 +103,7 @@ class UI {
             // console.log(event.target.id);
 
             if (this.kernel.selectedEvent === -1)
-            //     this.toggle_timer();
-            this.end_timer();
+                this.end_timer();
             console.log("hello" + this.kernel.selectedEvent);
             event.dataTransfer.dropEffect = "move";
             event.dataTransfer.setData("text/plain", event.target.id);
