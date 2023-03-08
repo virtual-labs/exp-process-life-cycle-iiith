@@ -61,12 +61,12 @@ export class Kernel  {
             return this.moveToIO(pid);  // checked
         }
         else if(bin === config.READY){
-            if(pid === this.currentProcess){
-                this.prempt();
-            } else {
+            // if(pid === this.currentProcess){
+            //     this.prempt();
+            // } else {
                 return this.moveToReady(pid); // checked
                 // }
-            }
+            // }
         }
         else if(bin === config.CPU){
             return this.runProcess(pid);
