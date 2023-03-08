@@ -21,7 +21,7 @@ export const READY = "READY";
 export const INFANT = "INFANT";
 
 //Events
-export const REQUESTPROC = "New Process Request";
-export const IONEEDED = "IONEEDED";
-export const IODONE = "IODONE";
-export const TERMINATE = "Terminate";
+export const REQUESTPROC = "Request to Create Process";
+export const IONEEDED = "Request for IO";
+export const IODONE = "Requect to Collect IO";
+export const TERMINATE = "Request to Terminate";
