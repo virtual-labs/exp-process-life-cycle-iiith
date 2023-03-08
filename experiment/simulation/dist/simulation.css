@@ -92,6 +92,15 @@ html, body, main {
     gap: 10%;
     align-items: center;
     flex-wrap: wrap;
+
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+
+}
+
+.queue_body::-webkit-scrollbar {
+    display: none;
 }
 
 #cpu .queue_body {
@@ -167,7 +176,6 @@ html, body, main {
 }
 
 #all_events {
-    overflow-y: scroll;
     height: 85%;
     width: 95%;
     display: flex;
@@ -176,6 +184,7 @@ html, body, main {
     /* justify-content: center; */
     align-items: center;
 
+    overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
 }
