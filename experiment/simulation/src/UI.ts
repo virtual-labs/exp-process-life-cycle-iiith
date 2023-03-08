@@ -26,6 +26,9 @@ class UI {
         // this.start_timer();
         this.timer_paused = true;
 
+        if(this.kernel.clock > 0) 
+            document.getElementById('start').childNodes[0].textContent = "Resume";
+
         this.ready_pool = document.querySelector('#READY .queue_body');
         this.io_pool = document.querySelector('#IO .queue_body');
         this.cpu = document.querySelector('#CPU .queue_body');
@@ -42,7 +45,7 @@ class UI {
     }
 
     is_ex_paused(){
-        return document.getElementById("start").childNodes[0].nodeValue === "Start";
+        return document.getElementById("start").childNodes[0].nodeValue !== "Pause";
     }
 
     start_timer() {
@@ -197,7 +200,7 @@ class UI {
         let clock = document.getElementById("clock");
         let clock_span = document.getElementById("clock_val");
         clock_span.innerHTML = this.kernel.clock.toString();
-        if(this.is_ex_paused())
+        if(this.kernel.clock !== 0 && this.is_ex_paused())
             clock_span.innerHTML += " (Paused)";
     }
     display_processes() {
@@ -391,14 +394,14 @@ class UI {
 
         let start_button_handler = (event) => {
             const val = event.target.childNodes[0].nodeValue;
-            if(val === "Start"){
+            if(val === "Start" || val === "Resume"){
                 event.target.childNodes[0].nodeValue = "Pause";
                 this.display_all();
                 this.start_timer();
                 // pause_driver.reset();
             }
             else {
-                event.target.childNodes[0].nodeValue = "Start";
+                event.target.childNodes[0].nodeValue = "Resume";
                 this.display_all();
                 this.end_timer();
                 //pause_driver.highlight("#start");
