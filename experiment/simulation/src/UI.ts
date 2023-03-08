@@ -242,16 +242,31 @@ class UI {
     }
 
     display_log() {
-
         let log = document.getElementById("log");
-        log.innerHTML = "";
+        let html = `<thead><tr><th>Event time</th><th>Event</th>
+        <th>Responce time</th><th>Action</th></tr></thead><tbody>`;
         for (let index = 0; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
-            let p = document.createElement("li");
-            p.innerText = element;
-            log.appendChild(p);
-            // console.log("Adding log ",element );
+            let action = "";
+            if(element.event < 0) {
+                html += `<tr><td>NA</td><td>NA</td>
+                <td>${element.responce_time}</td><td>moveProcess(${-element.event}, CPU)</td></tr>`;
+            }
+            else {
+                const e = this.kernel.events[element.event];
+                if(e.name === config.REQUESTPROC)
+                    action = `createProcess(${e.pid})`;
+                else if(e.name === config.IONEEDED)
+                    action = `moveProcess(${e.pid}, ${config.IO})`;
+                else if(e.name === config.IODONE)
+                    action = `moveProcess(${e.pid}, ${config.READY})`;
+                else if(e.name === config.TERMINATE)
+                    action = `moveProcess(${e.pid}, ${config.COMPLETED})`
+                html += `<tr><td>${e.time}</td><td>${e.name}</td>
+                <td>${element.responce_time}</td><td>${action}</td></tr>`;
+            }
         }
+        log.innerHTML = html + `</tbody>`;
         // console.log(log.childElementCount);
 
     }

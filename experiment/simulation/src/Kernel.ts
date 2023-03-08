@@ -1,5 +1,5 @@
 import { Process, IProcess } from "./Process";
-import { Log } from "./Log";
+import { Log, ILog } from "./Log";
 import { Event, IEvent } from "./Event";
 import { getRandomInt, getRandomElement } from "./helper_functions";
 import * as config from "./config"
@@ -9,7 +9,7 @@ export interface IKernel {
     currentProcess: number;
     processCreations : number;
     events: IEvent [];
-    log : string [];
+    log : ILog;
     clock: number;
     selectedEvent: number;
 }
@@ -111,9 +111,9 @@ export class Kernel  {
         this.processes[pid].create();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
-        this.selectedEvent = -1;
         const message = `Created Process ${pid} at ${this.clock}`;
-        this.log.addRecord(message);
+        this.log.addRecord(this.selectedEvent, this.clock);
+        this.selectedEvent = -1;
         return {
             status : config.OK,
             message
@@ -133,7 +133,7 @@ export class Kernel  {
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
         if(isUser === true) {
-            this.log.addRecord(message);
+            // this.log.addRecord(message);
         }
         return {
             status: config.OK,
@@ -171,7 +171,7 @@ export class Kernel  {
         this.currentProcess = id;
         
         const message = `Process ${id} is moved from ready queue to the CPU.`;
-        this.log.addRecord(message);
+        this.log.addRecord(-id, this.clock);
         return {
             status: config.OK,
             message
@@ -194,10 +194,10 @@ export class Kernel  {
         this.processes[this.currentProcess].ready();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
-        this.selectedEvent = -1;
 
         const message = `Moved Process ${this.currentProcess} from CPU to Ready Pool ${this.clock}.`;
-        this.log.addRecord(message);
+        // this.log.addRecord(message);
+        this.selectedEvent = -1;
         this.currentProcess = -1;
         return {
             status : config.OK,
@@ -241,13 +241,13 @@ export class Kernel  {
             }
         }
 
-        this.selectedEvent = -1;
-
         if(pid === this.currentProcess) {
             this.currentProcess = -1;
         }
         const message = `Terminated Process ${pid} at ${this.clock}.`;
-        this.log.addRecord(message);
+        this.log.addRecord(this.selectedEvent, this.clock);
+
+        this.selectedEvent = -1;
         return {
             status : config.OK,
             message
@@ -283,11 +283,11 @@ export class Kernel  {
         this.processes[this.currentProcess].moveToIO();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
-        this.selectedEvent = -1;
 
         this.currentProcess = -1;
         const message = `Moved Process ${pid} to IO Pool at ${this.clock}.`;
-        this.log.addRecord(message);
+        this.log.addRecord(this.selectedEvent, this.clock);
+        this.selectedEvent = -1;
         return {
             status : config.OK,
             message
@@ -323,10 +323,11 @@ export class Kernel  {
         this.processes[pid].ready();
 
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
-        this.selectedEvent = -1;
 
         const message = `Moved Process ${pid} from IO Pool to Ready Pool ${this.clock}.`;
-        this.log.addRecord(message);
+        this.log.addRecord(this.selectedEvent, this.clock);
+        this.selectedEvent = -1;
+
         return {
             status : config.OK,
             message
@@ -353,7 +354,7 @@ export class Kernel  {
         return {
             processes, currentProcess: this.currentProcess, 
             processCreations: this.processCreations, clock: this.clock, events,
-            log: this.log.records, selectedEvent: this.selectedEvent};
+            log: {"records" :this.log.records}, selectedEvent: this.selectedEvent};
     }
     setData(data: IKernel) {
         const {processes, currentProcess, processCreations, clock, events, log} = data;
@@ -373,7 +374,8 @@ export class Kernel  {
             e.setData(element);
             this.events.push(e);
         }
-        this.log.records = log;
+        this.log = new Log();
+        this.log.records = log.records;
         this.currentProcess = currentProcess;
         this.processCreations = processCreations;
         this.clock = clock;

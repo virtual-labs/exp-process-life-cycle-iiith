@@ -534,3 +534,31 @@ html, body, main {
 .driver-fix-stacking {
     position: unset !important;
 }
+
+#log table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid purple;
+  }
+  
+
+
+#log td, #log th {
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+}
+
+#log thead {
+    background-color: #0E8847;
+}
+
+#log tbody tr:nth-child(odd) {
+    background-color: #ff33cc;
+  }
+  
+#log tbody tr:nth-child(even) {
+    background-color: #e495e4;
+}
