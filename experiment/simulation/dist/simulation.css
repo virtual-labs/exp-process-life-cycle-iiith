@@ -6,8 +6,8 @@ html, body, main {
 }
 #instruction {
     height: 10%;
-    width: 100%;
-    margin: 0px;
+    width: 80%;
+    margin: 0px 10% 0px 10%;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -16,6 +16,9 @@ html, body, main {
     padding-left: 20px;
     padding-right: 20px;
 }
+/* #instruction p {
+    width: 80%;
+} */
 .exp {
     height: 70%;
     width: 100%;

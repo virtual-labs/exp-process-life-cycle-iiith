@@ -286,6 +286,17 @@ class UI {
         // this.console_display();
     }
 
+    showDialog(message: string) {
+        const dialogBox = document.createElement("p");
+        dialogBox.textContent = message;
+        const inst = document.getElementById("instruction");
+        inst.innerHTML = "";
+        inst.appendChild(dialogBox);
+        setTimeout(() => {
+          inst.removeChild(dialogBox);
+        }, 10000);
+    }
+
     initialize_events() {
 
         let process_drop_handler = (event) => {
@@ -302,8 +313,10 @@ class UI {
             let dropped_process = this.kernel.processes[dropped_pid];
 
             let response = this.kernel.moveProcess(dropped_pid, bin);
-            if (response.status === config.ERROR)
-                alert("Error: " + response.message);
+            if (response.status === config.ERROR){
+                // alert("Error: " + response.message);
+                this.showDialog(response.message);
+            }
             this.display_all();
         }
 
@@ -419,6 +432,9 @@ class UI {
                 // this.toggle_timer();
                 this.display_all();
                 this.start_timer();
+            }
+            else {
+                this.showDialog(res.message);
             }
         });
 
