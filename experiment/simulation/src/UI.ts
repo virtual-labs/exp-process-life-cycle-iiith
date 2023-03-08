@@ -205,13 +205,17 @@ class UI {
             let p = this.kernel.processes[i];
             if(p.state === config.READY)
                 this.add_to_pool(p, this.ready_pool);
-            else if(p.state === config.CPU)
+            else if(p.state === config.RUNNING)
                 this.add_to_pool(p, this.cpu);
             else if(p.state === config.BLOCKED)
                 this.add_to_pool(p, this.io_pool);
             else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
+        console.log(this.kernel.processes);
+        // console.log(config.cpu)
+        // console.log(this.cpu);
+        console.log(this.kernel.getData());
     }
     display_events() {
         // remove all events
