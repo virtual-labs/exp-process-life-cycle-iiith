@@ -1,3 +1,5 @@
+import * as config from "./config"
+
 export interface IEvent {
     name: string;
     pid: number | null;
@@ -18,21 +20,21 @@ export class Event implements IEvent{
     state: string;
     
 
-    constructor(id: number = -1, name: string = "", time: number = -1, p: number = -1, type: string = "EXTERNAL") {
+    constructor(id: number = -1, name: string = "", time: number = -1, p: number = -1, type: string = config.EXTERNAL) {
         this.name = name;
         this.pid = p;
         this.time = time;
         this.id = id;
         this.type = type;
-        this.state = "ACTIVE";
+        this.state = config.ACTIVE;
     }
     setResponceId(rid: number) {
         this.responceId = rid;
-        this.state = "DONE";
+        this.state = config.DONE;
     }
     killed(rid: number) {
         this.responceId = rid;
-        this.state = "KILLED";
+        this.state = config.KILLED;
     }
     getData(): IEvent {
         return {
