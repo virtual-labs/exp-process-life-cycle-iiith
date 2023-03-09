@@ -82,7 +82,7 @@ export class Event implements IEvent{
         pid.classList.add("center");
 
         let time = document.createElement('p');
-        time.innerText = `time: ${this.time}`;
+        time.innerHTML = `t<sub>e</sub>: ${this.time}`;
         time.classList.add("event_time");
         time.classList.add("center");
 
