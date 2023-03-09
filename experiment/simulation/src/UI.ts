@@ -454,7 +454,7 @@ class UI {
     initialize_accordion() {
 
         let log = <HTMLElement> document.getElementById("observations_button");
-        let observations = log.nextElementSibling;
+        let observations = <HTMLElement> log.nextElementSibling;
         log.classList.toggle("active");
         observations.style.display = "flex";
         observations.style.flexDirection = "column";
