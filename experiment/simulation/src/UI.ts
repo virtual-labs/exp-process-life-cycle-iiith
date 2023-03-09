@@ -246,8 +246,8 @@ class UI {
 
     display_log() {
         let log = document.getElementById("log");
-        let html = `<thead><tr><th>Event time</th><th>Event</th>
-        <th>Responce time</th><th>Action</th></tr></thead><tbody>`;
+        let html = `<thead><tr><th>t<sub>e</sub></th><th>Event</th>
+        <th>t<sub>r</sub></th><th>Action</th></tr></thead><tbody>`;
         for (let index = 0; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
             let action = "";
@@ -453,7 +453,9 @@ class UI {
 
     initialize_accordion() {
 
-        let observations = <HTMLElement> document.getElementById("observations_button").nextElementSibling;
+        let log = <HTMLElement> document.getElementById("observations_button");
+        let observations = log.nextElementSibling;
+        log.classList.toggle("active");
         observations.style.display = "flex";
         observations.style.flexDirection = "column";
         observations.style.overflow = "scroll";
@@ -511,10 +513,10 @@ class UI {
                 this.descriptions.get("IO"),
                 this.descriptions.get("COMPLETED"),
 
-                this.imperatives.get("handling_events"),
-                this.imperatives.get("handling_events_req_process_1"),
-                this.imperatives.get("handling_events_req_process_2"),
-                this.imperatives.get("handling_events_req_process_3"),
+                // this.imperatives.get("handling_events"),
+                // this.imperatives.get("handling_events_req_process_1"),
+                // this.imperatives.get("handling_events_req_process_2"),
+                // this.imperatives.get("handling_events_req_process_3"),
 
             ];
 

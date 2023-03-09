@@ -475,7 +475,9 @@ html, body, main {
 
 .accordion {
   background-color: #eee;
+
   color: #444;
+  /* color: white; */
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -497,17 +499,20 @@ html, body, main {
 }
 
 .active, .accordion:hover {
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: #880e4f;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
   display: flex;
   /* overflow: scroll; */
-  display: block;
+  /* display: block; */
   /* visibility: visible; */
 }
 
 .panel {
   padding: 0 18px;
   background-color: white;
-  display: none;
+  /* display: none; */
   /* transition-duration: 0.4s; */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;
@@ -542,26 +547,34 @@ html, body, main {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
   }
   
 
 
 #log td, #log th {
-    color: white;
+    /* color: white; */
     font-size: small;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
 }
 
 #log thead {
-    background-color: #0E8847;
+    /* background-color: #0E8847; */
+    color: white;
 }
 
 #log tbody tr:nth-child(odd) {
-    background-color: #ff33cc;
+    /* background-color: #ff33cc; */
+    background-color: #ccc;
+    /* color: black; */
+
+    color: #444;
   }
   
 #log tbody tr:nth-child(even) {
-    background-color: #e495e4;
+    /* background-color: #e495e4; */
+    background-color: #eee;
+    /* color: black; */
+    color: #444;
 }
