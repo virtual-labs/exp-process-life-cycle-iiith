@@ -1,3 +1,5 @@
+import * as config from "./config"
+
 interface IOTime {
     start_time: number
     ticks: number
@@ -19,8 +21,8 @@ export class Process implements IProcess {
     constructor(pid: number = 0) {
         this.pid = pid;
         this.name = "P" + String(pid);
-        this.state = "READY";
-        this.history = ["NEW"];
+        this.state = config.INFANT;
+        this.history = [];
     }
 
     getData(): IProcess {
@@ -40,23 +42,27 @@ export class Process implements IProcess {
         this.history = history;
     }
 
+    create() {
+        this.state = config.READY;
+    }
+
     run() {
-        this.state = "RUNNING";
+        this.state = config.RUNNING;
         this.history.push(this.state);
     }
 
     ready() {
-        this.state = "READY";
+        this.state = config.READY;
         this.history.push(this.state);
     }
 
     moveToIO() {
-        this.state = "BLOCKED";
+        this.state = config.BLOCKED;
         this.history.push(this.state);
     }
 
     terminate() {
-        this.state = "TERMINATED";
+        this.state = config.TERMINATED;
         this.history.push(this.state);
     }
     

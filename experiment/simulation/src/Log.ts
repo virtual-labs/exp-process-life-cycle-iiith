@@ -1,11 +1,20 @@
+export interface IAction {
+  event: number;
+  responce_time: number;
+}
+
+export interface ILog {
+  records: IAction[];
+}
+
 export class Log {
-  records: string[];
+  records: IAction[];
 
   constructor() {
     this.records = [];
   }
 
-  addRecord(record: string) {
-    this.records.push(record);
+  addRecord(event: number, responce_time: number) {
+    this.records.push({event, responce_time});
   }
 }

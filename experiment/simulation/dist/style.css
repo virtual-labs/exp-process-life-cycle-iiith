@@ -1,4 +1,4 @@
-.instructions-box {
+/* .instructions-box {
     max-height: 70px;
     overflow: hidden;
     transition: all .5s ease;
@@ -6,7 +6,7 @@
 
 .instructions-box.expand {
     max-height: 400px;
-}
+} */
 
 .v-instruction-container {
     border:.2rem solid #97d23d;
@@ -118,10 +118,10 @@ button {
     color: white;
 }
 
-#instruction {
+/* #instruction {
     border-radius: 10px;
     border:.2rem solid black;
-}
+} */
 
 .primary_button {
     background-color: #6200EE;
