@@ -1,6 +1,7 @@
 import { Event } from "./Event";
 import { IResponce, Kernel } from "./Kernel";
 import { Process } from "./Process";
+import * as config from "./config"
 import Driver from "driver.js"
 
 export { UI };
@@ -25,6 +26,9 @@ class UI {
         // this.start_timer();
         this.timer_paused = true;
 
+        if(this.kernel.clock > 0) 
+            document.getElementById('start').childNodes[0].textContent = "Resume";
+
         this.ready_pool = document.querySelector('#READY .queue_body');
         this.io_pool = document.querySelector('#IO .queue_body');
         this.cpu = document.querySelector('#CPU .queue_body');
@@ -41,7 +45,7 @@ class UI {
     }
 
     is_ex_paused(){
-        return document.getElementById("start").childNodes[0].nodeValue === "Start";
+        return document.getElementById("start").childNodes[0].nodeValue !== "Pause";
     }
 
     start_timer() {
@@ -102,8 +106,7 @@ class UI {
             // console.log(event.target.id);
 
             if (this.kernel.selectedEvent === -1)
-            //     this.toggle_timer();
-            this.end_timer();
+                this.end_timer();
             console.log("hello" + this.kernel.selectedEvent);
             event.dataTransfer.dropEffect = "move";
             event.dataTransfer.setData("text/plain", event.target.id);
@@ -129,18 +132,25 @@ class UI {
         pool.appendChild(process_div);
     }
     add_to_events_queue(e: Event) {
-        if(e.state === "DONE" || e.state === "KILLED")
+        if(e.state === config.DONE || e.state === config.KILLED)
             return;
         let events = document.getElementById("all_events");
-        let event_div = document.createElement("div");
-        event_div.classList.add("event");
+        let event_div = e.createElement();
+        // let event_div = document.createElement("div");
+        // event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
-        if(e.name === "IONEEDED" || e.name === "IODONE" || e.name === "Terminate"){ //XXX: Invariant: "Terminate" === TERMINATE in Kernel.ts
-            event_div.innerHTML = e.name + " " + e.pid.toString();
+        if(this.kernel.selectedEvent === e.id){
+            event_div.classList.add("selected");
         }
-        else {
-            event_div.innerHTML = e.name;
-        }
+        // if(e.name === config.IONEEDED || e.name === config.IODONE || e.name === config.TERMINATE){
+        //     event_div.innerHTML = e.name + " " + e.pid.toString();
+        // }
+        // else {
+        //     event_div.innerHTML = e.name;
+        // }
+        // event_div.onclick = () => {
+        //     console.log("Hello Akshay");
+        // }
         event_div.addEventListener("click", () => {
             if(this.is_ex_paused())
                 return ;
@@ -190,7 +200,7 @@ class UI {
         let clock = document.getElementById("clock");
         let clock_span = document.getElementById("clock_val");
         clock_span.innerHTML = this.kernel.clock.toString();
-        if(this.is_ex_paused())
+        if(this.kernel.clock !== 0 && this.is_ex_paused())
             clock_span.innerHTML += " (Paused)";
     }
     display_processes() {
@@ -202,15 +212,19 @@ class UI {
 
         for(let i=0; i<this.kernel.processes.length; i++){
             let p = this.kernel.processes[i];
-            if(p.state === "READY")
+            if(p.state === config.READY)
                 this.add_to_pool(p, this.ready_pool);
-            else if(p.state === "RUNNING")
+            else if(p.state === config.RUNNING)
                 this.add_to_pool(p, this.cpu);
-            else if(p.state === "BLOCKED")
+            else if(p.state === config.BLOCKED)
                 this.add_to_pool(p, this.io_pool);
-            else if(p.state === "TERMINATED")
+            else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
+        console.log(this.kernel.processes);
+        // console.log(config.cpu)
+        // console.log(this.cpu);
+        console.log(this.kernel.getData());
     }
     display_events() {
         // remove all events
@@ -231,16 +245,31 @@ class UI {
     }
 
     display_log() {
-
         let log = document.getElementById("log");
-        log.innerHTML = "";
+        let html = `<thead><tr><th>t<sub>e</sub></th><th>Event</th>
+        <th>t<sub>r</sub></th><th>Action</th></tr></thead><tbody>`;
         for (let index = 0; index < this.kernel.log.records.length; index++) {
             const element = this.kernel.log.records[index];
-            let p = document.createElement("li");
-            p.innerText = element;
-            log.appendChild(p);
-            // console.log("Adding log ",element );
+            let action = "";
+            if(element.event < 0) {
+                html += `<tr><td>NA</td><td>NA</td>
+                <td>${element.responce_time}</td><td>moveProcess(${-element.event}, CPU)</td></tr>`;
+            }
+            else {
+                const e = this.kernel.events[element.event];
+                if(e.name === config.REQUESTPROC)
+                    action = `createProcess(${e.pid})`;
+                else if(e.name === config.IONEEDED)
+                    action = `moveProcess(${e.pid}, ${config.IO})`;
+                else if(e.name === config.IODONE)
+                    action = `moveProcess(${e.pid}, ${config.READY})`;
+                else if(e.name === config.TERMINATE)
+                    action = `moveProcess(${e.pid}, ${config.COMPLETED})`
+                html += `<tr><td>${e.time}</td><td>${e.name}(${e.pid})</td>
+                <td>${element.responce_time}</td><td>${action}</td></tr>`;
+            }
         }
+        log.innerHTML = html + `</tbody>`;
         // console.log(log.childElementCount);
 
     }
@@ -253,11 +282,22 @@ class UI {
         this.display_log();
         this.update_accordion();
         if(this.kernel.selectedEvent !== -1 && 
-            this.kernel.events[this.kernel.selectedEvent].name === "Process Request")
+            this.kernel.events[this.kernel.selectedEvent].name === config.REQUESTPROC)
             document.getElementById("create_process").style.visibility = "visible";
         else
             document.getElementById("create_process").style.visibility = "hidden";
         // this.console_display();
+    }
+
+    showDialog(message: string) {
+        const dialogBox = document.createElement("p");
+        dialogBox.textContent = message;
+        const inst = document.getElementById("instruction");
+        inst.innerHTML = "";
+        inst.appendChild(dialogBox);
+        setTimeout(() => {
+          inst.removeChild(dialogBox);
+        }, 10000);
     }
 
     initialize_events() {
@@ -276,8 +316,10 @@ class UI {
             let dropped_process = this.kernel.processes[dropped_pid];
 
             let response = this.kernel.moveProcess(dropped_pid, bin);
-            if (response.status === "ERROR")
-                alert("Error: " + response.message);
+            if (response.status === config.ERROR){
+                // alert("Error: " + response.message);
+                this.showDialog(response.message);
+            }
             this.display_all();
         }
 
@@ -352,14 +394,14 @@ class UI {
 
         let start_button_handler = (event) => {
             const val = event.target.childNodes[0].nodeValue;
-            if(val === "Start"){
+            if(val === "Start" || val === "Resume"){
                 event.target.childNodes[0].nodeValue = "Pause";
                 this.display_all();
                 this.start_timer();
                 // pause_driver.reset();
             }
             else {
-                event.target.childNodes[0].nodeValue = "Start";
+                event.target.childNodes[0].nodeValue = "Resume";
                 this.display_all();
                 this.end_timer();
                 //pause_driver.highlight("#start");
@@ -394,6 +436,9 @@ class UI {
                 this.display_all();
                 this.start_timer();
             }
+            else {
+                this.showDialog(res.message);
+            }
         });
 
         document.getElementById("reset")
@@ -408,7 +453,9 @@ class UI {
 
     initialize_accordion() {
 
-        let observations = <HTMLElement> document.getElementById("observations_button").nextElementSibling;
+        let log = <HTMLElement> document.getElementById("observations_button");
+        let observations = <HTMLElement> log.nextElementSibling;
+        log.classList.toggle("active");
         observations.style.display = "flex";
         observations.style.flexDirection = "column";
         observations.style.overflow = "scroll";
@@ -466,10 +513,10 @@ class UI {
                 this.descriptions.get("IO"),
                 this.descriptions.get("COMPLETED"),
 
-                this.imperatives.get("handling_events"),
-                this.imperatives.get("handling_events_req_process_1"),
-                this.imperatives.get("handling_events_req_process_2"),
-                this.imperatives.get("handling_events_req_process_3"),
+                // this.imperatives.get("handling_events"),
+                // this.imperatives.get("handling_events_req_process_1"),
+                // this.imperatives.get("handling_events_req_process_2"),
+                // this.imperatives.get("handling_events_req_process_3"),
 
             ];
 
