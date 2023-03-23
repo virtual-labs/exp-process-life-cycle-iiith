@@ -171,7 +171,7 @@ export class Kernel  {
         this.currentProcess = id;
         
         const message = `Process ${id} is moved from ready queue to the CPU.`;
-        this.log.addRecord(-id, this.clock);
+        this.log.addRecord(-(id + 1), this.clock);
         return {
             status: config.OK,
             message

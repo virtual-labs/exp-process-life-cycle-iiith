@@ -253,7 +253,7 @@ class UI {
             let action = "";
             if(element.event < 0) {
                 html += `<tr><td>NA</td><td>NA</td>
-                <td>${element.responce_time}</td><td>moveProcess(${-element.event}, CPU)</td></tr>`;
+                <td>${element.responce_time}</td><td>moveProcess(${-element.event - 1}, CPU)</td></tr>`;
             }
             else {
                 const e = this.kernel.events[element.event];
