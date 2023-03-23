@@ -79,7 +79,8 @@ class UI {
 
     // private functions
     console_display() {
-        console.log(this.kernel.getData());
+        // console.log(this.kernel.getData());
+        console.log(this.kernel.wrongMoves);
         return ;
         // console.log("Proceeses");
         // for(let i = 0; i < this.kernel.processes.length; i++) {
@@ -221,10 +222,10 @@ class UI {
             else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
-        console.log(this.kernel.processes);
+        // console.log(this.kernel.processes);
         // console.log(config.cpu)
         // console.log(this.cpu);
-        console.log(this.kernel.getData());
+        // cons1ole.log(this.kernel.getData());
     }
     display_events() {
         // remove all events
@@ -242,6 +243,20 @@ class UI {
             e.classList.add("selected");
             // e.remove();
         }
+    }
+
+    display_analytics() {
+        let analytics = document.getElementById("analytics");
+        analytics.innerHTML = "";
+        let wm = document.createElement('li');
+        wm.innerText = `Wrong Moves: ${this.kernel.wrongMoves}`;
+        let aet = document.createElement('li');
+        aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
+        let cpuIdle = document.createElement('li');
+        cpuIdle.innerText = `CPU Idle time: ${this.kernel.cpuIdle}`;
+        analytics.appendChild(wm);
+        analytics.appendChild(aet);
+        analytics.appendChild(cpuIdle);
     }
 
     display_log() {
@@ -281,6 +296,8 @@ class UI {
         this.display_events();
         this.display_log();
         this.update_accordion();
+        this.display_analytics();
+        this.console_display();
         if(this.kernel.selectedEvent !== -1 && 
             this.kernel.events[this.kernel.selectedEvent].name === config.REQUESTPROC)
             document.getElementById("create_process").style.visibility = "visible";
