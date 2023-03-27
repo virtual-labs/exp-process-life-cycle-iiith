@@ -434,15 +434,18 @@ export class Kernel  {
         let active_procs: number[] = [];
         for (let index = 0; index < this.processes.length; index++) {
             const element = this.processes[index];
-            if(element.state !== config.TERMINATED){
+            if(element.state !== config.INFANT && element.state !== config.TERMINATED){
+                // console.log(element.state);
                 let flag = true;
                 for(let j = 0; j < this.events.length; j++){
                     // console.log("came to term");
-                    if(this.events[j].type == config.EXTERNAL &&this.events[j].pid === index){
+                    if(this.events[j].state === config.ACTIVE && this.events[j].type === config.EXTERNAL && this.events[j].pid === index){
+                        console.log(this.events[j].type, this.events[j].pid);
                         flag = false;
                         break;
                     }
                 }
+                // console.log(flag);
                 if(flag === true)
                     active_procs.push(index);
             }
@@ -464,7 +467,9 @@ export class Kernel  {
 
         // Kill by User (Terminate)
         if(this.clock > 50){
+            console.log("need to have terminate");
             let active_procs = this.get_terminatable_procs();
+            console.log(active_procs);
             if(active_procs.length > 0){
                 // console.log(active_procs);
                 const process_to_kill = getRandomElement(active_procs);

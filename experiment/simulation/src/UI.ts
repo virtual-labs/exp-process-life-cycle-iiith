@@ -437,9 +437,27 @@ class UI {
             this.display_all();
         };
 
-        // let finish_button_handler = () => {
-        //     // this.kernel.reset();
-        // };
+
+        let finish_button_handler = () => {
+            const { jsPDF } = require("jspdf"); // will automatically load the node version
+            const confirmed: boolean = window.confirm("Do you want to download your analytics ?");
+            if (confirmed) {
+            // User clicked OK
+                const doc = new jsPDF();
+                doc.setFontSize(25);
+                doc.text("Process Life Cycle Student Report", 35, 20);
+                doc.setFontSize(15);
+                doc.text(`1. Wrong Moves: ${this.kernel.wrongMoves}`, 20, 50);
+                doc.text(`2. Average Event Wait time: ${this.kernel.getAverageWaitTime()}`, 20, 60);
+                doc.text(`3. CPU Idle time: ${this.kernel.cpuIdle}`, 20, 70);
+                doc.setFontSize(10);
+                doc.text(`Timestamp: ${Date()}`, 40, 90);
+                doc.save("a4.pdf");
+            } else {
+            // User clicked Cancel
+            }
+            reset_button_handler();
+        };
 
 
         document.getElementById("create_process").addEventListener("click", () => {
@@ -464,8 +482,8 @@ class UI {
         document.getElementById("start")
             .addEventListener("click", start_button_handler);
 
-        // document.getElementById("finish")
-        //     .addEventListener("click", finish_button_handler);
+        document.getElementById("finish")
+            .addEventListener("click", finish_button_handler);
     }
 
     initialize_accordion() {
