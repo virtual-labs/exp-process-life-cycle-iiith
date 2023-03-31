@@ -42,6 +42,7 @@ class UI {
         this.descriptions = this.descriptions_map();
         this.imperatives = this.imperatives_map();
         // this.main_tour();
+        // this.information_popover("#event_queue");
     }
 
     is_ex_paused(){
@@ -484,6 +485,20 @@ class UI {
 
         document.getElementById("finish")
             .addEventListener("click", finish_button_handler);
+        
+        document.querySelectorAll(".info").forEach(ele => {
+            const driver = new Driver();
+            ele.addEventListener("mouseover", (event) => {
+                const element_id = event.target.parentNode.id;
+                console.log(element_id);
+                driver.highlight(this.descriptions.get(element_id));
+            })
+            ele.addEventListener("mouseout", (event) => {
+                const activeElement = driver.getHighlightedElement();
+                console.log("released");
+                driver.reset();
+            })
+        })
     }
 
     initialize_accordion() {
@@ -541,7 +556,7 @@ class UI {
 
         let main_tour_steps: Driver.Step [] =
             [
-                this.descriptions.get("events_queue"),
+                this.descriptions.get("event_queue"),
                 this.descriptions.get("clock"),
                 this.descriptions.get("CPU"),
                 this.descriptions.get("READY"),
@@ -550,7 +565,7 @@ class UI {
 
                 // this.imperatives.get("handling_events"),
                 // this.imperatives.get("handling_events_req_process_1"),
-                // this.imperatives.get("handling_events_req_process_2"),
+                // this.imperatives.get("handling_events_req_procesdriver.highlight(this.descriptions.get(element_id));s_2"),
                 // this.imperatives.get("handling_events_req_process_3"),
 
             ];
@@ -562,7 +577,7 @@ class UI {
     descriptions_map () {
         let descriptions = new Map<string, Driver.Step>();
 
-        descriptions.set("events_queue",
+        descriptions.set("event_queue",
                          {element: "#event_queue",
                           popover: {
                               title: "Events Queue",
@@ -638,5 +653,7 @@ class UI {
     }
 
     information_popover (element_id) {
+        const driver = new Driver();
+        driver.highlight(this.descriptions.get(element_id));
     }
 }
