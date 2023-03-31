@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "driver.js": "^0.9.8",
+    "jspdf": "^2.5.1",
     "requirejs": "^2.3.6"
   }
 }
