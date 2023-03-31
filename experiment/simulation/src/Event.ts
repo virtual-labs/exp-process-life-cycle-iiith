@@ -58,7 +58,7 @@ export class Event implements IEvent{
         this.state = state;
     }
     createElement(){
-        console.log(`event: name ${this.name}`);
+        // console.log(`event: name ${this.name}`);
         let e_type = document.createElement('p');
         if(this.type === config.EXTERNAL){
             e_type.innerText = 'E';

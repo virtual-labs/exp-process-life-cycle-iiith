@@ -12,6 +12,8 @@ export interface IKernel {
     log : ILog;
     clock: number;
     selectedEvent: number;
+    wrongMoves: number;
+    cpuIdle: number;
 }
 
 export interface IResponce {
@@ -28,10 +30,14 @@ export class Kernel  {
     clock: number;
     selectedEvent: number;
     selectedProcess: number;
+    wrongMoves: number;
+    cpuIdle: number;
 
     constructor() {
         this.reset();
     }
+
+
 
     reset() {
         this.processes = [];
@@ -47,6 +53,8 @@ export class Kernel  {
         this.selectedEvent = -1;
         this.selectedProcess = -1;
         // this.generate_event();
+        this.wrongMoves = 0;
+        this.cpuIdle = 0;
     }
 
     selectEvent(id: number) {
@@ -58,29 +66,33 @@ export class Kernel  {
     }
 
     moveProcess(pid: number, bin: string): IResponce {
+        let res;
         if(bin === config.COMPLETED){
-            return this.terminate(pid); // checked
+            res =  this.terminate(pid); // checked
         }
         else if(bin === config.IO){
-            return this.moveToIO(pid);  // checked
+            res = this.moveToIO(pid);  // checked
         }
         else if(bin === config.READY){
             // if(pid === this.currentProcess){
             //     this.prempt();
             // } else {
-                return this.moveToReady(pid); // checked
+                res = this.moveToReady(pid); // checked
                 // }
             // }
         }
         else if(bin === config.CPU){
-            return this.runProcess(pid);
+            res = this.runProcess(pid);
         }
 
         else
-            return {
+            res = {
                 status: config.ERROR,
                 message: "The bin you have chosen is invalid."
             }
+        if(res.status === config.ERROR)
+            this.wrongMoves += 1;
+        return res;
 
     }
 
@@ -120,6 +132,18 @@ export class Kernel  {
         }
     }
 
+    isCPUIdle() {
+        let idle = true;
+        for (let index = 0; index < this.processes.length; index++) {
+            const element = this.processes[index];
+            if(element.state === config.RUNNING){
+                idle = false;
+                break;
+            }
+        }
+        return idle;
+    }
+
     advanceClock(isUser: Boolean = true): IResponce {
         // if(this.selectedEvent !== -1){
         //     return {
@@ -129,6 +153,9 @@ export class Kernel  {
         // }
         // this.clock++;
         // console.log("Hello World");
+        if(this.isCPUIdle()) {
+            this.cpuIdle += 1;
+        }
         this.clock = this.clock + 1;
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
@@ -171,11 +198,30 @@ export class Kernel  {
         this.currentProcess = id;
         
         const message = `Process ${id} is moved from ready queue to the CPU.`;
-        this.log.addRecord(-id, this.clock);
+        this.log.addRecord(-(id + 1), this.clock);
         return {
             status: config.OK,
             message
         }
+    }
+
+    getAverageWaitTime(){
+        let total = 0;
+        let n = 0;
+        if(this.log.records.length == 0) return 0;
+        for (let index = 0; index < this.log.records.length; index++) {
+            const element = this.log.records[index];
+            if(element.event < 0) {
+                
+            }
+            else {
+                n += 1;
+                const e = this.events[element.event];
+                total += (element.responce_time - e.time);
+            }
+        }
+        let avg =  total / n;
+        return avg.toFixed(2);
     }
 
     prempt() {
@@ -354,10 +400,11 @@ export class Kernel  {
         return {
             processes, currentProcess: this.currentProcess, 
             processCreations: this.processCreations, clock: this.clock, events,
-            log: {"records" :this.log.records}, selectedEvent: this.selectedEvent};
+            log: {"records" :this.log.records}, selectedEvent: this.selectedEvent, 
+            wrongMoves: this.wrongMoves, cpuIdle: this.cpuIdle};
     }
     setData(data: IKernel) {
-        const {processes, currentProcess, processCreations, clock, events, log} = data;
+        const {processes, currentProcess, processCreations, clock, events, log, wrongMoves, cpuIdle} = data;
 
         this.processes = [];
         for (let index = 0; index < processes.length; index++) {
@@ -379,21 +426,26 @@ export class Kernel  {
         this.currentProcess = currentProcess;
         this.processCreations = processCreations;
         this.clock = clock;
+        this.wrongMoves = wrongMoves;
+        this.cpuIdle = cpuIdle;
     }
 
     get_terminatable_procs() {
         let active_procs: number[] = [];
         for (let index = 0; index < this.processes.length; index++) {
             const element = this.processes[index];
-            if(element.state !== config.TERMINATED){
+            if(element.state !== config.INFANT && element.state !== config.TERMINATED){
+                // console.log(element.state);
                 let flag = true;
                 for(let j = 0; j < this.events.length; j++){
                     // console.log("came to term");
-                    if(this.events[j].type == config.EXTERNAL &&this.events[j].pid === index){
+                    if(this.events[j].state === config.ACTIVE && this.events[j].type === config.EXTERNAL && this.events[j].pid === index){
+                        console.log(this.events[j].type, this.events[j].pid);
                         flag = false;
                         break;
                     }
                 }
+                // console.log(flag);
                 if(flag === true)
                     active_procs.push(index);
             }
@@ -415,7 +467,9 @@ export class Kernel  {
 
         // Kill by User (Terminate)
         if(this.clock > 50){
+            console.log("need to have terminate");
             let active_procs = this.get_terminatable_procs();
+            console.log(active_procs);
             if(active_procs.length > 0){
                 // console.log(active_procs);
                 const process_to_kill = getRandomElement(active_procs);

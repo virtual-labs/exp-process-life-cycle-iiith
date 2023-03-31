@@ -42,6 +42,7 @@ class UI {
         this.descriptions = this.descriptions_map();
         this.imperatives = this.imperatives_map();
         // this.main_tour();
+        // this.information_popover("#event_queue");
     }
 
     is_ex_paused(){
@@ -79,7 +80,8 @@ class UI {
 
     // private functions
     console_display() {
-        console.log(this.kernel.getData());
+        // console.log(this.kernel.getData());
+        console.log(this.kernel.wrongMoves);
         return ;
         // console.log("Proceeses");
         // for(let i = 0; i < this.kernel.processes.length; i++) {
@@ -221,10 +223,10 @@ class UI {
             else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
-        console.log(this.kernel.processes);
+        // console.log(this.kernel.processes);
         // console.log(config.cpu)
         // console.log(this.cpu);
-        console.log(this.kernel.getData());
+        // cons1ole.log(this.kernel.getData());
     }
     display_events() {
         // remove all events
@@ -244,6 +246,20 @@ class UI {
         }
     }
 
+    display_analytics() {
+        let analytics = document.getElementById("analytics");
+        analytics.innerHTML = "";
+        let wm = document.createElement('li');
+        wm.innerText = `Wrong Moves: ${this.kernel.wrongMoves}`;
+        let aet = document.createElement('li');
+        aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
+        let cpuIdle = document.createElement('li');
+        cpuIdle.innerText = `CPU Idle time: ${this.kernel.cpuIdle}`;
+        analytics.appendChild(wm);
+        analytics.appendChild(aet);
+        analytics.appendChild(cpuIdle);
+    }
+
     display_log() {
         let log = document.getElementById("log");
         let html = `<thead><tr><th>t<sub>e</sub></th><th>Event</th>
@@ -253,7 +269,7 @@ class UI {
             let action = "";
             if(element.event < 0) {
                 html += `<tr><td>NA</td><td>NA</td>
-                <td>${element.responce_time}</td><td>moveProcess(${-element.event}, CPU)</td></tr>`;
+                <td>${element.responce_time}</td><td>moveProcess(${-element.event - 1}, CPU)</td></tr>`;
             }
             else {
                 const e = this.kernel.events[element.event];
@@ -281,6 +297,8 @@ class UI {
         this.display_events();
         this.display_log();
         this.update_accordion();
+        this.display_analytics();
+        this.console_display();
         if(this.kernel.selectedEvent !== -1 && 
             this.kernel.events[this.kernel.selectedEvent].name === config.REQUESTPROC)
             document.getElementById("create_process").style.visibility = "visible";
@@ -293,7 +311,7 @@ class UI {
         const dialogBox = document.createElement("p");
         dialogBox.textContent = message;
         const inst = document.getElementById("instruction");
-        inst.innerHTML = "";
+        // inst.innerHTML = "";
         inst.appendChild(dialogBox);
         setTimeout(() => {
           inst.removeChild(dialogBox);
@@ -420,9 +438,27 @@ class UI {
             this.display_all();
         };
 
-        // let finish_button_handler = () => {
-        //     // this.kernel.reset();
-        // };
+
+        let finish_button_handler = () => {
+            const { jsPDF } = require("jspdf"); // will automatically load the node version
+            const confirmed: boolean = window.confirm("Do you want to download your analytics ?");
+            if (confirmed) {
+            // User clicked OK
+                const doc = new jsPDF();
+                doc.setFontSize(25);
+                doc.text("Process Life Cycle Student Report", 35, 20);
+                doc.setFontSize(15);
+                doc.text(`1. Wrong Moves: ${this.kernel.wrongMoves}`, 20, 50);
+                doc.text(`2. Average Event Wait time: ${this.kernel.getAverageWaitTime()}`, 20, 60);
+                doc.text(`3. CPU Idle time: ${this.kernel.cpuIdle}`, 20, 70);
+                doc.setFontSize(10);
+                doc.text(`Timestamp: ${Date()}`, 40, 90);
+                doc.save("a4.pdf");
+            } else {
+            // User clicked Cancel
+            }
+            reset_button_handler();
+        };
 
 
         document.getElementById("create_process").addEventListener("click", () => {
@@ -447,8 +483,22 @@ class UI {
         document.getElementById("start")
             .addEventListener("click", start_button_handler);
 
-        // document.getElementById("finish")
-        //     .addEventListener("click", finish_button_handler);
+        document.getElementById("finish")
+            .addEventListener("click", finish_button_handler);
+        
+        document.querySelectorAll(".info").forEach(ele => {
+            const driver = new Driver();
+            ele.addEventListener("mouseover", (event) => {
+                const element_id = event.target.parentNode.id;
+                console.log(element_id);
+                driver.highlight(this.descriptions.get(element_id));
+            })
+            ele.addEventListener("mouseout", (event) => {
+                const activeElement = driver.getHighlightedElement();
+                console.log("released");
+                driver.reset();
+            })
+        })
     }
 
     initialize_accordion() {
@@ -506,7 +556,7 @@ class UI {
 
         let main_tour_steps: Driver.Step [] =
             [
-                this.descriptions.get("events_queue"),
+                this.descriptions.get("event_queue"),
                 this.descriptions.get("clock"),
                 this.descriptions.get("CPU"),
                 this.descriptions.get("READY"),
@@ -515,7 +565,7 @@ class UI {
 
                 // this.imperatives.get("handling_events"),
                 // this.imperatives.get("handling_events_req_process_1"),
-                // this.imperatives.get("handling_events_req_process_2"),
+                // this.imperatives.get("handling_events_req_procesdriver.highlight(this.descriptions.get(element_id));s_2"),
                 // this.imperatives.get("handling_events_req_process_3"),
 
             ];
@@ -527,7 +577,7 @@ class UI {
     descriptions_map () {
         let descriptions = new Map<string, Driver.Step>();
 
-        descriptions.set("events_queue",
+        descriptions.set("event_queue",
                          {element: "#event_queue",
                           popover: {
                               title: "Events Queue",
@@ -603,5 +653,7 @@ class UI {
     }
 
     information_popover (element_id) {
+        const driver = new Driver();
+        driver.highlight(this.descriptions.get(element_id));
     }
 }
