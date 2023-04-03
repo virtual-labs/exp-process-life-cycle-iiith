@@ -5,8 +5,8 @@ import { Event } from "../src/Event";
 import * as config from "../src/config";
 const evt = new Event(0, config.TERMINATE, 23, 2, config.DONE);
 const evt2 = new Event(6, "hell")
-const ioneed_event = new Event(3, config.IONEEDED, 30, 3, config.INTERNAL)
-const iodone_event = new Event(4, config.IODONE, 40, 3, config.INTERNAL)
+const ioneeded_event = new Event(4, config.IONEEDED, 31, 4, config.INTERNAL)
+const iodone_event = new Event(4, config.IODONE, 40, 4, config.INTERNAL)
 
 test("Creating new Event", () => {
     expect(evt.id).toBe(0);
