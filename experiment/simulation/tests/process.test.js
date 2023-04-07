@@ -42,6 +42,24 @@ test('terminating process', () => {
   expect(process.state).toBe(config.TERMINATED);
 });
 
+const processs = new Process(3);
+const data = processs.getData();
+const keys = Object.keys(data);
 
+test('test for get data',() => {
+  expect(keys).toContain('pid');
+  expect(keys).toContain('name');
+  expect(keys).toContain('state');
+  expect(keys).toContain('history');
+}); 
 
+test('test for set data',() => {
+  processs.setData(data);
+  const test_set = processs.getData();
+  const keys = Object.keys(test_set);
+  expect(keys).toContain('pid');
+  expect(keys).toContain('name');
+  expect(keys).toContain('state');
+  expect(keys).toContain('history');
+});
 
