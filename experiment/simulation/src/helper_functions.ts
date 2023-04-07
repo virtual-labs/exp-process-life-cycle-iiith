@@ -50,3 +50,7 @@ const initialize_processes = (n: number): Process[] => {
     return processes;
 }
 
+
+export function is_ex_paused(){
+    return document.getElementById("start").childNodes[0].nodeValue !== "Pause";
+}
