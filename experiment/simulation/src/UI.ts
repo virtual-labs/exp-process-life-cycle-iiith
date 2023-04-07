@@ -4,6 +4,7 @@ import { Process } from "./Process";
 import * as config from "./config"
 import Driver from "driver.js"
 import { descriptions } from "./descriptions";
+import { imperatives } from "./imperatives"
 
 export { UI };
 class UI {
@@ -15,7 +16,6 @@ class UI {
     terminated_pool: HTMLElement
     timer_paused: Boolean
 
-    descriptions: Map<string, Driver.Step>
     imperatives: Map<string, Driver.Step>
     drivers: Map<string, Driver>
 
@@ -24,7 +24,6 @@ class UI {
         this.kernel = new Kernel();
         if(data !== null)
             this.kernel.setData(JSON.parse(data));
-        // this.start_timer();
         this.timer_paused = true;
 
         if(this.kernel.clock > 0) 
@@ -39,10 +38,6 @@ class UI {
 
         this.initialize_events();
         this.initialize_accordion();
-
-        this.imperatives = this.imperatives_map();
-        // this.main_tour();
-        // this.information_popover("#event_queue");
     }
 
     is_ex_paused(){
@@ -63,35 +58,6 @@ class UI {
             clearInterval(this.timerId);
             this.timerId = null;
         }
-    }
-
-    toggle_timer () {
-        if (this.timer_paused === true) {
-            this.start_timer();
-            this.timer_paused = false;
-            console.log("Timer Started.");
-        }
-        else {
-            this.end_timer();
-            this.timer_paused = true;
-            console.log("Timer Paused.")
-        }
-    }
-
-    // private functions
-    console_display() {
-        // console.log(this.kernel.getData());
-        console.log(this.kernel.wrongMoves);
-        return ;
-        // console.log("Proceeses");
-        // for(let i = 0; i < this.kernel.processes.length; i++) {
-        //     console.log(this.kernel.processes[i]);
-        // }
-        // // console.log("")
-        // for(let i = 0; i < this.kernel.events.length; i++) {
-        //     console.log(this.kernel.events[i]);
-        // }
-        // console.log(this.kernel)
     }
     add_to_pool(p: Process, pool: HTMLElement) {
         // create a div for process inside pool
@@ -118,19 +84,10 @@ class UI {
             if(this.is_ex_paused())
                 return ;
             this.start_timer();
-            // this.toggle_timer();
         }
 
         process_div.addEventListener("dragstart", process_dragstart_handler);
         process_div.addEventListener("dragend", process_dragend_handler);
-
-        // process_div.addEventListener("click", () => {
-        //     this.end_timer();
-        //     this.kernel.selectedProcess = p.pid;
-        //     var modal = document.getElementById("process_popup");
-        //     let span: HTMLElement = document.getElementsByClassName("close")[0] as HTMLElement;
-        //     modal.style.display = "block";
-        // });
         pool.appendChild(process_div);
     }
     add_to_events_queue(e: Event) {
@@ -138,62 +95,30 @@ class UI {
             return;
         let events = document.getElementById("all_events");
         let event_div = e.createElement();
-        // let event_div = document.createElement("div");
-        // event_div.classList.add("event");
         event_div.id = "Event"+e.id.toString();
         if(this.kernel.selectedEvent === e.id){
             event_div.classList.add("selected");
         }
-        // if(e.name === config.IONEEDED || e.name === config.IODONE || e.name === config.TERMINATE){
-        //     event_div.innerHTML = e.name + " " + e.pid.toString();
-        // }
-        // else {
-        //     event_div.innerHTML = e.name;
-        // }
-        // event_div.onclick = () => {
-        //     console.log("Hello Akshay");
-        // }
         event_div.addEventListener("click", () => {
             if(this.is_ex_paused())
                 return ;
             if(this.kernel.selectedEvent === e.id){
                 this.kernel.selectEvent(-1);
-                // this.start_timer();
-                // this.toggle_timer();
                 this.start_timer();
             }
             else {
                 this.end_timer();
                 this.kernel.selectEvent(e.id);
             }
-                
-            // if(e.name == "REQUESTPROC"){
-            //     this.end_timer();
-            //     var modal = document.getElementById("create_process_popup");
-            //     let span: HTMLElement = document.getElementsByClassName("close")[1] as HTMLElement;
-            //     modal.style.display = "block";
-            //     span.onclick = function() {
-            //         modal.style.display = "none";
-            //     }
-            //     window.onclick = function(event) {
-            //         if (event.target == modal) {
-            //             modal.style.display = "none";
-            //         }
-            //     }
-            //     this.kernel.selectEvent(-1);
-            // }
             this.display_all();
         });
         events.appendChild(event_div);
     }
 
-    ///////////////////////////////
-
     update_clock(){
         return(this.kernel.advanceClock());
     }
     createProcess() {
-        // this.kernel.selectEvent(0);
         const res = this.kernel.createProcess();
         this.display_all();
         return res;
@@ -223,10 +148,6 @@ class UI {
             else if(p.state === config.TERMINATED)
                 this.add_to_pool(p, this.terminated_pool);
         }
-        // console.log(this.kernel.processes);
-        // console.log(config.cpu)
-        // console.log(this.cpu);
-        // cons1ole.log(this.kernel.getData());
     }
     display_events() {
         // remove all events
@@ -286,8 +207,6 @@ class UI {
             }
         }
         log.innerHTML = html + `</tbody>`;
-        // console.log(log.childElementCount);
-
     }
 
     display_all(){
@@ -298,13 +217,11 @@ class UI {
         this.display_log();
         this.update_accordion();
         this.display_analytics();
-        this.console_display();
         if(this.kernel.selectedEvent !== -1 && 
             this.kernel.events[this.kernel.selectedEvent].name === config.REQUESTPROC)
             document.getElementById("create_process").style.visibility = "visible";
         else
             document.getElementById("create_process").style.visibility = "hidden";
-        // this.console_display();
     }
 
     showDialog(message: string) {
@@ -340,34 +257,13 @@ class UI {
             }
             this.display_all();
         }
-
-        // let process_dragstart_handler = (event) => {
-        //     this.end_timer();
-        //     this.display_all();
-        // }
-
-        // let process_dragend_handler = (event) => {
-        //     this.start_timer();
-        //     this.display_all();
-        // }
-
         let process_dragover_handler = (event: DragEvent) => {
             if(this.is_ex_paused())
                 return ;
             event.preventDefault();
-            // event.dataTransfer.dropEffect = "move";
-
             console.log("Drag Over");
 
-            // if (this.kernel.selectedEvent === -1)
-            //     this.end_timer();
-
         }
-
-        // document.querySelectorAll('.process').forEach((element) => {
-        //     element.addEventListener("dragstart", process_dragstart_handler);
-        //     element.addEventListener("dragend", process_dragend_handler);
-        // })
 
 
         this.ready_pool.addEventListener("dragover", process_dragover_handler);
@@ -387,22 +283,6 @@ class UI {
                     this.main_tour();
                 });
             });
-
-        // let start_button_handler = () => {
-        //     this.toggle_timer();
-
-        //     // let button_text = document.getElementById("start").childNodes[0].nodeValue;
-        //     if (!this.timer_paused) {
-        //         document.getElementById("start")
-        //             .childNodes[0].nodeValue = "Pause";
-
-        //     }
-        //     else {
-        //         document.getElementById("start")
-        //             .childNodes[0].nodeValue = "Start";
-        //     }
-
-        // };
         let pause_driver = new Driver({
             animate: true,
             allowClose: false,
@@ -427,13 +307,9 @@ class UI {
         }
 
         let reset_button_handler = () => {
-            // start_button_handler(); // XXX: Pass instance of the appropriate Event Type
-            // The start_button_handler starts the timer, so keep the stop_timer logic after it.
-
             this.kernel.reset();
             this.timer_paused = false;
             document.getElementById("start").childNodes[0].nodeValue = "Start";
-            // this.toggle_timer();
             this.end_timer();
             this.display_all();
         };
@@ -464,11 +340,9 @@ class UI {
         document.getElementById("create_process").addEventListener("click", () => {
             if(this.is_ex_paused())
                 return ;
-            // ui.kernel.events[ui.kernel.selectedEvent].do
             const res: IResponce = this.createProcess();
             if(res.status === "OK"){
                 this.timer_paused = true;
-                // this.toggle_timer();
                 this.display_all();
                 this.start_timer();
             }
@@ -565,50 +439,15 @@ class UI {
                 descriptions.get("IO"),
                 descriptions.get("COMPLETED"),
 
-                // this.imperatives.get("handling_events"),
-                // this.imperatives.get("handling_events_req_process_1"),
-                // this.imperatives.get("handling_events_req_procesdriver.highlight(descriptions.get(element_id));s_2"),
-                // this.imperatives.get("handling_events_req_process_3"),
+                // imperatives.get("handling_events"),
+                // imperatives.get("handling_events_req_process_1"),
+                // imperatives.get("handling_events_req_procesdriver.highlight(descriptions.get(element_id));s_2"),
+                // imperatives.get("handling_events_req_process_3"),
 
             ];
 
         driver.defineSteps(main_tour_steps);
         driver.start();
-    }
-
-
-    imperatives_map () {
-        let imperatives = new Map<string, Driver.Step>();
-
-        imperatives.set("handling_events",
-                        {element: "#all_events",
-                         popover: {
-                             title: "How to Handle Events.",
-                             description: "Each event arriving in the events queue requires some action from your side. To begin handling an event, click to select it from the events queue. The clock will be stopped when you select any event, and will remain stopped for the duration of handling of that event, or its cancellation."
-                         }});
-
-        imperatives.set("handling_events_req_process_1",
-                        {element: "#create_process",
-                         popover: {
-                             title: "The reqProcess Event.",
-                             description: "Handling the reqProcess event requires you to trigger the command to create a new process. You can do that by cliking the create process button. Remember, a reqProcess event must be selected before issuing the create process command."
-                         }});
-
-        imperatives.set("handling_events_req_process_2",
-                        {element: "#READY",
-                         popover: {
-                             title: "The reqProcess Event.",
-                             description: "Newly created processes appear in the Ready Pool, where they wait until they are allowed to start execution in the CPU."
-                         }});
-
-        imperatives.set("handling_events_req_process_3",
-                        {element: "#event_queue",
-                         popover: {
-                             title: "The reqProcess Event.",
-                             description: "Once the current event has been handled, the clock starts again, and you can begin handling other events.."
-                         }});
-
-        return imperatives
     }
 
     information_popover (element_id) {
