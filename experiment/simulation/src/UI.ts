@@ -3,6 +3,7 @@ import { IResponce, Kernel } from "./Kernel";
 import { Process } from "./Process";
 import * as config from "./config"
 import Driver from "driver.js"
+import { descriptions } from "./descriptions";
 
 export { UI };
 class UI {
@@ -39,7 +40,6 @@ class UI {
         this.initialize_events();
         this.initialize_accordion();
 
-        this.descriptions = this.descriptions_map();
         this.imperatives = this.imperatives_map();
         // this.main_tour();
         // this.information_popover("#event_queue");
@@ -489,9 +489,11 @@ class UI {
         document.querySelectorAll(".info").forEach(ele => {
             const driver = new Driver();
             ele.addEventListener("mouseover", (event) => {
-                const element_id = event.target.parentNode.id;
+                const {target} = event;
+                const parent_node = (target as HTMLElement).parentNode;
+                const element_id = (parent_node as HTMLElement).id;
                 console.log(element_id);
-                driver.highlight(this.descriptions.get(element_id));
+                driver.highlight(descriptions.get(element_id));
             })
             ele.addEventListener("mouseout", (event) => {
                 const activeElement = driver.getHighlightedElement();
@@ -556,16 +558,16 @@ class UI {
 
         let main_tour_steps: Driver.Step [] =
             [
-                this.descriptions.get("event_queue"),
-                this.descriptions.get("clock"),
-                this.descriptions.get("CPU"),
-                this.descriptions.get("READY"),
-                this.descriptions.get("IO"),
-                this.descriptions.get("COMPLETED"),
+                descriptions.get("event_queue"),
+                descriptions.get("clock"),
+                descriptions.get("CPU"),
+                descriptions.get("READY"),
+                descriptions.get("IO"),
+                descriptions.get("COMPLETED"),
 
                 // this.imperatives.get("handling_events"),
                 // this.imperatives.get("handling_events_req_process_1"),
-                // this.imperatives.get("handling_events_req_procesdriver.highlight(this.descriptions.get(element_id));s_2"),
+                // this.imperatives.get("handling_events_req_procesdriver.highlight(descriptions.get(element_id));s_2"),
                 // this.imperatives.get("handling_events_req_process_3"),
 
             ];
@@ -574,49 +576,6 @@ class UI {
         driver.start();
     }
 
-    descriptions_map () {
-        let descriptions = new Map<string, Driver.Step>();
-
-        descriptions.set("event_queue",
-                         {element: "#event_queue",
-                          popover: {
-                              title: "Events Queue",
-                              description: "The events queue collects the events coming in from external sources (the user, interrupts etc.), or the various requests from the processes that need to be handled (such as requests for resource allocation).",
-                              position: "right"
-                          }});
-
-        descriptions.set("clock",
-                         {element: "#clock",
-                          popover: {
-                              title: "Clock",
-                              description: "The clock cycles help synchronize the execution and management of processes." }});
-
-        descriptions.set("CPU",
-                         {element: "#CPU",
-                          popover: {
-                              title: "The CPU",
-                              description: "The processes currently being executed appear in the CPU." }});
-
-        descriptions.set("IO",
-                         {element: "#IO",
-                          popover: {
-                              title: "The I/O Pool",
-                              description: "The processes which are currently using I/O resources appear in the I/O Pool." }});
-
-        descriptions.set("READY",
-                         {element: "#READY",
-                          popover: {
-                              title: "The Ready Pool",
-                              description: "The ready pool is where the processes wait before they are allowed to be executed." }});
-
-        descriptions.set("COMPLETED",
-                         {element: "#COMPLETED",
-                          popover: {
-                              title: "Terminated Processes",
-                              description: "The processes which have been terminated appear here." }});
-
-        return descriptions
-    }
 
     imperatives_map () {
         let imperatives = new Map<string, Driver.Step>();
@@ -654,6 +613,6 @@ class UI {
 
     information_popover (element_id) {
         const driver = new Driver();
-        driver.highlight(this.descriptions.get(element_id));
+        driver.highlight(descriptions.get(element_id));
     }
 }
