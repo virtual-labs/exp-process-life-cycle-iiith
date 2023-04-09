@@ -155,3 +155,7 @@ button {
     color: #ffffff;
     border: solid #018786;
 }
+
+.driver-highlight {
+    transition: background-color 1s ease-in-out;
+  }

@@ -528,14 +528,19 @@ class UI {
         
         document.querySelectorAll(".info").forEach(ele => {
             const driver = new Driver();
+            let hoverTimeout;
             ele.addEventListener("mouseover", (event) => {
-                const {target} = event;
-                const parent_node = (target as HTMLElement).parentNode;
-                const element_id = (parent_node as HTMLElement).id;
-                console.log(element_id);
-                driver.highlight(descriptions.get(element_id));
+                hoverTimeout = setTimeout(() => {
+                    console.log('Hovered for 1 second.');
+                    const {target} = event;
+                    const parent_node = (target as HTMLElement).parentNode;
+                    const element_id = (parent_node as HTMLElement).id;
+                    console.log(element_id);
+                    driver.highlight(descriptions.get(element_id));
+                  }, 1000);
             })
             ele.addEventListener("mouseout", (event) => {
+                clearTimeout(hoverTimeout);
                 const activeElement = driver.getHighlightedElement();
                 console.log("released");
                 driver.reset();
