@@ -217,13 +217,35 @@ export class Kernel  {
             else {
                 n += 1;
                 const e = this.events[element.event];
-                total += (element.responce_time - e.time);
+                total += (element.responce_time - e.time + 1);
             }
         }
         let avg =  total / n;
         return avg.toFixed(2);
     }
-
+    getCPUIOWaitTime() {
+        let total = 0;
+        if(this.log.records.length == 0) return 0;
+        for (let index = 0; index < this.log.records.length; index++) {
+            const element = this.log.records[index];
+            if(element.event < 0) {
+                
+            }
+            else {
+                const e = this.events[element.event];
+                if(e.name === config.IONEEDED){
+                    total += (element.responce_time - e.time + 1);
+                }
+            }
+        }
+        for (let index = 0; index < this.events.length; index++) {
+            const element = this.events[index];
+            if(element.state === config.ACTIVE && element.name === config.IONEEDED){
+                total += this.clock - element.time + 1;
+            }
+        }
+        return total;
+    }
     prempt() {
         if(this.selectedEvent === -1){
             return {

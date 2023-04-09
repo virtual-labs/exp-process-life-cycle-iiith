@@ -259,9 +259,12 @@ class UI {
         aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
         let cpuIdle = document.createElement('li');
         cpuIdle.innerText = `CPU Idle time: ${this.kernel.cpuIdle}`;
+        let cpuIOIdle = document.createElement('li');
+        cpuIOIdle.innerText = `CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}`;
         analytics.appendChild(wm);
         analytics.appendChild(aet);
         analytics.appendChild(cpuIdle);
+        analytics.appendChild(cpuIOIdle);
     }
 
     display_log() {
@@ -457,8 +460,9 @@ class UI {
                 doc.text(`1. Wrong Moves: ${this.kernel.wrongMoves}`, 20, 50);
                 doc.text(`2. Average Event Wait time: ${this.kernel.getAverageWaitTime()}`, 20, 60);
                 doc.text(`3. CPU Idle time: ${this.kernel.cpuIdle}`, 20, 70);
-                doc.text("Observation Table", 20, 80)
-                autoTable(doc, { html: '#log', startY: 90 });
+                doc.text(`4. CPU IO Wait time: ${this.kernel.getCPUIOWaitTime()}`, 20, 80);
+                doc.text("Observation Table", 20, 90)
+                autoTable(doc, { html: '#log', startY: 100 });
                 doc.save("a4.pdf");
             } else {
             // User clicked Cancel
