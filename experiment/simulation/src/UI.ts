@@ -545,7 +545,26 @@ class UI {
                 console.log("released");
                 driver.reset();
             })
-        })
+        });
+
+        document.querySelectorAll(".meta_controls_info").forEach((ele) => {
+            const driver = new Driver();
+            ele.addEventListener("mouseover", (event) => {
+              const { target } = event;
+              const targetElement = target as HTMLElement;
+              const element_id =
+                targetElement.tagName == "P"
+                  ? (targetElement.parentNode as HTMLElement).id
+                  : targetElement.id;
+              console.log(element_id);
+              driver.highlight(descriptions.get(element_id));
+            });
+            ele.addEventListener("mouseout", (event) => {
+              const activeElement = driver.getHighlightedElement();
+              console.log("released");
+              driver.reset();
+            });
+          });
     }
 
     initialize_accordion() {
