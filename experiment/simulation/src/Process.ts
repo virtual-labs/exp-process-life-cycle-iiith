@@ -65,14 +65,5 @@ export class Process implements IProcess {
         this.state = config.TERMINATED;
         this.history.push(this.state);
     }
-
-    createElement() {
-        let process_div = document.createElement("div");
-        process_div.classList.add("process");
-        process_div.draggable = true;
-        process_div.id = "Process" + this.pid.toString();
-        process_div.innerHTML = this.name;
-        return process_div;
-    }
     
 }

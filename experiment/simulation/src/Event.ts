@@ -93,8 +93,6 @@ export class Event implements IEvent{
         e_main.appendChild(pid);
         e_main.appendChild(time)
 
-        e_main.id = "Event"+this.id.toString();
-
         return e_main;
     }
 }
