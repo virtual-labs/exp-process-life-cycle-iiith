@@ -4,6 +4,10 @@ import { Process } from "./Process";
 import * as config from "./config"
 import Driver from "driver.js"
 import { descriptions } from "./descriptions";
+const html2canvas = require('html2canvas');
+// require('jspdf-autotable');
+import autoTable from 'jspdf-autotable'
+
 
 export { UI };
 class UI {
@@ -447,12 +451,14 @@ class UI {
                 const doc = new jsPDF();
                 doc.setFontSize(25);
                 doc.text("Process Life Cycle Student Report", 35, 20);
+                doc.setFontSize(10);
+                doc.text(`Timestamp: ${Date()}`, 20, 30);
                 doc.setFontSize(15);
                 doc.text(`1. Wrong Moves: ${this.kernel.wrongMoves}`, 20, 50);
                 doc.text(`2. Average Event Wait time: ${this.kernel.getAverageWaitTime()}`, 20, 60);
                 doc.text(`3. CPU Idle time: ${this.kernel.cpuIdle}`, 20, 70);
-                doc.setFontSize(10);
-                doc.text(`Timestamp: ${Date()}`, 40, 90);
+                doc.text("Observation Table", 20, 80)
+                autoTable(doc, { html: '#log', startY: 90 });
                 doc.save("a4.pdf");
             } else {
             // User clicked Cancel
