@@ -474,7 +474,26 @@ class UI {
                 doc.text(`4. CPU IO Wait time: ${this.kernel.getCPUIOWaitTime()}`, 20, 80);
                 doc.text("Observation Table", 20, 90)
                 autoTable(doc, { html: '#log', startY: 100 });
-                doc.save(`${formatDate()}.pdf`);
+
+                const pdfDataUri = doc.output('datauristring');
+                const iframe = document.createElement('iframe');
+                iframe.style.height = "80%";
+                iframe.style.width = "80%"
+                iframe.src = pdfDataUri;
+
+                const downloadButton = document.createElement('a');
+                downloadButton.innerText = 'Download';
+                downloadButton.href = pdfDataUri;
+                downloadButton.download = `${formatDate()}.pdf`; 
+                const containerDiv = document.createElement('div');
+                containerDiv.appendChild(iframe);
+                containerDiv.appendChild(downloadButton);
+
+                const win = window.open('', '', 'width=1000,height=800');
+                win.moveTo((window.screen.width - 1000) / 2, (window.screen.height - 800) / 2);
+                win.document.body.appendChild(containerDiv);
+
+                // doc.save(`${formatDate()}.pdf`);
             } else {
             // User clicked Cancel
             }
