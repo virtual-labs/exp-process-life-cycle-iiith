@@ -29,6 +29,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "chart.js": "^2.8.0",
     "driver.js": "^0.9.8",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
