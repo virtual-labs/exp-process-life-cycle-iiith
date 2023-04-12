@@ -211,10 +211,7 @@ export class Kernel  {
         if(this.log.records.length == 0) return 0;
         for (let index = 0; index < this.log.records.length; index++) {
             const element = this.log.records[index];
-            if(element.event < 0) {
-                
-            }
-            else {
+            if(element.event >= 0) {
                 n += 1;
                 const e = this.events[element.event];
                 total += (element.responce_time - e.time + 1);
