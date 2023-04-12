@@ -608,3 +608,7 @@ html, body, main {
     /* color: black; */
     color: #444;
 }
+
+.modal_btn {
+    padding: 5px 18px;
+}

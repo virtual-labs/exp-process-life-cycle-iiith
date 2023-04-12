@@ -9,8 +9,9 @@ const html2canvas = require("html2canvas");
 import autoTable from "jspdf-autotable";
 import Chart from "chart.js";
 // import material/dialog
-import { MDCDialog } from "@material/dialog";
-import { MDCRipple } from "@material/ripple";
+// import { MDCDialog } from "@material/dialog";
+// import { MDCRipple } from "@material/ripple";
+
 
 export { UI };
 class UI {
@@ -332,6 +333,90 @@ class UI {
     );
     theory.appendChild(button);
   }
+  display_procedure() {
+    let procedure = document.getElementById("procedure");
+    procedure.innerHTML = "";
+
+    // dialog box for procedure using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    let title = document.createElement("h4");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "What are the components?";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<p>We have 7 components:</p>    <ul>    <li>Instruction box</li>    <li>Ready pool: Where the live processes will be placed</li>    <li>CPU: where the process in execution is placed</li>    <li>I/O pool: where the process will go if the process has any I/O calls.</li>    <li>Completed pool: This is where all the completed processes are placed.</li>    <li>Controls: This is where all the buttons that the you can play with are placed.</li>    <li>Log: Where all actions on the process get recorded</li>    </ul>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    procedure.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = title.innerText;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    procedure.appendChild(button);
+  }
+  display_procedure2() {
+    let procedure = document.getElementById("procedure2");
+    procedure.innerHTML = "";
+
+    // dialog box for procedure using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    let title = document.createElement("h4");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "What are the controls?";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<p>We have 6 controls:</p>    <ul>    <li>Create Process and put it in Ready Pool</li>    <li>CPU to Ready Pool</li>    <li>CPU to IO Pool</li>    <li>IO Pool to Ready Pool</li>    <li>Terminate the Process in CPU</li>    <li>Advance Clock</li>    </ul>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    procedure.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = title.innerText;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    procedure.appendChild(button);
+  }
 
   display_analytics() {
     let analytics = document.getElementById("analytics");
@@ -456,6 +541,8 @@ class UI {
     this.display_analytics();
     this.display_theory();
     this.display_theory2();
+    this.display_procedure();
+    this.display_procedure2();
     this.console_display();
     if (
       this.kernel.selectedEvent !== -1 &&

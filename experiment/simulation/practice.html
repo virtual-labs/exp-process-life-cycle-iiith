@@ -22,6 +22,9 @@
       href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
     />
     <link rel="stylesheet" href="./dist/style.css" />
+    <link rel="stylesheet" href="./dist/material.min.css">
+    <script src="./dist/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
   <body>
@@ -218,9 +221,16 @@
           -->
         <button class="accordion" id="theory_button">Theory</button>
         <div class="panel theory_ques">
-          <div class="btn" id="theory"></div>
-          <div class="btn" id="theory2"></div>
+          <div class="modal_btn" id="theory"></div>
+          <div class="modal_btn" id="theory2"></div>
         </div>
+
+        <button class="accordion" id="procedure_button">Procedure</button>
+        <div class="panel procedure_ques">
+          <div class="modal_btn" id="procedure"></div>
+          <div class="modal_btn" id="procedure2"></div>
+        </div>
+
         <button class="accordion" id="analytics_button">Analytics</button>
         <div class="panel">
           <ul id="analytics"></ul>
