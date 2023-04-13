@@ -326,6 +326,7 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
+    
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
         dialog.showModal();
