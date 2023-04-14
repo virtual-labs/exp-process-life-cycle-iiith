@@ -32,6 +32,10 @@ export class Kernel  {
     selectedProcess: number;
     wrongMoves: number;
     cpuIdle: number;
+    cummAvgEvntWaitTime : number [];
+    cummCPUIOWaitTime : number [];
+    cummCPUIdle : number [];
+    cummWrongMoves : number [];
 
     constructor() {
         this.reset();
@@ -55,6 +59,16 @@ export class Kernel  {
         // this.generate_event();
         this.wrongMoves = 0;
         this.cpuIdle = 0;
+        this.cummAvgEvntWaitTime = [];
+        this.cummCPUIOWaitTime = [];
+        this.cummCPUIdle = [];
+        this.cummWrongMoves = [];
+    }
+    updateGraphData() {
+        this.cummAvgEvntWaitTime.push(Number(this.getAverageWaitTime()));
+        this.cummCPUIOWaitTime.push(this.getCPUIOWaitTime());
+        this.cummCPUIdle.push(this.cpuIdle);
+        this.cummWrongMoves.push(this.wrongMoves);
     }
 
     selectEvent(id: number) {
@@ -159,6 +173,7 @@ export class Kernel  {
         this.clock = this.clock + 1;
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
+        this.updateGraphData()
         if(isUser === true) {
             // this.log.addRecord(message);
         }

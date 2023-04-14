@@ -318,14 +318,15 @@ class UI {
     lineChart.width = 350;
     lineChart.height = 350;
     let ctx = lineChart.getContext("2d");
+    // console.log(this.kernel.cummWrongMoves);
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        labels: Array.from(this.kernel.cummWrongMoves.keys()).map((val) => val + 1),
         datasets: [
           {
             label: "Total Wrong moves",
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: this.kernel.cummWrongMoves,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1,
@@ -404,11 +405,11 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        labels: Array.from(this.kernel.cummAvgEvntWaitTime.keys()).map((val) => val + 1),
         datasets: [
           {
             label: "Average Event Wait Time",
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: this.kernel.cummAvgEvntWaitTime,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1,
@@ -485,11 +486,11 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        labels: Array.from(this.kernel.cummCPUIdle.keys()).map((val) => val + 1),
         datasets: [
           {
             label: "Cumulative CPU Idle Time",
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: this.kernel.cummCPUIdle,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1,
@@ -553,7 +554,7 @@ class UI {
 
     let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
-    title.innerText = "Cumulative CPU IO Time vs Time";
+    title.innerText = "Cumulative CPU IO Idle Time vs Time";
     title.style.width = "100%";
     title.style.height = "50px";
     let content = document.createElement("div");
@@ -567,11 +568,11 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        labels: Array.from(this.kernel.cummCPUIOWaitTime.keys()).map((val) => val + 1),
         datasets: [
           {
             label: "Cumulative CPU IO Time",
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: this.kernel.cummCPUIOWaitTime,
             backgroundColor: ["rgba(255, 99, 132, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1,
