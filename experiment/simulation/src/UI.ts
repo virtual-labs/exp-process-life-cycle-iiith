@@ -1216,6 +1216,7 @@ class UI {
         }, 1000);
       });
       ele.addEventListener("mouseout", (event) => {
+        clearTimeout(hoverTimeout);
         const activeElement = driver.getHighlightedElement();
         console.log("released");
         driver.reset();
@@ -1238,6 +1239,7 @@ class UI {
         }, 1000);
       });
       ele.addEventListener("mouseout", (event) => {
+        clearTimeout(hoverTimeout);
         const activeElement = driver.getHighlightedElement();
         console.log("released");
         driver.reset();
