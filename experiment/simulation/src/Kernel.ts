@@ -32,6 +32,10 @@ export class Kernel  {
     selectedProcess: number;
     wrongMoves: number;
     cpuIdle: number;
+    cummAvgEvntWaitTime : number [];
+    cummCPUIOWaitTime : number [];
+    cummCPUIdle : number [];
+    cummWrongMoves : number [];
 
     constructor() {
         this.reset();
@@ -55,6 +59,16 @@ export class Kernel  {
         // this.generate_event();
         this.wrongMoves = 0;
         this.cpuIdle = 0;
+        this.cummAvgEvntWaitTime = [];
+        this.cummCPUIOWaitTime = [];
+        this.cummCPUIdle = [];
+        this.cummWrongMoves = [];
+    }
+    updateGraphData() {
+        this.cummAvgEvntWaitTime.push(Number(this.getAverageWaitTime()));
+        this.cummCPUIOWaitTime.push(this.getCPUIOWaitTime());
+        this.cummCPUIdle.push(this.cpuIdle);
+        this.cummWrongMoves.push(this.wrongMoves);
     }
 
     selectEvent(id: number) {
@@ -159,6 +173,7 @@ export class Kernel  {
         this.clock = this.clock + 1;
         this.generate_event();
         const message = `Advanced clock at ${this.clock}`;
+        this.updateGraphData()
         if(isUser === true) {
             // this.log.addRecord(message);
         }
@@ -211,19 +226,38 @@ export class Kernel  {
         if(this.log.records.length == 0) return 0;
         for (let index = 0; index < this.log.records.length; index++) {
             const element = this.log.records[index];
-            if(element.event < 0) {
-                
-            }
-            else {
+            if(element.event >= 0) {
                 n += 1;
                 const e = this.events[element.event];
-                total += (element.responce_time - e.time);
+                total += (element.responce_time - e.time + 1);
             }
         }
         let avg =  total / n;
         return avg.toFixed(2);
     }
-
+    getCPUIOWaitTime() {
+        let total = 0;
+        if(this.log.records.length == 0) return 0;
+        for (let index = 0; index < this.log.records.length; index++) {
+            const element = this.log.records[index];
+            if(element.event < 0) {
+                
+            }
+            else {
+                const e = this.events[element.event];
+                if(e.name === config.IONEEDED){
+                    total += (element.responce_time - e.time + 1);
+                }
+            }
+        }
+        for (let index = 0; index < this.events.length; index++) {
+            const element = this.events[index];
+            if(element.state === config.ACTIVE && element.name === config.IONEEDED){
+                total += this.clock - element.time + 1;
+            }
+        }
+        return total;
+    }
     prempt() {
         if(this.selectedEvent === -1){
             return {
