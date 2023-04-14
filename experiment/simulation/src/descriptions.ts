@@ -74,3 +74,10 @@ descriptions.set("finish", {
     description: "The clock stops and you are given an option to print the performance report.  ",
   },
 });
+descriptions.set("init_tour", {
+  element: "#init_tour",
+  popover: {
+    title: "Take a tour",
+    description: "Take a tour of the simulation for understanding the functioning.",
+  },
+});

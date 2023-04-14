@@ -114,7 +114,8 @@
               role="button"
               id="init_tour"
             >
-              Take Tour
+              Take Tour &ensp;
+              <p class="exp_controls_info">&#9432;</p>
             </button>
           </section>
           <!-- <button class="button-18" role="button" id="advance_clock" title="All changes made for this clock cycle">Done</button> -->
@@ -131,7 +132,10 @@
       <section class="instructions_panel split right">
         <button class="accordion" id="introduction_button">Introduction</button>
         <div class="panel">
-          <li>
+          <div class="modal_btn" id="intro1"></div>
+          <div class="modal_btn" id="intro2"></div>
+          <div class="modal_btn" id="intro3"></div>
+          <!-- <li>
             <b>Objective</b>
             <p>
               Our objective in this experiment is to understand the life cycle
@@ -153,7 +157,7 @@
 
           <li>
             <b>Apparatus</b>
-            <!-- <button class="button-18 secondary_button" style="padding: 3%; font-size: 0.8em; width: fit-content; height: fit-content;" role="button" id="init_tour">Take Tour</button></li> -->
+            <button class="button-18 secondary_button" style="padding: 3%; font-size: 0.8em; width: fit-content; height: fit-content;" role="button" id="init_tour">Take Tour</button></li>
             <p style="margin-left: 10%">
               Events Queue
               <br />
@@ -168,7 +172,7 @@
               <br />
               Terminated Processes Bin
             </p>
-          </li>
+          </li> -->
         </div>
 
         <!-- <button class="accordion" id="instructions_button">Instructions</button>
@@ -234,6 +238,11 @@
         <button class="accordion" id="analytics_button">Analytics</button>
         <div class="panel">
           <ul id="analytics"></ul>
+          <div class="modal_btn" id="graph1"></div>
+          <div class="modal_btn" id="graph2"></div>
+          <div class="modal_btn" id="graph3"></div>
+          <div class="modal_btn" id="graph4"></div>
+
         </div>
         <button class="accordion" id="observations_button">Observations</button>
         <div class="panel">

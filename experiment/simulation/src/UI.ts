@@ -252,7 +252,9 @@ class UI {
     // dialog box for theory using @material/dialog with button
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h4");
+    dialog.style.width = "800px";
+    dialog.style.height = "620px";
+    let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What is a process?";
     let content = document.createElement("div");
@@ -288,6 +290,338 @@ class UI {
     theory.appendChild(button);
   }
 
+
+
+  display_graph1() {
+    let theory = document.getElementById("graph1");
+    theory.innerHTML = "";
+
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    dialog.style.width = "650px";
+    dialog.style.height = "520px";
+
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.style.width = "100%";
+    title.style.height = "50px";
+  
+    title.innerText = "Total Wrong Moves vs Time";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+
+    // put content center aligned
+    content.style.textAlign = "center";
+
+    let lineChart = document.createElement("canvas");
+    lineChart.id = "lineChart";
+    lineChart.width = 350;
+    lineChart.height = 350;
+    let ctx = lineChart.getContext("2d");
+    let myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        datasets: [
+          {
+            label: "Total Wrong moves",
+            data: [0, 10, 5, 2, 20, 30, 45],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // graph size
+        responsive: false,
+        maintainAspectRatio: false,
+
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    content.appendChild(lineChart);
+    
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    // button.classList.add("mdl-js-button");
+    // button.classList.add("mdl-button--raised");
+    // button.classList.add("mdl-button--colored");
+    button.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}    📊`;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    // put some text besides the button
+    theory.appendChild(button);
+  }
+
+  display_graph2() {
+    let theory = document.getElementById("graph2");
+    theory.innerHTML = "";
+
+    // dialog box for theory using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    // increase size of the dialog box
+    dialog.style.width = "650px";
+    dialog.style.height = "520px";
+
+    let title = document.createElement("h5");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Average Event Wait Time vs Time";
+    title.style.width = "100%";
+    title.style.height = "50px";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+
+    let lineChart = document.createElement("canvas");
+    lineChart.id = "lineChart";
+    lineChart.width = 350;
+    lineChart.height = 350;
+    let ctx = lineChart.getContext("2d");
+    let myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        datasets: [
+          {
+            label: "Average Event Wait Time",
+            data: [0, 10, 5, 2, 20, 30, 45],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // graph size
+        responsive: false,
+        maintainAspectRatio: false,
+
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    content.appendChild(lineChart);
+    
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    // button.classList.add("mdl-js-button");
+    // button.classList.add("mdl-button--raised");
+    // button.classList.add("mdl-button--colored");
+    button.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}    📊`;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    theory.appendChild(button);
+  }
+
+  display_graph3() {
+    let theory = document.getElementById("graph3");
+    theory.innerHTML = "";
+
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    // increase size of the dialog box
+    dialog.style.width = "680px";
+    dialog.style.height = "520px";
+
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Cumulative CPU Idle Time vs Time";
+    title.style.width = "100%";
+    title.style.height = "50px";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+
+    let lineChart = document.createElement("canvas");
+    lineChart.id = "lineChart";
+    lineChart.width = 350;
+    lineChart.height = 350;
+    let ctx = lineChart.getContext("2d");
+    let myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        datasets: [
+          {
+            label: "Cumulative CPU Idle Time",
+            data: [0, 10, 5, 2, 20, 30, 45],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // graph size
+        responsive: false,
+        maintainAspectRatio: false,
+
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    content.appendChild(lineChart);
+    
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    // button.classList.add("mdl-js-button");
+    // button.classList.add("mdl-button--raised");
+    // button.classList.add("mdl-button--colored");
+    button.innerText = `Cumulative CPU Idle time: ${this.kernel.cpuIdle}     📊`;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    theory.appendChild(button);
+  }
+
+  display_graph4() {
+    let theory = document.getElementById("graph4");
+    theory.innerHTML = "";
+
+    // dialog box for theory using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    // increase size of the dialog box
+    dialog.style.width = "650px";
+    dialog.style.height = "520px";
+
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Cumulative CPU IO Time vs Time";
+    title.style.width = "100%";
+    title.style.height = "50px";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+
+    let lineChart = document.createElement("canvas");
+    lineChart.id = "lineChart";
+    lineChart.width = 350;
+    lineChart.height = 350;
+    let ctx = lineChart.getContext("2d");
+    let myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["0", "1", "2", "3", "4", "5", "6"],
+        datasets: [
+          {
+            label: "Cumulative CPU IO Time",
+            data: [0, 10, 5, 2, 20, 30, 45],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        // graph size
+        responsive: false,
+        maintainAspectRatio: false,
+
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    content.appendChild(lineChart);
+    
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    // button.classList.add("mdl-js-button");
+    // button.classList.add("mdl-button--raised");
+    // button.classList.add("mdl-button--colored");
+    button.innerText = `Cumulative CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}      📊`;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    theory.appendChild(button);
+  }
+
   display_theory2() {
     let theory = document.getElementById("theory2");
     theory.innerHTML = "";
@@ -295,7 +629,9 @@ class UI {
     // dialog box for theory using @material/dialog with button
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h4");
+    dialog.style.width = "800px";
+    dialog.style.height = "620px";
+    let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are process states?";
     // add a blank line
@@ -334,6 +670,132 @@ class UI {
     );
     theory.appendChild(button);
   }
+
+  display_intro() {
+    let intro1 = document.getElementById("intro1");
+    intro1.innerHTML = "";
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Objective";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<ul><p> Our objective in this experiment is to understand the life cycle of a process as managed by an operating system. The experiment provides you with the apparatus to observe and control the processes as needed. </p </ul>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    intro1.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = 'Objective';
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    intro1.appendChild(button);
+  }
+
+  display_intro2() {
+    let intro1 = document.getElementById("intro2");
+    intro1.innerHTML = "";
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Intuition";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = " Act in response to Events <p> You are to observe the events that arrive in the events queue, and respond to them with an appropriate action so as to manage the processes in an efficient manner, as per the process state model discussed in theory.</p>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    intro1.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = 'Intuition';
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    intro1.appendChild(button);
+  }
+
+  display_intro3() {
+    let intro1 = document.getElementById("intro3");
+    intro1.innerHTML = "";
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Apparatus";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<ol> <li>Events Queue</li><li>CPU</li><li>Ready Pool</li><li>I/O Pool</li><li>Terminated Processes Bin</li> </ol>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    // change colour of close button
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    intro1.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = 'Apparatus';
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    intro1.appendChild(button);
+  }
+
+
   display_procedure() {
     let procedure = document.getElementById("procedure");
     procedure.innerHTML = "";
@@ -341,7 +803,9 @@ class UI {
     // dialog box for procedure using @material/dialog with button
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h4");
+    dialog.style.width = "600px";
+    dialog.style.height = "400px";
+    let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are the components?";
     let content = document.createElement("div");
@@ -383,7 +847,9 @@ class UI {
     // dialog box for procedure using @material/dialog with button
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h4");
+    dialog.style.width = "600px";
+    dialog.style.height = "400px";
+    let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are the controls?";
     let content = document.createElement("div");
@@ -423,84 +889,20 @@ class UI {
     let analytics = document.getElementById("analytics");
     analytics.innerHTML = "";
     let wm = document.createElement("li");
-    wm.innerText = `Wrong Moves: ${this.kernel.wrongMoves}`;
+    wm.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}`;
     let aet = document.createElement("li");
     aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
     let cpuIdle = document.createElement("li");
-    cpuIdle.innerText = `CPU Idle time: ${this.kernel.cpuIdle}`;
+    cpuIdle.innerText = `Cumulative CPU Idle time: ${this.kernel.cpuIdle}`;
     let cpuIOIdle = document.createElement("li");
-    cpuIOIdle.innerText = `CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}`;
-    // line chart
-    let lineChart = document.createElement("canvas");
-    lineChart.id = "lineChart";
-    lineChart.width = 300;
-    lineChart.height = 300;
-    let ctx = lineChart.getContext("2d");
-    let myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
-        datasets: [
-          {
-            label: "Response Time",
-            data: [0, 10, 5, 2, 20, 30, 45],
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        // graph size
-        responsive: false,
-        maintainAspectRatio: false,
+    cpuIOIdle.innerText = `Cumulative CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}`;
 
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-
-    let lineChart1 = document.createElement("canvas");
-    lineChart1.id = "lineChart";
-    lineChart1.width = 300;
-    lineChart1.height = 300;
-    let ctx1 = lineChart1.getContext("2d");
-    let myChart1 = new Chart(ctx1, {
-      type: "line",
-      data: {
-        labels: ["0", "1", "2", "3", "4", "5", "6"],
-        datasets: [
-          {
-            label: "Response Time",
-            data: [0, 10, 5, 2, 20, 30, 45],
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        // graph size
-        responsive: false,
-        maintainAspectRatio: false,
-
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-
-    analytics.appendChild(wm);
-    analytics.appendChild(aet);
-    analytics.appendChild(cpuIdle);
-    analytics.appendChild(cpuIOIdle);
-    analytics.appendChild(lineChart);
-    analytics.appendChild(lineChart1);
+    // analytics.appendChild(wm);
+    // analytics.appendChild(aet);
+    // analytics.appendChild(cpuIdle);
+    // analytics.appendChild(cpuIOIdle);
+    // analytics.appendChild(lineChart);
+    // analytics.appendChild(lineChart1);
   }
 
   display_log() {
@@ -540,8 +942,15 @@ class UI {
     this.display_log();
     this.update_accordion();
     this.display_analytics();
+    this.display_intro();
+    this.display_intro2();
+    this.display_intro3();
     this.display_theory();
     this.display_theory2();
+    this.display_graph1();
+    this.display_graph2();
+    this.display_graph3();
+    this.display_graph4();
     this.display_procedure();
     this.display_procedure2();
     this.console_display();
@@ -784,6 +1193,28 @@ class UI {
       });
       ele.addEventListener("mouseout", (event) => {
         clearTimeout(hoverTimeout);
+        const activeElement = driver.getHighlightedElement();
+        console.log("released");
+        driver.reset();
+      });
+    });
+
+    document.querySelectorAll(".exp_controls_info").forEach((ele) => {
+      const driver = new Driver();
+      let hoverTimeout;
+      ele.addEventListener("mouseover", (event) => {
+        hoverTimeout = setTimeout(() => {
+          const { target } = event;
+          const targetElement = target as HTMLElement;
+          const element_id =
+            targetElement.tagName == "P"
+              ? (targetElement.parentNode as HTMLElement).id
+              : targetElement.id;
+          console.log(element_id);
+          driver.highlight(descriptions.get(element_id));
+        }, 1000);
+      });
+      ele.addEventListener("mouseout", (event) => {
         const activeElement = driver.getHighlightedElement();
         console.log("released");
         driver.reset();
