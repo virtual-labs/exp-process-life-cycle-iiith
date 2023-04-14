@@ -281,6 +281,7 @@ html, body, main {
     border-right: solid white;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    margin: 0px;
 }
 
 .event_type:hover {
@@ -289,6 +290,10 @@ html, body, main {
     border-left: solid #8197F9;
     border-top: solid #8197F9;
     border-bottom: solid #8197F9;
+    margin: 0px;
+}
+.event p {
+    margin: 0px;
 }
 
 .event_time {
@@ -607,4 +612,8 @@ html, body, main {
     background-color: #eee;
     /* color: black; */
     color: #444;
+}
+
+.modal_btn {
+    padding: 5px 18px;
 }
