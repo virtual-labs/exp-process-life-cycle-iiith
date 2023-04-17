@@ -1061,7 +1061,7 @@ class UI {
     });
 
     let start_button_handler = () => {
-      const val = document.getElementById("start").childNodes[0].nodeValue;
+      const val = document.getElementById("start").childNodes[0].nodeValue.trim();
       // const val = event.target.childNodes[0].nodeValue;
       if (val === "Start" || val === "Resume") {
         document.getElementById("start").childNodes[0].nodeValue = "Pause";
