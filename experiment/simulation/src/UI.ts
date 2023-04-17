@@ -1060,20 +1060,22 @@ class UI {
       padding: 0,
     });
 
-    let start_button_handler = (event) => {
-      const val = event.target.childNodes[0].nodeValue;
+    let start_button_handler = () => {
+      const val = document.getElementById("start").childNodes[0].nodeValue;
+      // const val = event.target.childNodes[0].nodeValue;
       if (val === "Start" || val === "Resume") {
-        event.target.childNodes[0].nodeValue = "Pause";
+        document.getElementById("start").childNodes[0].nodeValue = "Pause";
         this.display_all();
         this.start_timer();
         // pause_driver.reset();
       } else {
-        event.target.childNodes[0].nodeValue = "Resume";
+        document.getElementById("start").childNodes[0].nodeValue = "Resume";
         this.display_all();
         this.end_timer();
         //pause_driver.highlight("#start");
       }
     };
+
 
     let reset_button_handler = () => {
       // start_button_handler(); // XXX: Pass instance of the appropriate Event Type
@@ -1261,6 +1263,12 @@ class UI {
     for (let i = 0; i < accordion.length; i++) {
       accordion[i].addEventListener("click", () => {
         accordion[i].classList.toggle("active");
+        if(accordion[i].classList.contains("active") && !this.is_ex_paused()){
+          this.end_timer();
+          document.getElementById("start").childNodes[0].nodeValue = "Resume";
+          this.display_all();
+          this.end_timer();
+        }
         let panel = <HTMLElement>accordion[i].nextElementSibling;
         if (panel.style.maxHeight) {
           panel.style.transition = "0.2s";
