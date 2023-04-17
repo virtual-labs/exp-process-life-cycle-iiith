@@ -4,6 +4,15 @@ import { Event, IEvent } from "./Event";
 import { getRandomInt, getRandomElement } from "./helper_functions";
 import * as config from "./config"
 
+interface Move {
+    source: String;
+    dest: String;
+    pid: number;
+    valid: Boolean;
+    message: String;
+    time: number;
+}
+
 export interface IKernel {
     processes: IProcess[];
     currentProcess: number;
@@ -14,6 +23,11 @@ export interface IKernel {
     selectedEvent: number;
     wrongMoves: number;
     cpuIdle: number;
+    cummAvgEvntWaitTime : number [];
+    cummCPUIOWaitTime : number [];
+    cummCPUIdle : number [];
+    cummWrongMoves : number [];
+    moves: Move [];
 }
 
 export interface IResponce {
@@ -36,6 +50,7 @@ export class Kernel  {
     cummCPUIOWaitTime : number [];
     cummCPUIdle : number [];
     cummWrongMoves : number [];
+    moves: Move [];
 
     constructor() {
         this.reset();
@@ -63,6 +78,7 @@ export class Kernel  {
         this.cummCPUIOWaitTime = [];
         this.cummCPUIdle = [];
         this.cummWrongMoves = [];
+        this.moves = [];
     }
     updateGraphData() {
         this.cummAvgEvntWaitTime.push(Number(this.getAverageWaitTime()));
@@ -81,6 +97,7 @@ export class Kernel  {
 
     moveProcess(pid: number, bin: string): IResponce {
         let res;
+        const source = this.processes[pid].state;
         if(bin === config.COMPLETED){
             res =  this.terminate(pid); // checked
         }
@@ -106,6 +123,16 @@ export class Kernel  {
             }
         if(res.status === config.ERROR)
             this.wrongMoves += 1;
+            let newMove: Move = {
+                source,
+                dest: bin,
+                pid,
+                valid: res.status === config.OK,
+                message : res.message,
+                time: this.clock
+        }
+        this.moves.push(newMove);
+        console.log(this.moves);
         return res;
 
     }
@@ -435,10 +462,13 @@ export class Kernel  {
             processes, currentProcess: this.currentProcess, 
             processCreations: this.processCreations, clock: this.clock, events,
             log: {"records" :this.log.records}, selectedEvent: this.selectedEvent, 
-            wrongMoves: this.wrongMoves, cpuIdle: this.cpuIdle};
+            wrongMoves: this.wrongMoves, cpuIdle: this.cpuIdle,     cummAvgEvntWaitTime : this.cummAvgEvntWaitTime,
+            cummCPUIOWaitTime: this.cummCPUIOWaitTime, cummCPUIdle : this.cummCPUIdle, cummWrongMoves : this.cummWrongMoves, 
+            moves: this.moves};
     }
     setData(data: IKernel) {
-        const {processes, currentProcess, processCreations, clock, events, log, wrongMoves, cpuIdle} = data;
+        const {processes, currentProcess, processCreations, clock, events, log, wrongMoves, cpuIdle, 
+            cummAvgEvntWaitTime, cummCPUIOWaitTime, cummCPUIdle, cummWrongMoves, moves} = data;
 
         this.processes = [];
         for (let index = 0; index < processes.length; index++) {
@@ -458,10 +488,15 @@ export class Kernel  {
         this.log = new Log();
         this.log.records = log.records;
         this.currentProcess = currentProcess;
-        this.processCreations = processCreations;
-        this.clock = clock;
-        this.wrongMoves = wrongMoves;
-        this.cpuIdle = cpuIdle;
+        this.processCreations = processCreations === undefined? 0: processCreations;
+        this.clock = clock === undefined? 0: clock;
+        this.wrongMoves = wrongMoves === undefined? 0: wrongMoves;
+        this.cpuIdle = cpuIdle === undefined? 0: cpuIdle;
+        this.cummAvgEvntWaitTime = cummAvgEvntWaitTime === undefined? []: cummAvgEvntWaitTime;
+        this.cummCPUIOWaitTime = cummCPUIOWaitTime === undefined? []: cummCPUIOWaitTime;
+        this.cummCPUIdle = cummCPUIdle === undefined? []: cummCPUIdle;
+        this.cummWrongMoves = cummWrongMoves === undefined? []: cummWrongMoves;
+        this.moves = moves === undefined? []: moves;
     }
 
     get_terminatable_procs() {
