@@ -932,6 +932,21 @@ class UI {
       }
     }
     log.innerHTML = html + `</tbody>`;
+
+    // console.log(log.childElementCount);
+  }
+
+  display_moves() {
+    let log = document.getElementById("moves");
+    let html = `<thead><tr><th>time</th><th>source</th><th>dest</th>
+        <th>pid</th><th>valid</th></tr></thead><tbody>`;
+    for (let index = 0; index < this.kernel.moves.length; index++) {
+      const element = this.kernel.moves[index];
+      html += `<tr><td>${element.time}</td><td>${element.source}</td>
+                <td>${element.dest}</td><td>${element.pid}</td><td>${element.valid}</td></tr>`;
+    }
+    log.innerHTML = html + `</tbody>`;
+
     // console.log(log.childElementCount);
   }
 
@@ -941,6 +956,7 @@ class UI {
     this.display_processes();
     this.display_events();
     this.display_log();
+    this.display_moves();
     this.update_accordion();
     this.display_analytics();
     this.display_intro();
