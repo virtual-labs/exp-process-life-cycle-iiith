@@ -48,6 +48,33 @@ test("Testing for response time for an event", () => {
     response_event.setResponceId(5);
     expect(response_event.state).toBe(config.DONE);
     //expect(response_event.rid).toBe(5);
+//test cases for 05.04.2023
+const event = new Event(3)
+const data = event.getData();
+const keys = Object.keys(data);
+const test_data = () => {
+    expect(keys).toContain("name");
+    expect(keys).toContain("pid");
+    expect(keys).toContain("time");
+    expect(keys).toContain("id");
+    expect(keys).toContain("responceId");
+    expect(keys).toContain("type");
+    expect(keys).toContain("state");
+}
+test("Checking for the items in the Event Array", test_data);
+
+
+test("Checking for the items set by set data", () => {
+    event.setData(data);
+    const test_set = event.getData();
+    const keys  = Object.keys(test_set);
+    expect(keys).toContain("name");
+    expect(keys).toContain("pid");
+    expect(keys).toContain("time");
+    expect(keys).toContain("id");
+    expect(keys).toContain("responceId");
+    expect(keys).toContain("type");
+    expect(keys).toContain("state");
 });
 
 const killed_event = new Event();
