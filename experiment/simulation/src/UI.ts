@@ -34,6 +34,12 @@ class UI {
     // this.start_timer();
     this.timer_paused = true;
 
+
+    if(!this.isPractice()) {
+      document.getElementById("log").style.display="none";
+      document.getElementById("moves").style.display="none";
+  }
+
     if (this.kernel.clock > 0)
       document.getElementById("start").childNodes[0].textContent = "Resume";
 
@@ -363,6 +369,7 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
+    if(!this.isPractice()) return;
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
@@ -452,6 +459,7 @@ class UI {
     // button.classList.add("mdl-js-button");
     // button.classList.add("mdl-button--raised");
     // button.classList.add("mdl-button--colored");
+    if(!this.isPractice()) return;
     button.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}    📊`;
     button.addEventListener("click", () => {
         dialog.showModal();
@@ -527,6 +535,7 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
+    if(!this.isPractice()) return;
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
@@ -608,6 +617,8 @@ class UI {
     dialog.appendChild(content);
     dialog.appendChild(actions);
     theory.appendChild(dialog);
+
+    if(!this.isPractice()) return;2
 
     // button to open dialog box
     let button = document.createElement("button");
@@ -887,6 +898,10 @@ class UI {
   }
 
   display_analytics() {
+    if(!this.isPractice()){
+      console.log("Display Anallytics");
+      return;
+    }
     let analytics = document.getElementById("analytics");
     analytics.innerHTML = "";
     let wm = document.createElement("li");
@@ -906,8 +921,7 @@ class UI {
     // analytics.appendChild(lineChart1);
   }
 
-  display_log() {
-    let log = document.getElementById("log");
+  display_log() { 
     let html = `<thead><tr><th>t<sub>e</sub></th><th>Event</th>
         <th>t<sub>r</sub></th><th>Action</th></tr></thead><tbody>`;
     for (let index = 0; index < this.kernel.log.records.length; index++) {
@@ -931,7 +945,9 @@ class UI {
                 <td>${element.responce_time}</td><td>${action}</td></tr>`;
       }
     }
-    log.innerHTML = html + `</tbody>`;
+    html += '</tbody';
+    let log = document.getElementById("log");
+    log.innerHTML = html;
 
     // console.log(log.childElementCount);
   }
@@ -950,6 +966,10 @@ class UI {
     // console.log(log.childElementCount);
   }
 
+  isPractice(){
+    return window.location.href.split("/").slice(-1)[0] === "practice.html";
+  }
+
   display_all() {
     localStorage.setItem("data", JSON.stringify(this.kernel.getData()));
     this.display_clock();
@@ -957,17 +977,18 @@ class UI {
     this.display_events();
     this.display_log();
     this.display_moves();
-    this.update_accordion();
+    this.display_graph1();
+    this.display_graph2();
+    this.display_graph3();
+    this.display_graph4();
     this.display_analytics();
+    
+    this.update_accordion();
     this.display_intro();
     this.display_intro2();
     this.display_intro3();
     this.display_theory();
     this.display_theory2();
-    this.display_graph1();
-    this.display_graph2();
-    this.display_graph3();
-    this.display_graph4();
     this.display_procedure();
     this.display_procedure2();
     this.console_display();
@@ -981,6 +1002,7 @@ class UI {
   }
 
   showDialog(message: string) {
+    if(!this.isPractice()) return;
     const dialogBox = document.createElement("p");
     dialogBox.textContent = message;
     const inst = document.getElementById("instruction");
@@ -1266,13 +1288,15 @@ class UI {
   }
 
   initialize_accordion() {
-    let log = <HTMLElement>document.getElementById("observations_button");
-    let observations = <HTMLElement>log.nextElementSibling;
-    log.classList.toggle("active");
-    observations.style.display = "flex";
-    observations.style.flexDirection = "column";
-    observations.style.overflow = "scroll";
-    observations.style.maxHeight = observations.scrollHeight + "px";
+    if(this.isPractice()){
+      let log = <HTMLElement>document.getElementById("observations_button");
+      let observations = <HTMLElement>log.nextElementSibling;
+      log.classList.toggle("active");
+      observations.style.display = "flex";
+      observations.style.flexDirection = "column";
+      observations.style.overflow = "scroll";
+      observations.style.maxHeight = observations.scrollHeight + "px";
+    }
 
     let accordion = document.getElementsByClassName("accordion");
 
@@ -1301,15 +1325,17 @@ class UI {
   }
 
   update_accordion() {
-    let log = <HTMLElement>document.getElementById("observations_button");
-    let observations = <HTMLElement>log.nextElementSibling;
+    if(this.isPractice()){
+      let log = <HTMLElement>document.getElementById("observations_button");
+      let observations = <HTMLElement>log.nextElementSibling;
 
-    if (log.classList.contains("active")) return;
+      if (log.classList.contains("active")) return;
 
-    observations.style.display = "flex";
-    observations.style.flexDirection = "column";
-    observations.style.overflow = "scroll";
-    observations.style.maxHeight = observations.scrollHeight + "px";
+      observations.style.display = "flex";
+      observations.style.flexDirection = "column";
+      observations.style.overflow = "scroll";
+      observations.style.maxHeight = observations.scrollHeight + "px";
+    }
   }
 
   main_tour() {
