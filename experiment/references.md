@@ -18,8 +18,10 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
   - It also describes what a “good” scheduling algorithm has.
 
 * A. Silberschatz, P. B. Galvin, and G. Gagne, Operating System Concepts,9th ed.
-*  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach.
 *  A. S. Tanenbaum and H. Bos, Modern Operating Systems, 4th ed.
+*  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach.
+
+* Intel (2016) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A).
 ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/
 
