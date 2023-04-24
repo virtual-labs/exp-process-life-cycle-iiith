@@ -17,12 +17,20 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
   - It also describes what a “good” scheduling algorithm has. -->
 
 * A. Silberschatz, P. B. Galvin, and G. Gagne, Operating System Concepts,9th ed.
+
 * A. S. Tanenbaum and H. Bos, Modern Operating Systems, 4th ed.
+
+* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. Operating Systems: Three Easy Pieces. Arpaci-Dusseau Books. August, 2018 (Version 1.00) 
+
+* Linux Kernel Labs. https://linux-kernel-labs.github.io/
+
+* Marshall Kirk McKusick, George Neville-Neil, and Robert N.M. Watson. 2014. The Design and Implementation of the FreeBSD Operating System (2nd. ed.). Addison-Wesley Professional.
+
 <!-- *  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach. -->
+* Xv6, a simple Unix-like teaching operating system. https://pdos.csail.mit.edu/6.828/2012/xv6.html
 
 * Intel (2023) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A).
 
-* Marshall Kirk McKusick, George Neville-Neil, and Robert N.M. Watson. 2014. The Design and Implementation of the FreeBSD Operating System (2nd. ed.). Addison-Wesley Professional.
 <!-- ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/ -->
 
