@@ -210,6 +210,12 @@ class UI {
     clock_span.innerHTML = this.kernel.clock.toString();
     if (this.kernel.clock !== 0 && this.is_ex_paused())
       clock_span.innerHTML += " (Paused)";
+    else if(this.kernel.selectedEvent !== -1){
+      clock_span.classList.add("clock_paused");
+    }
+    else {
+      clock_span.classList.remove("clock_paused");
+    }
   }
   display_processes() {
     // clear all pools
@@ -1014,6 +1020,18 @@ class UI {
   }
 
   initialize_events() {
+    document.getElementById("toggle_accordion").addEventListener("click", (event) => {
+      let button = document.getElementById("toggle_accordion");
+      if(button.innerText.trim() === "Close accordion") {
+        button.innerText = "Open accordion";
+        document.querySelector(".instructions_panel").classList.add("none_display");
+      }
+      else {
+        button.innerText = "Close accordion";
+        document.querySelector(".instructions_panel").classList.remove("none_display");
+      }
+    })
+
     let process_drop_handler = (event) => {
       if (this.is_ex_paused()) return;
       event.preventDefault();
