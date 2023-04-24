@@ -21,6 +21,8 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
 <!-- *  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach. -->
 
 * Intel (2023) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A).
+
+* Marshall Kirk McKusick, George Neville-Neil, and Robert N.M. Watson. 2014. The Design and Implementation of the FreeBSD Operating System (2nd. ed.). Addison-Wesley Professional.
 <!-- ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/ -->
 
