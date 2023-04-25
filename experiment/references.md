@@ -1,6 +1,5 @@
 ### References
 
-## To learn more about processes go here:
 <!-- * https://www.scaler.com/topics/operating-system/process-state-in-os/:
   This webpage provides concise descriptions of each state in the seven-step process cycle. It first gives an explanation of the  five states of the cycle which are the new, ready, running, waiting and completed states. then the site  explains how the final two states Suspend Ready and Suspend Blocked state connect to it .
 * https://www.youtube.com/watch?v=jZ_6PXoaoxo:
@@ -17,11 +16,31 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
   - It also compares processes and programs
   - It also describes what a “good” scheduling algorithm has. -->
 
-* A. Silberschatz, P. B. Galvin, and G. Gagne, Operating System Concepts,9th ed.
-*  A. S. Tanenbaum and H. Bos, Modern Operating Systems, 4th ed.
+### Textbooks
+
+* A. S. Tanenbaum and H. Bos, *Modern Operating Systems, 4th ed*.
+
+* A. Silberschatz, P. B. Galvin, and G. Gagne, *Operating System Concepts, 9th ed*.
+
+* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*. Arpaci-Dusseau Books. August, 2018 (Version 1.00) 
+
 <!-- *  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach. -->
 
-* Intel (2016) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A).
+### Specialized Texts/Projects (with a narrower focus)
+
+* Marshall Kirk McKusick, George Neville-Neil, and Robert N.M. Watson. 2014. *The Design and Implementation of the FreeBSD Operating System (2nd. ed.)*. Addison-Wesley Professional.
+
+* Tanenbaum, A. S. and Woodhull, A. S. (2005). *Operating Systems Design and Implementation (3rd Edition)*. Prentice-Hall, Inc., USA.
+
+* *Linux Kernel Labs*. https://linux-kernel-labs.github.io/
+
+* *Xv6*, a simple Unix-like teaching operating system. https://pdos.csail.mit.edu/6.828/2022/xv6.html
+
+### On the Hardware-Software Interface
+* Patterson, D. and Hennessy, J. (2014). *Computer Organization and Design, Enhanced: The Hardware/Software Interface*. The Morgan Kaufmann Series in Computer Architecture and Design. Elsevier Science.
+
+* *Intel (2023) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A)*.
+
 <!-- ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/ -->
 
