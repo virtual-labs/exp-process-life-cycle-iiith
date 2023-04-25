@@ -689,6 +689,56 @@ class UI {
     theory.appendChild(button);
   }
 
+  display_theory3() {
+    let theory = document.getElementById("theory3");
+    theory.innerHTML = "";
+
+    // dialog box for theory using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    dialog.style.width = "800px";
+    dialog.style.height = "620px";
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Comparison with acutal OS";
+    // add a blank line
+    let br = document.createElement("br");
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are- Running or Runnable (R)        A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run    - Uninterruptible Sleep (D)        The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)    - Interruptable Sleep (S)        An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur    - Stopped (T)        Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully    - Zombie (Z)        Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process    Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux## References**Linux System Programming, 2nd Edition** - Robert Love</p>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(br);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    
+    button.innerText = title.innerText;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    theory.appendChild(button);
+  }
+  
+
   display_intro() {
     let intro1 = document.getElementById("intro1");
     intro1.innerHTML = "";
@@ -995,6 +1045,7 @@ class UI {
     this.display_intro3();
     this.display_theory();
     this.display_theory2();
+    this.display_theory3();
     this.display_procedure();
     this.display_procedure2();
     this.console_display();
