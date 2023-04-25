@@ -9,8 +9,10 @@ const serverURL = "http://localhost:3000";
 interface Move {
     source: String;
     dest: String;
+    moveMade: String;
     pid: number;
     valid: Boolean;
+    validNum : number;
     message: String;
     time: number;
 }
@@ -134,8 +136,10 @@ export class Kernel  {
             let newMove: Move = {
                 source,
                 dest: bin,
+                moveMade: source + " to " + bin,
                 pid,
                 valid: res.status === config.OK,
+                validNum: res.status === config.OK ? 1 : 0,
                 message : res.message,
                 time: this.clock
         }
