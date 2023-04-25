@@ -26,7 +26,7 @@ test("Checking for IO_needed Event", () => {
     expect(ioneed_event.state).toBe(config.ACTIVE);
 });
 
-test("Checking for IO_done Event",  () => {
+test("Checking for IO_done Event", () => {
     expect(iodone_event.type).toBe(config.INTERNAL);
     expect(iodone_event.state).toBe(config.ACTIVE);
 
@@ -48,71 +48,72 @@ test("Testing for response time for an event", () => {
     response_event.setResponceId(5);
     expect(response_event.state).toBe(config.DONE);
     //expect(response_event.rid).toBe(5);
-//test cases for 05.04.2023
-const event = new Event(3)
-const data = event.getData();
-const keys = Object.keys(data);
-const test_data = () => {
-    expect(keys).toContain("name");
-    expect(keys).toContain("pid");
-    expect(keys).toContain("time");
-    expect(keys).toContain("id");
-    expect(keys).toContain("responceId");
-    expect(keys).toContain("type");
-    expect(keys).toContain("state");
-}
-test("Checking for the items in the Event Array", test_data);
+    //test cases for 05.04.2023
+    const event = new Event(3)
+    const data = event.getData();
+    const keys = Object.keys(data);
+    const test_data = () => {
+        expect(keys).toContain("name");
+        expect(keys).toContain("pid");
+        expect(keys).toContain("time");
+        expect(keys).toContain("id");
+        expect(keys).toContain("responceId");
+        expect(keys).toContain("type");
+        expect(keys).toContain("state");
+    }
+    test("Checking for the items in the Event Array", test_data);
 
 
-test("Checking for the items set by set data", () => {
-    event.setData(data);
-    const test_set = event.getData();
-    const keys  = Object.keys(test_set);
-    expect(keys).toContain("name");
-    expect(keys).toContain("pid");
-    expect(keys).toContain("time");
-    expect(keys).toContain("id");
-    expect(keys).toContain("responceId");
-    expect(keys).toContain("type");
-    expect(keys).toContain("state");
-});
+    test("Checking for the items set by set data", () => {
+        event.setData(data);
+        const test_set = event.getData();
+        const keys = Object.keys(test_set);
+        expect(keys).toContain("name");
+        expect(keys).toContain("pid");
+        expect(keys).toContain("time");
+        expect(keys).toContain("id");
+        expect(keys).toContain("responceId");
+        expect(keys).toContain("type");
+        expect(keys).toContain("state");
+    });
 
-const killed_event = new Event();
-test("Testing for killed event", () => {
-    killed_event.killed(7);
-    expect(killed_event.state).toBe(config.KILLED);
-    expect(killed_event.pid).toBe(-1);
-});
-//  const getData_event = new Event();
-// test("Testing for get data event", () => {
-//     getData_event.setData("string",4,20,4,4,config.EXTERNAL,config.ACTIVE);
-//     expect(getData_event.getData).toBe();
-// });
+    const killed_event = new Event();
+    test("Testing for killed event", () => {
+        killed_event.killed(7);
+        expect(killed_event.state).toBe(config.KILLED);
+        expect(killed_event.pid).toBe(-1);
+    });
+    //  const getData_event = new Event();
+    // test("Testing for get data event", () => {
+    //     getData_event.setData("string",4,20,4,4,config.EXTERNAL,config.ACTIVE);
+    //     expect(getData_event.getData).toBe();
+    // });
 
-//trial
-// describe("Test for get-set", () => {
-//     let getset_event;
-// beforeEach(() => {
-//     const getset_event = new Event('test', 1, 22, 1, '456', config.EXTERNAL, config.ACTIVE);
-//   });
+    //trial
+    // describe("Test for get-set", () => {
+    //     let getset_event;
+    // beforeEach(() => {
+    //     const getset_event = new Event('test', 1, 22, 1, '456', config.EXTERNAL, config.ACTIVE);
+    //   });
 
-//   test("Testing get data event", () => {
-//     const trial_data = {
-//         name: 'test',
-//         pid: 1,
-//         time: 22,
-//         id: 1,
-//         responceId: '456',
-//         type: config.EXTERNAL,
-//         state: config.ACTIVE
-//           };
-//     expect(getset_event.getData()).toBe(trial_data);
+    //   test("Testing get data event", () => {
+    //     const trial_data = {
+    //         name: 'test',
+    //         pid: 1,
+    //         time: 22,
+    //         id: 1,
+    //         responceId: '456',
+    //         type: config.EXTERNAL,
+    //         state: config.ACTIVE
+    //           };
+    //     expect(getset_event.getData()).toBe(trial_data);
 
-        
-//   })});
 
-const createElement_test = new Event('E', 1, 1,  1, 1, config.EXTERNAL, config.ACTIVE)
-test("Testing create element event", () => {
-    const element = createElement_test.createElement()
-    expect(element.classList).toBe("event");
+    //   })});
+
+    const createElement_test = new Event('E', 1, 1, 1, 1, config.EXTERNAL, config.ACTIVE)
+    test("Testing create element event", () => {
+        const element = createElement_test.createElement()
+        expect(element.classList).toBe("event");
+    });
 });

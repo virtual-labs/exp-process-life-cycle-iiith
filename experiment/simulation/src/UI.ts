@@ -8,10 +8,6 @@ const html2canvas = require("html2canvas");
 // require('jspdf-autotable');
 import autoTable from "jspdf-autotable";
 import Chart from "chart.js";
-// import material/dialog
-// import { MDCDialog } from "@material/dialog";
-// import { MDCRipple } from "@material/ripple";
-
 
 export { UI };
 class UI {
@@ -306,50 +302,6 @@ class UI {
     let theory = document.getElementById("theory2");
     theory.innerHTML = "";
 
-    // dialog box for theory using @material/dialog with button
-    let dialog = document.createElement("dialog");
-    dialog.classList.add("mdl-dialog");
-    dialog.style.width = "800px";
-    dialog.style.height = "620px";
-    let title = document.createElement("h6");
-    title.classList.add("mdl-dialog__title");
-    title.innerText = "What are process states?";
-    // add a blank line
-    let br = document.createElement("br");
-    let content = document.createElement("div");
-    content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
-    let actions = document.createElement("div");
-    actions.classList.add("mdl-dialog__actions");
-    let close = document.createElement("button");
-    close.classList.add("mdl-button");
-    close.classList.add("close");
-    close.innerText = "Close";
-    close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
-    actions.appendChild(close);
-    dialog.appendChild(title);
-    dialog.appendChild(br);
-    dialog.appendChild(content);
-    dialog.appendChild(actions);
-    theory.appendChild(dialog);
-
-    // button to open dialog box
-    let button = document.createElement("button");
-    button.classList.add("mdl-button");
-    button.classList.add("mdl-js-button");
-    button.classList.add("mdl-button--raised");
-    button.classList.add("mdl-button--colored");
-    
-    button.innerText = title.innerText;
-    button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
-    theory.appendChild(button);
-  }
 
   display_graph1() {
     let theory = document.getElementById("graph1");
@@ -365,7 +317,7 @@ class UI {
     title.style.width = "100%";
     title.style.height = "50px";
   
-    title.innerText = "Total Wrong Moves vs Time";
+    title.innerText = "Wrong Moves vs Time";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
 
@@ -374,50 +326,63 @@ class UI {
 
     let lineChart = document.createElement("canvas");
     lineChart.id = "lineChart";
-    lineChart.width = 350;
+    lineChart.width = 450;
     lineChart.height = 350;
     let ctx = lineChart.getContext("2d");
     // console.log(this.kernel.cummWrongMoves);
+
+    let move = []
+    for (let i = 0; i < this.kernel.clock; i++) {
+      // check if kernel.moves array has a entry with time=i
+      let temp;
+      Array.from(this.kernel.moves.values()).map((val) => {
+        if(val.time == i){
+          temp = val;
+        }
+      });
+      let move_ith;
+      if(temp) {
+        move_ith = {
+          moveMade: temp.moveMade,
+          validNum: temp.validNum,
+          time: i,
+          pid: temp.pid,
+        }
+      } else {
+        move_ith = {
+          moveMade: "No move was made",
+          validNum: 0,
+          time: i,
+          pid: -1,
+        }
+      }
+      move.push(move_ith);
+    }
+
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
+        labels: Array.from(this.kernel.cummWrongMoves.keys()).map((val) => val + 1),
         datasets: [
           {
-            label: "Wrong move",
-            data: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
-            backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
-            pointBackgroundColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
-            pointBorderColor: "#fff",
-            pointRadius : 7,
-            fill: false,
-            tension: 0.1,
+            label: "Total Wrong moves",
+            data: this.kernel.cummWrongMoves,
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255, 99, 132, 1)"],
+            borderWidth: 1,
           },
         ],
       },
       options: {
         scales: {
-          y:
-          {
-            display : false
+          y: {
+            beginAtZero: true,
           },
         },
-        legend: {
-          display: true,
-          position: "bottom",
-          usePointStyle: true,
-        },
-        responsive: false,
-        maintainAspectRatio: false,
       },
     });
-
-    // show blue color points for data values 1 and red points for value 0
-    myChart.data.datasets[0].pointBackgroundColor = myChart.data.datasets[0].data.map(
-      (val) => (val === 1 ? "rgba(54, 162, 235, 1)" : "rgba(255, 99, 132, 1)")
-    );
-    myChart.update();
     content.appendChild(lineChart);
+    
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -447,6 +412,9 @@ class UI {
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
+    // button.classList.add("mdl-js-button");
+    // button.classList.add("mdl-button--raised");
+    // button.classList.add("mdl-button--colored");
     button.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}    📊`;
     button.addEventListener("click", () => {
         dialog.showModal();
@@ -651,7 +619,7 @@ class UI {
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
     // increase size of the dialog box
-    dialog.style.width = "650px";
+    dialog.style.width = "730px";
     dialog.style.height = "520px";
 
     let title = document.createElement("h6");
@@ -664,7 +632,7 @@ class UI {
 
     let lineChart = document.createElement("canvas");
     lineChart.id = "lineChart";
-    lineChart.width = 350;
+    lineChart.width = 450;
     lineChart.height = 350;
     let ctx = lineChart.getContext("2d");
     let myChart = new Chart(ctx, {
@@ -737,8 +705,8 @@ class UI {
     theory.appendChild(button);
   }
 
-  display_theory3() {
-    let theory = document.getElementById("theory3");
+  display_theory2() {
+    let theory = document.getElementById("theory2");
     theory.innerHTML = "";
 
     // dialog box for theory using @material/dialog with button
@@ -748,12 +716,12 @@ class UI {
     dialog.style.height = "620px";
     let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
-    title.innerText = "Comparison with acutal OS";
+    title.innerText = "What are process states?";
     // add a blank line
     let br = document.createElement("br");
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<div><p></p><p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are</p><ul><li>Running or Runnable (R)<p>A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run</p></li></ul><ul><li>Uninterruptible Sleep (D)<p>The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)</p></li></ul><ul><li>Interruptable Sleep (S)<p>An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur</p></li></ul><ul><li>Stopped (T)<p>Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully</p></li></ul><ul><li>Zombie (Z)<p>Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process</p></li></ul><p>Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux</p><p>Using the uptime command in the Linux Shell we can see the load average values of the CPU where the load value measures CPU Utilisation at any time.</p><pre><code>uptime 17:02:14 up  4:50,  1 user,  load average: 0.94, 0.73, 0.63</code></pre><p>The three values seen are load values averaged over 1 minute, 5 minute and 15 minute intervals respectively. We can draw detailed comparisons between how the experiment performs vs Linux OS using the above.</p></div>";
+    content.innerHTML = "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -785,7 +753,10 @@ class UI {
     );
     theory.appendChild(button);
   }
-  
+
+  display_theory3() {
+    let theory = document.getElementById("theory3");
+    theory.innerHTML = "";
 
   display_intro() {
     let intro1 = document.getElementById("intro1");
@@ -1045,7 +1016,6 @@ class UI {
     );
     procedure.appendChild(button);
   }
-
 
   display_analytics() {
     if(!this.isPractice()){
