@@ -4,11 +4,15 @@ import { Event, IEvent } from "./Event";
 import { getRandomInt, getRandomElement } from "./helper_functions";
 import * as config from "./config"
 
+const serverURL = "http://localhost:3000";
+
 interface Move {
     source: String;
     dest: String;
+    moveMade: String;
     pid: number;
     valid: Boolean;
+    validNum : number;
     message: String;
     time: number;
 }
@@ -54,9 +58,15 @@ export class Kernel  {
 
     constructor() {
         this.reset();
+
+        // Initialize the experiment in the database
+        fetch(serverURL, {
+            method: 'PUT',
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
-
-
 
     reset() {
         this.processes = [];
@@ -126,15 +136,40 @@ export class Kernel  {
             let newMove: Move = {
                 source,
                 dest: bin,
+                moveMade: source + " to " + bin,
                 pid,
                 valid: res.status === config.OK,
+                validNum: res.status === config.OK ? 1 : 0,
                 message : res.message,
                 time: this.clock
         }
         this.moves.push(newMove);
         console.log(this.moves);
+        this.insertMoveToDB(newMove);
         return res;
+    }
 
+    insertMoveToDB(move: Move) {
+        const url = serverURL + "/moves";
+        const data = JSON.stringify({
+            source: move.source,
+            dest: move.dest,
+            pid: move.pid,
+            valid: move.valid,
+            message: move.message,
+            time: move.time
+        });
+
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     generate_event() {
@@ -166,11 +201,31 @@ export class Kernel  {
         this.events[this.selectedEvent].setResponceId(this.log.records.length);
         const message = `Created Process ${pid} at ${this.clock}`;
         this.log.addRecord(this.selectedEvent, this.clock);
+        this.insertProcessCreationToDB({pid, time: this.clock})
         this.selectedEvent = -1;
         return {
             status : config.OK,
             message
         }
+    }
+
+    insertProcessCreationToDB(pBlock: Object) {
+        const url = serverURL + "/processes";
+        const data = JSON.stringify({
+            pid: pBlock["pid"],
+            time: pBlock["time"],
+        });
+
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     isCPUIdle() {
@@ -354,11 +409,35 @@ export class Kernel  {
         const message = `Terminated Process ${pid} at ${this.clock}.`;
         this.log.addRecord(this.selectedEvent, this.clock);
 
+        this.insertTerminationToDB({
+            pid,
+            time: this.clock
+        })
+
         this.selectedEvent = -1;
         return {
             status : config.OK,
             message
         }
+    }
+
+    insertTerminationToDB(termination: Object) {
+        const url = serverURL + "/terminations";
+        const data = JSON.stringify({
+            pid: termination["pid"],
+            time: termination["time"],
+        });
+
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     moveToIO(pid: number) {
@@ -577,6 +656,7 @@ export class Kernel  {
                 this.processCreations += 1;
             }
             this.events.push(next_event);
+            this.insertEventToDB(next_event);
         }
 
 
@@ -648,6 +728,31 @@ export class Kernel  {
         if(possible_events.length > 0 ){
             const next_event = getRandomElement(possible_events);
             this.events.push(next_event);
+            this.insertEventToDB(next_event);
         }
+    }
+
+    insertEventToDB(event: Event) {
+        const url  = serverURL + "/events";
+        const data = JSON.stringify({
+            name: event.name,
+            pid: event.pid,
+            time: event.time,
+            id: event.id,
+            responceId: event.responceId,
+            type: event.type,
+            state: event.state
+        });
+        
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(response => console.log('Success:', JSON.stringify(response)))
+        .catch(error => console.error('Error:', error));
     }
 }

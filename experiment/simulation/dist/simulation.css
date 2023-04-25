@@ -4,6 +4,39 @@ html, body, main {
     margin: 0;
     background-color: #fafafa;
 }
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+    body {
+      transform: rotate(90deg);
+      transform-origin: left top;
+      width: 100vh;
+      overflow-x: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+.none_display {
+    display: none !important;
+  }
+  
+#main {
+    display: flex;
+}
+
+.instructions_panel {
+    /* display: none; */
+    flex: 1 1 auto;
+  }
+
+  
+  section.split:nth-child(1) {
+    flex: 1 1 auto;
+    width: 60%;
+  }
+  
+
 #instruction {
     height: 10%;
     width: 80%;
@@ -71,6 +104,19 @@ html, body, main {
 #clock .info {
     height: 100%;
     color: black;
+}
+
+#clock_val {
+    height: 100%;
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock_paused {
+    background-color: green;
+    color: white;
 }
 
 .info {
@@ -485,24 +531,24 @@ html, body, main {
 }
 /* styles for log */
 .split {
-    height: 95%;
+    /* height: 95%;
     position: fixed;
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 20px; */
 }
 
-.left {
-    left: 0;
-    width: 75%;
+ .left {
+    /* left: 0;
+    width: 75%; */
 }
 
 .right {
-    right: 0;
-    width: 25%;
+    /* right: 0;
+    width: 25%; */
     padding: 10px 10px;
-    margin: 1vw 0;
+    /* margin: 1vw 0; */
     /* border: 0.25vw solid #97d23d; */
     /* border-radius: 0.25vw; */
 }
@@ -525,7 +571,7 @@ html, body, main {
 
 
 .instructions_panel {
-    margin-left: auto;
+    /* margin-left: auto; */
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -535,9 +581,9 @@ html, body, main {
 
 .active, .accordion:hover {
   /* background-color: #ccc; */
-  background-color: #880e4f;
+  /* background-color: #880e4f; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: white;
+  /* color: white; */
   display: flex;
   /* overflow: scroll; */
   /* display: block; */

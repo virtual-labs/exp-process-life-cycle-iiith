@@ -210,6 +210,12 @@ class UI {
     clock_span.innerHTML = this.kernel.clock.toString();
     if (this.kernel.clock !== 0 && this.is_ex_paused())
       clock_span.innerHTML += " (Paused)";
+    else if(this.kernel.selectedEvent !== -1){
+      clock_span.classList.add("clock_paused");
+    }
+    else {
+      clock_span.classList.remove("clock_paused");
+    }
   }
   display_processes() {
     // clear all pools
@@ -296,7 +302,54 @@ class UI {
     theory.appendChild(button);
   }
 
+  display_theory2() {
+    let theory = document.getElementById("theory2");
+    theory.innerHTML = "";
 
+    // dialog box for theory using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    dialog.style.width = "800px";
+    dialog.style.height = "620px";
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "What are process states?";
+    // add a blank line
+    let br = document.createElement("br");
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(br);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    theory.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    
+    button.innerText = title.innerText;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    theory.appendChild(button);
+  }
 
   display_graph1() {
     let theory = document.getElementById("graph1");
@@ -328,31 +381,43 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.cummWrongMoves.keys()).map((val) => val + 1),
+        labels: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
         datasets: [
           {
-            label: "Total Wrong moves",
-            data: this.kernel.cummWrongMoves,
-            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-            borderColor: ["rgba(255, 99, 132, 1)"],
-            borderWidth: 1,
+            label: "Wrong move",
+            data: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
+            backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+            pointBackgroundColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+            pointBorderColor: "#fff",
+            pointRadius : 7,
+            fill: false,
+            tension: 0.1,
           },
         ],
       },
       options: {
-        // graph size
-        responsive: false,
-        maintainAspectRatio: false,
-
         scales: {
-          y: {
-            beginAtZero: true,
+          y:
+          {
+            display : false
           },
         },
+        legend: {
+          display: true,
+          position: "bottom",
+          usePointStyle: true,
+        },
+        responsive: false,
+        maintainAspectRatio: false,
       },
     });
+
+    // show blue color points for data values 1 and red points for value 0
+    myChart.data.datasets[0].pointBackgroundColor = myChart.data.datasets[0].data.map(
+      (val) => (val === 1 ? "rgba(54, 162, 235, 1)" : "rgba(255, 99, 132, 1)")
+    );
+    myChart.update();
     content.appendChild(lineChart);
-    
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -369,20 +434,27 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
-    if(!this.isPractice()) return;
+    // create a &#9432; button inside the button
+    let graphinfo = document.createElement("span");
+    graphinfo.classList.add("mdl-tooltip");
+    graphinfo.setAttribute("data-mdl-for", "graph1");
+    graphinfo.innerText = "This graph shows the wrong moves made by the user in the current session against time.";
+    graphinfo.style.width = "300px";
+    graphinfo.style.height = "110px";
+    graphinfo.style.fontSize = "16px";
+    graphinfo.style.lineHeight = "1.3";
+
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
-    // button.classList.add("mdl-js-button");
-    // button.classList.add("mdl-button--raised");
-    // button.classList.add("mdl-button--colored");
     button.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}    📊`;
     button.addEventListener("click", () => {
         dialog.showModal();
     }
     );
-    // put some text besides the button
+    button.appendChild(graphinfo);
     theory.appendChild(button);
+    // theory.appendChild(graphinfo);
   }
 
   display_graph2() {
@@ -453,6 +525,15 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
+    let graphinfo = document.createElement("span");
+    graphinfo.classList.add("mdl-tooltip");
+    graphinfo.setAttribute("data-mdl-for", "graph2");
+    graphinfo.innerText = "This graph shows the average event wait time throughout the session.";
+    graphinfo.style.width = "300px";
+    graphinfo.style.height = "100px";
+    graphinfo.style.fontSize = "16px";
+    graphinfo.style.lineHeight = "1.3";
+
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
@@ -466,6 +547,7 @@ class UI {
     }
     );
     theory.appendChild(button);
+    button.appendChild(graphinfo);
   }
 
   display_graph3() {
@@ -535,6 +617,15 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
+    let graphinfo = document.createElement("span");
+    graphinfo.classList.add("mdl-tooltip");
+    graphinfo.setAttribute("data-mdl-for", "graph3");
+    graphinfo.innerText = "This graph shows the CPU Idle time between the time intervals.";
+    graphinfo.style.width = "300px";
+    graphinfo.style.height = "100px";
+    graphinfo.style.fontSize = "16px";
+    graphinfo.style.lineHeight = "1.3";
+
     if(!this.isPractice()) return;
     // button to open dialog box
     let button = document.createElement("button");
@@ -547,6 +638,8 @@ class UI {
         dialog.showModal();
     }
     );
+
+    button.appendChild(graphinfo);
     theory.appendChild(button);
   }
 
@@ -618,6 +711,15 @@ class UI {
     dialog.appendChild(actions);
     theory.appendChild(dialog);
 
+    let graphinfo = document.createElement("span");
+    graphinfo.classList.add("mdl-tooltip");
+    graphinfo.setAttribute("data-mdl-for", "graph4");
+    graphinfo.innerText = "This graph shows the CPU IO time between the time intervals.";
+    graphinfo.style.width = "300px";
+    graphinfo.style.height = "100px";
+    graphinfo.style.fontSize = "16px";
+    graphinfo.style.lineHeight = "1.3";
+
     if(!this.isPractice()) return;2
 
     // button to open dialog box
@@ -631,11 +733,12 @@ class UI {
         dialog.showModal();
     }
     );
+    button.appendChild(graphinfo);
     theory.appendChild(button);
   }
 
-  display_theory2() {
-    let theory = document.getElementById("theory2");
+  display_theory3() {
+    let theory = document.getElementById("theory3");
     theory.innerHTML = "";
 
     // dialog box for theory using @material/dialog with button
@@ -645,12 +748,12 @@ class UI {
     dialog.style.height = "620px";
     let title = document.createElement("h6");
     title.classList.add("mdl-dialog__title");
-    title.innerText = "What are process states?";
+    title.innerText = "Comparison with acutal OS";
     // add a blank line
     let br = document.createElement("br");
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
+    content.innerHTML = "<p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are- Running or Runnable (R)        A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run    - Uninterruptible Sleep (D)        The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)    - Interruptable Sleep (S)        An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur    - Stopped (T)        Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully    - Zombie (Z)        Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process    Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux## References**Linux System Programming, 2nd Edition** - Robert Love</p>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -682,6 +785,7 @@ class UI {
     );
     theory.appendChild(button);
   }
+  
 
   display_intro() {
     let intro1 = document.getElementById("intro1");
@@ -897,6 +1001,52 @@ class UI {
     procedure.appendChild(button);
   }
 
+  display_procedure3() {
+    let procedure = document.getElementById("procedure3");
+    procedure.innerHTML = "";
+
+    // dialog box for procedure using @material/dialog with button
+    let dialog = document.createElement("dialog");
+    dialog.classList.add("mdl-dialog");
+    dialog.style.width = "600px";
+    dialog.style.height = "400px";
+    let title = document.createElement("h6");
+    title.classList.add("mdl-dialog__title");
+    title.innerText = "Steps of the simulator";
+    let content = document.createElement("div");
+    content.classList.add("mdl-dialog__content");
+    content.innerHTML = "Coming Soon...";
+    let actions = document.createElement("div");
+    actions.classList.add("mdl-dialog__actions");
+    let close = document.createElement("button");
+    close.classList.add("mdl-button");
+    close.classList.add("close");
+    close.innerText = "Close";
+    close.addEventListener("click", () => {
+        dialog.close();
+        }
+    );
+    actions.appendChild(close);
+    dialog.appendChild(title);
+    dialog.appendChild(content);
+    dialog.appendChild(actions);
+    procedure.appendChild(dialog);
+
+    // button to open dialog box
+    let button = document.createElement("button");
+    button.classList.add("mdl-button");
+    button.classList.add("mdl-js-button");
+    button.classList.add("mdl-button--raised");
+    button.classList.add("mdl-button--colored");
+    button.innerText = title.innerText;
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    }
+    );
+    procedure.appendChild(button);
+  }
+
+
   display_analytics() {
     if(!this.isPractice()){
       console.log("Display Anallytics");
@@ -989,8 +1139,10 @@ class UI {
     this.display_intro3();
     this.display_theory();
     this.display_theory2();
+    this.display_theory3();
     this.display_procedure();
     this.display_procedure2();
+    this.display_procedure3();
     this.console_display();
     if (
       this.kernel.selectedEvent !== -1 &&
@@ -1014,6 +1166,18 @@ class UI {
   }
 
   initialize_events() {
+    document.getElementById("toggle_accordion").addEventListener("click", (event) => {
+      let button = document.getElementById("toggle_accordion");
+      if(button.innerText.trim() === "Close accordion") {
+        button.innerText = "Open accordion";
+        document.querySelector(".instructions_panel").classList.add("none_display");
+      }
+      else {
+        button.innerText = "Close accordion";
+        document.querySelector(".instructions_panel").classList.remove("none_display");
+      }
+    })
+
     let process_drop_handler = (event) => {
       if (this.is_ex_paused()) return;
       event.preventDefault();
