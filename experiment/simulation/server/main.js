@@ -26,11 +26,7 @@ app.put('/', async (req, res) => {
             if (!experiment) {
                 experiments.insertOne({
                     experiment_id: 1,
-                    processes: [],
-                    moves: [],
                     events: [],
-                    terminations: [],
-                    resets: [],
                 })
                     .then(() => {
                         res.send({
@@ -49,8 +45,11 @@ app.post('/moves', (req, res) => {
     const experiments = db.collection('experiments');
     experiments.findOne({ experiment_id: 1 })
         .then(experiment => {
-            experiment.moves.push(req.body);
-            experiments.updateOne({ experiment_id: 1 }, { $set: { moves: experiment.moves } })
+            experiment.events.push({
+                objType: 'move',
+                ...req.body,
+            });
+            experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
                 .then(() => {
                     res.send({
                         message: 'Move added to database.',
@@ -63,7 +62,10 @@ app.post('/events', (req, res) => {
     const experiments = db.collection('experiments');
     experiments.findOne({ experiment_id: 1 })
         .then(experiment => {
-            experiment.events.push(req.body);
+            experiment.events.push({
+                objType: 'event',
+                ...req.body,
+            });
             experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
                 .then(() => {
                     res.send({
@@ -77,8 +79,11 @@ app.post('/processes', (req, res) => {
     const experiments = db.collection('experiments');
     experiments.findOne({ experiment_id: 1 })
         .then(experiment => {
-            experiment.processes.push(req.body);
-            experiments.updateOne({ experiment_id: 1 }, { $set: { processes: experiment.processes } })
+            experiment.events.push({
+                objType: 'process creation',
+                ...req.body,
+            });
+            experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
                 .then(() => {
                     res.send({
                         message: 'Process added to database.',
@@ -91,8 +96,11 @@ app.get('/terminations', (req, res) => {
     const experiments = db.collection('experiments');
     experiments.findOne({ experiment_id: 1 })
         .then(experiment => {
-            experiment.terminations.push(req.body);
-            experiments.updateOne({ experiment_id: 1 }, { $set: { terminations: experiment.terminations } })
+            experiment.events.push({
+                objType: 'termination',
+                ...req.body,
+            });
+            experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
                 .then(() => {
                     res.send({
                         message: 'Termination added to database.',
@@ -105,8 +113,11 @@ app.get('/resets', (req, res) => {
     const experiments = db.collection('experiments');
     experiments.findOne({ experiment_id: 1 })
         .then(experiment => {
-            experiment.resets.push(req.body);
-            experiments.updateOne({ experiment_id: 1 }, { $set: { resets: experiment.resets } })
+            experiment.events.push({
+                objType: 'reset',
+                ...req.body,
+            });
+            experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
                 .then(() => {
                     res.send({
                         message: 'Reset added to database.',
