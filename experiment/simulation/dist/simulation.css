@@ -581,9 +581,9 @@ html, body, main {
 
 .active, .accordion:hover {
   /* background-color: #ccc; */
-  background-color: #880e4f;
+  /* background-color: #880e4f; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: white;
+  /* color: white; */
   display: flex;
   /* overflow: scroll; */
   /* display: block; */
