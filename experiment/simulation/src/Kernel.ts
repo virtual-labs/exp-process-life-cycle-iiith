@@ -56,6 +56,14 @@ export class Kernel  {
 
     constructor() {
         this.reset();
+
+        // Initialize the experiment in the database
+        fetch(serverURL, {
+            method: 'PUT',
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     reset() {

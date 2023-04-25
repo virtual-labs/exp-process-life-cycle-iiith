@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri = "mongodb+srv://aarushj09:aarushj09@cluster0.husrwrj.mongodb.net/?retryWrites=true&w=majority";
+// const uri = "mongodb://localhost:27017";
 let db = null;
 
 // Connect to database
@@ -17,50 +18,101 @@ mongo.MongoClient.connect(uri, { useUnifiedTopology: true })
     })
     .catch(error => console.error(error));
 
-app.get('/', (req, res) => {
-    res.send({
-        message: 'Hello World!',
-    });
+app.put('/', async (req, res) => {
+    // Check if experiment with ID 1 exists and if not, then create it
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            if (!experiment) {
+                experiments.insertOne({
+                    experiment_id: 1,
+                    processes: [],
+                    moves: [],
+                    events: [],
+                    terminations: [],
+                    resets: [],
+                })
+                    .then(() => {
+                        res.send({
+                            message: 'Experiment created.',
+                        });
+                    })
+            } else {
+                res.send({
+                    message: 'Experiment already exists.',
+                });
+            }
+        });
 });
 
 app.post('/moves', (req, res) => {
-    const moves = db.collection('moves');
-    moves.insertOne(req.body);
-    res.send({
-        message: 'Move added to database.',
-    });
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            experiment.moves.push(req.body);
+            experiments.updateOne({ experiment_id: 1 }, { $set: { moves: experiment.moves } })
+                .then(() => {
+                    res.send({
+                        message: 'Move added to database.',
+                    });
+                })
+        })
 });
 
 app.post('/events', (req, res) => {
-    const events = db.collection('events');
-    events.insertOne(req.body);
-    res.send({
-        message: 'Event added to database.',
-    });
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            experiment.events.push(req.body);
+            experiments.updateOne({ experiment_id: 1 }, { $set: { events: experiment.events } })
+                .then(() => {
+                    res.send({
+                        message: 'Event added to database.',
+                    });
+                })
+        })
 });
 
 app.post('/processes', (req, res) => {
-    const processes = db.collection('processes');
-    processes.insertOne(req.body);
-    res.send({
-        message: 'Process added to database.',
-    });
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            experiment.processes.push(req.body);
+            experiments.updateOne({ experiment_id: 1 }, { $set: { processes: experiment.processes } })
+                .then(() => {
+                    res.send({
+                        message: 'Process added to database.',
+                    });
+                })
+        })
 });
 
 app.get('/terminations', (req, res) => {
-    const terminations = db.collection('terminations');
-    terminations.insertOne(req.body);
-    res.send({
-        message: 'Termination added to database.',
-    });
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            experiment.terminations.push(req.body);
+            experiments.updateOne({ experiment_id: 1 }, { $set: { terminations: experiment.terminations } })
+                .then(() => {
+                    res.send({
+                        message: 'Termination added to database.',
+                    });
+                })
+        })
 });
 
 app.get('/resets', (req, res) => {
-    const resets = db.collection('resets');
-    resets.insertOne(req.body);
-    res.send({
-        message: 'Reset added to database.',
-    });
+    const experiments = db.collection('experiments');
+    experiments.findOne({ experiment_id: 1 })
+        .then(experiment => {
+            experiment.resets.push(req.body);
+            experiments.updateOne({ experiment_id: 1 }, { $set: { resets: experiment.resets } })
+                .then(() => {
+                    res.send({
+                        message: 'Reset added to database.',
+                    });
+                })
+        })
 });
 
 app.listen(3000, () => {
