@@ -139,7 +139,7 @@ export class Kernel  {
                 moveMade: source + " to " + bin,
                 pid,
                 valid: res.status === config.OK,
-                validNum: res.status === config.OK ? 1 : 0,
+                validNum: res.status === config.OK ? 1 : -1,
                 message : res.message,
                 time: this.clock
         }

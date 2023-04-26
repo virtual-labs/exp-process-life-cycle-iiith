@@ -115,4 +115,5 @@ const createElement_test = new Event('E', 1, 1,  1, 1, config.EXTERNAL, config.A
 test("Testing create element event", () => {
     const element = createElement_test.createElement()
     expect(element.classList).toBe("event");
+})
 });
