@@ -22,7 +22,7 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
 
 * A. Silberschatz, P. B. Galvin, and G. Gagne, *Operating System Concepts, 9th ed*.
 
-* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*. Arpaci-Dusseau Books. August, 2018 (Version 1.00) 
+* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*. Arpaci-Dusseau Books. August, 2018 (Version 1.00). https://pages.cs.wisc.edu/~remzi/OSTEP
 
 <!-- *  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach. -->
 
