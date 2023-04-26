@@ -423,6 +423,8 @@ class UI {
             pointRadius : 7,
             fill: false,
             tension: 0.1,
+            // remove the line
+            showLine: false,
           },
         ],
       },
@@ -434,9 +436,13 @@ class UI {
               max: 1,
               stepSize: 1,
               callback: function(value, index, values) {
-                if (value === 0 || value === 1 || value === -1) {
-                  return value.toString();
-                } else {
+                if (value === -1) {
+                  return "Wrong Move";
+                } else if(value == 1)
+                {
+                  return "Valid Move";
+                }
+                else {
                   return "";
                 }
               }
@@ -451,7 +457,7 @@ class UI {
             label: function(tooltipItem, data) {
               var value = move[tooltipItem.index].moveMade;
               if(move[tooltipItem.index].pid != -1) {
-                return `Process with ID ${move[tooltipItem.index].pid} was moved from ${value}.`
+                return `PID ${move[tooltipItem.index].pid} moved from ${value}.`
               }
               return value;
             }
