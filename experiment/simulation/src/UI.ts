@@ -59,7 +59,7 @@ class UI {
   }
 
   is_ex_paused() {
-    return document.getElementById("start").childNodes[0].nodeValue !== "Pause";
+    return document.getElementById("start").childNodes[0].nodeValue.trim() !== "Pause";
   }
 
   start_timer() {
@@ -209,12 +209,15 @@ class UI {
     let clock_span = document.getElementById("clock_val");
     clock_span.innerHTML = this.kernel.clock.toString();
     if (this.kernel.clock !== 0 && this.is_ex_paused())
+    {
       clock_span.innerHTML += " (Paused)";
+      clock.classList.add("clock_paused");
+    }
     else if(this.kernel.selectedEvent !== -1){
-      clock_span.classList.add("clock_paused");
+      clock.classList.add("clock_paused");
     }
     else {
-      clock_span.classList.remove("clock_paused");
+      clock.classList.remove("clock_paused");
     }
   }
   display_processes() {
@@ -1361,6 +1364,7 @@ class UI {
         // pause_driver.reset();
       } else {
         document.getElementById("start").childNodes[0].nodeValue = "Resume";
+        // console.log(this.is_ex_paused());
         this.display_all();
         this.end_timer();
         //pause_driver.highlight("#start");

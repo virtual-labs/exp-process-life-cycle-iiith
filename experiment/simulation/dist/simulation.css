@@ -115,8 +115,8 @@ html, body, main {
 }
 
 .clock_paused {
-    background-color: green;
-    color: white;
+    /* background-color: green; */
+    color: red !important;
 }
 
 .info {
@@ -528,6 +528,7 @@ html, body, main {
     font-size:x-large;
     margin-bottom: 5%;
     /* margin-right: auto; */
+    color: green;
 }
 /* styles for log */
 .split {
