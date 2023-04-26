@@ -59,7 +59,7 @@ class UI {
   }
 
   is_ex_paused() {
-    return document.getElementById("start").childNodes[0].nodeValue !== "Pause";
+    return document.getElementById("start").childNodes[0].nodeValue.trim() !== "Pause";
   }
 
   start_timer() {
@@ -209,12 +209,15 @@ class UI {
     let clock_span = document.getElementById("clock_val");
     clock_span.innerHTML = this.kernel.clock.toString();
     if (this.kernel.clock !== 0 && this.is_ex_paused())
+    {
       clock_span.innerHTML += " (Paused)";
+      clock.classList.add("clock_paused");
+    }
     else if(this.kernel.selectedEvent !== -1){
-      clock_span.classList.add("clock_paused");
+      clock.classList.add("clock_paused");
     }
     else {
-      clock_span.classList.remove("clock_paused");
+      clock.classList.remove("clock_paused");
     }
   }
   display_processes() {
@@ -365,7 +368,7 @@ class UI {
     title.style.width = "100%";
     title.style.height = "50px";
   
-    title.innerText = "Total Wrong Moves vs Time";
+    title.innerText = "Wrong Moves vs Time";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
 
@@ -374,38 +377,129 @@ class UI {
 
     let lineChart = document.createElement("canvas");
     lineChart.id = "lineChart";
-    lineChart.width = 350;
+    lineChart.width = 450;
     lineChart.height = 350;
     let ctx = lineChart.getContext("2d");
-    // console.log(this.kernel.cummWrongMoves);
+
+    let move = []
+    for (let i = 0; i < this.kernel.clock; i++) {
+      // check if kernel.moves array has a entry with time=i
+      let temp;
+      Array.from(this.kernel.moves.values()).map((val) => {
+        if(val.time == i){
+          temp = val;
+        }
+      });
+      let move_ith;
+      if(temp) {
+        move_ith = {
+          moveMade: temp.moveMade,
+          validNum: temp.validNum,
+          time: i,
+          pid: temp.pid,
+        }
+      } else {
+        move_ith = {
+          moveMade: "No move was made",
+          validNum: 0,
+          time: i,
+          pid: -1,
+        }
+      }
+      move.push(move_ith);
+    }
+
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
+        labels: move.map((val) => val.time),
         datasets: [
           {
-            label: "Wrong move",
-            data: Array.from(this.kernel.moves.values()).map((val) => val.validNum),
+            // label: "Wrong move",
+            data: move.map((val) => val.validNum),
             backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
             pointBackgroundColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
             pointBorderColor: "#fff",
             pointRadius : 7,
             fill: false,
             tension: 0.1,
+            // remove the line
+            showLine: false,
           },
         ],
       },
       options: {
         scales: {
-          y:
-          {
-            display : false
-          },
+          yAxes: [{
+            ticks: {
+              min: -1,
+              max: 1,
+              stepSize: 1,
+              callback: function(value, index, values) {
+                if (value === -1) {
+                  return "Wrong Move";
+                } else if(value == 1)
+                {
+                  return "Valid Move";
+                }
+                else {
+                  return "";
+                }
+              }
+            }
+          }]
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(tooltipItem, data) {
+              var value = move[tooltipItem.index].moveMade;
+              if(move[tooltipItem.index].pid != -1) {
+                return `PID ${move[tooltipItem.index].pid} moved from ${value}.`
+              }
+              return value;
+            }
+          }
         },
         legend: {
           display: true,
-          position: "bottom",
-          usePointStyle: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            generateLabels: function() {
+              const legendLabels = [];
+              legendLabels.push({
+                text: "Valid move",
+                fillStyle: "rgba(54, 162, 235, 1)",
+                strokeStyle: "rgba(54, 162, 235, 1)",
+                lineWidth: 2,
+                pointStyle: 'circle',
+                hidden: false
+              });
+
+              legendLabels.push({
+                text: "Wrong move",
+                fillStyle: "rgba(255, 99, 132, 1)",
+                strokeStyle: "rgba(255, 99, 132, 1)",
+                lineWidth: 2,
+                pointStyle: 'circle',
+                hidden: false
+              });
+              
+              legendLabels.push({
+                text: "No move",
+                fillStyle: "rgb(228, 208, 10, 1)",
+                strokeStyle: "rgb(228, 208, 10, 1)",
+                lineWidth: 2,
+                pointStyle: 'circle',
+                hidden: false,
+              });
+      
+              return legendLabels;
+            }
+          },
         },
         responsive: false,
         maintainAspectRatio: false,
@@ -414,7 +508,11 @@ class UI {
 
     // show blue color points for data values 1 and red points for value 0
     myChart.data.datasets[0].pointBackgroundColor = myChart.data.datasets[0].data.map(
-      (val) => (val === 1 ? "rgba(54, 162, 235, 1)" : "rgba(255, 99, 132, 1)")
+      (val) => (val === 1 ? "rgba(54, 162, 235, 1)" : (val === 0 ? "rgb(228, 208, 10, 1)" : "rgba(255, 99, 132, 1)"))
+    );
+    myChart.update();
+    myChart.data.datasets[0].pointRadius = myChart.data.datasets[0].data.map(
+      (val) => (val === 1 ? 7 : (val === 0 ? 4 : 7))
     );
     myChart.update();
     content.appendChild(lineChart);
@@ -447,7 +545,7 @@ class UI {
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
-    button.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}    📊`;
+    button.innerText = `Wrong Moves: ${this.kernel.wrongMoves}    📊`;
     button.addEventListener("click", () => {
         dialog.showModal();
     }
@@ -753,7 +851,7 @@ class UI {
     let br = document.createElement("br");
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are- Running or Runnable (R)        A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run    - Uninterruptible Sleep (D)        The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)    - Interruptable Sleep (S)        An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur    - Stopped (T)        Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully    - Zombie (Z)        Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process    Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux## References**Linux System Programming, 2nd Edition** - Robert Love</p>";
+    content.innerHTML = "<div><p></p><p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are</p><ul><li>Running or Runnable (R)<p>A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run</p></li></ul><ul><li>Uninterruptible Sleep (D)<p>The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)</p></li></ul><ul><li>Interruptable Sleep (S)<p>An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur</p></li></ul><ul><li>Stopped (T)<p>Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully</p></li></ul><ul><li>Zombie (Z)<p>Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process</p></li></ul><p>Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux</p><p>Using the uptime command in the Linux Shell we can see the load average values of the CPU where the load value measures CPU Utilisation at any time.</p><pre><code>uptime 17:02:14 up  4:50,  1 user,  load average: 0.94, 0.73, 0.63</code></pre><p>The three values seen are load values averaged over 1 minute, 5 minute and 15 minute intervals respectively. We can draw detailed comparisons between how the experiment performs vs Linux OS using the above.</p></div>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -1272,6 +1370,7 @@ class UI {
         // pause_driver.reset();
       } else {
         document.getElementById("start").childNodes[0].nodeValue = "Resume";
+        // console.log(this.is_ex_paused());
         this.display_all();
         this.end_timer();
         //pause_driver.highlight("#start");

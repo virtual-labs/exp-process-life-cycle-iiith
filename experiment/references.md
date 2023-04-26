@@ -22,7 +22,7 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
 
 * A. Silberschatz, P. B. Galvin, and G. Gagne, *Operating System Concepts, 9th ed*.
 
-* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*. Arpaci-Dusseau Books. August, 2018 (Version 1.00) 
+* Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau. *Operating Systems: Three Easy Pieces*. Arpaci-Dusseau Books. August, 2018 (Version 1.00). https://pages.cs.wisc.edu/~remzi/OSTEP
 
 <!-- *  D. M. Dhamdhere, Operating Systems: A Concept-Based Approach. -->
 
@@ -32,14 +32,19 @@ The 7 state cycle is fully explained on this page. Here you will find a brief ex
 
 * Tanenbaum, A. S. and Woodhull, A. S. (2005). *Operating Systems Design and Implementation (3rd Edition)*. Prentice-Hall, Inc., USA.
 
+  In *Operating Systems: Design and Implementation*, Tanenbaum and Woodhull detail the design and source code for the Minix3 operating system, along with an introdction to general operating systems concepts.
+
+  Recommended reading: §2.1.1-§2.1.3 (Introduction to Processes)
+
 * *Linux Kernel Labs*. https://linux-kernel-labs.github.io/
 
 * *Xv6*, a simple Unix-like teaching operating system. https://pdos.csail.mit.edu/6.828/2022/xv6.html
 
-### On the Hardware-Software Interface
-* Patterson, D. and Hennessy, J. (2014). *Computer Organization and Design, Enhanced: The Hardware/Software Interface*. The Morgan Kaufmann Series in Computer Architecture and Design. Elsevier Science.
+<!-- ### On the Hardware-Software Interface -->
 
-* *Intel (2023) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A)*.
+<!-- * Patterson, D. and Hennessy, J. (2014). *Computer Organization and Design, Enhanced: The Hardware/Software Interface*. The Morgan Kaufmann Series in Computer Architecture and Design. Elsevier Science. -->
+
+<!-- * *Intel (2023) Intel 64 and IA-32 Architectures Software Developer's Manual: System Programming Guide, A-Z, Volume 3 (3A)*. -->
 
 <!-- ## To quiz youself more go here:
 * https://examradar.com/process-multiprogramming-context-switching-questions-answers/ -->
