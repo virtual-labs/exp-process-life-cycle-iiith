@@ -2,14 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": ["1. which of the following state transitions are possible?",
-         " 1. Ready -> Running",
-         " 2. Running -> Wait",
-         " 3. Terminated -> Running",
-          "4. Ready -> Wait",
-          "5. Wait ->Ready"]
-
-,
+      "question": "1. which of the following state transitions are possible?\n1. Ready -> Running \n2. Running -> Wait \n3. Terminated -> Running\n4. Ready -> Wait\n5. Wait ->Ready",
       "answers": {
         "a": "1,2,5",
         "b": "1,2,3",
@@ -45,12 +38,7 @@
     }
  ,
     {
-      "question": ["3. What are the possible ways that the process can leave the CPU?",
-                "  1.When process is terminated",
-                "  2.When process is preempted",
-                 " 3.When it receives an I/O call",
-                  "4.When it receives an interrupt",
-                  "5.When the I/O requirement is completed"]
+      "question": "3. What are the possible ways that the process can leave the CPU?\n1.When process is terminated\n2.When process is preempted\n 3.When it receives an I/O call\n4.When it receives an interrupt\n5.When the I/O requirement is completed"
 ,
       "answers": {
         "a": "1,2,3,5",
