@@ -4,140 +4,177 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Context Switching</title>
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
-    />
+    <title>Process Life Cycle Management</title>
 
     <link
       rel="stylesheet"
       href="https://unpkg.com/driver.js/dist/driver.min.css"
     />
 
-    <link rel="stylesheet" href="./dist/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
+    />
     <link rel="stylesheet" href="./dist/material.min.css" />
+    <script src="./dist/material.min.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <script src="./dist/material.min.js"></script>
+
+    <link rel="stylesheet" href="test.css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
-    <main class="h-screen flex flex-col items-center">
-      <div class="flex w-full max-w-screen-md">
-        <!-- Left section (content) -->
-        <section class="w-auto bg-gray-200">
-          <!-- Add Tailwind CSS classes for left section styling -->
-          <section class="grid grid-cols-3 grid-rows-2 gap-2 p-2 text-wrap">
+    <main
+      id="main"
+      class="h-screen flex flex-col items-center md:w-screen text-[10px] sm:text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px]"
+    >
+      <!--Simulation and Content-->
+      <div
+        class="flex w-full max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl"
+      >
+        <!-- Left section (simulation) -->
+        <section class="split left w-70 bg-gray-800 md:w-5/6 relative">
+          <!--Tailwind CSS classes for (simulation) section styling -->
+          <section
+            class="exp grid grid-cols-3 grid-rows-2 gap-2 p-2 overflow-hidden"
+          >
             <section
               id="event_queue"
-              class="col-span-1 row-span-2 bg-white rounded-lg shadow-md p-4 text-wrap"
+              class="event_sec flex-1 col-span-1 row-span-2 bg-white rounded-lg shadow-md p-4 max-h-[400px] overflow-y-auto"
             >
-              <h5 class="bg-gray-300 p-2 rounded-t-lg">
-                Events <span>&#9432;</span>
+              <h5
+                class="event_queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+              >
+                Events Queue<span class="info hover:cursor-pointer"
+                  >&#9432;</span
+                >
               </h5>
+              <section
+                class="max-h-[320px] mt-[10px] overflow-auto"
+                id="all_events"
+              ></section>
+              <section
+                id="clock"
+                class="clock absolute bottom-0 left-0 right-0 mx-auto my-auto pl-4"
+              >
+                <h3 class="inline-block">
+                  Clock<span class="info hover:cursor-pointer">&#9432;</span>
+                </h3>
+                <span id="clock_val" class="inline-block text-red-700">0</span>
+              </section>
             </section>
+
             <section
               id="CPU"
-              class="col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 text-wrap"
+              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
             >
-              <h5 class="bg-gray-300 p-2 rounded-t-lg">
-                CPU <span>&#9432;</span>
+              <h5
+                class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+              >
+                CPU <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
+              <section class="queue_body"></section>
             </section>
             <section
               id="IO"
-              class="col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 text-wrap"
+              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
             >
-              <h5 class="bg-gray-300 p-2 rounded-t-lg">
-                I/O Pool <span>&#9432;</span>
+              <h5
+                class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+              >
+                I/O Pool <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
+              <section class="queue_body"></section>
             </section>
             <section
               id="READY"
-              class="col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 text-wrap"
+              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
             >
-              <h5 class="bg-gray-300 p-2 rounded-t-lg">
-                Ready Pool <span>&#9432;</span>
+              <h5
+                class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+              >
+                Ready Pool
+                <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
+              <section class="queue_body"></section>
             </section>
             <section
               id="COMPLETED"
-              class="col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 text-wrap"
+              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
             >
-              <h5 class="bg-gray-300 p-2 rounded-t-lg">
-                Terminated Processes <span>&#9432;</span>
+              <h5
+                class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+              >
+                Terminated Processes
+                <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
+              <section class="queue_body"></section>
             </section>
           </section>
         </section>
 
-        <!-- Right section (navbar) -->
-        <section class="right w-32 bg-gray-800 ">
-          <div class="py-4">
+        <!-- Right section (content) -->
+        <section
+          class="instructions_panel split right w-32 bg-gray-800 font-semibold md:w-2/6"
+        >
+          <!--Tailwind CSS classes for (content) section styling -->
+          <div class="py-4 sm:ml-2">
             <button
               id="introduction_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('introduction_ques')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Introduction
             </button>
             <div class="panel introduction_ques hidden text-left">
-              <div class="py-2 px-4" id="intro1">Objective</div>
-              <div class="py-2 px-4" id="intro2">Intuition</div>
-              <div class="py-2 px-4" id="intro3">Apparatus</div>
+              <div class="modal_btn py-2 px-4" id="intro1"></div>
+              <div class="modal_btn py-2 px-4" id="intro2"></div>
+              <div class="modal_btn py-2 px-4" id="intro3"></div>
             </div>
 
             <button
               id="theory_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('theory_ques')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Theory
             </button>
             <div class="panel theory_ques hidden">
-              <div class="py-2 px-4" id="theory">Theory1</div>
-              <div class="py-2 px-4" id="theory2">Theory2</div>
-              <div class="py-2 px-4" id="theory3">Theory3</div>
+              <div class="modal_btn py-2 px-4" id="theory"></div>
+              <div class="modal_btn py-2 px-4" id="theory2"></div>
+              <div class="modal_btn py-2 px-4" id="theory3"></div>
             </div>
 
             <button
               id="procedure_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('procedure_ques')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Procedure
             </button>
             <div class="panel procedure_ques hidden text-left">
-              <div class="py-2 px-4" id="procedure">Procedure1</div>
-              <div class="py-2 px-4" id="procedure2">Procedure2</div>
-              <div class="py-2 px-4" id="procedure3">Procedure3</div>
+              <div class="modal_btn py-2 px-4" id="procedure"></div>
+              <div class="modal_btn py-2 px-4" id="procedure2"></div>
+              <div class="modal_btn py-2 px-4" id="procedure3"></div>
             </div>
 
             <button
               id="analytics_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('analytics_ques')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Analytics
             </button>
             <div class="panel analytics_ques hidden">
-              <div class="py-2 px-4" id="analytics">Analytics1</div>
-              <div class="py-2 px-4" id="analytics1">Analytics2</div>
-              <div class="py-2 px-4" id="analytics2">Analytics3</div>
-              <div class="py-2 px-4" id="analytics3">Analytics4</div>
-              <div class="py-2 px-4" id="analytics4">Analytics5</div>
+              <div class="modal_btn py-2 px-4" id="graph1"></div>
+              <div class="modal_btn py-2 px-4" id="graph2"></div>
+              <div class="modal_btn py-2 px-4" id="graph3"></div>
+              <div class="modal_btn py-2 px-4" id="graph4"></div>
             </div>
 
             <button
               id="observations_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('observations_ques')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Observations
             </button>
@@ -149,12 +186,11 @@
 
             <button
               id="moves_button"
-              class="py-2 px-4 text-white w-full text-left md:text-center"
-              onclick="togglePanel('moves_que')"
+              class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
             >
               Moves
             </button>
-            <div class="py-2 px-4 panel moves_que hidden">
+            <div class="panel moves_que py-2 px-4 hidden">
               <table id="moves">
                 moves1
               </table>
@@ -163,31 +199,32 @@
         </section>
       </div>
 
-      <section class="pt-3">
-        <section class="">
+      <!-- Button section-->
+      <section class="controls pt-3">
+        <section class="meta_controls">
           <button
             role="button"
             id="reset"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
           >
             Reset
-            <span>&#9432;</span>
+            <span class="meta_controls_info">&#9432;</span>
           </button>
           <button
             role="button"
             id="start"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 -mb-2"
           >
             Start
-            <span>&#9432;</span>
+            <span class="meta_controls_info">&#9432;</span>
           </button>
           <button
             role="button"
             id="finish"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
           >
             Finish
-            <span>&#9432;</span>
+            <span class="meta_controls_info">&#9432;</span>
           </button>
         </section>
 
@@ -195,54 +232,51 @@
           role="button"
           id="create_process"
           title="Create Process and put it in Ready Pool"
-          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+          class="button-18 primary_button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 block mx-auto"
         >
           + Create Process
         </button>
 
-        <section class="">
+        <section class="exp_controls ml-4">
           <button
             role="button"
             id="toggle_accordion"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
           >
             close accordion
-            <span>&#9432;</span>
+            <span class="meta_controls_info">&#9432;</span>
           </button>
           <button
             role="button"
             id="init_tour"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
           >
             Take Tour
-            <span>&#9432;</span>
+            <span class="meta_controls_info">&#9432;</span>
           </button>
         </section>
       </section>
 
-      <div>
-        <section
-          id="instruction"
-          class="flex items-center justify-center h-10 w-96 mx-auto font-sans text-lg p-5 border border-green-500 rounded-lg"
-        >
-          <p>Dialog Box:</p>
-        </section>
-      </div>
+      <!--Dialog box-->
+      <section
+        id="instruction"
+        class="flex items-center justify-center h-10 min-w-[80%] font-sans text-lg p-5 border-2 border-green-600 rounded-lg mx-auto"
+      >
+        <p class="">Dialog Box:</p>
+      </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b//script.js"></script>
     <script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
     <script src="./dist/simulation.js"></script>
     <script>
       // JavaScript function to toggle panel visibility
-      function togglePanel(panelId) {
-        const panel = document.querySelector(`.${panelId}`);
-        const allPanels = document.querySelectorAll(".panel");
-        allPanels.forEach(function (panel) {
-          panel.classList.add("hidden");
+      /*function togglePanel(panelClassName) {
+        const panels = document.querySelectorAll(`.${panelClassName}`);
+        panels.forEach(function (panel) {
+          panel.classList.toggle("hidden");
         });
-        panel.classList.toggle("hidden");
-      }
+      }*/
     </script>
   </body>
 </html>
