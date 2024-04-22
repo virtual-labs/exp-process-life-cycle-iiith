@@ -23,14 +23,14 @@
     />
 
     <link rel="stylesheet" href="test.css" />
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
     <main
       id="main"
-      class="h-screen flex flex-col items-center md:w-screen text-[10px] sm:text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px]"
+      class="h-screen flex flex-col items-center text-[10px]  sm:text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px]"
     >
       <!--Simulation and Content-->
       <div
@@ -44,7 +44,7 @@
           >
             <section
               id="event_queue"
-              class="event_sec flex-1 col-span-1 row-span-2 bg-white rounded-lg shadow-md p-4 max-h-[400px] overflow-y-auto"
+              class="event_sec flex-1 max-h-[400px] col-span-1 row-span-2 bg-white rounded-lg shadow-md p-4 "
             >
               <h5
                 class="event_queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
@@ -54,7 +54,7 @@
                 >
               </h5>
               <section
-                class="max-h-[320px] mt-[10px] overflow-auto"
+                class="max-h-[320px] mt-[10px] overflow-y-auto scrollbar-none"
                 id="all_events"
               ></section>
               <section
@@ -64,20 +64,21 @@
                 <h3 class="inline-block">
                   Clock<span class="info hover:cursor-pointer">&#9432;</span>
                 </h3>
-                <span id="clock_val" class="inline-block text-red-700">0</span>
+                <span id="clock_val" class="inline-block text-gray-600">0</span>
               </section>
             </section>
 
             <section
               id="CPU"
-              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
+              class="queue flex-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-y-auto" 
             >
               <h5
                 class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
               >
                 CPU <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
-              <section class="queue_body"></section>
+              <!--flex not working-->
+              <section class="queue_body max-h-[160px] overflow-hidden scrollbar-none"></section>
             </section>
             <section
               id="IO"
@@ -92,7 +93,7 @@
             </section>
             <section
               id="READY"
-              class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
+              class="queue flex-1 max-h-[200px] col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
             >
               <h5
                 class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
@@ -100,7 +101,7 @@
                 Ready Pool
                 <span class="info hover:cursor-pointer">&#9432;</span>
               </h5>
-              <section class="queue_body"></section>
+              <section class="queue_body max-h-[130px] mt-[10px] overflow-y-auto scrollbar-none"></section>
             </section>
             <section
               id="COMPLETED"
@@ -119,7 +120,7 @@
 
         <!-- Right section (content) -->
         <section
-          class="instructions_panel split right w-32 bg-gray-800 font-semibold md:w-2/6"
+          class="instructions_panel split right w-32 bg-gray-800 font-semibold sm:w-2/6"
         >
           <!--Tailwind CSS classes for (content) section styling -->
           <div class="py-4 sm:ml-2">
@@ -260,7 +261,7 @@
       <!--Dialog box-->
       <section
         id="instruction"
-        class="flex items-center justify-center h-10 min-w-[80%] font-sans text-lg p-5 border-2 border-green-600 rounded-lg mx-auto"
+        class="flex items-center justify-center h-10 min-w-[80%] font-sans text-lg p-5 border-2 border-green-600 rounded-lg mx-aut
       >
         <p class="">Dialog Box:</p>
       </section>

@@ -12,7 +12,6 @@ import Chart from "chart.js";
 // import { MDCDialog } from "@material/dialog";
 // import { MDCRipple } from "@material/ripple";
 
-
 export { UI };
 class UI {
   kernel: Kernel;
@@ -34,11 +33,10 @@ class UI {
     // this.start_timer();
     this.timer_paused = true;
 
-
-    if(!this.isPractice()) {
-      document.getElementById("log").style.display="none";
-      document.getElementById("moves").style.display="none";
-  }
+    if (!this.isPractice()) {
+      document.getElementById("log").style.display = "none";
+      document.getElementById("moves").style.display = "none";
+    }
 
     if (this.kernel.clock > 0)
       document.getElementById("start").childNodes[0].textContent = "Resume";
@@ -59,7 +57,10 @@ class UI {
   }
 
   is_ex_paused() {
-    return document.getElementById("start").childNodes[0].nodeValue.trim() !== "Pause";
+    return (
+      document.getElementById("start").childNodes[0].nodeValue.trim() !==
+      "Pause"
+    );
   }
 
   start_timer() {
@@ -208,15 +209,12 @@ class UI {
     let clock = document.getElementById("clock");
     let clock_span = document.getElementById("clock_val");
     clock_span.innerHTML = this.kernel.clock.toString();
-    if (this.kernel.clock !== 0 && this.is_ex_paused())
-    {
+    if (this.kernel.clock !== 0 && this.is_ex_paused()) {
       clock_span.innerHTML += " (Paused)";
       clock.classList.add("clock_paused");
-    }
-    else if(this.kernel.selectedEvent !== -1){
+    } else if (this.kernel.selectedEvent !== -1) {
       clock.classList.add("clock_paused");
-    }
-    else {
+    } else {
       clock.classList.remove("clock_paused");
     }
   }
@@ -274,7 +272,8 @@ class UI {
     title.innerText = "What is a process?";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>In computing, a process is an instance of a computer program that is being executed by a computer's operating system (OS). A process consists of the program's code and its current activity, such as the values of its variables, the state of its I/O channels, and its position in memory.</p><br /><p>Processes are managed by the operating system, which allocates resources such as CPU time, memory, and I/O devices to each process as needed. The OS also provides mechanisms for inter-process communication, synchronization, and coordination.</p><br /><p>Each process is assigned a unique identifier, known as a process ID (PID), which can be used to identify and manage the process. The operating system maintains a process table that stores information about each running process, such as its PID, its priority, and its resource usage.</p><br /><p>In a multitasking operating system, multiple processes may be running simultaneously, sharing the system resources. The OS schedules the execution of these processes, switching between them rapidly to give the illusion of parallel execution. This allows multiple programs to be run concurrently, which can improve the overall performance of the system.</p><br />";
+    content.innerHTML =
+      "<p>In computing, a process is an instance of a computer program that is being executed by a computer's operating system (OS). A process consists of the program's code and its current activity, such as the values of its variables, the state of its I/O channels, and its position in memory.</p><br /><p>Processes are managed by the operating system, which allocates resources such as CPU time, memory, and I/O devices to each process as needed. The OS also provides mechanisms for inter-process communication, synchronization, and coordination.</p><br /><p>Each process is assigned a unique identifier, known as a process ID (PID), which can be used to identify and manage the process. The operating system maintains a process table that stores information about each running process, such as its PID, its priority, and its resource usage.</p><br /><p>In a multitasking operating system, multiple processes may be running simultaneously, sharing the system resources. The OS schedules the execution of these processes, switching between them rapidly to give the illusion of parallel execution. This allows multiple programs to be run concurrently, which can improve the overall performance of the system.</p><br />";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -282,9 +281,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -299,9 +297,8 @@ class UI {
     button.classList.add("mdl-button--colored");
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     theory.appendChild(button);
   }
 
@@ -321,7 +318,8 @@ class UI {
     let br = document.createElement("br");
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
+    content.innerHTML =
+      "<p>As a process is executed, it undergoes a series of state changes that reflect the activity being performed by the user and the resources needed by the process. The specific states and their corresponding names can vary between different operating systems and literature sources, as they are not standardized. Nonetheless, the process state provides crucial information about the current status of a process and is used by the operating system to manage resources and scheduling.</p><p>The 4 main and most common states the process can exist as are:</p><ul><li>Ready: A process in the ready state is one that is waiting to be executed by the CPU, but is currently not running. The process is waiting for the CPU to allocate resources to it, and is typically waiting in a queue for its turn to run.</li><li>Running: When a process is executing instructions on the CPU, it is in the running state. At any given time, there may be only one process in the running state on a single CPU.</li><li>Waiting : If the process is in this state then it is waiting for either resources that it has requested for or waiting for a specific event to occur so that it can go back to ready state and wait for dispatching The process is not using the CPU during this time and may be waiting for an indefinite period.</li><li>Terminated: When a process has completed its execution or has been terminated by the operating system or by the user, it is in the terminated state. The process may still have some resources allocated to it, but it is no longer running.</li></ul>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -329,9 +327,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(br);
@@ -345,12 +342,11 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
-    
+
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     theory.appendChild(button);
   }
 
@@ -367,7 +363,7 @@ class UI {
     title.classList.add("mdl-dialog__title");
     title.style.width = "100%";
     title.style.height = "50px";
-  
+
     title.innerText = "Wrong Moves vs Time";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
@@ -381,30 +377,30 @@ class UI {
     lineChart.height = 350;
     let ctx = lineChart.getContext("2d");
 
-    let move = []
+    let move = [];
     for (let i = 0; i < this.kernel.clock; i++) {
       // check if kernel.moves array has a entry with time=i
       let temp;
       Array.from(this.kernel.moves.values()).map((val) => {
-        if(val.time == i){
+        if (val.time == i) {
           temp = val;
         }
       });
       let move_ith;
-      if(temp) {
+      if (temp) {
         move_ith = {
           moveMade: temp.moveMade,
           validNum: temp.validNum,
           time: i,
           pid: temp.pid,
-        }
+        };
       } else {
         move_ith = {
           moveMade: "No move was made",
           validNum: 0,
           time: i,
           pid: -1,
-        }
+        };
       }
       move.push(move_ith);
     }
@@ -417,10 +413,16 @@ class UI {
           {
             // label: "Wrong move",
             data: move.map((val) => val.validNum),
-            backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
-            pointBackgroundColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+            ],
+            pointBackgroundColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+            ],
             pointBorderColor: "#fff",
-            pointRadius : 7,
+            pointRadius: 7,
             fill: false,
             tension: 0.1,
             // remove the line
@@ -430,53 +432,55 @@ class UI {
       },
       options: {
         scales: {
-          yAxes: [{
-            ticks: {
-              min: -1,
-              max: 1,
-              stepSize: 1,
-              callback: function(value, index, values) {
-                if (value === -1) {
-                  return "Wrong Move";
-                } else if(value == 1)
-                {
-                  return "Valid Move";
-                }
-                else {
-                  return "";
-                }
-              }
-            }
-          }]
+          yAxes: [
+            {
+              ticks: {
+                min: -1,
+                max: 1,
+                stepSize: 1,
+                callback: function (value, index, values) {
+                  if (value === -1) {
+                    return "Wrong Move";
+                  } else if (value == 1) {
+                    return "Valid Move";
+                  } else {
+                    return "";
+                  }
+                },
+              },
+            },
+          ],
         },
         tooltips: {
           enabled: true,
-          mode: 'index',
+          mode: "index",
           intersect: false,
           callbacks: {
-            label: function(tooltipItem, data) {
+            label: function (tooltipItem, data) {
               var value = move[tooltipItem.index].moveMade;
-              if(move[tooltipItem.index].pid != -1) {
-                return `PID ${move[tooltipItem.index].pid} moved from ${value}.`
+              if (move[tooltipItem.index].pid != -1) {
+                return `PID ${
+                  move[tooltipItem.index].pid
+                } moved from ${value}.`;
               }
               return value;
-            }
-          }
+            },
+          },
         },
         legend: {
           display: true,
-          position: 'bottom',
+          position: "bottom",
           labels: {
             usePointStyle: true,
-            generateLabels: function() {
+            generateLabels: function () {
               const legendLabels = [];
               legendLabels.push({
                 text: "Valid move",
                 fillStyle: "rgba(54, 162, 235, 1)",
                 strokeStyle: "rgba(54, 162, 235, 1)",
                 lineWidth: 2,
-                pointStyle: 'circle',
-                hidden: false
+                pointStyle: "circle",
+                hidden: false,
               });
 
               legendLabels.push({
@@ -484,21 +488,21 @@ class UI {
                 fillStyle: "rgba(255, 99, 132, 1)",
                 strokeStyle: "rgba(255, 99, 132, 1)",
                 lineWidth: 2,
-                pointStyle: 'circle',
-                hidden: false
+                pointStyle: "circle",
+                hidden: false,
               });
-              
+
               legendLabels.push({
                 text: "No move",
                 fillStyle: "rgb(228, 208, 10, 1)",
                 strokeStyle: "rgb(228, 208, 10, 1)",
                 lineWidth: 2,
-                pointStyle: 'circle',
+                pointStyle: "circle",
                 hidden: false,
               });
-      
+
               return legendLabels;
-            }
+            },
           },
         },
         responsive: false,
@@ -507,12 +511,17 @@ class UI {
     });
 
     // show blue color points for data values 1 and red points for value 0
-    myChart.data.datasets[0].pointBackgroundColor = myChart.data.datasets[0].data.map(
-      (val) => (val === 1 ? "rgba(54, 162, 235, 1)" : (val === 0 ? "rgb(228, 208, 10, 1)" : "rgba(255, 99, 132, 1)"))
-    );
+    myChart.data.datasets[0].pointBackgroundColor =
+      myChart.data.datasets[0].data.map((val) =>
+        val === 1
+          ? "rgba(54, 162, 235, 1)"
+          : val === 0
+          ? "rgb(228, 208, 10, 1)"
+          : "rgba(255, 99, 132, 1)"
+      );
     myChart.update();
     myChart.data.datasets[0].pointRadius = myChart.data.datasets[0].data.map(
-      (val) => (val === 1 ? 7 : (val === 0 ? 4 : 7))
+      (val) => (val === 1 ? 7 : val === 0 ? 4 : 7)
     );
     myChart.update();
     content.appendChild(lineChart);
@@ -523,9 +532,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -536,7 +544,8 @@ class UI {
     let graphinfo = document.createElement("span");
     graphinfo.classList.add("mdl-tooltip");
     graphinfo.setAttribute("data-mdl-for", "graph1");
-    graphinfo.innerText = "This graph shows the wrong moves made by the user in the current session against time.";
+    graphinfo.innerText =
+      "This graph shows the wrong moves made by the user in the current session against time.";
     graphinfo.style.width = "300px";
     graphinfo.style.height = "110px";
     graphinfo.style.fontSize = "16px";
@@ -547,9 +556,8 @@ class UI {
     button.classList.add("mdl-button");
     button.innerText = `Wrong Moves: ${this.kernel.wrongMoves}    📊`;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     button.appendChild(graphinfo);
     theory.appendChild(button);
     // theory.appendChild(graphinfo);
@@ -582,7 +590,9 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.cummAvgEvntWaitTime.keys()).map((val) => val + 1),
+        labels: Array.from(this.kernel.cummAvgEvntWaitTime.keys()).map(
+          (val) => val + 1
+        ),
         datasets: [
           {
             label: "Average Event Wait Time",
@@ -606,7 +616,7 @@ class UI {
       },
     });
     content.appendChild(lineChart);
-    
+
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -614,9 +624,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -626,7 +635,8 @@ class UI {
     let graphinfo = document.createElement("span");
     graphinfo.classList.add("mdl-tooltip");
     graphinfo.setAttribute("data-mdl-for", "graph2");
-    graphinfo.innerText = "This graph shows the average event wait time throughout the session.";
+    graphinfo.innerText =
+      "This graph shows the average event wait time throughout the session.";
     graphinfo.style.width = "300px";
     graphinfo.style.height = "100px";
     graphinfo.style.fontSize = "16px";
@@ -638,12 +648,11 @@ class UI {
     // button.classList.add("mdl-js-button");
     // button.classList.add("mdl-button--raised");
     // button.classList.add("mdl-button--colored");
-    if(!this.isPractice()) return;
+    if (!this.isPractice()) return;
     button.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}    📊`;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     theory.appendChild(button);
     button.appendChild(graphinfo);
   }
@@ -674,7 +683,9 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.cummCPUIdle.keys()).map((val) => val + 1),
+        labels: Array.from(this.kernel.cummCPUIdle.keys()).map(
+          (val) => val + 1
+        ),
         datasets: [
           {
             label: "Cumulative CPU Idle Time",
@@ -698,7 +709,7 @@ class UI {
       },
     });
     content.appendChild(lineChart);
-    
+
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -706,9 +717,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -718,13 +728,14 @@ class UI {
     let graphinfo = document.createElement("span");
     graphinfo.classList.add("mdl-tooltip");
     graphinfo.setAttribute("data-mdl-for", "graph3");
-    graphinfo.innerText = "This graph shows the CPU Idle time between the time intervals.";
+    graphinfo.innerText =
+      "This graph shows the CPU Idle time between the time intervals.";
     graphinfo.style.width = "300px";
     graphinfo.style.height = "100px";
     graphinfo.style.fontSize = "16px";
     graphinfo.style.lineHeight = "1.3";
 
-    if(!this.isPractice()) return;
+    if (!this.isPractice()) return;
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
@@ -733,9 +744,8 @@ class UI {
     // button.classList.add("mdl-button--colored");
     button.innerText = `Cumulative CPU Idle time: ${this.kernel.cpuIdle}     📊`;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
 
     button.appendChild(graphinfo);
     theory.appendChild(button);
@@ -768,7 +778,9 @@ class UI {
     let myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: Array.from(this.kernel.cummCPUIOWaitTime.keys()).map((val) => val + 1),
+        labels: Array.from(this.kernel.cummCPUIOWaitTime.keys()).map(
+          (val) => val + 1
+        ),
         datasets: [
           {
             label: "Cumulative CPU IO Time",
@@ -792,7 +804,7 @@ class UI {
       },
     });
     content.appendChild(lineChart);
-    
+
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -800,9 +812,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -812,13 +823,15 @@ class UI {
     let graphinfo = document.createElement("span");
     graphinfo.classList.add("mdl-tooltip");
     graphinfo.setAttribute("data-mdl-for", "graph4");
-    graphinfo.innerText = "This graph shows the CPU IO time between the time intervals.";
+    graphinfo.innerText =
+      "This graph shows the CPU IO time between the time intervals.";
     graphinfo.style.width = "300px";
     graphinfo.style.height = "100px";
     graphinfo.style.fontSize = "16px";
     graphinfo.style.lineHeight = "1.3";
 
-    if(!this.isPractice()) return;2
+    if (!this.isPractice()) return;
+    2;
 
     // button to open dialog box
     let button = document.createElement("button");
@@ -828,9 +841,8 @@ class UI {
     // button.classList.add("mdl-button--colored");
     button.innerText = `Cumulative CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}      📊`;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     button.appendChild(graphinfo);
     theory.appendChild(button);
   }
@@ -851,7 +863,8 @@ class UI {
     let br = document.createElement("br");
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<div><p></p><p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are</p><ul><li>Running or Runnable (R)<p>A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run</p></li></ul><ul><li>Uninterruptible Sleep (D)<p>The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)</p></li></ul><ul><li>Interruptable Sleep (S)<p>An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur</p></li></ul><ul><li>Stopped (T)<p>Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully</p></li></ul><ul><li>Zombie (Z)<p>Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process</p></li></ul><p>Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux</p><p>Using the uptime command in the Linux Shell we can see the load average values of the CPU where the load value measures CPU Utilisation at any time.</p><pre><code>uptime 17:02:14 up  4:50,  1 user,  load average: 0.94, 0.73, 0.63</code></pre><p>The three values seen are load values averaged over 1 minute, 5 minute and 15 minute intervals respectively. We can draw detailed comparisons between how the experiment performs vs Linux OS using the above.</p></div>";
+    content.innerHTML =
+      "<div><p></p><p>The experiment defines four states that a process can be in. Those being Running, Waiting, Using IO Resources and finally Terminated. Let us contrast this with the running of an actual Operating System such as Linux. The Linux OS defines five states that a process can be in which are</p><ul><li>Running or Runnable (R)<p>A running process is actively allocated to a CPU core and affects the CPU utilization metrics. A runnable process is ready and lined up to run</p></li></ul><ul><li>Uninterruptible Sleep (D)<p>The Uninterruptible state is mostly used by device drivers waiting for disk or network I/O. The process will wake only if a waited upon resource becomes available or the process times out (Time Out has to be specified at process creation)</p></li></ul><ul><li>Interruptable Sleep (S)<p>An Interruptible sleep state means the process is waiting either for a particular time slot or for a particular event to occur</p></li></ul><ul><li>Stopped (T)<p>Processes can end when they call the exit system themselves or receive signals to end. When a process runs the exit system call, it releases its data structures, but it does not release its slot in the process table. Instead, it sends a SIGCHLD signal to the parent. It is up to the parent process to release the child process slot so that the parent can determine if the process exited successfully</p></li></ul><ul><li>Zombie (Z)<p>Between the time when the process terminates and the parent releases the child process, the child enters into what is referred to as a Zombie state. A process can remain in a Zombie state if the parent process should die before it has a chance to release the process slot of the child process</p></li></ul><p>Drawing comparisons between the experiment and a real life OS such as Linux we can see that a process is in the Running state in both the scenarios when actively using CPU resources. The experiment model adds a Waiting state which the Linux OS categorises as a Runnable process, although does not establish any hard distinction. A process which is waiting for I/O resources enters Uninterruptible Sleep in Linux. A Terminated process in the experiment parallels a process in the Stopped state in Linux</p><p>Using the uptime command in the Linux Shell we can see the load average values of the CPU where the load value measures CPU Utilisation at any time.</p><pre><code>uptime 17:02:14 up  4:50,  1 user,  load average: 0.94, 0.73, 0.63</code></pre><p>The three values seen are load values averaged over 1 minute, 5 minute and 15 minute intervals respectively. We can draw detailed comparisons between how the experiment performs vs Linux OS using the above.</p></div>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -859,9 +872,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(br);
@@ -875,15 +887,13 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
-    
+
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     theory.appendChild(button);
   }
-  
 
   display_intro() {
     let intro1 = document.getElementById("intro1");
@@ -895,7 +905,8 @@ class UI {
     title.innerText = "Objective";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<ul><p> Our objective in this experiment is to understand the life cycle of a process as managed by an operating system. The experiment provides you with the apparatus to observe and control the processes as needed. </p </ul>";
+    content.innerHTML =
+      "<ul><p> Our objective in this experiment is to understand the life cycle of a process as managed by an operating system. The experiment provides you with the apparatus to observe and control the processes as needed. </p </ul>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -903,9 +914,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -918,11 +928,10 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
-    button.innerText = 'Objective';
+    button.innerText = "Objective";
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     intro1.appendChild(button);
   }
 
@@ -936,7 +945,8 @@ class UI {
     title.innerText = "Intuition";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = " Act in response to Events <p> You are to observe the events that arrive in the events queue, and respond to them with an appropriate action so as to manage the processes in an efficient manner, as per the process state model discussed in theory.</p>";
+    content.innerHTML =
+      " Act in response to Events <p> You are to observe the events that arrive in the events queue, and respond to them with an appropriate action so as to manage the processes in an efficient manner, as per the process state model discussed in theory.</p>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -944,9 +954,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -959,11 +968,10 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
-    button.innerText = 'Intuition';
+    button.innerText = "Intuition";
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     intro1.appendChild(button);
   }
 
@@ -977,7 +985,8 @@ class UI {
     title.innerText = "Apparatus";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<ol> <li>Events Queue</li><li>CPU</li><li>Ready Pool</li><li>I/O Pool</li><li>Terminated Processes Bin</li> </ol>";
+    content.innerHTML =
+      "<ol> <li>Events Queue</li><li>CPU</li><li>Ready Pool</li><li>I/O Pool</li><li>Terminated Processes Bin</li> </ol>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -986,9 +995,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -1001,14 +1009,12 @@ class UI {
     button.classList.add("mdl-js-button");
     button.classList.add("mdl-button--raised");
     button.classList.add("mdl-button--colored");
-    button.innerText = 'Apparatus';
+    button.innerText = "Apparatus";
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     intro1.appendChild(button);
   }
-
 
   display_procedure() {
     let procedure = document.getElementById("procedure");
@@ -1024,7 +1030,8 @@ class UI {
     title.innerText = "What are the components?";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>We have 7 components:</p>    <ul>    <li>Instruction box</li>    <li>Ready pool: Where the live processes will be placed</li>    <li>CPU: where the process in execution is placed</li>    <li>I/O pool: where the process will go if the process has any I/O calls.</li>    <li>Completed pool: This is where all the completed processes are placed.</li>    <li>Controls: This is where all the buttons that the you can play with are placed.</li>    <li>Log: Where all actions on the process get recorded</li>    </ul>";
+    content.innerHTML =
+      "<p>We have 7 components:</p>    <ul>    <li>Instruction box</li>    <li>Ready pool: Where the live processes will be placed</li>    <li>CPU: where the process in execution is placed</li>    <li>I/O pool: where the process will go if the process has any I/O calls.</li>    <li>Completed pool: This is where all the completed processes are placed.</li>    <li>Controls: This is where all the buttons that the you can play with are placed.</li>    <li>Log: Where all actions on the process get recorded</li>    </ul>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -1032,9 +1039,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -1049,9 +1055,8 @@ class UI {
     button.classList.add("mdl-button--colored");
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     procedure.appendChild(button);
   }
   display_procedure2() {
@@ -1068,7 +1073,8 @@ class UI {
     title.innerText = "What are the controls?";
     let content = document.createElement("div");
     content.classList.add("mdl-dialog__content");
-    content.innerHTML = "<p>We have 6 controls:</p>    <ul>    <li>Create Process and put it in Ready Pool</li>    <li>CPU to Ready Pool</li>    <li>CPU to IO Pool</li>    <li>IO Pool to Ready Pool</li>    <li>Terminate the Process in CPU</li>    <li>Advance Clock</li>    </ul>";
+    content.innerHTML =
+      "<p>We have 6 controls:</p>    <ul>    <li>Create Process and put it in Ready Pool</li>    <li>CPU to Ready Pool</li>    <li>CPU to IO Pool</li>    <li>IO Pool to Ready Pool</li>    <li>Terminate the Process in CPU</li>    <li>Advance Clock</li>    </ul>";
     let actions = document.createElement("div");
     actions.classList.add("mdl-dialog__actions");
     let close = document.createElement("button");
@@ -1076,9 +1082,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -1093,9 +1098,8 @@ class UI {
     button.classList.add("mdl-button--colored");
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     procedure.appendChild(button);
   }
 
@@ -1121,9 +1125,8 @@ class UI {
     close.classList.add("close");
     close.innerText = "Close";
     close.addEventListener("click", () => {
-        dialog.close();
-        }
-    );
+      dialog.close();
+    });
     actions.appendChild(close);
     dialog.appendChild(title);
     dialog.appendChild(content);
@@ -1138,15 +1141,13 @@ class UI {
     button.classList.add("mdl-button--colored");
     button.innerText = title.innerText;
     button.addEventListener("click", () => {
-        dialog.showModal();
-    }
-    );
+      dialog.showModal();
+    });
     procedure.appendChild(button);
   }
 
-
   display_analytics() {
-    if(!this.isPractice()){
+    if (!this.isPractice()) {
       console.log("Display Anallytics");
       return;
     }
@@ -1169,7 +1170,7 @@ class UI {
     // analytics.appendChild(lineChart1);
   }
 
-  display_log() { 
+  display_log() {
     let html = `<thead><tr><th>t<sub>e</sub></th><th>Event</th>
         <th>t<sub>r</sub></th><th>Action</th></tr></thead><tbody>`;
     for (let index = 0; index < this.kernel.log.records.length; index++) {
@@ -1193,7 +1194,7 @@ class UI {
                 <td>${element.responce_time}</td><td>${action}</td></tr>`;
       }
     }
-    html += '</tbody';
+    html += "</tbody";
     let log = document.getElementById("log");
     log.innerHTML = html;
 
@@ -1214,7 +1215,7 @@ class UI {
     // console.log(log.childElementCount);
   }
 
-  isPractice(){
+  isPractice() {
     return window.location.href.split("/").slice(-1)[0] === "practice.html";
   }
 
@@ -1230,7 +1231,7 @@ class UI {
     this.display_graph3();
     this.display_graph4();
     this.display_analytics();
-    
+
     this.update_accordion();
     this.display_intro();
     this.display_intro2();
@@ -1252,7 +1253,7 @@ class UI {
   }
 
   showDialog(message: string) {
-    if(!this.isPractice()) return;
+    if (!this.isPractice()) return;
     const dialogBox = document.createElement("p");
     dialogBox.textContent = message;
     const inst = document.getElementById("instruction");
@@ -1264,17 +1265,22 @@ class UI {
   }
 
   initialize_events() {
-    document.getElementById("toggle_accordion").addEventListener("click", (event) => {
-      let button = document.getElementById("toggle_accordion");
-      if(button.innerText.trim() === "Close accordion") {
-        button.innerText = "Open accordion";
-        document.querySelector(".instructions_panel").classList.add("none_display");
-      }
-      else {
-        button.innerText = "Close accordion";
-        document.querySelector(".instructions_panel").classList.remove("none_display");
-      }
-    })
+    document
+      .getElementById("toggle_accordion")
+      .addEventListener("click", (event) => {
+        let button = document.getElementById("toggle_accordion");
+        if (button.innerText.trim() === "Close accordion") {
+          button.innerText = "Open accordion";
+          document
+            .querySelector(".instructions_panel")
+            .classList.add("none_display");
+        } else {
+          button.innerText = "Close accordion";
+          document
+            .querySelector(".instructions_panel")
+            .classList.remove("none_display");
+        }
+      });
 
     let process_drop_handler = (event) => {
       if (this.is_ex_paused()) return;
@@ -1290,7 +1296,7 @@ class UI {
 
       let response = this.kernel.moveProcess(dropped_pid, bin);
       if (response.status === config.ERROR) {
-        // alert("Error: " + response.message);
+        // alert("Error: " + response.message);s
         this.showDialog(response.message);
       }
       this.display_all();
@@ -1361,7 +1367,9 @@ class UI {
     });
 
     let start_button_handler = () => {
-      const val = document.getElementById("start").childNodes[0].nodeValue.trim();
+      const val = document
+        .getElementById("start")
+        .childNodes[0].nodeValue.trim();
       // const val = event.target.childNodes[0].nodeValue;
       if (val === "Start" || val === "Resume") {
         document.getElementById("start").childNodes[0].nodeValue = "Pause";
@@ -1376,7 +1384,6 @@ class UI {
         //pause_driver.highlight("#start");
       }
     };
-
 
     let reset_button_handler = () => {
       // start_button_handler(); // XXX: Pass instance of the appropriate Event Type
@@ -1551,7 +1558,7 @@ class UI {
   }
 
   initialize_accordion() {
-    if(this.isPractice()){
+    if (this.isPractice()) {
       let log = <HTMLElement>document.getElementById("observations_button");
       let observations = <HTMLElement>log.nextElementSibling;
       log.classList.toggle("active");
@@ -1566,7 +1573,7 @@ class UI {
     for (let i = 0; i < accordion.length; i++) {
       accordion[i].addEventListener("click", () => {
         accordion[i].classList.toggle("active");
-        if(accordion[i].classList.contains("active") && !this.is_ex_paused()){
+        if (accordion[i].classList.contains("active") && !this.is_ex_paused()) {
           this.end_timer();
           document.getElementById("start").childNodes[0].nodeValue = "Resume";
           this.display_all();
@@ -1588,7 +1595,7 @@ class UI {
   }
 
   update_accordion() {
-    if(this.isPractice()){
+    if (this.isPractice()) {
       let log = <HTMLElement>document.getElementById("observations_button");
       let observations = <HTMLElement>log.nextElementSibling;
 
