@@ -244,7 +244,7 @@
   }
 }
 
-row {
+.row{
   display: flex;
   height: 50%;
   justify-content: space-around;
@@ -266,4 +266,22 @@ row {
   flex-wrap: wrap;
   align-content: center;
   gap: 10%;
+}
+
+
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  /* display: none; */
+  /* transition-duration: 0.4s; */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  max-height: 0;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  transition: max-height 0.3s ease-in-out;
+}
+.panel::-webkit-scrollbar {
+    display: none;
 }

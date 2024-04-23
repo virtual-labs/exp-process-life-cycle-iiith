@@ -129,6 +129,7 @@ class UI {
       if (this.is_ex_paused()) return;
       this.start_timer();
       // this.toggle_timer();
+      console.log('dragevent');
     };
 
     process_div.addEventListener("dragstart", process_dragstart_handler);
