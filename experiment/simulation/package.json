@@ -35,7 +35,7 @@
     "html2canvas": "^1.4.1",
     "jest-environment-jsdom": "^29.5.0",
     "jspdf": "^2.5.1",
-    "jspdf-autotable": "^3.5.28",
+    "jspdf-autotable": "^3.8.2",
     "requirejs": "^2.3.6"
   }
 }

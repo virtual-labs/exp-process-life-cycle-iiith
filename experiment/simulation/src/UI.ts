@@ -268,7 +268,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "800px";
     dialog.style.height = "620px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What is a process?";
     let content = document.createElement("div");
@@ -312,7 +312,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "800px";
     dialog.style.height = "620px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are process states?";
     // add a blank line
@@ -360,7 +360,7 @@ class UI {
     dialog.style.width = "650px";
     dialog.style.height = "520px";
 
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.style.width = "100%";
     title.style.height = "50px";
@@ -575,7 +575,7 @@ class UI {
     dialog.style.width = "650px";
     dialog.style.height = "520px";
 
-    let title = document.createElement("h5");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Average Event Wait Time vs Time";
     title.style.width = "100%";
@@ -668,7 +668,7 @@ class UI {
     dialog.style.width = "680px";
     dialog.style.height = "520px";
 
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Cumulative CPU Idle Time vs Time";
     title.style.width = "100%";
@@ -763,7 +763,7 @@ class UI {
     dialog.style.width = "650px";
     dialog.style.height = "520px";
 
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Cumulative CPU IO Idle Time vs Time";
     title.style.width = "100%";
@@ -857,7 +857,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "800px";
     dialog.style.height = "620px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Comparison with acutal OS";
     // add a blank line
@@ -901,7 +901,7 @@ class UI {
     intro1.innerHTML = "";
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Objective";
     let content = document.createElement("div");
@@ -941,7 +941,7 @@ class UI {
     intro1.innerHTML = "";
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Intuition";
     let content = document.createElement("div");
@@ -981,7 +981,7 @@ class UI {
     intro1.innerHTML = "";
     let dialog = document.createElement("dialog");
     dialog.classList.add("mdl-dialog");
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Apparatus";
     let content = document.createElement("div");
@@ -1026,7 +1026,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "600px";
     dialog.style.height = "400px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are the components?";
     let content = document.createElement("div");
@@ -1069,7 +1069,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "600px";
     dialog.style.height = "400px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "What are the controls?";
     let content = document.createElement("div");
@@ -1113,7 +1113,7 @@ class UI {
     dialog.classList.add("mdl-dialog");
     dialog.style.width = "600px";
     dialog.style.height = "400px";
-    let title = document.createElement("h6");
+    let title = document.createElement("div");
     title.classList.add("mdl-dialog__title");
     title.innerText = "Steps of the simulator";
     let content = document.createElement("div");

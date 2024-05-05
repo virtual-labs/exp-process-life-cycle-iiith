@@ -16,6 +16,15 @@
   .event_id{
     font-size: 12px;
   }
+  .mdl-dialog__title{
+    font-size: 12px;
+  }
+  .mdl-button{
+    font-size: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    
+  }
 }
 
 @media (min-width: 768px) {
@@ -31,11 +40,20 @@
   .event_id{
     font-size: 14px;
   }
+  .mdl-dialog__title{
+    font-size: 14px;
+  }
+  .mdl-button{
+    font-size: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    
+  }
 }
 
 @media (min-width: 1024px) {
   .event_name {
-    font-size: 100px;
+    font-size: 16px;
   }
   .event_type {
     font-size: 22px;
@@ -46,8 +64,29 @@
   .event_id{
     font-size: 16px;
   }
+  .mdl-dialog__title{
+    font-size: 16px;
+  }
+  .mdl-button{
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    
+  }
 }
 /***********/
+
+.mdl-dialog__title{
+  font-size: 10px;
+}
+
+.mdl-button{
+  font-size: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+
 .event {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr;
