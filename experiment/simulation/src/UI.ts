@@ -1270,13 +1270,13 @@ class UI {
       .getElementById("toggle_accordion")
       .addEventListener("click", (event) => {
         let button = document.getElementById("toggle_accordion");
-        if (button.innerText.trim() === "Close accordion") {
-          button.innerText = "Open accordion";
+        if (button.innerText.trim() === "Close Accordion") {
+          button.innerText = "Open Accordion";
           document
             .querySelector(".instructions_panel")
             .classList.add("none_display");
         } else {
-          button.innerText = "Close accordion";
+          button.innerText = "Close Accordion";
           document
             .querySelector(".instructions_panel")
             .classList.remove("none_display");
