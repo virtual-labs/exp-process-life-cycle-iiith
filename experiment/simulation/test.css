@@ -1,90 +1,11 @@
-/* does not work */ 
-/********/
-@media (min-width: 640px) {
-  .event{
-    width: 95%;
-  }
-  .event_name {
-    font-size: 14px;
-  }
-  .event_type {
-    font-size: 18px;
-  }
-  .event_time{
-    font-size: 12px;
-  }
-  .event_id{
-    font-size: 12px;
-  }
-  .mdl-dialog__title{
-    font-size: 14px;
-  }
-  .mdl-button{
-    font-size: 14px;
-    padding-left: 12px;
-    padding-right: 12px;
-    
-  }
-}
-
-@media (min-width: 768px) {
-  .event_name {
-    font-size: 16px;
-  }
-  .event_type {
-    font-size: 20px;
-  }
-  .event_time{
-    font-size: 14px;
-  }
-  .event_id{
-    font-size: 14px;
-  }
-  .mdl-dialog__title{
-    font-size: 16px;
-  }
-  .mdl-button{
-    font-size: 16px;
-    padding-left: 14px;
-    padding-right: 14px;
-    
-  }
-}
-
-@media (min-width: 1024px) {
-  .event_name {
-    font-size: 16px;
-  }
-  .event_type {
-    font-size: 22px;
-  }
-  .event_time{
-    font-size: 16px;
-  }
-  .event_id{
-    font-size: 16px;
-  }
-  .mdl-dialog__title{
-    font-size: 16px;
-  }
-  .mdl-button{
-    font-size: 20px;
-    padding-left: 16px;
-    padding-right: 16px;
-    
-  }
-}
-/***********/
 
 .mdl-dialog__title{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .mdl-button{
-  font-size: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  
+  font-size: 12px;
+  padding: 0 4px;
 }
 
 .event {
@@ -324,3 +245,57 @@
 .panel::-webkit-scrollbar {
     display: none;
 }
+
+/* does not work */ 
+/********/
+
+@media (min-width: 768px) {
+  .event_name {
+    font-size: 16px;
+  }
+  .event_type {
+    font-size: 20px;
+  }
+  .event_time{
+    font-size: 14px;
+  }
+  .event_pid{
+    font-size: 14px;
+  }
+  .event_id{
+    font-size: 14px;
+  }
+  .mdl-dialog__title{
+    font-size: 16px;
+  }
+  .mdl-button{
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .event_name {
+    font-size: 18px;
+  }
+  .event_type {
+    font-size: 22px;
+  }
+  .event_time{
+    font-size: 16px;
+  }
+  .event_pid{
+    font-size: 16px;
+  }
+  .event_id{
+    font-size: 16px;
+  }
+  .mdl-dialog__title{
+    font-size: 18px;
+  }
+  .mdl-button{
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/***********/
