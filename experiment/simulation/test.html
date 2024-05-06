@@ -79,7 +79,7 @@
 								CPU <span class="info hover:cursor-pointer">&#9432;</span>
 							</h5>
 							<section
-								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none"  
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none"
 							></section>
 						</section>
 						<section
@@ -92,7 +92,7 @@
 								I/O Pool <span class="info hover:cursor-pointer">&#9432;</span>
 							</h5>
 							<section
-								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none" 
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none"
 							></section>
 						</section>
 						<section
@@ -106,7 +106,7 @@
 								<span class="info hover:cursor-pointer">&#9432;</span>
 							</h5>
 							<section
-								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none" 
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none"
 							></section>
 						</section>
 						<section
@@ -120,7 +120,7 @@
 								<span class="info hover:cursor-pointer">&#9432;</span>
 							</h5>
 							<section
-								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none" 
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none"
 							></section>
 						</section>
 						<!-- Clock section -->
@@ -128,7 +128,7 @@
 							id="clock"
 							class="clock my-auto pl-4 col-span-1 row-span-2 text-white"
 						>
-							<h3 class="inline-block ">
+							<h3 class="inline-block">
 								Clock <span class="info hover:cursor-pointer">&#9432;</span>
 							</h3>
 							<span
@@ -144,7 +144,11 @@
 				<section
 					class="instructions_panel split right w-32 bg-gray-800 font-semibold sm:w-2/6"
 				>
-				<div class="text-wrap px-[11px] pt-4 text-red-600 md:hidden landscape:hidden">Rotate device to landscape.</div>
+					<div
+						class="text-wrap px-[11px] pt-4 text-red-600 md:hidden landscape:hidden"
+					>
+						ROTATE DEVICE TO LANDSCAPE.
+					</div>
 					<!--Tailwind CSS classes for (content) section styling -->
 					<div class="py-4 sm:ml-2">
 						<button
@@ -154,7 +158,9 @@
 						>
 							Introduction
 						</button>
-						<div class="panel introduction_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel introduction_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<div
 								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
 								id="intro1"
@@ -176,7 +182,9 @@
 						>
 							Theory
 						</button>
-						<div class="panel theory_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel theory_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<div
 								class="modal_btn flex-wrap sm:py-2 md:px-1 lg:px-2 xl:px-8"
 								id="theory"
@@ -198,7 +206,9 @@
 						>
 							Procedure
 						</button>
-						<div class="panel procedure_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel procedure_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<div
 								class="modal_btn sm:py-2 md:px-[2px] lg:px-2 xl:px-8"
 								id="procedure"
@@ -220,7 +230,9 @@
 						>
 							Analytics
 						</button>
-						<div class="panel analytics_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel analytics_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<div
 								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
 								id="graph1"
@@ -246,10 +258,16 @@
 						>
 							Observations
 						</button>
-						<div class="panel observations_ques hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel observations_ques hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<table id="log"></table>
-							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">t<sub>e</sub> = Event arrival time.</div>
-							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">t<sub>r</sub> = Response action time.</div>
+							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">
+								t<sub>e</sub> = Event arrival time.
+							</div>
+							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">
+								t<sub>r</sub> = Response action time.
+							</div>
 						</div>
 
 						<button
@@ -259,7 +277,9 @@
 						>
 							Moves
 						</button>
-						<div class="panel moves_que py-2 px-4 hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5">
+						<div
+							class="panel moves_que py-2 px-4 hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
 							<table id="moves"></table>
 						</div>
 					</div>
@@ -267,20 +287,25 @@
 			</div>
 
 			<!-- Button section-->
-			<section class="controls pt-3">
-				<section class="meta_controls">
+			<section
+				class="controls pt-3 flex flex-wrap justify-center lg:justify-start"
+			>
+				<section
+					class="meta_controls flex flex-wrap justify-center lg:justify-start"
+				>
 					<button
 						role="button"
 						id="reset"
-						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
 					>
 						Reset
 						<span class="meta_controls_info">&#9432;</span>
 					</button>
+
 					<button
 						role="button"
 						id="start"
-						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 -mb-2 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
 					>
 						Start
 						<span class="meta_controls_info">&#9432;</span>
@@ -288,7 +313,7 @@
 					<button
 						role="button"
 						id="finish"
-						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
 					>
 						Finish
 						<span class="meta_controls_info">&#9432;</span>
@@ -299,24 +324,26 @@
 					role="button"
 					id="create_process"
 					title="Create Process and put it in Ready Pool"
-					class="button-18 primary_button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 block mx-auto text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+					class="button-18 primary_button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 lg:mb-0"
 				>
 					+ Create Process
 				</button>
 
-				<section class="exp_controls ml-4">
+				<section
+					class="exp_controls ml-4 flex flex-wrap justify-center lg:justify-start"
+				>
 					<button
 						role="button"
 						id="toggle_accordion"
-						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
 					>
-						close accordion
+						Close accordion
 						<span class="meta_controls_info">&#9432;</span>
 					</button>
 					<button
 						role="button"
 						id="init_tour"
-						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
 					>
 						Take Tour
 						<span class="meta_controls_info">&#9432;</span>
