@@ -33,10 +33,10 @@ class UI {
     // this.start_timer();
     this.timer_paused = true;
 
-    if (!this.isPractice()) {
-      document.getElementById("log").style.display = "none";
-      document.getElementById("moves").style.display = "none";
-    }
+    //if (!this.isPractice()) {
+      //document.getElementById("log").style.display = "none";
+      //document.getElementById("moves").style.display = "none";
+    //}
 
     if (this.kernel.clock > 0)
       document.getElementById("start").childNodes[0].textContent = "Resume";
@@ -649,7 +649,7 @@ class UI {
     // button.classList.add("mdl-js-button");
     // button.classList.add("mdl-button--raised");
     // button.classList.add("mdl-button--colored");
-    if (!this.isPractice()) return;
+    //if (!this.isPractice()) return; 
     button.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}    📊`;
     button.addEventListener("click", () => {
       dialog.showModal();
@@ -736,7 +736,7 @@ class UI {
     graphinfo.style.fontSize = "16px";
     graphinfo.style.lineHeight = "1.3";
 
-    if (!this.isPractice()) return;
+    //if (!this.isPractice()) return;
     // button to open dialog box
     let button = document.createElement("button");
     button.classList.add("mdl-button");
@@ -831,8 +831,8 @@ class UI {
     graphinfo.style.fontSize = "16px";
     graphinfo.style.lineHeight = "1.3";
 
-    if (!this.isPractice()) return;
-    2;
+    //if (!this.isPractice()) return;
+    
 
     // button to open dialog box
     let button = document.createElement("button");
@@ -1254,7 +1254,7 @@ class UI {
   }
 
   showDialog(message: string) {
-    if (!this.isPractice()) return;
+    //if (!this.isPractice()) return;
     const dialogBox = document.createElement("p");
     dialogBox.textContent = message;
     const inst = document.getElementById("instruction");
@@ -1283,6 +1283,17 @@ class UI {
         }
       });
 
+      let process_dragover_handler = (event: DragEvent) => {
+        if (this.is_ex_paused()) return;
+        event.preventDefault();
+        // event.dataTransfer.dropEffect = "move";
+  
+        console.log("Drag Over");
+  
+        // if (this.kernel.selectedEvent === -1)
+        //     this.end_timer();
+    };
+    
     let process_drop_handler = (event) => {
       if (this.is_ex_paused()) return;
       event.preventDefault();
@@ -1313,31 +1324,23 @@ class UI {
     //     this.display_all();
     // }
 
-    let process_dragover_handler = (event: DragEvent) => {
-      if (this.is_ex_paused()) return;
-      event.preventDefault();
-      // event.dataTransfer.dropEffect = "move";
-
-      console.log("Drag Over");
-
-      // if (this.kernel.selectedEvent === -1)
-      //     this.end_timer();
-    };
+  
 
     // document.querySelectorAll('.process').forEach((element) => {
     //     element.addEventListener("dragstart", process_dragstart_handler);
     //     element.addEventListener("dragend", process_dragend_handler);
     // })
-
+    
     this.ready_pool.addEventListener("dragover", process_dragover_handler);
     this.io_pool.addEventListener("dragover", process_dragover_handler);
     this.cpu.addEventListener("dragover", process_dragover_handler);
     this.terminated_pool.addEventListener("dragover", process_dragover_handler);
-
+    
     this.ready_pool.addEventListener("drop", process_drop_handler);
     this.io_pool.addEventListener("drop", process_drop_handler);
     this.cpu.addEventListener("drop", process_drop_handler);
     this.terminated_pool.addEventListener("drop", process_drop_handler);
+    console.log("xxx")
 
     document.getElementById("init_tour").addEventListener("click", (e) => {
       setTimeout(() => {

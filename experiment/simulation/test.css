@@ -6,6 +6,10 @@
 .mdl-button{
   font-size: 12px;
   padding: 0 4px;
+  line-height: normal;
+  text-align: start;
+  overflow-wrap: normal;
+  height: 50px;
 }
 
 .event {
