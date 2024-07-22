@@ -1,290 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Process Life Cycle Management</title>
-    <!-- <link rel="stylesheet"
-         media="screen and (max-width: 900px)"
-         href="./dist/small_screen.css"> -->
-    <link
-      rel="stylesheet"
-      media="screen and (min-width: 901px)"
-      href="./dist/simulation.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/driver.js/dist/driver.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
-    />
-    <link rel="stylesheet" href="./dist/style.css" />
-    <link rel="stylesheet" href="./dist/material.min.css" />
-    <script src="./dist/material.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Process Life Cycle Management</title>
 
-  <body>
-    <main id="main">
-      <!-- <p id="instruction"></p> -->
-      <section class="split left">
-        <!-- <div class="v-collapsible-instruction-container v-instruction-container">
-             <div id="instruction-title" class="v-collapsible is-size-5">Instructions</div>
-             <div id="daddy" class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
-             <ul style="list-style: disc;">
-             <li>Click <b>Create</b> to create a process.</li>
-             <li>Click <b>Advance clock</b> to advance the time.</li>
-             <li>To move a process from Ready Pool to the CPU, <b>click on the process</b> that you want to move.</li>
-             <li>Click <b>CPU to IO Pool</b> to move the process currently running in the CPU to the IO pool.</li>
-             <li>Click <b>IO to Ready Pool</b> to move the process with completed IO from IO pool to Ready pool.</li>
-             <li>Click <b>Preempt</b> to preempt the process currently running in the CPU and move it to Ready pool.</li>
-             <li>Click <b>Terminate</b> to terminate the process currently running in the CPU.</li>
-             </ul>
-             </div>
-             </div> -->
-        <section class="exp">
-          <section class="event_sec" id="event_queue">
-            <h4 class="event_queue_head">Events Queue</h4>
-            <p class="info">&#9432;</p>
-            <section class="" id="all_events"></section>
-            <section class="clock" id="clock">
-              <h3 style="font-weight: bold">Clock</h3>
-              <span id="clock_val">0</span>
-              <p class="info">&#9432;</p>
-            </section>
-          </section>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/driver.js/dist/driver.min.css"
+		/>
 
-          <section class="queue" id="CPU">
-            <h4 class="queue_head">CPU</h4>
-            <p class="info">&#9432;</p>
-            <section class="queue_body"></section>
-          </section>
-          <section class="queue" id="IO">
-            <h4 class="queue_head">I/O Pool</h4>
-            <p class="info">&#9432;</p>
-            <section class="queue_body"></section>
-          </section>
-          <section class="queue" id="READY">
-            <h4 class="queue_head">Ready Pool</h4>
-            <p class="info">&#9432;</p>
-            <section class="queue_body"></section>
-          </section>
-          <section class="queue" id="COMPLETED">
-            <h4 class="queue_head">Terminated Processes</h4>
-            <p class="info">&#9432;</p>
-            <!-- ondrop="process_drop_handler(event)" ondragover="process_dragover_handler(event)" -->
-            <section class="queue_body"></section>
-          </section>
-        </section>
-        <!-- <p id="instruction"></p> -->
-        <section class="controls">
-          <section class="meta_controls">
-            <button class="button-18 secondary_button" role="button" id="reset">
-              Reset&ensp;
-              <p class="meta_controls_info">&#9432;</p>
-            </button>
-            <button class="button-18 secondary_button" role="button" id="start">
-              Start&ensp;
-              <p class="meta_controls_info">&#9432;</p>
-            </button>
-            <button
-              class="button-18 secondary_button"
-              role="button"
-              id="finish"
-            >
-              Finish&ensp;
-              <p class="meta_controls_info">&#9432;</p>
-            </button>
-            <!-- <button class="button-18" role="button" id="finish">Finish</button> -->
-          </section>
-          <button
-            class="button-18 primary_button"
-            role="button"
-            id="create_process"
-            title="Create Process and put it in Ready Pool"
-          >
-            + Create Process
-          </button>
-          <section class="exp_controls">
-            <button
-              class="button-18 secondary_button"
-              role="button"
-              id="toggle_accordion"
-            >
-              close accordion
-            </button>
-            <button
-              class="button-18 secondary_button"
-              role="button"
-              id="init_tour"
-            >
-              Take Tour &ensp;
-              <p class="exp_controls_info">&#9432;</p>
-            </button>
-          </section>
-          <!-- <button class="button-18" role="button" id="advance_clock" title="All changes made for this clock cycle">Done</button> -->
-          <!-- <button class="button-18" role="button" id="goto_io" title="Move the process currently in CPU to IO Pool">CPU to IO Pool</button> -->
-          <!-- <button class="button-18" role="button" id="collect" title="Move the process from IO Pool to Ready Pool">IO to Ready Pool</button> -->
-          <!-- <button class="button-18" role="button" id="prempt" title="Preempt the process currently in CPU and put it in Ready Pool">Preempt</button> -->
-          <!-- <button class="button-18" role="button" id="kill" title="Terminate the Process currently in CPU">Terminate</button> -->
-        </section>
-        <section id="instruction">
-          <p style="font-weight: bold; margin-right: 10px">Dialog Box:</p>
-        </section>
-      </section>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="./dist/material.min.css"
+		/>
+		<script src="./dist/material.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
 
-      <section class="instructions_panel split right">
-        <button class="accordion" id="introduction_button">Introduction</button>
-        <div class="panel">
-          <div class="modal_btn" id="intro1"></div>
-          <div class="modal_btn" id="intro2"></div>
-          <div class="modal_btn" id="intro3"></div>
-          <!-- <li>
-            <b>Objective</b>
-            <p>
-              Our objective in this experiment is to understand the life cycle
-              of a process as managed by an operating system. The experiment
-              provides you with the apparatus to observe and control the
-              processes as needed.
-            </p>
-          </li>
+		<link
+			rel="stylesheet"
+			href="test.css"
+		/>
 
-          <li>
-            <b>Intuition:</b> Act in response to Events
-            <p>
-              You are to observe the events that arrive in the events queue, and
-              respond to them with an appropriate action so as to manage the
-              processes in an efficient manner, as per the process state model
-              discussed in theory.
-            </p>
-          </li>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
 
-          <li>
-            <b>Apparatus</b>
-            <button class="button-18 secondary_button" style="padding: 3%; font-size: 0.8em; width: fit-content; height: fit-content;" role="button" id="init_tour">Take Tour</button></li>
-            <p style="margin-left: 10%">
-              Events Queue
-              <br />
-              CPU
+	<body>
+		<main
+			id="main"
+			class="h-screen flex flex-col items-center text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px]"
+		>
+			<!--Simulation and Content-->
+			<div
+				class="flex w-full max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl"
+			>
+				<!-- Left section (simulation) -->
+				<section class="split left w-full bg-gray-800 relative">
+					<!--Tailwind CSS classes for (simulation) section styling -->
+					<section
+						class="exp grid grid-cols-3 grid-rows-2 gap-2 p-2 overflow-hidden"
+					>
+						<section
+							id="event_queue"
+							class="event_sec flex-1 max-h-[400px] col-span-1 row-span-2 bg-white rounded-lg shadow-md p-4"
+						>
+							<h5
+								class="event_queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+							>
+								Events Queue<span class="info hover:cursor-pointer"
+									>&#9432;</span
+								>
+							</h5>
+							<section
+								class="max-h-[320px] mt-[10px] overflow-y-auto scrollbar-none"
+								id="all_events"
+							></section>
+						</section>
 
-              <br />
-              Ready Pool
+						<section
+							id="CPU"
+							class="queue row-span-1 bg-white rounded-lg shadow-md p-4 h-56"
+						>
+							<h5 class="queue_head bg-gray-300 p-2 rounded-t-lg">
+								CPU <span class="info hover:cursor-pointer">&#9432;</span>
+							</h5>
+							<section
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none h-32"
+							></section>
+						</section>
+						<section
+							id="IO"
+							class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
+						>
+							<h5
+								class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+							>
+								I/O Pool <span class="info hover:cursor-pointer">&#9432;</span>
+							</h5>
+							<section
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none h-32"
+							></section>
+						</section>
+						<section
+							id="READY"
+							class="queue flex-1 max-h-[200px] col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
+						>
+							<h5
+								class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+							>
+								Ready Pool
+								<span class="info hover:cursor-pointer">&#9432;</span>
+							</h5>
+							<section
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none h-32"
+							></section>
+						</section>
+						<section
+							id="COMPLETED"
+							class="queue col-span-1 row-span-1 bg-white rounded-lg shadow-md p-4 h-56 overflow-hidden"
+						>
+							<h5
+								class="queue_head bg-gray-300 p-2 rounded-t-lg overflow-hidden"
+							>
+								Terminated Processes
+								<span class="info hover:cursor-pointer">&#9432;</span>
+							</h5>
+							<section
+								class="queue_body max-h-[130px] mt-[10px] overflow-y-auto flex flex-wrap scrollbar-none h-32"
+							></section>
+						</section>
+						<!-- Clock section -->
+						<section
+							id="clock"
+							class="clock my-auto pl-4 col-span-1 row-span-2 text-white"
+						>
+							<h3 class="inline-block">
+								Clock <span class="info hover:cursor-pointer">&#9432;</span>
+							</h3>
+							<span
+								id="clock_val"
+								class="inline-block"
+								>0</span
+							>
+						</section>
+					</section>
+				</section>
 
-              <br />
-              I/O Pool
+				<!-- Right section (content) -->
+				<section
+					class="instructions_panel split right w-32 bg-gray-800 font-semibold sm:w-[40%]"
+				>
+					<div
+						class="text-wrap px-[11px] pt-4 text-red-600 md:hidden landscape:hidden"
+					>
+						Rotate device to landscape or click on Close accordion.
+					</div>
+					<!--Tailwind CSS classes for (content) section styling -->
+					<div class="py-4 sm:ml-2">
+						<button
+							id="introduction_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('introduction_ques')"
+						>
+							Introduction
+						</button>
+						<div
+							class="panel introduction_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="intro1"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="intro2"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="intro3"
+							></div>
+						</div>
 
-              <br />
-              Terminated Processes Bin
-            </p>
-          </li> -->
-        </div>
+						<button
+							id="theory_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('theory_ques')"
+						>
+							Theory
+						</button>
+						<div
+							class="panel theory_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<div
+								class="modal_btn flex-wrap sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="theory"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="theory2"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="theory3"
+							></div>
+						</div>
 
-        <!-- <button class="accordion" id="instructions_button">Instructions</button>
-               <div class="panel">
-               <li>Click <b>Create Process</b> button to create a process.</li>
-               <li>Click <b>Advance clock</b> to advance the time.</li>
-               <li>To move a process from Ready Pool to the CPU, <b>click on the process</b> that you want to move.</li>
-               <li>Click <b>CPU to IO Pool</b> to move the process currently running in the CPU to the IO pool.</li>
-               <li>Click <b>IO to Ready Pool</b> to move the process with completed IO from IO pool to Ready pool.</li>
-               <li>Click <b>Preempt</b> to preempt the process currently running in the CPU and move it to Ready pool.</li>
-               <li>Click <b>Terminate</b> to terminate the process currently running in the CPU.</li>
-               </div>
-          -->
-        <!-- <button class="accordion" id="color_code_button">Colour Codes</button>
-               <div class="panel">
-               <div id="in-cpu">
-               <p class="process green">Pi</p>
-               <p>CPU Process Running</p>
-               </div>
-               <div id="needs-preemption">
-               <p class="process grey">Pi</p>
-               <p>CPU Process needs Preemption</p>
-               </div>
-               <div id="needs-io">
-               <p class="process brown">Pi</p>
-               <p>CPU Process needs IO</p>
-               </div>
-               <div id="needs-termination">
-               <p class="process red">Pi</p>
-               <p>CPU Process needs Termination</p>
-               </div>
-               <div id="in-ready">
-               <p class="process blue">Pi</p>
-               <p>Process in Ready Pool</p>
-               </div>
-               <div id="io-progress">
-               <p class="process purple">Pi</p>
-               <p>Process IO in progress</p>
-               </div>
-               <div id="io-complete">
-               <p class="process skyblue">Pi</p>
-               <p>Process IO has completed</p>
-               </div>
-               <div id="terminated">
-               <p class="process black">Pi</p>
-               <p>Terminated Process</p>
-               </div>
+						<button
+							id="procedure_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('procedure_ques')"
+						>
+							Procedure
+						</button>
+						<div
+							class="panel procedure_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<div
+								class="modal_btn sm:py-2 md:px-[2px] lg:px-2 xl:px-8"
+								id="procedure"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="procedure2"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="procedure3"
+							></div>
+						</div>
 
-               </div>
-          -->
-        <button class="accordion" id="theory_button">Theory</button>
-        <div class="panel theory_ques">
-          <div class="modal_btn" id="theory"></div>
-          <div class="modal_btn" id="theory2"></div>
-          <div class="modal_btn" id="theory3"></div>
-        </div>
+						<button
+							id="analytics_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('analytics_ques')"
+						>
+							Analytics
+						</button>
+						<div
+							class="panel analytics_ques hidden text-left p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="graph1"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="graph2"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="graph3"
+							></div>
+							<div
+								class="modal_btn sm:py-2 md:px-1 lg:px-2 xl:px-8"
+								id="graph4"
+							></div>
+						</div>
 
-        <button class="accordion" id="procedure_button">Procedure</button>
-        <div class="panel procedure_ques">
-          <div class="modal_btn" id="procedure"></div>
-          <div class="modal_btn" id="procedure2"></div>
-          <div class="modal_btn" id="procedure3"></div>
-        </div>
+						<button
+							id="observations_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('observations_ques')"
+						>
+							Observations
+						</button>
+						<div
+							class="panel observations_ques hidden max-h-10 overflow-hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<table id="log"></table>
+							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">
+								t<sub>e</sub> = Event arrival time.
+							</div>
+							<div class="sm:py-2 md:px-1 lg:px-2 xl:px-8">
+								t<sub>r</sub> = Response action time.
+							</div>
+						</div>
 
-        <button class="accordion" id="analytics_button">Analytics</button>
-        <div class="panel">
-          <ul id="analytics"></ul>
-          <div class="modal_btn" id="graph1"></div>
-          <div class="modal_btn" id="graph2"></div>
-          <div class="modal_btn" id="graph3"></div>
-          <div class="modal_btn" id="graph4"></div>
-        </div>
-        <button class="accordion" id="observations_button">Observations</button>
-        <div class="panel">
-          <table id="log"></table>
+						<button
+							id="moves_button"
+							class="accordion py-2 px-4 text-white w-full text-left lg:text-[20px]"
+							onclick="togglePanel('moves_que')"
+						>
+							Moves
+						</button>
+						<div
+							class="panel moves_que py-2 px-4 hidden p-1 sm:px-2 md:px-3 lg:px-4 xl:px-5"
+						>
+							<table id="moves"></table>
+						</div>
+					</div>
+				</section>
+			</div>
 
-          <p style="margin-top: 10%; margin-left: 5%">
-            t<sub>e</sub> = Event arrival time.
-          </p>
-          <p style="margin-left: 5%">t<sub>r</sub> = Response action time.</p>
-        </div>
+			<!-- Button section-->
+			<section
+				class="controls pt-3 flex flex-wrap justify-center lg:justify-start"
+			>
+				<section
+					class="meta_controls flex flex-wrap justify-center lg:justify-start"
+				>
+					<button
+						role="button"
+						id="reset"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
+					>
+						Reset
+						<span class="meta_controls_info">&#9432;</span>
+					</button>
 
-        <button class="accordion" id="moves_button">Moves</button>
-        <div class="panel">
-          <table id="moves"></table>
-        </div>
+					<button
+						role="button"
+						id="start"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
+					>
+						Start
+						<span class="meta_controls_info">&#9432;</span>
+					</button>
+					<button
+						role="button"
+						id="finish"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
+					>
+						Finish
+						<span class="meta_controls_info">&#9432;</span>
+					</button>
+				</section>
 
-        <!-- <section class="split right">
-               <div class="log-title is-size-5">Observations</div>
-               <div id="log"></div>
-               </section>
-          -->
-        <!-- <section class="col_sec">
-               <section class="col_cod">
-               <div class="log-title is-size-5">Color Codes</div>
+				<button
+					role="button"
+					id="create_process"
+					title="Create Process and put it in Ready Pool"
+					class="button-18 primary_button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 lg:mb-0"
+				>
+					+ Create Process
+				</button>
 
-                              </section>
-               </section> -->
-      </section>
-    </main>
-    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-    <script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
-    <script src="./dist/simulation.js"></script>
-  </body>
+				<section
+					class="exp_controls ml-4 flex flex-wrap justify-center lg:justify-start"
+				>
+					<button
+						role="button"
+						id="toggle_accordion"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
+					>
+						Close Accordion
+					</button>
+					<button
+						role="button"
+						id="init_tour"
+						class="button-18 secondary_button text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 lg:mb-0"
+					>
+						Take Tour
+						<span class="meta_controls_info">&#9432;</span>
+					</button>
+				</section>
+			</section>
+
+			<!--Dialog Box-->
+			<section
+				id="instruction"
+				class="flex text-left items-center justify-start h-10 min-w-[80%] font-sans text-lg p-5 border-2 border-green-600 rounded-lg mx-auto"
+			>
+				<p class="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px]">Dialog Box:</p>
+			</section>
+		</main>
+		<script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b//script.js"></script>
+		<script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
+		<script src="./dist/simulation.js"></script>
+		<script>
+			// JavaScript function to toggle panel visibility
+			function togglePanel(panelId) {
+				const panel = document.querySelector(`.${panelId}`);
+				const allPanels = document.querySelectorAll(".panel");
+				allPanels.forEach(function (panel) {
+					panel.classList.add("hidden");
+				});
+				panel.classList.toggle("hidden");
+			}
+		</script>
+	</body>
 </html>
