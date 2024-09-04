@@ -2,38 +2,110 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "1. What are the different operations you can perform on a process?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Creation",
+        "b": "Termination",
+        "c": "Execution",
+        "d": "All of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "It is a operation but not the only one that can be performed on  the process",
+        "b": "It is a operation but not the only one that can be performed on  the process",
+        "c": "It is a operation but not the only one that can be performed on  the process",
+        "d": "All above processes can be performed"
       },
-      "correctAnswer": "a",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "2. When the process issues an I/O request :",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "It is placed in the ready queue",
+        "b": "It is left in the CPU",
+        "c": "It is sent to the I/O queue",
+        "d": "None of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect",
+        "b": "Incorrect",
+        "c": "Process responds to I/O calls by going into the I/O queue to wait for data collection",
+        "d": "Incorrect"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
     }
+    ,
+    {
+      "question": "3. Which of the following state transitions is not possible?",
+      "answers": {
+        "a": "Ready ->CPU",
+        "b": "Ready ->I/O",
+        "c": "I/O->Ready",
+        "d": "CPU->Kill"
+      },
+      "explanations": {
+        "a": "Process can go to CPU from ready queue to push for execution",
+        "b": "Process cant go from ready to I/O directly as the process needs to be in execution to get I/O calls so this state trnsition is not possible",
+        "c": "Process can go directly from I/O queue to ready queue once it collects data",
+        "d": "Process can be terminated from CPU so possible."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "4. Select the method in which a process leaves the CPU:",
+      "answers": {
+        "a": "I/O calls",
+        "b": "Kill process",
+        "c": "preemption",
+        "d": "all of the above"
+      },
+      "explanations": {
+        "a": "Possible but not the only way",
+        "b": "Possible but not the only way",
+        "c": "Possible but not the only way",
+        "d": "All options are possible"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+       , {
+      "question": "5. Which of the following is NOT a process state?",
+      "answers": {
+        "a": "Running",
+        "b": "Waiting",
+        "c": "Terminated",
+        "d": "Starving"
+      },
+      "explanations": {
+        "a": "Running state is a process state",
+        "b": "Waiting state is a process state",
+        "c": "Terminated state is a process state",
+        "d": "Process starvation occurs when a process is unable to access the resources it needs to complete its execution, often due to resource allocation issues or poor scheduling."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+    ,
+    {
+      "question": "6. Which of the following state descriptions isn't correct?",
+      "answers": {
+        "a": "New: The process is waiting to get created",
+        "b": "Ready: the process is ready for execution and is waiting to get selected",
+        "c": "Wait:The process is running in the CPU",
+        "d": "all of the above"
+      },
+      "explanations": {
+        "a": "Possible but not the only way",
+        "b": "Possible but not the only way",
+        "c": "Possible but not the only way",
+        "d": "All options are possible"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+    
   ]
 }
