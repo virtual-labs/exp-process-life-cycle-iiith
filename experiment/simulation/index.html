@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/main.js"></script>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Context Switching - 3 Workstation model</h1>
+
+    <div class="simulation_page">
+        <div class="container">
+            <div id="st-box">
+                <p id="umode">USER MODE</p>
+                <div id="load_process_A" style="overflow-y: scroll; height:313px">
+                    <table id="process" style="padding: 10px; width:90%; margin: 10px;"></table>
+                </div>
+                <div id="process_buttons">
+                    <button id="prev_process" onclick="process_previous()">Previous</button>
+                    <button id="next_process" onclick="process_next()">Next</button>
+                </div>
+            </div>
+
+            <div id="nd-box">
+                <p id="hardware">HARDWARE</p>
+                <div id="interrupt_section" style="height:313px">
+                    <table id="interrupt" style="padding: 10px; width:90%; margin: 10px;"></table>
+                </div>
+            </div>
+
+            <div id="rd-box">
+                <p id="kmode">KERNEL MODE</p>
+                <div id="k-container" style="overflow-y: scroll; height:313px;">
+                    <table id="kernel" style="padding: 10px; width:90%; margin: 10px;"></table>
+                </div>
+                <div id="kernel_buttons">
+                    <button id="kernelCode_execute" onclick="execute()">Execute</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="conatiner2"> 
+            <div id="cpu">
+                <p id="mycpu">Central processing unit</p>
+                <div class="cpu_details">
+                    <table id="cpu_section"></table>
+                </div>
+            </div>
+            <div id="k-stack_A">
+                <p id="k-stack-A">K-Stack of process A</p>
+                <table id="kStack_A_Table"></table>
+            </div>
+            <div id="k-stack_B">
+                <p id="k-stack-B">K-Stack of process B</p>
+                <table id="kStack_B_Table"></table>
+            </div>
+            <div id="pcbA">
+                <p id="pcb_A_p">PCB of process A</p>
+                <table id="pcb_A_table"></table>
+            </div>
+            <div id="pcbB">
+                <p id="pcb_B_p">PCB of process B</p>
+                <table id="pcb_B_table"></table>
+            </div>
+        </div>
+    </div>
+    <div class="control_page">
+        <div style="padding: 10px">
+            <p style="font-weight: bolder;"> Student controls </p>
+            <p id="current_running_process"> Current Running program: -- </p>
+            <div id="instruction_box">
+                <p
+                    style="margin-top: auto; margin-bottom: 0px; font-weight: bold; background-color: black; color: white; padding: 10px; text-align: center;">
+                    Instruction Box</p>
+                <div id="instructions" style="overflow-y: scroll; height:150px">
+                    <table id="i" style="overflow-y: scroll; padding-left: 10px; width:90%; margin: 10px;"></table>
+                </div>
+            </div>
+            
+            <div id="ints">
+                <table style="padding: 10px; width:90%; margin: 10px;">
+                    <!-- <tr>
+                        <td>Timer interrupt</td>
+                        <td> <button onclick="tigger_timer">Trigger</button> </td>
+                    </tr> -->
+                    <tr>
+                        <td>I/O completed</td>
+                        <td> <button onclick="trigger_io()">Trigger</button> </td>
+                    </tr>
+                </table>
+            </div>
+
+            <button id="start_simulation" onclick="start()">Start</button>
+            <div id="response_box" style="margin-top: 10px;">
+                <p
+                    style="margin-top: auto; margin-bottom: 0px; font-weight: bold; background-color: black; color: white; padding: 10px; text-align: center;">
+                    Response Box</p>
+                <div id="response" style="height:30px">
+                    <p id="res"></p>
+                </div>
+            </div>
+
+            <div id="observations" style="margin-top: 10px;">
+                <p
+                    style="margin-top: auto; margin-bottom: 0px; font-weight: bold; background-color: black; color: white; padding: 10px; text-align: center;">
+                    Observations</p>
+                <table style="padding: 10px;">
+                    <tr>
+                        <td>Number of context switches</td>
+                        <td id="context_switches">0</td>
+                    </tr>
+                    <tr>
+                        <td>Number of interrupts</td>
+                        <td id="interrupts">0</td>
+                    </tr>
+                    <tr>
+                        <td>Wrong interrupt selection</td>
+                        <td id="wrong_ints_selection">0</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <p id="myTrapHandlers" style="font-weight: bold;">Interrupt Handlers:</p>
+                <table id="handlers"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="openModal" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close">x</a>
+          <h2>Hurray! You have completed the context switch successfully. </h2>
+          <p>Both the programs A and B are now terminated. Click the below button to redo the experiment.</p>
+            <button onclick="window.location.reload();">Redo</button>
+        </div>
+        <a href="#close" title="Close" class="close">x</a>
+      </div>
+
+</body>
+
+</html>
+
