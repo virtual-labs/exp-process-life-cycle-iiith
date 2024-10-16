@@ -1616,7 +1616,7 @@ class UI {
     const driver: Driver = new Driver({
       animate: true,
       opacity: 0.8,
-      padding: 5,x
+      padding: 5,
       showButtons: true,
       overlayClickNext: true,
     });
