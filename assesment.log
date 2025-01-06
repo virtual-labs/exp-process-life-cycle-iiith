@@ -2,25 +2,32 @@
 {
   _: [],
   f: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment/pretest.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json'
   ],
   files: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment/pretest.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json'
   ],
   c: 'assessment',
   contentTypes: 'assessment',
   'content-types': 'assessment',
   '$0': 'validate'
 }
-Validated true
+/questions/0/question: must be string
+
+/questions/2/question: must be string
+
+Json Error: must match "then" schema
+Json Error: must match "then" schema
+Failed while validating /home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json
+Error: Schema is Invalid
 =/posttest.json
 {
   _: [],
   f: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment/posttest.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/posttest.json'
   ],
   files: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment/posttest.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/posttest.json'
   ],
   c: 'assessment',
   contentTypes: 'assessment',

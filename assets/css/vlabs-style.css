@@ -2,6 +2,41 @@ html {
   overflow-y: auto;
 }
 
+.svc-rating-display{
+  display:flex;
+  flex-direction: column;
+  margin-right: 40px ;
+  margin-bottom: 17px;
+  align-items: center ;
+}
+
+.vl-rating-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0px 10px;
+  margin-top: -15px; /* Adjust this value as needed */
+}
+.list-of-experiments-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  overflow: hidden;
+  flex: 0 0 1%; /*Adjust this value to decrease the width*/
+}
+
+.list-of-experiments-container > div{
+  margin: 1px;
+}
+.list-of-experiments-display-rating {
+  position: relative;
+  top: -10px;
+  left: 20px;
+}
+
 .vlabs-page {
   height: 100vh;
   overflow-x: hidden;

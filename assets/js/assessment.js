@@ -16,22 +16,35 @@ function showResults() {
     // find selected answer
     const answerContainer = answerContainers[questionNumber];
     const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
+    const userAnswerElement = answerContainer.querySelector(selector);
+    const userAnswer = userAnswerElement ? userAnswerElement.value : undefined;
+  
+    // Log the value and type of userAnswer
+    //console.log(`Question ${questionNumber + 1}: userAnswer =`, userAnswer, `, type =`, typeof userAnswer);
+  
     // if answer is correct
     if (userAnswer === currentQuestion.correctAnswer) {
       // add to the number of correct answers
       numCorrect++;
-
-      // color the answers green
-      //answerContainers[questionNumber].style.color = "lightgreen";
-    } else {
-      // if answer is wrong or blank
+  
+      // color the selected answer green
+      if (userAnswerElement) {
+        userAnswerElement.parentElement.style.color = "lightgreen";
+      }
+    } 
+    // if answer is blank
+    else if (userAnswer === undefined) {
+      // color the answers black      
+      answerContainers[questionNumber].style.color = "black";
+    } 
+    // if answer is wrong
+    else {       
       // color the answers red
-      answerContainers[questionNumber].style.color = "red";
+      if (userAnswerElement) {
+        userAnswerElement.parentElement.style.color = "red";
+      }
     }
   });
-
   // show number of correct answers out of total
   resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }

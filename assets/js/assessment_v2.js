@@ -107,10 +107,11 @@ function updateQuestions() {
 
 function showResults() {
   // gather answer containers from our quiz
-  const answerContainers = quizContainer.querySelectorAll(".answers");
+   const answerContainers = quizContainer.querySelectorAll(".answers");   
   // keep track of user's answers
   let numCorrect = 0;
-  let toatNum = 0;
+  let totalNum = 0;
+    
   // for each question...
   myQuestions.forEach((currentQuestion) => {
     // find selected answer
@@ -124,21 +125,19 @@ function showResults() {
     const selector = `input[name=question${questionNumber}]:checked`;
     const userAnswer = (answerContainer.querySelector(selector) || {}).value;
     // Add to total
-    toatNum++;
+    totalNum++;
+
     // if answer is correct
     if (userAnswer === currentQuestion.correctAnswer) {
-      // Reset if previously red colored answers
-      answerContainers[questionNumber].childNodes.forEach((e) => {
-        if (e != undefined) {
-          if (e.style) e.style.color = "black";
-        }
-      });
+      // Color the correct answer lightgreen
+      const correctAnswerElement = document.getElementById(
+        "answer" + questionNumber.toString() + userAnswer
+      );
+      correctAnswerElement.style.color = "lightgreen";
 
       // add to the number of correct answers
       numCorrect++;
 
-      // color the answers green
-      //answerContainers[questionNumber].style.color = "lightgreen";
       // Show all explanations
       if (currentQuestion.explanations) {
         for (let answer in currentQuestion.answers) {
@@ -155,12 +154,12 @@ function showResults() {
         }
       }
     } else if (userAnswer) {
-      // if answer is wrong or blank
-      // color the answers red
+      // if answer is wrong
       document.getElementById(
         "answer" + questionNumber.toString() + userAnswer
       ).style.color = "red";
-      // Show only explanation for wrong answer
+      
+      // Show explanation for the selected answer
       if (currentQuestion.explanations && userAnswer) {
         let explanation = currentQuestion.explanations[userAnswer];
         let explanationButton = document.getElementById(
@@ -175,8 +174,9 @@ function showResults() {
       }
     }
   });
+
   // show number of correct answers out of total
-  resultsContainer.innerHTML = `${numCorrect} out of ${toatNum}`;
+  resultsContainer.innerHTML = `Score: ${numCorrect} out of ${totalNum}`;
 }
 
 populateQuestions();

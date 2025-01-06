@@ -29,9 +29,7 @@ async function getLog(file, type) {
 }
 
 function handleAssesment(data){
-  console.log(data)
   let logs = data.split("\n");
-  console.log(logs)
   let formatted_data = {};
   let currentKey = "";
   let totalFiles = 0;
@@ -40,7 +38,7 @@ function handleAssesment(data){
     if(logs[i].startsWith("=")){
       totalFiles++;
       // key is everything after =
-      const key = logs[i].split("=")[1];
+      const key = getFilenameFromPath(logs[i].split("=")[1]);
       if(key in formatted_data){
         continue;
       }
@@ -52,6 +50,8 @@ function handleAssesment(data){
       i+=13;
     }
     else if(logs[i] === "Validated true"){
+      // remove key from formatted_data
+      delete formatted_data[currentKey];
       continue;
       // formatted_data[currentKey].push("Validated true"); 
     }
@@ -64,9 +64,15 @@ function handleAssesment(data){
   let stats = `Total Files: ${totalFiles} <br>
   ✖ ${count} problems (0 errors, ${count} warnings)`;
   formatted_data["FINAL_STATS"] = stats;
-  console.log(formatted_data)
   return formatted_data;
 }
+
+function getFilenameFromPath(path) {
+  // get filename from path by splitting path by last occurence of / or \
+  const filename = path.split(/[\\/]/).pop();
+  return filename;
+}
+
 
 function handleDataEslint(data) {
   let logs = data.split("\n");
@@ -87,7 +93,7 @@ function handleDataEslint(data) {
           stats = logs[i];
           continue;
         }
-        const filename = logs[i].split("/")[logs[i].split("/").length - 1];
+        const filename = getFilenameFromPath(logs[i]);
         formatted_data[filename] = [];
         last_key = filename;
         flag = true;

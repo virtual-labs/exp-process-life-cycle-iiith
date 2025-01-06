@@ -1,14 +1,14 @@
 {
   _: [],
   f: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment-descriptor.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment-descriptor.json'
   ],
   files: [
-    '/home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment-descriptor.json'
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment-descriptor.json'
   ],
   '$0': 'validate'
 }
 Json Error: There are additional properties
 Json Error: must match "then" schema
-Failed while validating /home/runner/work/exp-context-switch-iiith/exp-context-switch-iiith/experiment-descriptor.json
+Failed while validating /home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment-descriptor.json
 Error: Schema is Invalid
