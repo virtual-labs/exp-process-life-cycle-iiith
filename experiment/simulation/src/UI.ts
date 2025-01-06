@@ -1152,16 +1152,16 @@ class UI {
       console.log("Display Anallytics");
       return;
     }
-    let analytics = document.getElementById("analytics");
-    analytics.innerHTML = "";
-    let wm = document.createElement("li");
-    wm.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}`;
-    let aet = document.createElement("li");
-    aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
-    let cpuIdle = document.createElement("li");
-    cpuIdle.innerText = `Cumulative CPU Idle time: ${this.kernel.cpuIdle}`;
-    let cpuIOIdle = document.createElement("li");
-    cpuIOIdle.innerText = `Cumulative CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}`;
+    // let analytics = document.getElementById("analytics");
+    // analytics.innerHTML = "";
+    // let wm = document.createElement("li");
+    // wm.innerText = `Total Wrong Moves: ${this.kernel.wrongMoves}`;
+    // let aet = document.createElement("li");
+    // aet.innerText = `Average Event Wait time: ${this.kernel.getAverageWaitTime()}`;
+    // let cpuIdle = document.createElement("li");
+    // cpuIdle.innerText = `Cumulative CPU Idle time: ${this.kernel.cpuIdle}`;
+    // let cpuIOIdle = document.createElement("li");
+    // cpuIOIdle.innerText = `Cumulative CPU IO Idle time: ${this.kernel.getCPUIOWaitTime()}`;
 
     // analytics.appendChild(wm);
     // analytics.appendChild(aet);
@@ -1602,9 +1602,7 @@ class UI {
     if (this.isPractice()) {
       let log = <HTMLElement>document.getElementById("observations_button");
       let observations = <HTMLElement>log.nextElementSibling;
-
-      if (log.classList.contains("active")) return;
-
+      if (log.classList.contains("active")) return;  
       observations.style.display = "flex";
       observations.style.flexDirection = "column";
       observations.style.overflow = "scroll";

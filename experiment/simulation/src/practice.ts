@@ -76,7 +76,7 @@ let update_io_queue = () => {
             io = io.filter(proc => proc.id !== process.id);
             log.push(`Process P${process.id} is moved from IO pool to ready pool`);
             update();
-
+             
             // // check if clicking "collect" is valid
             // let flag: Boolean = false;
             // for (let index = 0; index < io.length; index++) {
