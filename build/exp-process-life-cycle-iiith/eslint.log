@@ -1,0 +1,1409 @@
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/babel.config.js
+  1:1  warning  'module' is not defined  no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/120.simulation.js
+  2:4828    warning  'e' is defined but never used                                    no-unused-vars
+  2:103587  warning  'e' is defined but never used                                    no-unused-vars
+  2:141039  warning  Empty block statement                                            no-empty
+  2:146669  warning  Duplicate case label                                             no-duplicate-case
+  2:148647  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:148745  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:156185  warning  't.href' is assigned to itself                                   no-self-assign
+  2:157159  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:173776  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:174117  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:174816  warning  'B' is defined but never used                                    no-unused-vars
+  2:176886  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:176981  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:177056  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:177082  warning  Unexpected comma in middle of array                              no-sparse-arrays
+  2:177388  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:177414  warning  Unexpected comma in middle of array                              no-sparse-arrays
+  2:177965  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:179526  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:179553  warning  Unexpected comma in middle of array                              no-sparse-arrays
+  2:180302  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:180635  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:180725  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:180849  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:180939  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181010  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181104  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181182  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181276  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181341  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181434  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181526  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181620  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181688  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:181782  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:183268  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:183294  warning  Unexpected comma in middle of array                              no-sparse-arrays
+  2:185659  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:185753  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:185828  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:185987  warning  'r' is defined but never used                                    no-unused-vars
+  2:189049  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:189078  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:189605  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:189628  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+  2:189836  warning  'B' is defined but never used                                    no-unused-vars
+  2:196415  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  2:197892  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/392.simulation.js
+  1:2267    warning  Empty block statement                                                            no-empty
+  1:2407    warning  Empty block statement                                                            no-empty
+  1:2793    warning  Empty block statement                                                            no-empty
+  1:3178    warning  Empty block statement                                                            no-empty
+  1:4153    warning  Empty block statement                                                            no-empty
+  1:5591    warning  'Deno' is not defined                                                            no-undef
+  1:5614    warning  'Deno' is not defined                                                            no-undef
+  1:5890    warning  'process' is not defined                                                         no-undef
+  1:6601    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  1:8034    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  1:8547    warning  Empty block statement                                                            no-empty
+  1:10451   warning  Empty block statement                                                            no-empty
+  1:10794   warning  Do not access Object.prototype method 'propertyIsEnumerable' from target object  no-prototype-builtins
+  1:11245   warning  'y.get' is assigned to itself                                                    no-self-assign
+  1:11257   warning  'y.has' is assigned to itself                                                    no-self-assign
+  1:11269   warning  'y.set' is assigned to itself                                                    no-self-assign
+  1:17044   warning  Empty block statement                                                            no-empty
+  1:17636   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  1:18699   warning  'ActiveXObject' is not defined                                                   no-undef
+  1:18733   warning  Empty block statement                                                            no-empty
+  1:19863   warning  Empty block statement                                                            no-empty
+  1:20162   warning  Empty block statement                                                            no-empty
+  1:21404   warning  Empty block statement                                                            no-empty
+  1:31904   warning  Empty block statement                                                            no-empty
+  1:32347   warning  'this.length' is assigned to itself                                              no-self-assign
+  1:33870   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  1:34013   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  1:35143   warning  't' is defined but never used                                                    no-unused-vars
+  1:35780   warning  Empty block statement                                                            no-empty
+  1:42638   warning  'process' is not defined                                                         no-undef
+  1:42647   warning  'process' is not defined                                                         no-undef
+  1:42705   warning  'process' is not defined                                                         no-undef
+  1:42779   warning  'process' is not defined                                                         no-undef
+  1:48494   warning  'RGBColor' is not defined                                                        no-undef
+  1:48820   warning  Empty block statement                                                            no-empty
+  1:50951   warning  'e' is defined but never used                                                    no-unused-vars
+  1:69518   warning  'M' is a function                                                                no-func-assign
+  1:87058   warning  This generator function does not have 'yield'                                    require-yield
+  1:93286   warning  't' is defined but never used                                                    no-unused-vars
+  1:93469   warning  't' is defined but never used                                                    no-unused-vars
+  1:98444   warning  'this.commands' is assigned to itself                                            no-self-assign
+  1:103251  warning  't' is defined but never used                                                    no-unused-vars
+  1:141785  warning  't' is defined but never used                                                    no-unused-vars
+  1:146842  warning  't' is defined but never used                                                    no-unused-vars
+  1:147396  warning  't' is defined but never used                                                    no-unused-vars
+  1:148033  warning  't' is defined but never used                                                    no-unused-vars
+  1:148208  warning  't' is defined but never used                                                    no-unused-vars
+  1:148210  warning  'e' is defined but never used                                                    no-unused-vars
+  1:148212  warning  'r' is defined but never used                                                    no-unused-vars
+  1:148214  warning  'i' is defined but never used                                                    no-unused-vars
+  1:148216  warning  'n' is defined but never used                                                    no-unused-vars
+  1:148306  warning  't' is defined but never used                                                    no-unused-vars
+  1:148308  warning  'e' is defined but never used                                                    no-unused-vars
+  1:148310  warning  'r' is defined but never used                                                    no-unused-vars
+  1:148312  warning  'i' is defined but never used                                                    no-unused-vars
+  1:148314  warning  'n' is defined but never used                                                    no-unused-vars
+  1:148403  warning  't' is defined but never used                                                    no-unused-vars
+  1:148405  warning  'e' is defined but never used                                                    no-unused-vars
+  1:148407  warning  'r' is defined but never used                                                    no-unused-vars
+  1:148409  warning  'i' is defined but never used                                                    no-unused-vars
+  1:148411  warning  'n' is defined but never used                                                    no-unused-vars
+  1:149668  warning  'Le' is a function                                                               no-func-assign
+  1:149674  warning  This generator function does not have 'yield'                                    require-yield
+  1:152410  warning  't' is defined but never used                                                    no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/856.simulation.js
+  2:162    warning  'e' is a function                                                no-func-assign
+  2:394    warning  't' is a function                                                no-func-assign
+  2:475    warning  'e' is defined but never used                                    no-unused-vars
+  2:477    warning  'r' is defined but never used                                    no-unused-vars
+  2:479    warning  'o' is defined but never used                                    no-unused-vars
+  2:489    warning  'n' is a function                                                no-func-assign
+  2:9351   warning  Unnecessary escape character: \-                                 no-useless-escape
+  2:9385   warning  Unnecessary escape character: \-                                 no-useless-escape
+  2:9462   warning  Unnecessary escape character: \-                                 no-useless-escape
+  2:9521   warning  Unexpected control character(s) in regular expression: \x00      no-control-regex
+  2:10966  warning  Empty block statement                                            no-empty
+  2:14926  warning  Empty block statement                                            no-empty
+  2:14966  warning  Empty block statement                                            no-empty
+  2:15273  warning  Empty block statement                                            no-empty
+  2:15390  warning  Empty block statement                                            no-empty
+  2:19432  warning  Empty block statement                                            no-empty
+  2:19560  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  2:20696  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/exercise.js
+  17:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+  17:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+  17:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+  27:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+  27:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+  27:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+  93:15  warning  '__webpack_exports__' is assigned a value but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/main.js
+   17:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   17:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   17:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   27:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   27:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   27:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   37:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   37:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   37:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   47:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   47:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   47:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   57:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   57:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   57:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   67:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   67:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   67:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+   77:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+   77:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+   77:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+  143:15  warning  '__webpack_exports__' is assigned a value but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/material.min.js
+  8:1396   warning  'e' is defined but never used                                              no-unused-vars
+  8:1398   warning  't' is defined but never used                                              no-unused-vars
+  8:1427   warning  'e' is defined but never used                                              no-unused-vars
+  8:1429   warning  't' is defined but never used                                              no-unused-vars
+  8:1459   warning  'e' is defined but never used                                              no-unused-vars
+  8:1532   warning  'e' is defined but never used                                              no-unused-vars
+  8:1534   warning  't' is defined but never used                                              no-unused-vars
+  8:1557   warning  'e' is defined but never used                                              no-unused-vars
+  8:1589   warning  'e' is defined but never used                                              no-unused-vars
+  8:3807   warning  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  8:4863   warning  's.upgradeDom' is assigned to itself                                       no-self-assign
+  8:4893   warning  's.upgradeElement' is assigned to itself                                   no-self-assign
+  8:4928   warning  's.upgradeElements' is assigned to itself                                  no-self-assign
+  8:4969   warning  's.upgradeAllRegistered' is assigned to itself                             no-self-assign
+  8:5019   warning  's.registerUpgradedCallback' is assigned to itself                         no-self-assign
+  8:5057   warning  's.register' is assigned to itself                                         no-self-assign
+  8:5088   warning  's.downgradeElements' is assigned to itself                                no-self-assign
+  8:5530   warning  'Date.now' is assigned to itself                                           no-self-assign
+  8:5823   warning  'window.requestAnimationFrame' is assigned to itself                       no-self-assign
+  8:5880   warning  'window.cancelAnimationFrame' is assigned to itself                        no-self-assign
+  8:6227   warning  'window.requestAnimationFrame' is assigned to itself                       no-self-assign
+  8:6284   warning  'window.cancelAnimationFrame' is assigned to itself                        no-self-assign
+  8:6679   warning  'o.prototype.disable' is assigned to itself                                no-self-assign
+  8:6775   warning  'o.prototype.enable' is assigned to itself                                 no-self-assign
+  8:8225   warning  'e' is defined but never used                                              no-unused-vars
+  8:8281   warning  'e' is defined but never used                                              no-unused-vars
+  8:8371   warning  'e' is defined but never used                                              no-unused-vars
+  8:8467   warning  'e' is defined but never used                                              no-unused-vars
+  8:8908   warning  'r.prototype.checkToggleState' is assigned to itself                       no-self-assign
+  8:9148   warning  'r.prototype.checkDisabled' is assigned to itself                          no-self-assign
+  8:9279   warning  'r.prototype.disable' is assigned to itself                                no-self-assign
+  8:9402   warning  'r.prototype.enable' is assigned to itself                                 no-self-assign
+  8:9521   warning  'r.prototype.check' is assigned to itself                                  no-self-assign
+  8:9643   warning  'r.prototype.uncheck' is assigned to itself                                no-self-assign
+  8:11977  warning  'e' is defined but never used                                              no-unused-vars
+  8:12033  warning  'e' is defined but never used                                              no-unused-vars
+  8:12123  warning  'e' is defined but never used                                              no-unused-vars
+  8:12219  warning  'e' is defined but never used                                              no-unused-vars
+  8:12660  warning  '_.prototype.checkToggleState' is assigned to itself                       no-self-assign
+  8:12900  warning  '_.prototype.checkDisabled' is assigned to itself                          no-self-assign
+  8:13031  warning  '_.prototype.disable' is assigned to itself                                no-self-assign
+  8:13154  warning  '_.prototype.enable' is assigned to itself                                 no-self-assign
+  8:13273  warning  '_.prototype.check' is assigned to itself                                  no-self-assign
+  8:13395  warning  '_.prototype.uncheck' is assigned to itself                                no-self-assign
+  8:20103  warning  'e' is defined but never used                                              no-unused-vars
+  8:22223  warning  'd.prototype.show' is assigned to itself                                   no-self-assign
+  8:22709  warning  'd.prototype.hide' is assigned to itself                                   no-self-assign
+  8:22866  warning  'd.prototype.toggle' is assigned to itself                                 no-self-assign
+  8:23320  warning  'h.prototype.setProgress' is assigned to itself                            no-self-assign
+  8:23470  warning  'h.prototype.setBuffer' is assigned to itself                              no-self-assign
+  8:24730  warning  'e' is defined but never used                                              no-unused-vars
+  8:25051  warning  'e' is defined but never used                                              no-unused-vars
+  8:25141  warning  'e' is defined but never used                                              no-unused-vars
+  8:25237  warning  'e' is defined but never used                                              no-unused-vars
+  8:25671  warning  'c.prototype.checkDisabled' is assigned to itself                          no-self-assign
+  8:25909  warning  'c.prototype.checkToggleState' is assigned to itself                       no-self-assign
+  8:26041  warning  'c.prototype.disable' is assigned to itself                                no-self-assign
+  8:26162  warning  'c.prototype.enable' is assigned to itself                                 no-self-assign
+  8:26278  warning  'c.prototype.check' is assigned to itself                                  no-self-assign
+  8:26397  warning  'c.prototype.uncheck' is assigned to itself                                no-self-assign
+  8:28404  warning  'e' is defined but never used                                              no-unused-vars
+  8:28465  warning  'e' is defined but never used                                              no-unused-vars
+  8:29332  warning  'p.prototype.disable' is assigned to itself                                no-self-assign
+  8:29428  warning  'p.prototype.enable' is assigned to itself                                 no-self-assign
+  8:29571  warning  'p.prototype.change' is assigned to itself                                 no-self-assign
+  9:971    warning  'C.prototype.showSnackbar' is assigned to itself                           no-self-assign
+  9:3134   warning  'u.prototype.createLayer' is assigned to itself                            no-self-assign
+  9:3248   warning  'u.prototype.stop' is assigned to itself                                   no-self-assign
+  9:3354   warning  'u.prototype.start' is assigned to itself                                  no-self-assign
+  9:4198   warning  'e' is defined but never used                                              no-unused-vars
+  9:4254   warning  'e' is defined but never used                                              no-unused-vars
+  9:4344   warning  'e' is defined but never used                                              no-unused-vars
+  9:4440   warning  'e' is defined but never used                                              no-unused-vars
+  9:4878   warning  'E.prototype.checkDisabled' is assigned to itself                          no-self-assign
+  9:5118   warning  'E.prototype.checkToggleState' is assigned to itself                       no-self-assign
+  9:5252   warning  'E.prototype.disable' is assigned to itself                                no-self-assign
+  9:5375   warning  'E.prototype.enable' is assigned to itself                                 no-self-assign
+  9:5488   warning  'E.prototype.on' is assigned to itself                                     no-self-assign
+  9:5599   warning  'E.prototype.off' is assigned to itself                                    no-self-assign
+  9:9242   warning  'e' is defined but never used                                              no-unused-vars
+  9:9332   warning  'e' is defined but never used                                              no-unused-vars
+  9:9426   warning  'e' is defined but never used                                              no-unused-vars
+  9:9773   warning  'L.prototype.checkDisabled' is assigned to itself                          no-self-assign
+  9:9833   warning  Redundant Boolean call                                                     no-extra-boolean-cast
+  9:10021  warning  'L.prototype.checkFocus' is assigned to itself                             no-self-assign
+  9:10276  warning  'L.prototype.checkValidity' is assigned to itself                          no-self-assign
+  9:10519  warning  'L.prototype.checkDirty' is assigned to itself                             no-self-assign
+  9:10640  warning  'L.prototype.disable' is assigned to itself                                no-self-assign
+  9:10756  warning  'L.prototype.enable' is assigned to itself                                 no-self-assign
+  9:10872  warning  'L.prototype.change' is assigned to itself                                 no-self-assign
+  9:18948  warning  'f.prototype.toggleDrawer' is assigned to itself                           no-self-assign
+  9:29568  warning  'n' is assigned a value but never used                                     no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/practice.js
+  17:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+  17:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+  17:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+  27:9   warning  '__unused_webpack_module' is defined but never used       no-unused-vars
+  27:34  warning  '__webpack_exports__' is defined but never used           no-unused-vars
+  27:55  warning  '__webpack_require__' is defined but never used           no-unused-vars
+  93:15  warning  '__webpack_exports__' is assigned a value but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/simulation.js
+  2:85       warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:3626     warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:4205     warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:5595     warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:18021    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:18201    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:18286    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18376    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:18407    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18412    warning  Unnecessary escape character: \%                                                 no-useless-escape
+  2:18430    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18435    warning  Unnecessary escape character: \%                                                 no-useless-escape
+  2:18453    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18458    warning  Unnecessary escape character: \%                                                 no-useless-escape
+  2:18479    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18588    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:18830    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18852    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:18877    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:19105    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:19127    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:19152    warning  Unnecessary escape character: \.                                                 no-useless-escape
+  2:19997    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:20038    warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:24621    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:27742    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:28233    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:32556    warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:32714    warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:36045    warning  'e' is defined but never used                                                    no-unused-vars
+  2:36136    warning  't' is defined but never used                                                    no-unused-vars
+  2:37033    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:37092    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:81028    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:83933    warning  Expected to return a value in method 'get'                                       getter-return
+  2:84000    warning  Empty block statement                                                            no-empty
+  2:86879    warning  't.width' is assigned to itself                                                  no-self-assign
+  2:88914    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:89011    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:89145    warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:154405   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:172287   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:172883   warning  Empty block statement                                                            no-empty
+  2:174093   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:174492   warning  't' is defined but never used                                                    no-unused-vars
+  2:174660   warning  '__g' is not defined                                                             no-undef
+  2:174679   warning  't' is defined but never used                                                    no-unused-vars
+  2:175053   warning  Empty block statement                                                            no-empty
+  2:175289   warning  't' is defined but never used                                                    no-unused-vars
+  2:175362   warning  't' is defined but never used                                                    no-unused-vars
+  2:175598   warning  't' is defined but never used                                                    no-unused-vars
+  2:175658   warning  '__e' is not defined                                                             no-undef
+  2:176238   warning  't' is defined but never used                                                    no-unused-vars
+  2:176453   warning  't' is defined but never used                                                    no-unused-vars
+  2:176835   warning  't' is defined but never used                                                    no-unused-vars
+  2:180881   warning  't' is defined but never used                                                    no-unused-vars
+  2:180966   warning  't' is defined but never used                                                    no-unused-vars
+  2:181447   warning  't' is defined but never used                                                    no-unused-vars
+  2:181877   warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:182445   warning  't' is defined but never used                                                    no-unused-vars
+  2:182922   warning  't' is defined but never used                                                    no-unused-vars
+  2:183502   warning  Do not access Object.prototype method 'propertyIsEnumerable' from target object  no-prototype-builtins
+  2:183702   warning  't' is defined but never used                                                    no-unused-vars
+  2:184885   warning  Empty block statement                                                            no-empty
+  2:186394   warning  'e' is defined but never used                                                    no-unused-vars
+  2:186396   warning  't' is defined but never used                                                    no-unused-vars
+  2:188262   warning  't' is defined but never used                                                    no-unused-vars
+  2:189873   warning  Empty block statement                                                            no-empty
+  2:190575   warning  't' is defined but never used                                                    no-unused-vars
+  2:191360   warning  't' is defined but never used                                                    no-unused-vars
+  2:192274   warning  'a' is a function                                                                no-func-assign
+  2:200822   warning  'p' is a function                                                                no-func-assign
+  2:201337   warning  'y' is a function                                                                no-func-assign
+  2:201468   warning  'w' is a function                                                                no-func-assign
+  2:201564   warning  'e' is defined but never used                                                    no-unused-vars
+  2:211269   warning  'B' is a function                                                                no-func-assign
+  2:211664   warning  'L' is a function                                                                no-func-assign
+  2:211795   warning  'M' is a function                                                                no-func-assign
+  2:211879   warning  'e' is defined but never used                                                    no-unused-vars
+  2:224213   warning  't' is defined but never used                                                    no-unused-vars
+  2:322958   warning  't' is defined but never used                                                    no-unused-vars
+  2:360409   warning  Empty block statement                                                            no-empty
+  2:366039   warning  Duplicate case label                                                             no-duplicate-case
+  2:368017   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:368115   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:375555   warning  'A.href' is assigned to itself                                                   no-self-assign
+  2:376529   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:393146   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:393487   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:394186   warning  'r' is defined but never used                                                    no-unused-vars
+  2:396256   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:396351   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:396426   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:396452   warning  Unexpected comma in middle of array                                              no-sparse-arrays
+  2:396758   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:396784   warning  Unexpected comma in middle of array                                              no-sparse-arrays
+  2:397335   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:398896   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:398923   warning  Unexpected comma in middle of array                                              no-sparse-arrays
+  2:399672   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400005   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400095   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400219   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400309   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400380   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400474   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400552   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400646   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400711   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400804   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400896   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:400990   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:401058   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:401152   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:402638   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:402664   warning  Unexpected comma in middle of array                                              no-sparse-arrays
+  2:405029   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:405123   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:405198   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:405357   warning  'n' is defined but never used                                                    no-unused-vars
+  2:408419   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:408448   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:408975   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:408998   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:409206   warning  'r' is defined but never used                                                    no-unused-vars
+  2:415785   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:417262   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:440588   warning  't' is defined but never used                                                    no-unused-vars
+  2:440590   warning  'A' is defined but never used                                                    no-unused-vars
+  2:440592   warning  'n' is defined but never used                                                    no-unused-vars
+  2:440594   warning  'r' is defined but never used                                                    no-unused-vars
+  2:444639   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:450799   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:456032   warning  Empty block statement                                                            no-empty
+  2:456192   warning  Empty block statement                                                            no-empty
+  2:464745   warning  'e' is defined but never used                                                    no-unused-vars
+  2:465243   warning  Empty block statement                                                            no-empty
+  2:475572   warning  Unexpected control character(s) in regular expression: \x00                      no-control-regex
+  2:476205   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:476455   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:476848   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:486245   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:489384   warning  'e' is defined but never used                                                    no-unused-vars
+  2:498503   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:498541   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:498690   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:498919   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:499196   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:499367   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:500253   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:502377   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:504283   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:504321   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:504387   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:504449   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:504514   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:506296   warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:506390   warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:519543   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:519590   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:523149   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:525837   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:528679   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:528701   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:528772   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:531955   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:534192   warning  Expected to return a value in method 'get'                                       getter-return
+  2:536062   warning  Expected method 'get' to always return a value                                   getter-return
+  2:536917   warning  Expected method 'get' to always return a value                                   getter-return
+  2:537920   warning  Expected to return a value in method 'get'                                       getter-return
+  2:538977   warning  Expected method 'get' to always return a value                                   getter-return
+  2:539189   warning  Expected method 'get' to always return a value                                   getter-return
+  2:539669   warning  Expected method 'get' to always return a value                                   getter-return
+  2:539789   warning  Expected method 'get' to always return a value                                   getter-return
+  2:540764   warning  Expected method 'get' to always return a value                                   getter-return
+  2:541472   warning  Expected method 'get' to always return a value                                   getter-return
+  2:542462   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:545190   warning  Expected method 'get' to always return a value                                   getter-return
+  2:547582   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:556874   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:557548   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:558075   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:558205   warning  'r' is already defined                                                           no-redeclare
+  2:558217   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:558715   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:579240   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:585642   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:593794   warning  Unnecessary escape character: \%                                                 no-useless-escape
+  2:593846   warning  Unnecessary escape character: \%                                                 no-useless-escape
+  2:593880   warning  Unnecessary escape character: \"                                                 no-useless-escape
+  2:593882   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:594755   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:600267   warning  'e' is defined but never used                                                    no-unused-vars
+  2:600269   warning  't' is defined but never used                                                    no-unused-vars
+  2:600271   warning  'A' is defined but never used                                                    no-unused-vars
+  2:600273   warning  'n' is defined but never used                                                    no-unused-vars
+  2:600275   warning  'r' is defined but never used                                                    no-unused-vars
+  2:601094   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:601148   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:609213   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:609245   warning  Expected a 'break' statement before 'default'                                    no-fallthrough
+  2:617565   warning  Unexpected control character(s) in regular expression: \x00                      no-control-regex
+  2:620091   warning  Empty block statement                                                            no-empty
+  2:628557   warning  Expected a 'break' statement before 'case'                                       no-fallthrough
+  2:628631   warning  Expected a 'break' statement before 'default'                                    no-fallthrough
+  2:628875   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:631956   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:667678   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:676543   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:693996   warning  'Ke' is already defined                                                          no-redeclare
+  2:718568   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:719987   warning  'A' is defined but never used                                                    no-unused-vars
+  2:719989   warning  'n' is defined but never used                                                    no-unused-vars
+  2:735835   warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:738299   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:738362   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:754489   warning  Unexpected control character(s) in regular expression: \x00, \x01, \x00, \x00    no-control-regex
+  2:754687   warning  'e' is defined but never used                                                    no-unused-vars
+  2:765244   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:765368   warning  Do not access Object.prototype method 'hasOwnProperty' from target object        no-prototype-builtins
+  2:786698   warning  'e' is defined but never used                                                    no-unused-vars
+  2:790772   warning  'e' is defined but never used                                                    no-unused-vars
+  2:791332   warning  'e' is defined but never used                                                    no-unused-vars
+  2:791942   warning  'e' is defined but never used                                                    no-unused-vars
+  2:793386   warning  'e' is defined but never used                                                    no-unused-vars
+  2:794509   warning  'e' is defined but never used                                                    no-unused-vars
+  2:795275   warning  Unexpected control character(s) in regular expression: \x00, \x19                no-control-regex
+  2:795352   warning  Unexpected control character(s) in regular expression: \x00, \x19                no-control-regex
+  2:795680   warning  'e' is defined but never used                                                    no-unused-vars
+  2:796389   warning  'e' is defined but never used                                                    no-unused-vars
+  2:797338   warning  'e' is defined but never used                                                    no-unused-vars
+  2:798775   warning  'e' is defined but never used                                                    no-unused-vars
+  2:803546   warning  'i' is defined but never used                                                    no-unused-vars
+  2:803548   warning  'a' is defined but never used                                                    no-unused-vars
+  2:804170   warning  't' is defined but never used                                                    no-unused-vars
+  2:804172   warning  'A' is defined but never used                                                    no-unused-vars
+  2:806313   warning  'i' is defined but never used                                                    no-unused-vars
+  2:806315   warning  'a' is defined but never used                                                    no-unused-vars
+  2:806941   warning  't' is defined but never used                                                    no-unused-vars
+  2:806943   warning  'A' is defined but never used                                                    no-unused-vars
+  2:809274   warning  't' is defined but never used                                                    no-unused-vars
+  2:809276   warning  'A' is defined but never used                                                    no-unused-vars
+  2:811662   warning  'i' is defined but never used                                                    no-unused-vars
+  2:811664   warning  'a' is defined but never used                                                    no-unused-vars
+  2:812287   warning  't' is defined but never used                                                    no-unused-vars
+  2:812289   warning  'A' is defined but never used                                                    no-unused-vars
+  2:814148   warning  't' is defined but never used                                                    no-unused-vars
+  2:814150   warning  'A' is defined but never used                                                    no-unused-vars
+  2:816222   warning  't' is defined but never used                                                    no-unused-vars
+  2:816224   warning  'A' is defined but never used                                                    no-unused-vars
+  2:820371   warning  't' is defined but never used                                                    no-unused-vars
+  2:820373   warning  'A' is defined but never used                                                    no-unused-vars
+  2:821920   warning  't' is defined but never used                                                    no-unused-vars
+  2:821922   warning  'A' is defined but never used                                                    no-unused-vars
+  2:823618   warning  't' is defined but never used                                                    no-unused-vars
+  2:823620   warning  'A' is defined but never used                                                    no-unused-vars
+  2:824040   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:824150   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:824229   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:824770   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:824971   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:825079   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:825968   warning  't' is defined but never used                                                    no-unused-vars
+  2:825970   warning  'A' is defined but never used                                                    no-unused-vars
+  2:835777   warning  'n' is defined but never used                                                    no-unused-vars
+  2:837146   warning  'n' is defined but never used                                                    no-unused-vars
+  2:838509   warning  'n' is defined but never used                                                    no-unused-vars
+  2:840403   warning  't' is defined but never used                                                    no-unused-vars
+  2:840405   warning  'A' is defined but never used                                                    no-unused-vars
+  2:864668   warning  't' is defined but never used                                                    no-unused-vars
+  2:864670   warning  'A' is defined but never used                                                    no-unused-vars
+  2:880378   warning  't' is defined but never used                                                    no-unused-vars
+  2:880380   warning  'A' is defined but never used                                                    no-unused-vars
+  2:882304   warning  't' is defined but never used                                                    no-unused-vars
+  2:882306   warning  'A' is defined but never used                                                    no-unused-vars
+  2:883856   warning  't' is defined but never used                                                    no-unused-vars
+  2:883858   warning  'A' is defined but never used                                                    no-unused-vars
+  2:887762   warning  't' is defined but never used                                                    no-unused-vars
+  2:887764   warning  'A' is defined but never used                                                    no-unused-vars
+  2:893964   warning  't' is defined but never used                                                    no-unused-vars
+  2:893966   warning  'A' is defined but never used                                                    no-unused-vars
+  2:899999   warning  't' is defined but never used                                                    no-unused-vars
+  2:900001   warning  'A' is defined but never used                                                    no-unused-vars
+  2:901317   warning  't' is defined but never used                                                    no-unused-vars
+  2:901319   warning  'A' is defined but never used                                                    no-unused-vars
+  2:905341   warning  't' is defined but never used                                                    no-unused-vars
+  2:905343   warning  'A' is defined but never used                                                    no-unused-vars
+  2:907482   warning  't' is defined but never used                                                    no-unused-vars
+  2:907484   warning  'A' is defined but never used                                                    no-unused-vars
+  2:908734   warning  't' is defined but never used                                                    no-unused-vars
+  2:908736   warning  'A' is defined but never used                                                    no-unused-vars
+  2:909612   warning  't' is defined but never used                                                    no-unused-vars
+  2:909614   warning  'A' is defined but never used                                                    no-unused-vars
+  2:911590   warning  'n' is defined but never used                                                    no-unused-vars
+  2:913851   warning  't' is defined but never used                                                    no-unused-vars
+  2:913853   warning  'A' is defined but never used                                                    no-unused-vars
+  2:915250   warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:915279   warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:920428   warning  Unnecessary escape character: \-                                                 no-useless-escape
+  2:920487   warning  Unnecessary escape character: \-                                                 no-useless-escape
+  2:920545   warning  Unnecessary escape character: \-                                                 no-useless-escape
+  2:920609   warning  Unnecessary escape character: \-                                                 no-useless-escape
+  2:923889   warning  't' is defined but never used                                                    no-unused-vars
+  2:923891   warning  'A' is defined but never used                                                    no-unused-vars
+  2:924052   warning  'n' is defined but never used                                                    no-unused-vars
+  2:925178   warning  't' is defined but never used                                                    no-unused-vars
+  2:925180   warning  'A' is defined but never used                                                    no-unused-vars
+  2:925816   warning  'n' is defined but never used                                                    no-unused-vars
+  2:927736   warning  't' is defined but never used                                                    no-unused-vars
+  2:927738   warning  'A' is defined but never used                                                    no-unused-vars
+  2:928601   warning  't' is defined but never used                                                    no-unused-vars
+  2:928603   warning  'A' is defined but never used                                                    no-unused-vars
+  2:929823   warning  't' is defined but never used                                                    no-unused-vars
+  2:929825   warning  'A' is defined but never used                                                    no-unused-vars
+  2:934852   warning  't' is defined but never used                                                    no-unused-vars
+  2:934854   warning  'A' is defined but never used                                                    no-unused-vars
+  2:942967   warning  't' is defined but never used                                                    no-unused-vars
+  2:942969   warning  'A' is defined but never used                                                    no-unused-vars
+  2:951654   warning  't' is defined but never used                                                    no-unused-vars
+  2:951656   warning  'A' is defined but never used                                                    no-unused-vars
+  2:952422   warning  't' is defined but never used                                                    no-unused-vars
+  2:952424   warning  'A' is defined but never used                                                    no-unused-vars
+  2:960073   warning  't' is defined but never used                                                    no-unused-vars
+  2:960075   warning  'A' is defined but never used                                                    no-unused-vars
+  2:965958   warning  't' is defined but never used                                                    no-unused-vars
+  2:965960   warning  'A' is defined but never used                                                    no-unused-vars
+  2:967246   warning  Unnecessary escape character: \:                                                 no-useless-escape
+  2:967250   warning  Unnecessary escape character: \:                                                 no-useless-escape
+  2:969896   warning  't' is defined but never used                                                    no-unused-vars
+  2:969898   warning  'A' is defined but never used                                                    no-unused-vars
+  2:971375   warning  't' is defined but never used                                                    no-unused-vars
+  2:971377   warning  'A' is defined but never used                                                    no-unused-vars
+  2:974025   warning  't' is defined but never used                                                    no-unused-vars
+  2:974027   warning  'A' is defined but never used                                                    no-unused-vars
+  2:974972   warning  't' is defined but never used                                                    no-unused-vars
+  2:974974   warning  'A' is defined but never used                                                    no-unused-vars
+  2:977938   warning  'r' is defined but never used                                                    no-unused-vars
+  2:982189   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:982194   warning  Unnecessary escape character: \'                                                 no-useless-escape
+  2:985499   warning  'A' is defined but never used                                                    no-unused-vars
+  2:988445   warning  't' is defined but never used                                                    no-unused-vars
+  2:988447   warning  'A' is defined but never used                                                    no-unused-vars
+  2:989197   warning  't' is defined but never used                                                    no-unused-vars
+  2:989199   warning  'A' is defined but never used                                                    no-unused-vars
+  2:996053   warning  'A' is defined but never used                                                    no-unused-vars
+  2:997463   warning  'A' is defined but never used                                                    no-unused-vars
+  2:998732   warning  'A' is defined but never used                                                    no-unused-vars
+  2:1000004  warning  'A' is defined but never used                                                    no-unused-vars
+  2:1008706  warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:1008909  warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:1010847  warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:1010935  warning  'n' is defined but never used                                                    no-unused-vars
+  2:1011075  warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:1011170  warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:1012480  warning  Unnecessary escape character: \[                                                 no-useless-escape
+  2:1019267  warning  'A' is defined but never used                                                    no-unused-vars
+  2:1019708  warning  'A' is defined but never used                                                    no-unused-vars
+  2:1019800  warning  'A' is defined but never used                                                    no-unused-vars
+  2:1021045  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1021989  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1022104  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1022145  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1030905  warning  Unnecessary escape character: \+                                                 no-useless-escape
+  2:1030907  warning  Unnecessary escape character: \-                                                 no-useless-escape
+  2:1031795  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1031912  warning  Expected a conditional expression and instead saw an assignment                  no-cond-assign
+  2:1036180  warning  'n' is defined but never used                                                    no-unused-vars
+  2:1051666  warning  'e' is defined but never used                                                    no-unused-vars
+  2:1051668  warning  't' is defined but never used                                                    no-unused-vars
+  2:1063812  warning  'n' is a function                                                                no-func-assign
+  2:1065188  warning  'i' is defined but never used                                                    no-unused-vars
+  2:1066439  warning  Unnecessary escape character: \/                                                 no-useless-escape
+  2:1084519  warning  'e' is defined but never used                                                    no-unused-vars
+  2:1092422  warning  't' is defined but never used                                                    no-unused-vars
+  2:1092424  warning  'A' is defined but never used                                                    no-unused-vars
+  2:1092554  warning  't' is defined but never used                                                    no-unused-vars
+  2:1113483  warning  'e' is defined but never used                                                    no-unused-vars
+  2:1114625  warning  't' is defined but never used                                                    no-unused-vars
+  2:1117241  warning  'e' is defined but never used                                                    no-unused-vars
+  2:1117621  warning  'e' is defined but never used                                                    no-unused-vars
+  2:1118002  warning  'e' is defined but never used                                                    no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/vendors-node_modules_canvg_lib_index_es_js.simulation.js
+    15:9   warning  'module' is defined but never used                               no-unused-vars
+    15:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    15:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    25:9   warning  'module' is defined but never used                               no-unused-vars
+    25:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    25:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    35:9   warning  'module' is defined but never used                               no-unused-vars
+    35:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    35:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    45:9   warning  'module' is defined but never used                               no-unused-vars
+    45:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    45:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    55:9   warning  'module' is defined but never used                               no-unused-vars
+    55:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    55:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    66:9   warning  'module' is defined but never used                               no-unused-vars
+    66:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    66:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    76:9   warning  'module' is defined but never used                               no-unused-vars
+    76:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    76:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    86:9   warning  'module' is defined but never used                               no-unused-vars
+    86:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    86:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+    96:9   warning  'module' is defined but never used                               no-unused-vars
+    96:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+    96:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   107:9   warning  'module' is defined but never used                               no-unused-vars
+   107:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   107:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   117:9   warning  'module' is defined but never used                               no-unused-vars
+   117:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   117:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   127:9   warning  'module' is defined but never used                               no-unused-vars
+   127:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   127:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   137:9   warning  'module' is defined but never used                               no-unused-vars
+   137:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   137:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   147:9   warning  'module' is defined but never used                               no-unused-vars
+   147:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   147:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   157:9   warning  'module' is defined but never used                               no-unused-vars
+   157:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   157:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   167:9   warning  'module' is defined but never used                               no-unused-vars
+   167:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   167:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   177:9   warning  'module' is defined but never used                               no-unused-vars
+   177:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   177:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   187:9   warning  'module' is defined but never used                               no-unused-vars
+   187:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   187:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   197:9   warning  'module' is defined but never used                               no-unused-vars
+   207:9   warning  'module' is defined but never used                               no-unused-vars
+   207:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   207:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   217:9   warning  'module' is defined but never used                               no-unused-vars
+   227:9   warning  'module' is defined but never used                               no-unused-vars
+   227:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   227:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   238:9   warning  'module' is defined but never used                               no-unused-vars
+   238:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   238:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   248:9   warning  'module' is defined but never used                               no-unused-vars
+   248:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   248:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   258:9   warning  'module' is defined but never used                               no-unused-vars
+   258:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   258:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   268:9   warning  'module' is defined but never used                               no-unused-vars
+   268:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   268:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   278:9   warning  'module' is defined but never used                               no-unused-vars
+   288:9   warning  'module' is defined but never used                               no-unused-vars
+   288:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   288:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   298:9   warning  'module' is defined but never used                               no-unused-vars
+   308:9   warning  'module' is defined but never used                               no-unused-vars
+   308:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   308:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   318:9   warning  'module' is defined but never used                               no-unused-vars
+   318:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   318:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   328:9   warning  'module' is defined but never used                               no-unused-vars
+   338:9   warning  'module' is defined but never used                               no-unused-vars
+   338:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   338:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   348:9   warning  'module' is defined but never used                               no-unused-vars
+   348:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   348:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   358:9   warning  'module' is defined but never used                               no-unused-vars
+   358:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   358:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   368:9   warning  'module' is defined but never used                               no-unused-vars
+   368:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   368:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   378:9   warning  'module' is defined but never used                               no-unused-vars
+   388:9   warning  'module' is defined but never used                               no-unused-vars
+   388:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   388:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   398:9   warning  'module' is defined but never used                               no-unused-vars
+   408:9   warning  'module' is defined but never used                               no-unused-vars
+   408:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   408:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   418:9   warning  'module' is defined but never used                               no-unused-vars
+   428:9   warning  'module' is defined but never used                               no-unused-vars
+   428:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   428:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   439:9   warning  'module' is defined but never used                               no-unused-vars
+   439:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   439:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   449:9   warning  'module' is defined but never used                               no-unused-vars
+   449:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   449:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   459:9   warning  'module' is defined but never used                               no-unused-vars
+   459:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   459:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   469:9   warning  'module' is defined but never used                               no-unused-vars
+   469:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   469:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   479:9   warning  'module' is defined but never used                               no-unused-vars
+   479:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   479:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   489:9   warning  'module' is defined but never used                               no-unused-vars
+   489:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   489:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   499:9   warning  'module' is defined but never used                               no-unused-vars
+   499:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   499:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   509:9   warning  'module' is defined but never used                               no-unused-vars
+   509:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   509:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   519:9   warning  'module' is defined but never used                               no-unused-vars
+   519:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   519:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   529:9   warning  'module' is defined but never used                               no-unused-vars
+   529:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   529:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   539:9   warning  'module' is defined but never used                               no-unused-vars
+   539:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   539:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   549:9   warning  'module' is defined but never used                               no-unused-vars
+   549:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   549:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   559:9   warning  'module' is defined but never used                               no-unused-vars
+   559:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   559:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   569:9   warning  'module' is defined but never used                               no-unused-vars
+   569:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   569:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   579:9   warning  'module' is defined but never used                               no-unused-vars
+   579:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   579:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   589:9   warning  'module' is defined but never used                               no-unused-vars
+   599:9   warning  'module' is defined but never used                               no-unused-vars
+   609:9   warning  'module' is defined but never used                               no-unused-vars
+   609:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   609:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   619:9   warning  'module' is defined but never used                               no-unused-vars
+   619:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   619:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   629:9   warning  'module' is defined but never used                               no-unused-vars
+   629:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   629:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   639:9   warning  'module' is defined but never used                               no-unused-vars
+   639:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   639:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   649:9   warning  'module' is defined but never used                               no-unused-vars
+   649:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   649:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   659:9   warning  'module' is defined but never used                               no-unused-vars
+   659:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   659:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   669:9   warning  'module' is defined but never used                               no-unused-vars
+   669:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   669:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   679:9   warning  'module' is defined but never used                               no-unused-vars
+   679:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   679:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   689:9   warning  'module' is defined but never used                               no-unused-vars
+   689:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   689:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   699:9   warning  'module' is defined but never used                               no-unused-vars
+   699:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   699:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   709:9   warning  'module' is defined but never used                               no-unused-vars
+   719:9   warning  'module' is defined but never used                               no-unused-vars
+   719:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   719:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   729:9   warning  'module' is defined but never used                               no-unused-vars
+   739:9   warning  'module' is defined but never used                               no-unused-vars
+   739:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   739:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   749:9   warning  'module' is defined but never used                               no-unused-vars
+   749:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   749:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   759:9   warning  'module' is defined but never used                               no-unused-vars
+   759:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   759:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   769:9   warning  'module' is defined but never used                               no-unused-vars
+   769:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   769:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   779:9   warning  'module' is defined but never used                               no-unused-vars
+   779:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   779:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   790:9   warning  'module' is defined but never used                               no-unused-vars
+   790:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   790:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   801:9   warning  'module' is defined but never used                               no-unused-vars
+   801:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   801:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   812:9   warning  'module' is defined but never used                               no-unused-vars
+   822:9   warning  'module' is defined but never used                               no-unused-vars
+   822:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   822:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   832:9   warning  'module' is defined but never used                               no-unused-vars
+   832:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   832:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   842:9   warning  'module' is defined but never used                               no-unused-vars
+   852:9   warning  'module' is defined but never used                               no-unused-vars
+   852:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   852:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   862:9   warning  'module' is defined but never used                               no-unused-vars
+   862:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   862:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   873:9   warning  'module' is defined but never used                               no-unused-vars
+   873:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   873:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   883:9   warning  'module' is defined but never used                               no-unused-vars
+   883:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   883:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   893:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   893:34  warning  'exports' is defined but never used                              no-unused-vars
+   893:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   903:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   903:34  warning  'exports' is defined but never used                              no-unused-vars
+   903:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   913:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   913:34  warning  'exports' is defined but never used                              no-unused-vars
+   913:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   923:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   923:34  warning  'exports' is defined but never used                              no-unused-vars
+   923:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   933:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   933:34  warning  'exports' is defined but never used                              no-unused-vars
+   943:9   warning  'module' is defined but never used                               no-unused-vars
+   943:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   943:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   953:9   warning  'module' is defined but never used                               no-unused-vars
+   953:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   953:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   963:9   warning  'module' is defined but never used                               no-unused-vars
+   963:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   963:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   973:9   warning  'module' is defined but never used                               no-unused-vars
+   973:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   973:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+   983:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+   983:34  warning  'exports' is defined but never used                              no-unused-vars
+   994:9   warning  'module' is defined but never used                               no-unused-vars
+   994:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+   994:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1004:9   warning  'module' is defined but never used                               no-unused-vars
+  1004:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1004:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1014:9   warning  'module' is defined but never used                               no-unused-vars
+  1014:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1014:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1024:9   warning  'module' is defined but never used                               no-unused-vars
+  1034:9   warning  'module' is defined but never used                               no-unused-vars
+  1034:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1034:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1044:9   warning  'module' is defined but never used                               no-unused-vars
+  1044:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1044:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1054:9   warning  'module' is defined but never used                               no-unused-vars
+  1054:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1054:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1064:9   warning  'module' is defined but never used                               no-unused-vars
+  1064:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1064:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1074:9   warning  'module' is defined but never used                               no-unused-vars
+  1084:9   warning  'module' is defined but never used                               no-unused-vars
+  1084:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1084:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1094:9   warning  'module' is defined but never used                               no-unused-vars
+  1094:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1094:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1105:9   warning  'module' is defined but never used                               no-unused-vars
+  1105:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1105:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1116:9   warning  'module' is defined but never used                               no-unused-vars
+  1116:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1116:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1126:9   warning  'module' is defined but never used                               no-unused-vars
+  1126:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1126:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1136:9   warning  'module' is defined but never used                               no-unused-vars
+  1136:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1136:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1146:9   warning  'module' is defined but never used                               no-unused-vars
+  1146:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1146:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1156:9   warning  'module' is defined but never used                               no-unused-vars
+  1156:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1156:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1166:9   warning  'module' is defined but never used                               no-unused-vars
+  1166:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1166:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1177:9   warning  'module' is defined but never used                               no-unused-vars
+  1177:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1177:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1187:9   warning  'module' is defined but never used                               no-unused-vars
+  1187:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1187:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1197:9   warning  'module' is defined but never used                               no-unused-vars
+  1197:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1197:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1207:9   warning  'module' is defined but never used                               no-unused-vars
+  1207:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1207:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1217:9   warning  'module' is defined but never used                               no-unused-vars
+  1217:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1217:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1227:9   warning  'module' is defined but never used                               no-unused-vars
+  1227:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1227:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1237:9   warning  'module' is defined but never used                               no-unused-vars
+  1237:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1237:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1247:9   warning  'module' is defined but never used                               no-unused-vars
+  1247:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1247:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1257:9   warning  'module' is defined but never used                               no-unused-vars
+  1257:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1257:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1267:9   warning  'module' is defined but never used                               no-unused-vars
+  1267:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1267:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1277:9   warning  'module' is defined but never used                               no-unused-vars
+  1277:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1277:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1287:9   warning  'module' is defined but never used                               no-unused-vars
+  1287:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1287:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1297:9   warning  'module' is defined but never used                               no-unused-vars
+  1297:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1297:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1307:9   warning  'module' is defined but never used                               no-unused-vars
+  1307:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1307:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1317:9   warning  'module' is defined but never used                               no-unused-vars
+  1317:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1317:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1327:9   warning  'module' is defined but never used                               no-unused-vars
+  1327:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1327:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1337:9   warning  'module' is defined but never used                               no-unused-vars
+  1337:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1337:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1347:9   warning  'module' is defined but never used                               no-unused-vars
+  1347:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1347:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1357:9   warning  'module' is defined but never used                               no-unused-vars
+  1357:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1357:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1367:9   warning  'module' is defined but never used                               no-unused-vars
+  1377:9   warning  'module' is defined but never used                               no-unused-vars
+  1377:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1377:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1387:9   warning  'module' is defined but never used                               no-unused-vars
+  1387:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1387:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1397:9   warning  'module' is defined but never used                               no-unused-vars
+  1397:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1397:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1407:9   warning  'module' is defined but never used                               no-unused-vars
+  1417:9   warning  'module' is defined but never used                               no-unused-vars
+  1417:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1417:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1427:9   warning  'module' is defined but never used                               no-unused-vars
+  1427:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1427:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1437:9   warning  'module' is defined but never used                               no-unused-vars
+  1447:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1447:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1447:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1458:9   warning  'module' is defined but never used                               no-unused-vars
+  1458:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1458:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1469:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1469:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1469:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1480:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1480:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1480:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1491:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1491:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1491:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1502:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1502:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1502:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1513:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1513:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1513:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1524:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1524:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1524:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1534:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1534:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1534:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1545:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1545:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1545:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1556:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1556:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1556:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1567:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1567:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1567:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1578:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1578:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1578:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1589:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1589:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1589:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1600:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1600:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1600:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1611:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1611:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1611:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1622:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1622:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1622:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1633:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1633:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1633:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1644:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1644:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1644:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1655:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1655:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1655:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1666:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1666:34  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1666:60  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1676:17  warning  'module' is defined but never used                               no-unused-vars
+  1686:9   warning  'module' is defined but never used                               no-unused-vars
+  1686:17  warning  '__unused_webpack_exports' is defined but never used             no-unused-vars
+  1686:43  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1696:9   warning  'module' is defined but never used                               no-unused-vars
+  1706:9   warning  '__unused_webpack_module' is defined but never used              no-unused-vars
+  1706:34  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1706:55  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1717:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1717:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1717:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1728:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1728:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1728:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1739:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1739:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1739:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1750:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1750:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1750:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1761:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1761:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1761:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+  1772:9   warning  '__unused_webpack___webpack_module__' is defined but never used  no-unused-vars
+  1772:46  warning  '__webpack_exports__' is defined but never used                  no-unused-vars
+  1772:67  warning  '__webpack_require__' is defined but never used                  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/vendors-node_modules_dompurify_dist_purify_es_js.simulation.js
+  10:1   warning  'exports' is not defined                             no-undef
+  11:1   warning  'exports' is not defined                             no-undef
+  12:1   warning  'exports' is not defined                             no-undef
+  18:9   warning  '__unused_webpack_module' is defined but never used  no-unused-vars
+  18:34  warning  '__webpack_exports__' is defined but never used      no-unused-vars
+  18:55  warning  '__webpack_require__' is defined but never used      no-unused-vars
+  25:1   warning  Unnecessary semicolon                                no-extra-semi
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/vendors-node_modules_dompurify_dist_purify_js.simulation.js
+  15:17  warning  'module' is defined but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/dist/vendors-node_modules_html2canvas_dist_html2canvas_js.simulation.js
+  15:17  warning  'module' is defined but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/js/main.js
+     1:1   warning  'interrupt' is not defined                       no-undef
+     2:1   warning  'current_process' is not defined                 no-undef
+     3:1   warning  'next_process' is not defined                    no-undef
+     5:1   warning  'no_of_interrupts' is not defined                no-undef
+     6:1   warning  'no_of_context_switches' is not defined          no-undef
+     7:1   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+     9:1   warning  'hardwarePointer' is not defined                 no-undef
+    10:1   warning  'kPointer' is not defined                        no-undef
+    12:1   warning  'k_trap_execute' is not defined                  no-undef
+   181:9   warning  'tbody' is not defined                           no-undef
+   207:9   warning  'tbody' is not defined                           no-undef
+   208:9   warning  'tbody' is not defined                           no-undef
+   209:9   warning  'tbody' is not defined                           no-undef
+   211:33  warning  'tbody' is not defined                           no-undef
+   232:13  warning  'interrupt' is not defined                       no-undef
+   255:13  warning  'interrupt' is not defined                       no-undef
+   417:9   warning  'tbody' is not defined                           no-undef
+   443:9   warning  'tbody' is not defined                           no-undef
+   444:9   warning  'tbody' is not defined                           no-undef
+   445:9   warning  'tbody' is not defined                           no-undef
+   447:33  warning  'tbody' is not defined                           no-undef
+   468:13  warning  'interrupt' is not defined                       no-undef
+   490:13  warning  'interrupt' is not defined                       no-undef
+   624:10  warning  'start' is defined but never used                no-unused-vars
+   658:10  warning  'process_previous' is defined but never used     no-unused-vars
+   659:9   warning  'current_process' is not defined                 no-undef
+   667:10  warning  'process_next' is defined but never used         no-unused-vars
+   668:9   warning  'current_process' is not defined                 no-undef
+   681:68  warning  'interrupt' is not defined                       no-undef
+   686:57  warning  'current_process' is not defined                 no-undef
+   713:68  warning  'interrupt' is not defined                       no-undef
+   718:10  warning  'change_mode' is defined but never used          no-unused-vars
+   719:9   warning  'hardwarePointer' is not defined                 no-undef
+   720:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+   721:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+   728:36  warning  'current_process' is not defined                 no-undef
+   746:5   warning  'hardwarePointer' is not defined                 no-undef
+   749:10  warning  'load_trap_handlers' is defined but never used   no-unused-vars
+   750:9   warning  'hardwarePointer' is not defined                 no-undef
+   751:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+   752:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+   756:67  warning  'interrupt' is not defined                       no-undef
+   761:36  warning  'current_process' is not defined                 no-undef
+   806:10  warning  'timerHandler' is defined but never used         no-unused-vars
+   807:5   warning  'hardwarePointer' is not defined                 no-undef
+   809:9   warning  'interrupt' is not defined                       no-undef
+   866:10  warning  'endEx' is defined but never used                no-unused-vars
+   872:10  warning  'execute' is defined but never used              no-unused-vars
+   873:5   warning  'k_trap_execute' is not defined                  no-undef
+   940:13  warning  'k_trap_execute' is not defined                  no-undef
+   955:9   warning  'k_trap_execute' is not defined                  no-undef
+   975:10  warning  'contextSwitch' is defined but never used        no-unused-vars
+   976:9   warning  'k_trap_execute' is not defined                  no-undef
+   986:72  warning  'current_process' is not defined                 no-undef
+   986:89  warning  'next_process' is not defined                    no-undef
+  1022:5   warning  'k_trap_execute' is not defined                  no-undef
+  1036:10  warning  'trigger_io' is defined but never used           no-unused-vars
+  1083:10  warning  'hardware_k_to_u' is defined but never used      no-unused-vars
+  1084:9   warning  'kPointer' is not defined                        no-undef
+  1085:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1086:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1090:5   warning  'kPointer' is not defined                        no-undef
+  1093:9   warning  'interrupt' is not defined                       no-undef
+  1096:9   warning  'interrupt' is not defined                       no-undef
+  1097:35  warning  'next_process' is not defined                    no-undef
+  1101:27  warning  'current_process' is not defined                 no-undef
+  1102:5   warning  'current_process' is not defined                 no-undef
+  1102:23  warning  'next_process' is not defined                    no-undef
+  1103:5   warning  'next_process' is not defined                    no-undef
+  1131:65  warning  'current_process' is not defined                 no-undef
+  1162:10  warning  'jump_to_process' is defined but never used      no-unused-vars
+  1163:9   warning  'hardwarePointer' is not defined                 no-undef
+  1164:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1165:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1178:74  warning  'current_process' is not defined                 no-undef
+  1186:9   warning  'current_process' is not defined                 no-undef
+  1200:5   warning  'hardwarePointer' is not defined                 no-undef
+  1206:10  warning  'move_to_user_mode' is defined but never used    no-unused-vars
+  1207:9   warning  'hardwarePointer' is not defined                 no-undef
+  1208:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1209:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1220:46  warning  'current_process' is not defined                 no-undef
+  1226:9   warning  'current_process' is not defined                 no-undef
+  1240:5   warning  'hardwarePointer' is not defined                 no-undef
+  1243:10  warning  'restore_registers' is defined but never used    no-unused-vars
+  1244:9   warning  'hardwarePointer' is not defined                 no-undef
+  1245:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1246:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1253:9   warning  'current_process' is not defined                 no-undef
+  1282:46  warning  'current_process' is not defined                 no-undef
+  1287:45  warning  'current_process' is not defined                 no-undef
+  1289:5   warning  'hardwarePointer' is not defined                 no-undef
+  1292:10  warning  'restorePCB' is defined but never used           no-unused-vars
+  1293:9   warning  'kPointer' is not defined                        no-undef
+  1294:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1295:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1298:39  warning  'current_process' is not defined                 no-undef
+  1305:48  warning  'current_process' is not defined                 no-undef
+  1305:65  warning  'next_process' is not defined                    no-undef
+  1313:9   warning  'next_process' is not defined                    no-undef
+  1324:14  warning  'next_process' is not defined                    no-undef
+  1336:5   warning  'kPointer' is not defined                        no-undef
+  1447:10  warning  'updatePCB' is defined but never used            no-unused-vars
+  1448:9   warning  'kPointer' is not defined                        no-undef
+  1449:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1450:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1453:38  warning  'current_process' is not defined                 no-undef
+  1461:48  warning  'current_process' is not defined                 no-undef
+  1461:65  warning  'next_process' is not defined                    no-undef
+  1469:9   warning  'current_process' is not defined                 no-undef
+  1480:14  warning  'current_process' is not defined                 no-undef
+  1492:5   warning  'kPointer' is not defined                        no-undef
+  1567:10  warning  'readHandler' is defined but never used          no-unused-vars
+  1568:5   warning  'hardwarePointer' is not defined                 no-undef
+  1570:9   warning  'interrupt' is not defined                       no-undef
+  1758:10  warning  'ioCompleteHandler' is defined but never used    no-unused-vars
+  1759:9   warning  'interrupt' is not defined                       no-undef
+  1765:10  warning  'exitHandler' is defined but never used          no-unused-vars
+  1766:5   warning  'hardwarePointer' is not defined                 no-undef
+  1768:9   warning  'interrupt' is not defined                       no-undef
+  1786:10  warning  'load_k_stack_kernel' is defined but never used  no-unused-vars
+  1788:9   warning  'kPointer' is not defined                        no-undef
+  1789:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1790:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1797:9   warning  'next_process' is not defined                    no-undef
+  1807:14  warning  'next_process' is not defined                    no-undef
+  1818:5   warning  'kPointer' is not defined                        no-undef
+  1821:10  warning  'load_k_stack' is defined but never used         no-unused-vars
+  1823:9   warning  'hardwarePointer' is not defined                 no-undef
+  1824:9   warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1825:69  warning  'no_of_wrong_ints_selections' is not defined     no-undef
+  1835:36  warning  'current_process' is not defined                 no-undef
+  1839:9   warning  'current_process' is not defined                 no-undef
+  1845:14  warning  'current_process' is not defined                 no-undef
+  1852:5   warning  'hardwarePointer' is not defined                 no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/server/main.js
+  1:17  warning  'require' is not defined  no-undef
+  2:14  warning  'require' is not defined  no-undef
+  3:15  warning  'require' is not defined  no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/tests/UI.test.js
+   4:10  warning  'UI' is defined but never used            no-unused-vars
+   5:13  warning  'config' is defined but never used        no-unused-vars
+   6:10  warning  'Event' is defined but never used         no-unused-vars
+   7:10  warning  'IResponce' is defined but never used     no-unused-vars
+   7:21  warning  'Kernel' is defined but never used        no-unused-vars
+   8:10  warning  'Process' is defined but never used       no-unused-vars
+   9:8   warning  'Driver' is defined but never used        no-unused-vars
+  10:10  warning  'descriptions' is defined but never used  no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/tests/event.test.js
+    8:7   warning  'ioneeded_event' is assigned a value but never used  no-unused-vars
+   11:1   warning  'test' is not defined                                no-undef
+   12:5   warning  'expect' is not defined                              no-undef
+   13:5   warning  'expect' is not defined                              no-undef
+   14:5   warning  'expect' is not defined                              no-undef
+   15:5   warning  'expect' is not defined                              no-undef
+   18:1   warning  'test' is not defined                                no-undef
+   19:5   warning  'expect' is not defined                              no-undef
+   20:5   warning  'expect' is not defined                              no-undef
+   24:1   warning  'test' is not defined                                no-undef
+   25:5   warning  'expect' is not defined                              no-undef
+   25:12  warning  'ioneed_event' is not defined                        no-undef
+   26:5   warning  'expect' is not defined                              no-undef
+   26:12  warning  'ioneed_event' is not defined                        no-undef
+   29:1   warning  'test' is not defined                                no-undef
+   30:5   warning  'expect' is not defined                              no-undef
+   31:5   warning  'expect' is not defined                              no-undef
+   38:1   warning  'test' is not defined                                no-undef
+   39:5   warning  'expect' is not defined                              no-undef
+   40:5   warning  'expect' is not defined                              no-undef
+   41:5   warning  'expect' is not defined                              no-undef
+   42:5   warning  'expect' is not defined                              no-undef
+   47:1   warning  'test' is not defined                                no-undef
+   49:5   warning  'expect' is not defined                              no-undef
+   56:5   warning  'expect' is not defined                              no-undef
+   57:5   warning  'expect' is not defined                              no-undef
+   58:5   warning  'expect' is not defined                              no-undef
+   59:5   warning  'expect' is not defined                              no-undef
+   60:5   warning  'expect' is not defined                              no-undef
+   61:5   warning  'expect' is not defined                              no-undef
+   62:5   warning  'expect' is not defined                              no-undef
+   64:1   warning  'test' is not defined                                no-undef
+   67:1   warning  'test' is not defined                                no-undef
+   71:5   warning  'expect' is not defined                              no-undef
+   72:5   warning  'expect' is not defined                              no-undef
+   73:5   warning  'expect' is not defined                              no-undef
+   74:5   warning  'expect' is not defined                              no-undef
+   75:5   warning  'expect' is not defined                              no-undef
+   76:5   warning  'expect' is not defined                              no-undef
+   77:5   warning  'expect' is not defined                              no-undef
+   81:1   warning  'test' is not defined                                no-undef
+   83:5   warning  'expect' is not defined                              no-undef
+   84:5   warning  'expect' is not defined                              no-undef
+  115:1   warning  'test' is not defined                                no-undef
+  117:5   warning  'expect' is not defined                              no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/tests/kernel.test.js
+  1:10  warning  'Procees' is defined but never used           no-unused-vars
+  1:19  warning  'IProcess' is defined but never used          no-unused-vars
+  2:10  warning  'Log' is defined but never used               no-unused-vars
+  2:15  warning  'ILog' is defined but never used              no-unused-vars
+  3:10  warning  'getRandomInt' is defined but never used      no-unused-vars
+  3:24  warning  'getRandomElement' is defined but never used  no-unused-vars
+  4:13  warning  'config' is defined but never used            no-unused-vars
+  5:10  warning  'Kernel' is defined but never used            no-unused-vars
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/tests/process.test.js
+   5:1  warning  'test' is not defined    no-undef
+   6:5  warning  'expect' is not defined  no-undef
+   7:5  warning  'expect' is not defined  no-undef
+   8:5  warning  'expect' is not defined  no-undef
+  11:1  warning  'test' is not defined    no-undef
+  14:3  warning  'expect' is not defined  no-undef
+  15:3  warning  'expect' is not defined  no-undef
+  16:3  warning  'expect' is not defined  no-undef
+  17:3  warning  'expect' is not defined  no-undef
+  20:1  warning  'test' is not defined    no-undef
+  22:3  warning  'expect' is not defined  no-undef
+  25:1  warning  'test' is not defined    no-undef
+  27:3  warning  'expect' is not defined  no-undef
+  30:1  warning  'test' is not defined    no-undef
+  32:3  warning  'expect' is not defined  no-undef
+  35:1  warning  'test' is not defined    no-undef
+  37:3  warning  'expect' is not defined  no-undef
+  40:1  warning  'test' is not defined    no-undef
+  42:3  warning  'expect' is not defined  no-undef
+  49:1  warning  'test' is not defined    no-undef
+  50:3  warning  'expect' is not defined  no-undef
+  51:3  warning  'expect' is not defined  no-undef
+  52:3  warning  'expect' is not defined  no-undef
+  53:3  warning  'expect' is not defined  no-undef
+  56:1  warning  'test' is not defined    no-undef
+  60:3  warning  'expect' is not defined  no-undef
+  61:3  warning  'expect' is not defined  no-undef
+  62:3  warning  'expect' is not defined  no-undef
+  63:3  warning  'expect' is not defined  no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/webpack.config.js
+   1:14  warning  'require' is not defined    no-undef
+   3:1   warning  'module' is not defined     no-undef
+  19:24  warning  '__dirname' is not defined  no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/webpack.config_exercise.js
+   1:14  warning  'require' is not defined    no-undef
+   3:1   warning  'module' is not defined     no-undef
+  19:24  warning  '__dirname' is not defined  no-undef
+
+/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/simulation/webpack.config_practice.js
+   1:14  warning  'require' is not defined    no-undef
+   3:1   warning  'module' is not defined     no-undef
+  19:24  warning  '__dirname' is not defined  no-undef
+
+✖ 1361 problems (0 errors, 1361 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.
+

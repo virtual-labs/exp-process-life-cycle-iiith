@@ -1,0 +1,37 @@
+=/pretest.json
+{
+  _: [],
+  f: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json'
+  ],
+  files: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json'
+  ],
+  c: 'assessment',
+  contentTypes: 'assessment',
+  'content-types': 'assessment',
+  '$0': 'validate'
+}
+/questions/0/question: must be string
+
+/questions/2/question: must be string
+
+Json Error: must match "then" schema
+Json Error: must match "then" schema
+Failed while validating /home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/pretest.json
+Error: Schema is Invalid
+=/posttest.json
+{
+  _: [],
+  f: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/posttest.json'
+  ],
+  files: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment/posttest.json'
+  ],
+  c: 'assessment',
+  contentTypes: 'assessment',
+  'content-types': 'assessment',
+  '$0': 'validate'
+}
+Validated true

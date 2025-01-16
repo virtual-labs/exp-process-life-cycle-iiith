@@ -1,0 +1,11 @@
+{
+  _: [],
+  f: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment-descriptor.json'
+  ],
+  files: [
+    '/home/sr7/Work/Code/IIIT/virtual_labs/exp-process-life-cycle-iiith/experiment-descriptor.json'
+  ],
+  '$0': 'validate'
+}
+Validated true
