@@ -90,7 +90,7 @@ app.post('/processes', (req, res) => {
                     });
                 })
         })
-});
+}); 
 
 app.get('/terminations', (req, res) => {
     const experiments = db.collection('experiments');

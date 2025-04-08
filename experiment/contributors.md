@@ -13,3 +13,4 @@
 | 5    | Akshay Aralikatti  | aralikatti94@gmail.com                | IIIT Hyderabad          |            |
 | 6    | Aarush Jain        |                                       | IIIT Hyderabad          |            |
 | 7    | Aayan Aggarwal     |                                       | IIIT Hyderabad          |            |
+| 8    | Souvik Ray         | souvik.ray@research.iiit.ac.in        | IIIT Hyderabad          |            |

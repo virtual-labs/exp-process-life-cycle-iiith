@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.91% </span>
+                <span class="strong">19.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/46</span>
+                <span class='fraction'>9/46</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.91% </span>
+                <span class="strong">19.56% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/46</span>
+                <span class='fraction'>9/46</span>
             </div>
         
             
@@ -196,33 +196,33 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -293,12 +293,12 @@ export class Event implements IEvent{
         this.responceId = rid;
         this.state = config.DONE;
     }
-    killed(rid: number) {
-        this.responceId = rid;
-        this.state = config.KILLED;
+<span class="fstat-no" title="function not covered" >    ki</span>lled(rid: number) {
+<span class="cstat-no" title="statement not covered" >        this.responceId = rid;</span>
+<span class="cstat-no" title="statement not covered" >        this.state = config.KILLED;</span>
     }
-<span class="fstat-no" title="function not covered" >    ge</span>tData(): IEvent {
-<span class="cstat-no" title="statement not covered" >        return {</span>
+    getData(): IEvent {
+        return {
             name: this.name,
             pid: this.pid,
             time: this.time,
@@ -318,9 +318,9 @@ export class Event implements IEvent{
 <span class="cstat-no" title="statement not covered" >        this.type = type;</span>
 <span class="cstat-no" title="statement not covered" >        this.state = state;</span>
     }
-    createElement(){
+<span class="fstat-no" title="function not covered" >    cr</span>eateElement(){
         // console.log(`event: name ${this.name}`);
-        let e_type = document.createElement('p');
+        let e_type = <span class="cstat-no" title="statement not covered" >document.createElement('p');</span>
 <span class="cstat-no" title="statement not covered" >        if(this.type === config.EXTERNAL){</span>
 <span class="cstat-no" title="statement not covered" >            e_type.innerText = 'E';</span>
 <span class="cstat-no" title="statement not covered" >            e_type.style.backgroundColor = "#0ec8b4";</span>
@@ -364,7 +364,7 @@ export class Event implements IEvent{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-07T04:08:21.487Z
+                at 2025-01-28T06:57:11.089Z
             </div>
         <script src="prettify.js"></script>
         <script>
