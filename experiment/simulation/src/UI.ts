@@ -1514,51 +1514,162 @@ class UI {
       });
     });
 
+    // document.querySelectorAll(".exp_controls_info").forEach((ele) => {
+    //   const driver = new Driver();
+    //   let hoverTimeout;
+    //   ele.addEventListener("mouseover", (event) => {
+    //     hoverTimeout = setTimeout(() => {
+    //       const { target } = event;
+    //       const targetElement = target as HTMLElement;
+    //       const element_id =
+    //         targetElement.tagName == "span"
+    //           ? (targetElement.parentNode as HTMLElement).id
+    //           : targetElement.id;
+    //       console.log(element_id);
+    //       driver.highlight(descriptions.get(element_id));
+    //     }, 1000);
+    //   });
+    //   ele.addEventListener("mouseout", (event) => {
+    //     clearTimeout(hoverTimeout);
+    //     const activeElement = driver.getHighlightedElement();
+    //     console.log("released");
+    //     driver.reset();
+    //   });
+    // });
+
+    // document.querySelectorAll(".meta_controls_info").forEach((ele) => {
+    //   const driver = new Driver();
+    //   let hoverTimeout;
+    //   ele.addEventListener("mouseover", (event) => {
+    //     hoverTimeout = setTimeout(() => {
+    //       const { target } = event;
+    //       const targetElement = target as HTMLElement;
+    //       const element_id =
+    //         targetElement.tagName == "span"
+    //           ? (targetElement.parentNode as HTMLElement).id
+    //           : targetElement.id;
+    //       console.log(element_id);
+    //       driver.highlight(descriptions.get(element_id));
+    //     }, 1000);
+    //   });
+    //   ele.addEventListener("mouseout", (event) => {
+    //     clearTimeout(hoverTimeout);
+    //     const activeElement = driver.getHighlightedElement();
+    //     console.log("released");
+    //     driver.reset();
+    //   });
+    // });
+    
     document.querySelectorAll(".exp_controls_info").forEach((ele) => {
       const driver = new Driver();
       let hoverTimeout;
+    
+      // Add tabindex to make it focusable via keyboard
+      ele.setAttribute("tabindex", "0"); // Allow keyboard navigation
+    
       ele.addEventListener("mouseover", (event) => {
         hoverTimeout = setTimeout(() => {
           const { target } = event;
           const targetElement = target as HTMLElement;
           const element_id =
-            targetElement.tagName == "P"
+            targetElement.tagName == "span"
               ? (targetElement.parentNode as HTMLElement).id
               : targetElement.id;
-          console.log(element_id);
-          driver.highlight(descriptions.get(element_id));
-        }, 1000);
+    
+          console.log("Hovered over:", element_id);
+          if (descriptions.has(element_id)) {
+            const description = descriptions.get(element_id);
+            if (description) {
+              driver.highlight(description);  // Show description on hover
+            }
+          }
+        }, 1000); // Delay for hover effect
       });
-      ele.addEventListener("mouseout", (event) => {
+    
+      ele.addEventListener("mouseout", () => {
         clearTimeout(hoverTimeout);
-        const activeElement = driver.getHighlightedElement();
-        console.log("released");
+        driver.reset(); // Reset highlight when mouse leaves
+      });
+    
+      // Add focus event for keyboard users
+      ele.addEventListener("focus", (event) => {
+        const { target } = event;
+        const targetElement = target as HTMLElement;
+        const element_id =
+          targetElement.tagName == "span"
+            ? (targetElement.parentNode as HTMLElement).id
+            : targetElement.id;
+    
+        console.log("Focused on:", element_id);
+        if (descriptions.has(element_id)) {
+          const description = descriptions.get(element_id);
+          if (description) {
+            driver.highlight(description);  // Show description on focus
+          }
+        }
+      });
+    
+      // Add blur event to reset highlight when focus leaves the button
+      ele.addEventListener("blur", () => {
         driver.reset();
       });
     });
-
+    
     document.querySelectorAll(".meta_controls_info").forEach((ele) => {
       const driver = new Driver();
       let hoverTimeout;
+    
+      // Add tabindex to make it focusable via keyboard
+      ele.setAttribute("tabindex", "0"); // Allow keyboard navigation
+    
       ele.addEventListener("mouseover", (event) => {
         hoverTimeout = setTimeout(() => {
           const { target } = event;
           const targetElement = target as HTMLElement;
           const element_id =
-            targetElement.tagName == "P"
+            targetElement.tagName == "span"
               ? (targetElement.parentNode as HTMLElement).id
               : targetElement.id;
-          console.log(element_id);
-          driver.highlight(descriptions.get(element_id));
-        }, 1000);
+    
+          console.log("Hovered over:", element_id);
+          if (descriptions.has(element_id)) {
+            const description = descriptions.get(element_id);
+            if (description) {
+              driver.highlight(description);  // Show description on hover
+            }
+          }
+        }, 1000); // Delay for hover effect
       });
-      ele.addEventListener("mouseout", (event) => {
+    
+      ele.addEventListener("mouseout", () => {
         clearTimeout(hoverTimeout);
-        const activeElement = driver.getHighlightedElement();
-        console.log("released");
+        driver.reset(); // Reset highlight when mouse leaves
+      });
+    
+      // Add focus event for keyboard users
+      ele.addEventListener("focus", (event) => {
+        const { target } = event;
+        const targetElement = target as HTMLElement;
+        const element_id =
+          targetElement.tagName == "span"
+            ? (targetElement.parentNode as HTMLElement).id
+            : targetElement.id;
+    
+        console.log("Focused on:", element_id);
+        if (descriptions.has(element_id)) {
+          const description = descriptions.get(element_id);
+          if (description) {
+            driver.highlight(description);  // Show description on focus
+          }
+        }
+      });
+    
+      // Add blur event to reset highlight when focus leaves the button
+      ele.addEventListener("blur", () => {
         driver.reset();
       });
     });
+    
   }
 
   initialize_accordion() {
@@ -1627,10 +1738,10 @@ class UI {
       descriptions.get("IO"),
       descriptions.get("COMPLETED"),
 
-      // this.imperatives.get("handling_events"),
-      // this.imperatives.get("handling_events_req_process_1"),
-      // this.imperatives.get("handling_events_req_procesdriver.highlight(descriptions.get(element_id));s_2"),
-      // this.imperatives.get("handling_events_req_process_3"),
+      this.imperatives.get("handling_events"),
+      this.imperatives.get("handling_events_req_process_1"),
+       this.imperatives.get("handling_events_req_procesdriver.highlight(descriptions.get(element_id));s_2"),
+       this.imperatives.get("handling_events_req_process_3"),
     ];
 
     driver.defineSteps(main_tour_steps);

@@ -143,11 +143,97 @@
 
 #driver-highlighted-element-stage {
   background: transparent !important;
-  outline: 5000px solid rgba(0, 0, 0, 0.75);
+  outline: 10px solid rgb(152, 203, 59);
 }
 
-#driver-page-overlay {
+/* #driver-page-overlay {
   background: none !important;
+} */
+/* Styling the Driver.js popover */
+.driver-popover {
+  background-color: #ffffff !important; /* White background */
+  font-family: Arial, sans-serif !important; /* Apply font */
+  border-radius: 8px !important;      /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Add shadow */
+  padding: 20px !important;           /* Add padding */
+  max-width: 400px !important;        /* Set maximum width */
+  position:relative !important;
+}
+
+/* Style the title in the popover */
+.driver-popover-title {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #000000 !important; /* Black text for title */
+  margin-bottom: 5px !important;
+}
+
+/* Style the description in the popover */
+.driver-popover-description {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #000000 !important; /* Black text for description */
+}
+
+/* Add styles for buttons */
+.driver-close-btn {
+  color: white;
+  background-color: #176696;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem; /* 14px */
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.driver-close-btn:hover {
+  background-color: #1e3a8a; /* Hover color (blue-700 equivalent) */
+}
+
+
+/* Add styles for buttons */
+.driver-prev-btn {
+  color: white;
+  background-color: #176696;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem; /* 14px */
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.driver-prev-btn:hover {
+  background-color: #1e3a8a; /* Hover color (blue-700 equivalent) */
+}
+
+
+/* Add styles for buttons */
+.driver-next-btn {
+  color: white;
+  background-color: #176696;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem; /* 14px */
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.driver-close-next:hover {
+  background-color: #1e3a8a; /* Hover color (blue-700 equivalent) */
+}
+
+
+#driver-page-overlay {
+  pointer-events: none !important; /* Disable interaction with the overlay */
 }
 
 .custom-issues {
