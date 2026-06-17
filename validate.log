@@ -1,0 +1,14 @@
+{
+  _: [],
+  f: [
+    '/home/runner/work/exp-process-life-cycle-iiith/exp-process-life-cycle-iiith/experiment-descriptor.json'
+  ],
+  files: [
+    '/home/runner/work/exp-process-life-cycle-iiith/exp-process-life-cycle-iiith/experiment-descriptor.json'
+  ],
+  '$0': 'validate'
+}
+Json Error: There are additional experiment properties
+Json Error: must match "then" schema
+Failed while validating /home/runner/work/exp-process-life-cycle-iiith/exp-process-life-cycle-iiith/experiment-descriptor.json
+Error: Schema is Invalid
